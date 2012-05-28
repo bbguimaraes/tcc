@@ -122,6 +122,22 @@
 
 \section{Detecção de fraude}
 
+\paragraph{}A fraude caracteriza-se pela exploração mal intencionada de um sistema por parte de um indivíduo ou grupo, com o objetivo de obter algum tipo de benefício ilícitamente. Dependendo da extensão de sua exploração, ela pode causar grandes danos ao negócio de uma empresa: um acesso a dados privados pode comprometer a competitividade no mercado, um prejuízo financeiro pode ser fatal.
+
+\paragraph{}A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{controle de fraude}. Nesse contexto, a detecção automática ajuda a reduzir o trabalho manual de verificação das instâncias. O objetivo principal desses sistemas é identificar padrões de transações suspeitas em meio às transações comuns de uma organização. O fraudador pode, por exemplo, contratar um seguro usando informações de outra pessoa ou informações falsas.
+
+\paragraph{}Como não é possível ter certeza da legitimidade das transações de um negócio, não existe uma técnica infalível para a detecção de fraudes. Isso não significa que elas não possam ser detectadas. Métodos matemáticos e estatísticos são utilizados para comparar um banco de dados de transações existentes com as novas, com o objetivo de encontrar evidências de possíveis fraudes. Mesmo assim, geralmente há um processo de análise e revisão caso a caso por um especialista.
+
+\paragraph{}Dois conceitos relacionados à detecção em geral são falsos positivos e falsos negativos. Falsos positivos são instâncias erroneamente classificadas, por exemplo, uma transação comum que é classificada como fraudulenta. Falsos positivos são o oposto: uma transação fraudulenta que é classificada como comum. O número de falsos positivos aumenta o trabalho desnecessário na fase de revisão, enquanto os falsos negativos reduzem a eficácia da detecção. A redução dos falsos positivos é um dos objetivos principais de um sistema de detecção. Os falsos negativos, no entanto, são quase impossíveis de serem eliminados completamente, em qualquer sistema de detecção.
+
+\paragraph{}Mesmo um sistema capaz de reconhecer sinais de fraudes existentes não é suficiente para um ambiente real. Fraudadores tentam constantemente superar os sistemas de detecção, evoluindo o se \emph{modus operandi} com o tempo, novos métodos são criados, novos fraudadores entram em atividade. Um sistema que almeje deter o maior número possível deve ser constantemente atualizado para se adaptar às mudanças de um ambiente tão dinâmico.
+
+\paragraph{}Dependendo do domínio da organização, para que um sistema possa prever fraudes com antecedência suficiente para que elas sejam evitadas, deve monitorar constantemente as novas transações em andamento. Esse fator reduz a utilização de sistemas que necessitam de um longo tempo de treinamento ou de análise. O ideal seria que ele estivesse em constante execução, analisando as transações conforme elas ocorrem. Para aplicações grandes ou descentralizadas, pode ser muito difícil conseguir isso sem afetar a performance geral das transações.
+
+\paragraph{}Para cada domínio, tipos diferentes de fraude podem existir, e mais de um tipo pode ocorrer simultaneamente, sem uma ordem definida. 
+
+\newpage
+
 \section{Proposta}
 \subsection{Objetivos}
 \subsection{Arquitetura}
