@@ -1,6 +1,26 @@
 \chapter{Detecção de fraude}
 
-A fraude caracteriza-se pela exploração mal intencionada de um sistema por parte de um indivíduo ou grupo, com o objetivo de obter algum tipo de benefício ilícitamente. Dependendo da extensão de sua exploração, ela pode causar grandes danos ao negócio de uma empresa: um acesso a dados privados pode comprometer a competitividade no mercado, um prejuízo financeiro pode ser fatal.
+O monitoramento de sistemas com o objetivo de encontrar comportamentos fraudulentos já existia muito antes da utilização de sistemas computacionais tornarem-se ferramentas comuns. Antes havia um processo denominado auditoria: gerar, armazenar e revisar um registro cronológico de eventos de um sistema \cite[p. 7]{Bace2000}. Os principais objetivos desses sistemas são identificar os usuários do sistema, impedir o uso impróprio, e auxiliar na reconstrução de eventos e na estimativa, quantificação e qualificação de danos.
+
+O primeiro trabalho a considerar necessária a auditoria automática de sistemas foi \citet{Anderson1972}. Nesse trabalho, Anderson classifica os riscos e ameaças a sistemas, diferenciando fontes internas e externas, como na figura \ref{fig:and}. Também cita diversos objetivos para um sistema de auditoria:
+
+\begin{itemize}
+\item Prover informações suficientes para que o problema possa ser localizado, mas que não exponham detalhes que possibilitem um ataque.
+\item Obter dados de diversas fontes para otimizar o conteúdo do banco de dados.
+\item Discernir uma atuvidade ``normal'' do sistema, para que se possa detectar abusos interno.
+\item Levar em consideração as estratégias dos invasores no projeto do sistema.
+\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{img/anderson.png}
+\caption{Matriz de ameaças}
+\label{fig:and}
+\end{figure}
+
+\ldots
+
+A fraude caracteriza-se pela exploração de um sistema por parte de um indivíduo ou grupo, com o objetivo de obter algum tipo de benefício ilícitamente. Dependendo da extensão de sua exploração, ela pode causar grandes danos ao negócio de uma empresa: um acesso a dados privados pode comprometer a competitividade no mercado, um prejuízo financeiro pode ser fatal.
 
 A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{controle de fraude}. Nesse contexto, a detecção automática ajuda a reduzir o trabalho manual de verificação das instâncias. O objetivo principal desses sistemas é identificar padrões de transações suspeitas em meio às transações comuns de uma organização. O fraudador pode, por exemplo, contratar um seguro usando informações de outra pessoa ou informações falsas.
 
