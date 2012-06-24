@@ -44,3 +44,29 @@ O número de instâncias positivas nesse tipo de bases de dados é geralmente mu
 
 A obtenção de bancos de dados reais para teste é difícil, já que empresas e organizações, por razões legais e competitvas não disponibilizam informações desse tipo. Uma alternativa é a criação de um banco de dados artificial, inspirado em dados reais. A eficácia dessa técnica é limitada pela capacidade do criador do banco em prever o maior número de casos possíveis, o que geralmente é muito inferior à variedade das situações reais. Mesmo assim, essa técnica é comumente empregada na fase de concepção e teste, devido à dificuldade de obtenção de dados.
 
+\section{Implementação}
+
+A maioria dos sistemas de detecção de fraude opera usando listas negras (\emph{black-lists}) de dados (transações, contas, etc.), que são comparadas com as nova instâncias. Algumas utilizam regras fixas para a classificação. A figura \ref{fraud:data} mostra a organização dos dados nesses sistemas. Uma parte do banco de dados é usada para o treinamento. Esses são os dados onde o sistema aprenderá os padrões e regras utilizados para a detecção. O restante das instâncias é usada para a avaliação do treinamento. Também é comum que haja bancos de dados distintos para o treinamento e avaliação.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{img/fraud-data.png}
+\caption{Dados para a análise}
+\label{fig:fraud-data}
+\end{figure}
+
+As duas técnicas mais usadas são:
+
+\begin{itemize}
+\item Dados para treinamento classificadas (A + B + C + D) processados por um algoritmo supervisionado.
+\item Instâncias legais (C) processadas por um algoritmo semi-supervisionado.
+\end{itemize}
+
+Algoritmos supervisionados examinam as instâncias previamente classificadas (A + B + C + D) para identificar matematicamente os padrões presentes nas classificadas como fraudulentas. Os tipos mais comuns de algoritmos usados na detecção de fraude são redes neurais e máquinas de vetores de suporte (\emph{support vector machine}, SVM). Para aumentar a eficácia dos métodos supervisionados, esses algoritmos podem ser aplicados em sequência. Também podem ser combinados resultados de bancos de dados distintos.
+
+A combinação de algoritmos supervisionados (e de supervisionados e não-supervisionados), chamados de algoritmos híbridos, é uma grande área de pesquisa. Também são utilizados algoritmos supervisionados em bancos de dados que contêm apenas instâncias legais (C). Regras são geradas e testadas na base de dados, e aquelas que identificam padrões nesses dados são descartadas. Esses algoritmos são chamados de semi-supervisionados, porque, apesar de não fazerem distinção entre dados legais e ilegais, os dados ainda necessitam ser classificados para que sejam utilizados no seu treinamento.
+
+Algoritmos não-supervisionados atuam sobre dados não classificados (A + C + E + F), e o seu objetivo é agrupar os dados em padrões, para que estes sejam mais facilmente analisados, combinando a detecção humana e a computação da máquina. Exemplos desses algoritmos são redes neurais não supervisionadas, análise de ligações (\emph{link analysis}) e mineração de grafos (\emph{graph mining}).
+
+\citet{Phua2010} fazem muitas críticas ao uso de dados previamente classificados para o treinamento dos sistemas. A classificação atrasa o processo de detecção, aumenta o tempo de reação a novos tipos de fraudes e pode ser cara e difícil de se obter. Pode ainda ser incorreta, tendenciosa e expor dados sigilosos, dependendo do tipo de aplicação. Assim, instâncias de treinamento e avaliação (A + C + E + F, sem classificações) devem ser combinadas e processadas por um algoritmo não-supervisionado.
+
