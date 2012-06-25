@@ -1,0 +1,46 @@
+\chapter{Sistemas imunológicos artificiais}
+
+A modelagem de um problema como um sistema imunológico artificial requer a definição de quatro componentes: codificação, medida de similaridade, seleção e mutação. De maneira geral, o funcionamento do sistema é: uma vez que a codificação e uma medida de similaridade tenham sido escolhidas, o sistema executa a seleção e mutação, ambas baseadas na medida de similaridade, até que o critério de parada seja satisfeito \cite{Aickelin2005}.
+
+\section{Codificação}
+
+A codificação é uma etapa essencial na definição de um Sistema Imunológico Artificial. Ela afeta toda modelagem do sistema, em especial a medida de similaridade, e pode ser responsável pelo seu sucesso ou falha. Os dois principais agentes do sistema imunológico, antígenos e anticorpos, são também os principais elementos que devem ser modelados, e são representados da mesma forma.
+
+Um antígeno é uma parte do objetivo ou solução da aplicação, que pode ser único ou um parte de um conjunto-solução. Os anticorpos são o resto dos dados, e geralmente existem em grande quantidade. Em uma aplicação de detecção de intrusão, por exemplo, o antígeno poderia ser o conjunto de dados que define um tráfego de dados, e os anticorpos, os conjuntos de dados que já foram identificados como legais.
+
+Na maioria dos problemas, a representação desses dois elementos é feita através de um vetor de números ou de características. Cada posição desse vetor representa uma característica da instância. Os tipos mais comuns de dados são números (inteiros ou reais), \emph{strings} e valores binários.
+
+\section{Medida de similaridade}
+
+A medidade de similaridade (também chamada de medida de afinidade, principalmente na área de Sistemas Imunológicos Artificiais) é usada para comparar duas instâncias, e mede o quanto uma é semelhante à outra. É usada principalmente para agrupar instâncias em grupos e nas condições de término (o algoritmo termina quando o modelo descreve as instâncias com uma medida de similaridade satisfatória, que varia de acordo com a aplicação, o tempo de execução e o nível de similaridade necessário).
+
+Uma função de similaridade simples é o número de \emph{bits} que são idênticos nas duas sequências. Por exemplo, para os \emph{strings} (00011) e (00000), a função retornaria 3. Essa função é oposta à distância de Hamming, que mede quantos \emph{bits} devem ter seus valores trocados para tornar as sequências iguais. Em alguns problemas, essa medida não é suficiente, já que ela não tem a noção de continuidade. Uma alternativa é calcular o número de posições iguais contínuas, retornando o maior valor. Assim, o exemplo anterior também receberia o valor 3, mas as sequências (00000) e (01010) receberia 1. Essa diferenciação pode ter ser apropriada ou não, dependendo do problema. Para variáveis não-binárias, existem ainda mais possibilidades de medida de distância, como a distância Euclideana.
+
+Para os problemas de mineração de dados, a aptidão geralmente significa correlação, e uma medida simples de correlação é o coeficiente de correlação de Pearson. A correlação de duas instâncias \emph{u} e \emph{v} é definida como:
+
+\begin{equation}
+r=\frac{
+    \sum\limits_{i=1}^{n}
+        (u_i-\overline{u})
+        (v_i-\overline{v})
+    }
+    {\sqrt{
+        \sum\limits_{i=1}^{n}
+            (u_i-\overline{u})^2
+        \sum\limits_{i=1}^{n}
+            (v_i-\overline(v))^2
+        }
+    }
+\end{equation}
+
+Onde \emph{u} e \emph{v} são duas instâncias, \emph{n} é o número de variáveis comuns a u e v, \emph{$u_i$} é o valor da varável i na instância u e \emph{$\overline{u}$} é a média dos valores de todas as variáveis de u (não apenas das variáveis comuns a u e v). A média é modificada para que o valor 0 seja atribuído a instâncias sem nenhuma variável em comum. O resultado são valores de -1 a 1, onde 1 significa forte concordância e -1 forte discordância.
+
+Para algumas aplicações, aptidão pode não ser benéfica, e as instâncias que são mais semelhantes são na verdade descartadas. Esse processo é conhecido como seleção negativa, e é equivalente ao processo que acredita-se que ocorre durante a maturação dos linfócitos B, onde eles aprendem a não identificar os tecidos próprias, para que não se inicie uma reação auto-imune.
+
+A seleção negativa é muito aplicada a sistemas de segurança. Cria-se um ambiente seguro, formado apenas por componentes confiáveis. Na inicialização do sistema, é gerado um grande número de detectores randômicos, que são aplicados aos dados gerados por esse ambiente. Aqueles que identificarem os dados legais são eliminados, restando ao final apenas aqueles que não identificarem. Esses detectores formarão o sistema de detecção, que irá monitorar constantemente o ambiente. Caso algum detector identifique os dados no ambiente, é gerado um alerta de "possível não-próprio".
+
+A otimização da aptidão dos modelos em muitos casos não é realmente o objetivo do sistema se o objetivo é criar generalizações através de um subconjunto dos dados existentes \cite{Hand2001}. Um modelo com grande aptidão pode não se adaptar a novas instâncias que venham a ser analizadas pelo sistema.
+
+\section{Seleção}
+\section{Mutação}
+
