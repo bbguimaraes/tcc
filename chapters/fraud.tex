@@ -11,7 +11,7 @@ O primeiro trabalho a considerar necessária a auditoria automática de sistemas
 \begin{itemize}
 \item Prover informações suficientes para que o problema possa ser localizado, mas que não exponham detalhes que possibilitem um ataque.
 \item Obter dados de diversas fontes para otimizar o conteúdo do banco de dados.
-\item Discernir uma atuvidade ``normal'' do sistema, para que se possa detectar abusos interno.
+\item Discernir uma atividade ``normal'' do sistema, para que se possa detectar abusos interno.
 \item Levar em consideração as estratégias dos invasores no projeto do sistema.
 \end{itemize}
 
@@ -24,7 +24,7 @@ O primeiro trabalho a considerar necessária a auditoria automática de sistemas
 
 \ldots
 
-A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{controle de fraude}. Nesse contexto, a detecção automática ajuda a reduzir o trabalho manual de verificação das instâncias. O objetivo principal desses sistemas é identificar padrões de transações suspeitas em meio às transações comuns de uma organização. O fraudador pode, por exemplo, contratar um seguro usando informações de outra pessoa ou informações falsas.
+A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{controle de fraude}. Nesse contexto, a detecção automática ajuda a reduzir o trabalho manual de verificação das instâncias. O objetivo principal desses sistemas é identificar padrões de transações suspeitas em meio às transações comuns de uma organização. O fraudador pode, por exemplo, contratar um seguro usando informações de outra pessoa ou informações falsas. O sistema procura detectar e impedir a fraude o mais cedo possível.
 
 Como não é possível ter certeza da legitimidade das transações de um negócio, não existe uma técnica infalível para a detecção de fraudes. Isso não significa que elas não possam ser detectadas. Métodos matemáticos e estatísticos são utilizados para comparar um banco de dados de transações existentes com as novas, com o objetivo de encontrar evidências de possíveis fraudes. Mesmo assim, geralmente há um processo de análise e revisão caso a caso por um especialista.
 
@@ -55,7 +55,7 @@ A maioria dos sistemas de detecção de fraude opera usando listas negras (\emph
 \label{fig:fraud-data}
 \end{figure}
 
-As duas técnicas mais usadas são:
+A maioria dos estudos relacionados à detecção de fraude considera a detecção de \emph{outliers} como uma ferramenta principal de detecção \cite{Aral2011}. Existem muitos métodos aplicados à detecção de fraude: (1) auditoria, (2) sistemas especialistas, (3) lógica nebulosa (\emph{fuzzy}), (4) redes neurais, (5) reconhecimento de padrões, (6) árvores de decisão, (7) regressão, etc \cite{Huang2012}. As duas técnicas mais usadas são:
 
 \begin{itemize}
 \item Dados para treinamento classificadas (A + B + C + D) processados por um algoritmo supervisionado.
@@ -68,5 +68,18 @@ A combinação de algoritmos supervisionados (e de supervisionados e não-superv
 
 Algoritmos não-supervisionados atuam sobre dados não classificados (A + C + E + F), e o seu objetivo é agrupar os dados em padrões, para que estes sejam mais facilmente analisados, combinando a detecção humana e a computação da máquina. Exemplos desses algoritmos são redes neurais não supervisionadas, análise de ligações (\emph{link analysis}) e mineração de grafos (\emph{graph mining}).
 
-\citet{Phua2010} fazem muitas críticas ao uso de dados previamente classificados para o treinamento dos sistemas. A classificação atrasa o processo de detecção, aumenta o tempo de reação a novos tipos de fraudes e pode ser cara e difícil de se obter. Pode ainda ser incorreta, tendenciosa e expor dados sigilosos, dependendo do tipo de aplicação. Assim, instâncias de treinamento e avaliação (A + C + E + F, sem classificações) devem ser combinadas e processadas por um algoritmo não-supervisionado.
+\citet{Phua2010} fazem muitas críticas ao uso de dados previamente classificados para o treinamento dos sistemas. A classificação atrasa o processo de detecção, aumenta o tempo de reação a novos tipos de fraudes e pode ser cara e difícil de se obter. Pode ainda ser incorreta, tendenciosa e expor dados sigilosos, dependendo do tipo de aplicação. Assim, instâncias de treinamento e avaliação (A + C + E + F, sem classificações) devem ser combinadas e processadas por um algoritmo não-supervisionado, detectando regras, pontuações ou anomalias visuais nos dados avaliados.
 
+\section{Granularidade}
+
+Um sistema que detecte e reporte uma fraude muito tempo depois de ela ter ocorrido permite que o fraudador consiga causar um dano substancial. Em geral, esse tempo de resposta de um sistema a partir do momento em que uma fraude é concretizada até a sua detecção é crucial para a eficácia do sistema em de fato proteger o ambiente em que é inserido.
+
+Os sistemas de detecção podem ser divididos em dois tipos gerais, denominados \emph{on-line} e \emph{off-line}, enquanto alguns incorporam características dos dois modelos e outros têm um processo distinto para ambos, que interagem entre si para gerar o resultado final \cite{Huang2012}.
+
+\ldots
+
+\section{Trabalhos relacionados}
+
+O sistema detecção de fraude no comércio eletrônico apresentado em \citet{Huang2012} é um exemplo de sistema que combina dois dois processos de diferentes granularidades que interagem entre si.
+
+\citet{Aral2011} apresentam um sistema de detecção de fraude em prescrições médicas que calcula um fator de risco associado a cada prescrição através de uma medida de distância entre valores cruzados de uma base de conhecimento (\emph{cross-features}). Os autores indicam que o raciocínio por trás desse modelo é de que os padrões no comportamento fraudulento são \emph{outliers} quando considerados no contexto do \emph{dataset} como um todo.
