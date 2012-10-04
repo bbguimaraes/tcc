@@ -69,7 +69,7 @@ O sistema proposto por \citeauthor{Timmis2000} era composto de uma medula óssea
 
 \subsection{Seleção clonal}
 
-Em 2000, Castro \cite{Castro2000} propôs o algoritmo de seleção clonal (CSA), mais tarde conhecido como CLONALG. Esse algoritmo é baseado nos princípios da imunidade adquirida de seleção clonal e maturação de afinidade, que são por sua vez baseados nos princípios da teoria de Darwin da seleção natural.
+Em 2000, Castro et al.\cite{Castro2000} propôs o algoritmo de seleção clonal (CSA), mais tarde conhecido como CLONALG. Esse algoritmo é baseado nos princípios da imunidade adquirida de seleção clonal e maturação de afinidade, que são por sua vez baseados nos princípios da teoria de Darwin da seleção natural.
 
 Segundo a teoria da seleção clonal, quando um linfócito identifica um antígeno, ele prolifera, criando milhares de cópias de si mesmo, e diferenciando-se em diferentes tipos de células: de plasma e de memória.
 
@@ -188,13 +188,15 @@ Mesmo assim, a mutação pode ser muito útil quando aplicada a alguns problemas
 
 \subsection{Espaço de formas e topologia de afinidade}
 
-Os formalismos do espaço de formas e topologia de afinidade são dois paradigmas geométricos populares muito utilizados em aplicações recentes do campo de sistemas imunológicos artificiais \cite{Brownlee2007}. \citeauthor{Perlson1979} apresentaram o formalismo do espaço de formas em \citet{Perlson1979}, que foi utilizado em muitos trabalhos no fim dos anos 80 e início dos anos 90, principalmente em trabalhos teóricos sobre seleção clonal e redes imunológicas.
+Os formalismos do espaço de formas e topologia de afinidade são dois paradigmas geométricos populares muito utilizados em aplicações recentes do campo de sistemas imunológicos artificiais \cite{Brownlee2007}. \citeauthor{Perelson1979} apresentaram o formalismo do espaço de formas em \citet{Perelson1979}, que foi utilizado em muitos trabalhos no fim dos anos 80 e início dos anos 90, principalmente em trabalhos teóricos sobre seleção clonal e redes imunológicas.
 
 Dados um anticorpo \emph{ab} e um antígeno \emph{ag}, é criado um vetor onde as características relacionadas à ligação entre esses dois são discretizadas e transformadas em valores reais. Assim, a interação \emph{ab-ag} pode ser definida como um ponto em um espaço vetorial Euclidiano de \emph{n} dimensões, onde \emph{n} é o número de características que compõem o vetor.
 
 Nesse formalismo, a distância euclidiana entre \emph{ab} e \emph{ag} é considerada como a 'afinidade' ou 'medida de complementaridade'. Para isso, a natureza complementar dos anticorpos e antígenos é ignorada: uma ligação perfeita é considerada quando \emph{ab == ag}, ao contrário de \emph{ab != ag}. Anticorpos possuem uma hiper-região de reconhecimento, onde antígenos podem gerar uma resposta imune.
 
 O objetivo de um anticorpo, no sistema imunológico, é maximizar a sua afinidade com um antígeno específico. Assim, a maturação de um anticorpo pode ser considerada também geometricamente como uma movimentação na superfície da função de afinidade para um antígeno específico. Essa superfície teórica é geralmente considerada como contínua, e possui diversos ótimos locais, ou seja, um ponto com maior afinidade que seus vizinhos, mas que não é o ponto global com maior afinidade. Esse formalismo é útil na definição e formalização do processo de maturação por hipermutação dos anticorpos, parte principal dos algoritmos baseados na teoria da seleção clonal.
+
+Esses formalismos são a base da definição do espaço de formas binário usado na seleção negativa e nas redes imunológicas, das regiões e limiares de detecção nos algoritmos de mineração de dados e classificação, e da movimentação na topologia das funções de custo nos algoritmos de otimização.
 
 \section{Considerações finais}
 
