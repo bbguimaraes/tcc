@@ -188,9 +188,17 @@ Mesmo assim, a mutação pode ser muito útil quando aplicada a alguns problemas
 
 \subsection{Espaço de formas e topologia de afinidade}
 
-Os formalismos do espaço de formas e topologia de afinidade são dois paradigmas geométricos populares muito utilizados em aplicações recentes do campo de sistemas imunológicos artificiais \cite{Brownlee2007}. \citeauthor{Perelson1979} apresentaram o formalismo do espaço de formas em \citet{Perelson1979}, que foi utilizado em muitos trabalhos no fim dos anos 80 e início dos anos 90, principalmente em trabalhos teóricos sobre seleção clonal e redes imunológicas.
+Os formalismos do espaço de formas e topologia de afinidade são dois paradigmas geométricos populares, originados na imunologia teórica e computacional, muito utilizados em aplicações recentes do campo de sistemas imunológicos artificiais \cite{Brownlee2007}. \citeauthor{Perelson1979} apresentaram o formalismo do espaço de formas em \citet{Perelson1979}, onde os autores fizeram uma investigação teórica das diferentes formas e capacidades de reconhecimento dos anticorpos. As ideias apresentadas nesse trabalho influenciara muitos trabalhos no fim dos anos 80 e início dos anos 90, principalmente em trabalhos teóricos sobre seleção clonal e redes imunológicas.
 
-Dados um anticorpo \emph{ab} e um antígeno \emph{ag}, é criado um vetor onde as características relacionadas à ligação entre esses dois são discretizadas e transformadas em valores reais. Assim, a interação \emph{ab-ag} pode ser definida como um ponto em um espaço vetorial Euclidiano de \emph{n} dimensões, onde \emph{n} é o número de características que compõem o vetor.
+Dados um anticorpo \emph{ab} e um antígeno \emph{ag}, é criado um vetor onde as características relacionadas à ligação entre esses dois são discretizadas e transformadas em valores reais. Os parâmetros no trabalho original representavam características físicas, como a estrutura geométrica, carga eletrostática, entre outras. Assim, a interação \emph{ab-ag} pode ser definida como um ponto em um espaço vetorial Euclidiano \emph{S} de \emph{n} dimensões, onde \emph{n} é o número de características que compõem o vetor. Uma representação do espaço de estados, adaptada de \citet{Brownlee2007} é apresentada na Figura \ref{img:space}.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\textwidth]{img/space.png}
+\caption{Diagrama do formalismo do espaço de estados \cite{Brownlee2007}}
+\label{img:space}
+\end{figure}
 
 Nesse formalismo, a distância euclidiana entre \emph{ab} e \emph{ag} é considerada como a 'afinidade' ou 'medida de complementaridade'. Para isso, a natureza complementar dos anticorpos e antígenos é ignorada: uma ligação perfeita é considerada quando \emph{ab == ag}, ao contrário de \emph{ab != ag}. Anticorpos possuem uma hiper-região de reconhecimento, onde antígenos podem gerar uma resposta imune.
 
