@@ -10,7 +10,7 @@ CHAPTERS= \
 
 all: tcc.pdf
 
-tcc.pdf: $(CHAPTERS) tcc.bib
+tcc.pdf: $(CHAPTERS) tcc.bib tcc.tex
 	pdflatex tcc
 	bibtex tcc
 	pdflatex tcc
