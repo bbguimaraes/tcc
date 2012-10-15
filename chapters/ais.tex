@@ -8,50 +8,30 @@ Os algoritmos modernos são inspirados em algoritmos de três campos principais:
 
 A última década mostrou um grande aumento no interesse pelos algoritmos baseados em sistemas imunológicos, conforme apresentado em \citet{Dasgupta2010}, por serem uma boa fonte de inspiração para novas abordagens para solução de problemas complexos. O sistema imunológico natural oferece metáforas ricas pelo fato de ser um sistema altamente distribuído, adaptativo e auto-organizável, além de suas capacidades de aprendizado, memorização, extração de características e reconhecimento de padrões.
 
-Esse artigo contém uma lista de diversos trabalhos recentes que aplicavam sistemas imunológicos artificiais. Uma versão alterada dessa tabela é apresentada na tabela \ref{ais:recent}.
+Esse artigo contém uma lista de diversos trabalhos recentes na área de Sistemas Imunológicos Artificiais. A tabela \ref{ais:recent} apresenta uma lista dos algoritmos, além do número de trabalhos apresentados.
 
-\begin{table}[h]
+\begin{table}[h!]
     \centering
+    \caption{Trabalhos recentes na área de Sistema Imunológico Natural \cite{Dasgupta2010}}
     \begin{tabular}{l c r}
         \hline
-        Algoritmos & Trabalhos     \\
+        Algoritmos & Trabalhos   \\
         \hline
-        Mineração de dados     & 2 \\
-        Redes e segurança      & 5 \\
-        Otimização             & 5 \\
-        Automação e design     & 6 \\
-        Detecção de anomalia   & 2 \\
-        Bioinformática         & 3 \\
-        Processamento de texto & 2\\
-        Reconhecimento de padrões, clustering e classificação & 3 \\
+        Seleção negativa    & 27 \\
+        Redes imunológicas  & 10 \\
+        Seleção clonal      & 5  \\
+        Teoria do Perigo    & 8  \\
+        Células dendríticas & 14 \\
+        Outros modelos      & 3  \\
+        Abordagens híbridas & 18 \\
         \hline
     \end{tabular}
-    \caption{Aplicações recentes}
     \label{ais:recent}
 \end{table}
 
 \section{Algoritmos}
 
-Nessa mesma pesquisa, \citeauthor{Dasgupta2010} listam os algoritmos baseados no sistema imunológico natural (Tabela \ref{nis-inspired-table}) e mostram que as pesquisas recentes nessa área têm se focado em quatro algoritmos principais: (1) seleção negativa, (2) redes imunológicas artificiais, (3) seleção clonal e (4) Teoria do Perigo e algoritmos de células dendríticas. 
-
-\begin{table}[b]
-    \centering
-    \begin{tabular}{l}
-        \hline
-        Modelos                          \\
-        \hline
-        Seleção negativa                 \\
-        Redes imunológicas               \\
-        Seleção clonal                   \\
-        Teoria do Perigo                 \\
-        Algoritmo de células dendríticas \\
-        Outros modelos                   \\
-        Abordagens híbridas              \\
-        \hline
-    \end{tabular}
-    \caption{Resumo de algoritmos baseados no sistema imunológico natural}
-    \label{nis-inspired-table}
-\end{table}
+Em \citet{Dasgupta2010}, os autores fizeram uma pesquisa listam os algoritmos baseados no sistema imunológico natural e mostram que as pesquisas recentes nessa área têm se focado em quatro algoritmos principais: (1) seleção negativa, (2) redes imunológicas artificiais, (3) seleção clonal e (4) Teoria do Perigo e algoritmos de células dendríticas. 
 
 \subsection{Seleção negativa}
 
@@ -171,7 +151,7 @@ ENQUANTO (Sistema não cheio) E (Ainda existem anticorpos) FACA
 FIMENQUANTO
 \end{lstlisting}
 
-%\begin{figure}[h]
+%\begin{figure}[h!]
 %\centering
 %\includegraphics[width=0.75\textwidth]{img/ais-alg.png}
 %\caption{Pseudo-código de um Sitema Imunológico Artificial}
@@ -186,25 +166,32 @@ A estratégia de mutação deve ser planejada com cuidado, porque nem todas as t
 
 Mesmo assim, a mutação pode ser muito útil quando aplicada a alguns problemas, como detecção de intrusão e mineração de dados \cite{DeCastro2002}. 
 
-\subsection{Espaço de formas e topologia de afinidade}
+\section{Espaço de formas}
 
 Os formalismos do espaço de formas e topologia de afinidade são dois paradigmas geométricos populares, originados na imunologia teórica e computacional, muito utilizados em aplicações recentes do campo de sistemas imunológicos artificiais \cite{Brownlee2007}. \citeauthor{Perelson1979} apresentaram o formalismo do espaço de formas em \citet{Perelson1979}, onde os autores fizeram uma investigação teórica das diferentes formas e capacidades de reconhecimento dos anticorpos. As ideias apresentadas nesse trabalho influenciara muitos trabalhos no fim dos anos 80 e início dos anos 90, principalmente em trabalhos teóricos sobre seleção clonal e redes imunológicas.
 
 Dados um anticorpo \emph{ab} e um antígeno \emph{ag}, é criado um vetor onde as características relacionadas à ligação entre esses dois são discretizadas e transformadas em valores reais. Os parâmetros no trabalho original representavam características físicas, como a estrutura geométrica, carga eletrostática, entre outras. Assim, a interação \emph{ab-ag} pode ser definida como um ponto em um espaço vetorial Euclidiano \emph{S} de \emph{n} dimensões, onde \emph{n} é o número de características que compõem o vetor. Uma representação do espaço de estados, adaptada de \citet{Brownlee2007} é apresentada na Figura \ref{img:space}.
 
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.75\textwidth]{img/space.png}
-\caption{Diagrama do formalismo do espaço de estados \cite{Brownlee2007}}
-\label{img:space}
+\begin{figure}[h!]
+    \centering
+    \caption{Diagrama do formalismo do espaço de estados \cite{Brownlee2007}}
+    \includegraphics[width=0.75\textwidth]{img/space.png}
+    \label{img:space}
 \end{figure}
 
-Nesse formalismo, a distância euclidiana entre \emph{ab} e \emph{ag} é considerada como a 'afinidade' ou 'medida de complementaridade'. Para isso, a natureza complementar dos anticorpos e antígenos é ignorada: uma ligação perfeita é considerada quando \emph{ab == ag}, ao contrário de \emph{ab != ag}. Anticorpos possuem uma hiper-região de reconhecimento, onde antígenos podem gerar uma resposta imune.
+O espaço de formas é um hipercubo de volume V, e cada anticorpo é definido como uma área de reconhecimento nesse espaço ($\epsilon$). Na definição original, essas áreas de reconhecimento eram funções Gaussianas. A distância euclidiana entre \emph{ab} e \emph{ag} é considerada como a `afinidade' ou `medida de complementaridade'. Para isso, a natureza complementar dos anticorpos e antígenos é ignorada: uma ligação perfeita é considerada quando \emph{ab == ag}, ao contrário de \emph{ab != ag}. Anticorpos possuem uma hiper-região de reconhecimento, onde antígenos podem gerar uma resposta imune.
 
-O objetivo de um anticorpo, no sistema imunológico, é maximizar a sua afinidade com um antígeno específico. Assim, a maturação de um anticorpo pode ser considerada também geometricamente como uma movimentação na superfície da função de afinidade para um antígeno específico. Essa superfície teórica é geralmente considerada como contínua, e possui diversos ótimos locais, ou seja, um ponto com maior afinidade que seus vizinhos, mas que não é o ponto global com maior afinidade. Esse formalismo é útil na definição e formalização do processo de maturação por hipermutação dos anticorpos, parte principal dos algoritmos baseados na teoria da seleção clonal.
+Uma crítica ao formalismo do espaço de formas foi feita em \citet{Carneiro1994}, destacando principalmente a simplicidade da abstração do espaço de estados e as limitações das funções de afinidade simples.
 
-Esses formalismos são a base da definição do espaço de formas binário usado na seleção negativa e nas redes imunológicas, das regiões e limiares de detecção nos algoritmos de mineração de dados e classificação, e da movimentação na topologia das funções de custo nos algoritmos de otimização.
+\section{Topologia de afinidade}
+
+O objetivo de um anticorpo, no sistema imunológico, é maximizar a sua afinidade com um antígeno específico. Assim, a maturação de um anticorpo pode ser considerada também geometricamente como uma movimentação na superfície da função de afinidade para um antígeno específico \cite{Brownlee2007}.
+
+Essa superfície teórica é geralmente considerada como contínua, e possui diversos ótimos locais, ou seja, um ponto com maior afinidade que seus vizinhos, mas que não é o ponto global com maior afinidade. Esse formalismo é útil na definição e formalização do processo de maturação por hipermutação dos anticorpos, parte principal dos algoritmos baseados na teoria da seleção clonal.
+
+Os formalismos do espaço de formas e topologia de afinidades são a base da definição do espaço de formas binário usado na seleção negativa e nas redes imunológicas, das regiões e limiares de detecção nos algoritmos de mineração de dados e classificação, e da movimentação na topologia das funções de custo nos algoritmos de otimização.
+
+A interpretação geométrica genérica proporcionada por esses dois formalismos constitui um \emph{framework} para a investigação de princípios imunológicos, não limitada aos problemas de reconhecimento de padrões.
 
 \section{Considerações finais}
 
