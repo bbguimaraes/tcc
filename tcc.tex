@@ -16,8 +16,8 @@
 \def\lstlistlistingname{Lista de Trechos de Código}
 \def\lstlistingname{Trecho de Código}
 \lstset{
-    inputencoding={utf8},
-    extendedchars=false,
+    inputencoding=utf8,
+    extendedchars=true,
     basicstyle=\scriptsize\color{black}\ttfamily,
     numbers=left,
     numberstyle=\scriptsize\ttfamily,
@@ -38,7 +38,8 @@
     framexleftmargin=17pt,
     framexrightmargin=5pt,
     framexbottommargin=4pt,
-    showstringspaces=false
+    showstringspaces=false,
+    literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ç}{{\c{c}}}1 {ã}{{\~a}}1,
 }
 
 % Dados.
