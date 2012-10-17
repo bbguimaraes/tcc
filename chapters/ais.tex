@@ -31,7 +31,7 @@ Esse artigo contém uma lista de diversos trabalhos recentes na área de Sistema
 
 \section{Algoritmos}
 
-Em \citet{Dasgupta2010}, os autores fizeram uma pesquisa listam os algoritmos baseados no sistema imunológico natural e mostram que as pesquisas recentes nessa área têm se focado em quatro algoritmos principais: (1) seleção negativa, (2) redes imunológicas artificiais, (3) seleção clonal e (4) Teoria do Perigo e algoritmos de células dendríticas. 
+Em \citet{Dasgupta2010}, os autores apresentam pesquisas recentes na área de Sistemas Imunológicos Artificiais, e mostram que as pesquisas recentes nessa área têm se focado em quatro algoritmos principais. Esse algoritmos são: (1) seleção negativa, (2) redes imunológicas artificiais, (3) seleção clonal e (4) Teoria do Perigo e algoritmos de células dendríticas, e serão apresentados nas seções seguintes.
 
 \subsection{Seleção negativa}
 
@@ -75,25 +75,27 @@ Segundo a teoria do perigo, a resposta imunológica é desencadeada por sinais d
 
 \subsection{Algoritmo de células dendríticas}
 
-O algoritmo de células dendríticas é inspirado pela Teoria do Perigo, mais especificamente na função das células dendríticas. As células dendríticas foram identificadas por \cite{Steinman1973}, e o seu principal papel é o de célula apresentadora de antígeno (APC).
+O algoritmo de células dendríticas é inspirado pela Teoria do Perigo, mais especificamente na função das células dendríticas. As células dendríticas foram identificadas por \citet{Steinman1973} e o seu principal papel é o de célula apresentadora de antígeno (APC). O objetivo do algoritmo de células dendríticas é preparar um conjunto de células dendríticas maduras que forneçam informações dependentes de contexto sobre como classificar como normais ou anômalos os padrões de entrada.
 
-Essas células encontram-se distribuídas em todos os tecidos, e executam funções diferentes de acordo com o tecido em que atuam. Quando ainda estão em um estado de imaturidade, as células dendríticas viajam na corrente sanguínea, até que sofrem diferenciação e maturação quando propriamente estimuladas, e então migram para tecidos periféricos, onde apresentam antígenos para as células T, iniciando as respostas imunológicas.
+As células dendríticas encontram-se distribuídas em todos os tecidos e executam funções diferentes de acordo com o tecido em que atuam. Quando ainda estão em um estado de imaturidade viajam na corrente sanguínea, até que sofrem diferenciação e maturação quando propriamente estimuladas. Elas então migram para tecidos periféricos, onde apresentam antígenos para as células T, iniciando as respostas imunológicas. As células dendríticas são de três tipos principais:
 
-Células dendríticas são de três tipos principais: \emph{imaturas} que coletam partes dos antígenos e sinais, \emph{semi-maduras} que decidem que os sinais locais não representam perigo e apresentam um sinal de tolerância às céulas T, e \emph{maduras} que decidem que os sinais locais são de perigo e apresentam um sinal de reposta imune às células T.
+\begin{description}
+    \item[Imaturas]: coletam partes dos antígenos e sinais
+    \item[Semi-maduras]: decidem que os sinais locais não representam perigo e apresentam um sinal de tolerância às céulas T
+    \item[Maduras]: decidem que os sinais locais são de perigo e apresentam um sinal de reposta imune às células T
+\end{description}
 
-O objetivo do algoritmo de células dendríticas é preparar um conjunto de células dendríticas maduras que forneçam informações dependentes de contexto sobre como classificar como normais ou anômalos os padrões de entrada.
-
-O primeiro algoritmo baseado no comportamento dessas células foi desenvolvido em \citet{Greensmith2005}, e combinava sinais múltiplos para estimar o estado corrente do ambiente e amostrar outro antígeno assincronamente. O algoritmo foi formalmente definido em \citet{Greensmith2006}, é composto de um tecido servidor e tem três etapas: inicialização, atualização e agregação. A inicialização configura diversos parâmetros. A fase de atualização é dividida em uma fase de atualização do tecido, onde o valor dos sinais é calculado de acordo com os dados de entrada, resultando nos sinais de entrada das células, e uma fase de atualização das células. O último estágio da execução é a agrgação: os antígenos coletados são analizados e classificados.
+O primeiro algoritmo baseado no comportamento dessas células foi desenvolvido em \citet{Greensmith2005} e definido formalmente em \citet{Greensmith2006}. Esse algoritmo combina sinais múltiplos para estimar o estado corrente do ambiente e amostrar outro antígeno assincronamente. Sua execução consiste de três etapas principais: inicialização, atualização e agregação. A inicialização configura diversos parâmetros. A fase de atualização é dividida em uma fase de atualização do tecido, onde o valor dos sinais é calculado de acordo com os dados de entrada, resultando nos sinais de entrada das células, e uma fase de atualização das células. O último estágio da execução é a agregação: os antígenos coletados são analisados e classificados.
 
 O algoritmo aplica pesos pré-definidos aos sinais de entrada para produzir três sinais de saída: sinal de coestimulação, sinal de semi-maturação e sinal de maturação. Se a soma dos valores dos sinais de maturação for maior que a somas dos sinais de semi-maturação, a célula é diferenciada para um estado maduro e tem assinalado um valor de contexto. O algoritmo calcula a proporção de valores de contexto maduro de um antígeno para o total de antígenos, chamada de MCAV (\emph{Mature Context Antigen Value}, Valor de Contexto Maduro do Antígeno), e aquelas antígenos cujo MCAV excede um limite pré-definido são classificados como anômalos.
 
 \section{Implementação}
 
-A modelagem de um problema como um sistema imunológico artificial requer a definição de quatro componentes: codificação, medida de similaridade, seleção e mutação. De maneira geral, o funcionamento do sistema é: uma vez que a codificação e uma medida de similaridade tenham sido escolhidas, o sistema executa a seleção e mutação, ambas baseadas na medida de similaridade, até que o critério de parada seja satisfeito \cite{Aickelin2005}.
+A modelagem de um problema como um sistema imunológico artificial requer a definição de quatro componentes: codificação, medida de similaridade, seleção e mutação. De maneira geral, o funcionamento de um sistema baseado no modelo imunológico é: uma vez que a \emph{codificação} e uma \emph{medida de similaridade} tenham sido escolhidas, o sistema executa a \emph{seleção} e \emph{mutação}, ambas baseadas na medida de similaridade, até que o critério de parada seja satisfeito \cite{Aickelin2005}. Essas quatro etapas são detalhadas nas próximas seções.
 
 \subsection{Codificação}
 
-A codificação é uma etapa essencial na definição de um Sistema Imunológico Artificial. Ela afeta toda modelagem do sistema, em especial a medida de similaridade, e pode ser responsável pelo seu sucesso ou falha. Os dois principais agentes do sistema imunológico, antígenos e anticorpos, são também os principais elementos que devem ser modelados, e são representados da mesma forma.
+A codificação é uma etapa essencial na definição de um Sistema Imunológico Artificial. Ela afeta toda modelagem do sistema, em especial a medida de similaridade, e pode ser responsável pelo seu sucesso ou falha. Os dois principais agentes do sistema imunológico, antígenos e anticorpos, são também os principais elementos que devem ser modelados. Eles são são comumente representados da mesma forma.
 
 Um antígeno é uma parte do objetivo ou solução da aplicação, que pode ser único ou um parte de um conjunto-solução. Os anticorpos são o resto dos dados, e geralmente existem em grande quantidade. Em uma aplicação de detecção de intrusão, por exemplo, o antígeno poderia ser o conjunto de dados que define um tráfego de dados, e os anticorpos, os conjuntos de dados que já foram identificados como legais.
 
@@ -138,7 +140,7 @@ Anticorpos cuja concentração ultrapassa um certo limiar mínimo são removidos
 
 O trecho de código \ref{aisalg} mostra o pseudocódigo de um Sistema Imunológico Artificial.
 
-\begin{lstlisting}[caption=Pseudo código de um Sistema Imunológico Artificial,label=aisalg]
+\begin{lstlisting}[caption=Pseudo código de um Sistema Imunológico Artificial \cite{Aickelin2005},label=aisalg]
 Inicializar o sistema
 Codificar o antígeno Ag
 ENQUANTO (Sistema não cheio) E (Ainda existem anticorpos) FACA
@@ -150,13 +152,6 @@ ENQUANTO (Sistema não cheio) E (Ainda existem anticorpos) FACA
     FIMENQUANTO
 FIMENQUANTO
 \end{lstlisting}
-
-%\begin{figure}[h!]
-%\centering
-%\includegraphics[width=0.75\textwidth]{img/ais-alg.png}
-%\caption{Pseudo-código de um Sitema Imunológico Artificial}
-%\label{img:aisalg}
-%\end{figure}
 
 \subsection{Mutação}
 
@@ -195,4 +190,4 @@ A interpretação geométrica genérica proporcionada por esses dois formalismos
 
 \section{Considerações finais}
 
-\citet{Dasgupta2010} observa que a maioria dos trabalhos recentes na área de Sistemas Imunológicos Artificiais têm seu foco em aplicações, ao invés de extensões, dos algoritmos existentes. Destaca também que existe uma sobreposição entre os modelos desses algoritmos e os evolucionários: os algoritmos de redes imunológicas artificiais, seleção clonal e genéticos têm componentes importantes em comum, como a clonagem, mutação e seleção.
+\citet{Dasgupta2010} observam que a maioria dos trabalhos recentes na área de Sistemas Imunológicos Artificiais têm seu foco em aplicações, ao invés de extensões, dos algoritmos existentes. Destacam também que existe uma sobreposição entre os modelos desses algoritmos e os evolucionários: os algoritmos de redes imunológicas artificiais, seleção clonal e genéticos têm componentes importantes em comum, como a clonagem, mutação e seleção.
