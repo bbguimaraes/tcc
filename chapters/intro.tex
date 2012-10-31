@@ -6,18 +6,10 @@ Definida como ``análise de bases (geralmente extensas) de dados previamente col
 
 \begin{itemize}
     \item Determinar como os dados a serem usados serão representados. As estruturas do problema devem ser codificadas para que possam ser utilizadas por algoritmos computacionais. Formas comuns de representação são cadeias de bits, números inteiros, números reais e valores categóricos.
-    \item Decidir a função de aptidão. Essa função é utilizada para quantificar a adequação de um modelo a um conjunto de dados, permitindo definir se um modelo é "melhor" que outro, ou seja, representa mais precisamente os elementos daquele conjunto.
+    \item Decidir a função de aptidão. Essa função é utilizada para quantificar a adequação de um modelo a um conjunto de dados, permitindo definir se um modelo é "melhor" que outro, ou seja, representa mais precisamente os elementos daquele conjunto. Essa função é altamente dependente da definição da representação dos dados, e é uma das partes mais importantes da definição do sistema, já que é ela que controla a convergência para uma solução ótima.
     \item Escolher um processo algorítmico para otimizar a função de comparação. Através de um algoritmo específico, modelos diferentes (ou parâmetros diferentes para um mesmo tipo de modelo) são criados e testados utilizando a função de aptidão. Esse processo é repetido até que a condição de término seja encontrada, geralmente após um determinado limite da função de aptidão ou um determinado número de iterações.
     \item Administrar o acesso aos dados de forma eficiente durante a execução dos algoritmos. Grandes \emph{datasets} geralmente excedem o tamanho dos dispositivos de armazenamento primário atuais. Dispositivos de armazenamento secundário ou terciário são utilizados, tornando o acesso a esses dados ineficiente. Um algoritmo corre o risco de tornar-se computacionalmente inviável caso o programador não considere esse fato.
 \end{itemize}
-
-Existem muitos algoritmos que podem ser utilizados para realizar a mineração de dados, sendo os principais \cite{Bace2000}:
-
-\begin{description}
-    \item[Classificação] atribui um item a uma categoria predefinida. A saída desse tipo de algoritmo é chamada de \emph{classificador}, tal como uma árvore de decisão ou um conjunto de regras.
-    \item[Análise de ligações] identifica relações e correlações entre campos.
-    \item[Análise de sequência] identifica padrões sequenciais, ou seja, eventos que aconteceram conjuntamente.
-\end{description}
 
 Os exemplos da sua utilização são inúmeros, estendendo-se virtualmente a qualquer atividade, de empresas comerciais à medicina e engenharia. A coleta e armazenamento de informações cresce constantemente, tornando a análise desses dados impossível sem o uso de uma ferramenta automatizada. A mineração extrai padrões ou modelos dessas fontes de informação, que seriam difíceis ou impossíveis de serem visualizadas apenas observando-se os dados. Isso tem motivado o desenvolvimento de algoritmos capazes de identificar padrões com mais detalhamento e significado.
 
@@ -37,7 +29,7 @@ Dentro da segurança da informação, escolheu-se um contexto mais específico p
 
 Segundo a agência americana de investigação FBI \cite{FBI2010}, o custo das fraudes na área de seguros, excluindo-se os seguros de saúde, apenas nos Estados Unidos, é estimado em 40 bilhões de dólares por ano. O aumento médio nas apólices de uma família comum devido à fraude é calculado em 400 a 700 dólares. A \emph{National Health Care Anti-Fraud Association} estima que 3\% de todos os gastos médicos dos Estados Unidos é perdido por causa de fraudes, o que representa uma quantia de 68 milhões de dólares.
 
-A detecção de fraude consiste na identificação de padrões e comportamentos associados à atividades irregulares, prevenindo que elas se concretizem \cite{Phua2010}. A aplicação de técnicas de mineração de dados em aplicações desse tipo proporcionou espaço para o desenvolvimento de incontáveis trabalhos \cite{Phua2010}. Dados recentes mostram que a detecção de fraude tradicional, o processo manual conduzido por um especialista humano é caro, devido ao custo da contratação desse especialista e ao grande volume de dados presente nos bancos de dados. Outros problema associados a essa prática são a incapacidade de detecção de padrões de fraude dispersos entre os dados, e de detectar fraudes tão logo aconteçam.
+A detecção de fraude consiste na identificação de padrões e comportamentos associados à atividades irregulares, prevenindo que elas se concretizem \cite{Phua2010}. A aplicação de técnicas de mineração de dados em aplicações desse tipo proporcionou espaço para o desenvolvimento de incontáveis trabalhos \cite{Phua2010}. Dados recentes mostram que a detecção de fraude tradicional, o processo manual conduzido por um especialista humano é caro, devido ao custo da contratação desse especialista e ao grande volume de dados presente nos bancos de dados. Outros problema associados a essa prática são a incapacidade de detecção de padrões de fraude dispersos entre os dados, além do trabalho exaustivo e gasto de recursos que poderiam ser aplicados em áreas mais produtivas. O tempo necessário para que essa informação seja reunida, compilada e analisada também torna-se um fator proibitivo, já que dá ao fraudador uma janela de tempo muito grande para agir e até mesmo ocultar seus feitos.
 
 Com frequência, nas ciências, pesquisadores se voltam a áreas diferentes das suas próprias, com o objetivo de encontrar soluções para os seus problemas adaptando outras soluções. Um exemplo disso, na Inteligência Artificial, são os Sistemas Imunológicos Artificiais, inspirados no sistema imunológico natural. Conforme definiu Castro:
 
