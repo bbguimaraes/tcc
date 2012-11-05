@@ -1,8 +1,8 @@
 \chapter{Detecção de fraude}
 
-Existem dois tipos principais de fraude, de acordo com o autor: interna e externa. Em um documento de 2012 \cite{ACFE2012}, a Associação de Investigadores de Fraude Certificados (Association of Certified Fraud Examiners, ACFE) definiu a fraude interna como ``a exploração ilegal dos recursos e bens de uma empresa, por um empregado, para enriquecimento próprio''\footnote{The use of one’s occupation for personal enrichment through the deliberate misuse or misapplication of the employing organization’s resources or assets.}.
+A fraude pode ter origem tanto interna quanto externa. Uma empresa está sujeita à fraude por seus administradores (denomidada de alto-nível) ou empregados que não sejam gestores (baixo-nível) \cite{Phau2010}. Em um documento de 2012 \cite{ACFE2012}, a Associação de Investigadores de Fraude Certificados (Association of Certified Fraud Examiners, ACFE) definiu a fraude interna como ``a exploração ilegal dos recursos e bens de uma empresa, por um empregado, para enriquecimento próprio''\footnote{The use of one’s occupation for personal enrichment through the deliberate misuse or misapplication of the employing organization’s resources or assets.}.
 
-Os autores da fraude externa dividem-se em três perfis: casual, criminal e crime organizado \cite{Phua2010}. Criminosos casuais apresentam comportamento aleatório, transgredindo as leis quando têm oportunidade, tentação ou em períodos de dificuldades financeiras. Por outro lado, indivíduos ou grupos organizados são mais perigosos porque tentam esconder ou dissimular sua verdadeira identidade, além de evoluir seu \emph{modus operandi} com o tempo, tentando burlar os sistemas de detecção e evitar a sua identificação. Assim, é importante levar-se em consideração essa constante interação entre os sistemas de detecção e os fraudadores profissionais.
+Os autores da fraude externa dividem-se em três perfis: casual, criminal e crime organizado \cite{Phua2010}. Criminosos casuais apresentam comportamento aleatório, transgredindo as leis quando têm oportunidade, tentação ou em períodos de dificuldades financeiras. Por outro lado, indivíduos ou grupos organizados são mais perigosos porque tentam esconder ou dissimular sua verdadeira identidade, além de evoluir seu \emph{modus operandi} com o tempo, tentando burlar os sistemas de detecção e evitar a sua identificação. Assim, é importante levar-se em consideração essa constante interação entre os sistemas de detecção e os fraudadores profissionais. Essas categorias de fraudadores geralmente atuam em um setor específico: as fraudes internas e de seguro são mais frequentemente exploradas por criminosos comuns, enquanto fraudes de cartão de crédito e telecomunicações são vítimas de fraudadores profissionais.
 
 O monitoramento de sistemas com o objetivo de encontrar comportamentos fraudulentos já existia muito antes da utilização de sistemas computacionais tornarem-se ferramentas comuns. Antes havia um processo denominado auditoria: gerar, armazenar e revisar um registro cronológico de eventos de um sistema \cite[p. 7]{Bace2000}. Os principais objetivos desses sistemas são identificar os usuários do sistema, impedir o uso impróprio, e auxiliar na reconstrução de eventos e na estimativa, quantificação e qualificação de danos.
 
@@ -22,11 +22,11 @@ O primeiro trabalho a considerar necessária a auditoria automática de sistemas
 \label{fig:and}
 \end{figure}
 
-\ldots
-
 A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{controle de fraude}. Nesse contexto, a detecção automática ajuda a reduzir o trabalho manual de verificação das instâncias. O objetivo principal desses sistemas é identificar padrões de transações suspeitas em meio às transações comuns de uma organização. O fraudador pode, por exemplo, contratar um seguro usando informações de outra pessoa ou informações falsas. O sistema procura detectar e impedir a fraude o mais cedo possível.
 
-Como não é possível ter certeza da legitimidade das transações de um negócio, não existe uma técnica infalível para a detecção de fraudes. Isso não significa que elas não possam ser detectadas. Métodos matemáticos e estatísticos são utilizados para comparar um banco de dados de transações existentes com as novas, com o objetivo de encontrar evidências de possíveis fraudes. Mesmo assim, geralmente há um processo de análise e revisão caso a caso por um especialista.
+Geralmente não é possível ter absoluta certeza sobre a legitimidade das transações de um negócio a partir dos dados disponíveis. Não seria possível verificar todas as entidades com as quais uma empresa mantém relações, que em algumas empresas podem ser milhares. Assim, não existe uma técnica infalível para a detecção de fraudes. Isso não significa que elas não possam ser detectadas. A melhor alterantiva, na prática, é uma busca penosa por possíveis evidências de fraude nos dados disponíveis \cite{Phua2010}. Métodos matemáticos e estatísticos são utilizados para comparar um banco de dados de transações existentes com as novas, com o objetivo de encontrar evidências de possíveis fraudes. Mesmo assim, geralmente há um processo de análise e revisão caso a caso por um especialista.
+
+Ainda, segundo a pesquisa apresentada no mesmo trabalho, o motor analítico desse tipo de sistema é composto de Sistemas Imunológicos Artificiais, inteligência artificial, auditoria, bancos de dados, computação distribuída e paralela, econometria, sistemas especialistas, lógica nebulosa, algoritmos genéticos, aprendizagem de máquina, redes neurais, reconhecimento de padrões, estatística, visualização, entre outros.
 
 Dois conceitos relacionados à detecção em geral são falsos positivos e falsos negativos. Falsos positivos são instâncias erroneamente classificadas, por exemplo, uma transação comum que é classificada como fraudulenta. Falsos positivos são o oposto: uma transação fraudulenta que é classificada como comum. O número de falsos positivos aumenta o trabalho desnecessário na fase de revisão, enquanto os falsos negativos reduzem a eficácia da detecção. A redução dos falsos positivos é um dos objetivos principais de um sistema de detecção. Os falsos negativos, no entanto, são quase impossíveis de serem eliminados completamente, em qualquer sistema de detecção.
 
@@ -38,11 +38,11 @@ Para cada domínio, tipos diferentes de fraude podem existir, e mais de um tipo 
 
 \section{Dados}
 
-Os atributos das instâncias em um banco de dados usado para detecção de fraude geralmente limitam-se a valores binários, numéricos, categóricos ou uma mistura desses três. Os atributos usados são semelhantes. Aplicações de seguro utilizam o histórico do cliente: tempo de contrato, histórico e total de pagamentos, lucro anual valor médio depositado em conta bancária. Para fraudes de crédito, informações sobre as transações: valor, data, localização geográfica, conta de destino, tempo de conta.
+Os atributos das instâncias em um banco de dados usado para detecção de fraude geralmente limitam-se a valores binários, numéricos, categóricos ou uma mistura desses três. Os atributos específicos usados geralmente são semelhantes. Aplicações de seguro utilizam o histórico do cliente: tempo de contrato, histórico e total de pagamentos, lucro anual valor médio depositado em conta bancária. Para fraudes de crédito, informações sobre as transações: valor, data, localização geográfica, conta de destino, tempo de conta. Fraudes em seguros de automóveis utilizam valores binários para atributos como acidente e tratamento hospitalar, além de dados do motorista, custo, tipo de ferimento.
 
 O número de instâncias positivas nesse tipo de bases de dados é geralmente muito reduzido: as fraudes representam um percentual muito pequeno em relação ao número de transações legítimas de uma organização, geralmente menor do que 20\%. Métodos de detecção de fraude nunca são perfeitos: deve existir um mecanismo para lidar com as fraudes que não são identificadas a tempo de serem impedidas.
 
-A obtenção de bancos de dados reais para teste é difícil, já que empresas e organizações, por razões legais e competitvas não disponibilizam informações desse tipo. Uma alternativa é a criação de um banco de dados artificial, inspirado em dados reais. A eficácia dessa técnica é limitada pela capacidade do criador do banco em prever o maior número de casos possíveis, o que geralmente é muito inferior à variedade das situações reais. Mesmo assim, essa técnica é comumente empregada na fase de concepção e teste, devido à dificuldade de obtenção de dados.
+A obtenção de bancos de dados reais para teste é difícil, já que empresas e organizações, por razões legais e competitvas não disponibilizam informações desse tipo. Assim, é difícil encontrar bases de dados públicos para que os testes sejam realizados. Uma alternativa é a criação de um banco de dados artificial, inspirado em dados reais. A eficácia dessa técnica é limitada pela capacidade do criador do banco em prever o maior número de casos possíveis, o que geralmente é muito inferior à variedade das situações reais. Mesmo assim, essa técnica é comumente empregada na fase de concepção e teste, devido à dificuldade de obtenção de dados.
 
 \section{Implementação}
 
@@ -76,14 +76,24 @@ Um sistema que detecte e reporte uma fraude muito tempo depois de ela ter ocorri
 
 Os sistemas de detecção podem ser divididos em dois tipos gerais, denominados \emph{on-line} e \emph{off-line}, enquanto alguns incorporam características dos dois modelos e outros têm um processo distinto para ambos, que interagem entre si para gerar o resultado final \cite{Huang2010}.
 
-\ldots
+\section{Critérios de avaliação}
+
+A maioria dos departamentos que atuam na área de detecção de fraude utiliza valores monetários como medida de avaliação dos sistemas \cite{Phua2010}.
+
+\citet{Phua2010} lista as diversas medidas de performance utilizadas em trabalhos recentes na área de detecção de fraude. Os métodos tradicionais de medição, como a taxa de positivos (número de fraudes detectadas corretamente dividido pelo número de fraudes verdadeiras) e a precisão a um determinado limite (número de instâncias classificadas corretamente, dividido pelo número total de instâncias) foram abandonados pelos trabalhos recentes, devido à natureza peculiar da detecção de fraude.
+
+A razão para isso é que o custo das classificações errôneas, no caso da detecção de fraude, são irregulares, incertos, variam de exemplo a exemplo e podem variar conforme o tempo. Falsos negativos são geralmente mais custos do que falsos positivos. Um falso positivo geralmente leva apenas a uma verificação a mais por um especialista, infrutífera. Um falso negativo, no entanto, acarreta em uma fraude que não é detectada pelo sistema e não será reportada, deixando o fraudador impune.
+
+\iffalse
+
+Uma alternativa é atribuir uma pontuação a cada instância de acordo com uma razão entre a similaridade com casos conhecidos de fraude e a dissimilaridade com casos legais.
+
+\citet{Aral2011} utilizam o número de falsos positivos, falsos negativos e verdadeiros positivos como medida de performance do seu sistema.
+
+\fi
 
 \section{Trabalhos relacionados}
 
 O sistema detecção de fraude no comércio eletrônico apresentado em \citet{Huang2010} é um exemplo de sistema que combina dois dois processos de diferentes granularidades que interagem entre si.
 
 \citet{Aral2011} apresentam um sistema de detecção de fraude em prescrições médicas que calcula um fator de risco associado a cada prescrição. Matrizes de incidências são geradas através de uma medida de distância entre valores cruzados (\emph{cross-features}) de uma base de conhecimento. Dessas matrizes são geradas matrizes de riscos, e cada instância da base de dados cujo risco for maior que um limiar é relatada como uma possível fraude. Os autores indicam que o raciocínio por trás desse modelo é de que os padrões no comportamento fraudulento são \emph{outliers} quando considerados no contexto do \emph{dataset} como um todo. Os limiares são configuráveis, permitindo ao usuário um controle sobre o número de falsos positivos gerados.
-
-\section{Critérios de avaliação}
-
-\citet{Aral2011} utilizam o número de falsos positivos, falsos negativos e verdadeiros positivos como medida de performance do seu sistema.
