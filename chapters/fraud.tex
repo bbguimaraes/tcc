@@ -84,6 +84,49 @@ A maioria dos departamentos que atuam na área de detecção de fraude utiliza v
 
 A razão para isso é que o custo das classificações errôneas, no caso da detecção de fraude, são irregulares, incertos, variam de exemplo a exemplo e podem variar conforme o tempo. Falsos negativos são geralmente mais custos do que falsos positivos. Um falso positivo geralmente leva apenas a uma verificação a mais por um especialista, infrutífera. Um falso negativo, no entanto, acarreta em uma fraude que não é detectada pelo sistema e não será reportada, deixando o fraudador impune.
 
+Classificadores binários são aqueles que, para um dado conjunto de valores de entrada, geram como valor de saída um valor Booleano: verdadeiro ou falso, positivo ou negativo. Os sistemas de detecção de fraude se situam, na maioria dos casos, nessa categoria: os dados referentes a uma instância passam pelo sistema de detecção e são classificados como legítimos ou fraudulentos \cite{Bewick2004}. Sistemas mais complexos podem gerar saídas com mais informações sobre a instância, como o grau de certeza da previsão ou o grau de semelhança entre a instância e os dados da base.
+
+A avaliação dos classificadores binários é feita com base em uma \emph{tabela de confusão}, conforme mostrado na tabela \ref{fraud:confusion}. Nessa tabela são listados o número de valores (ou porcentagem) para cada combinação de saída do sistema e a classificação real. Instâncias corretamente classificadas ocupam as colunas Positivo e Negativo, enquanto instâncias cujo classificação difere da realidade ocupam as colunas Falsos Positivos e Falsos Negativos.
+
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{c l c c}
+        & & \multicolumn{2}{c}{\textbf{Dados reais}} \\
+        \multirow{3}{5mm}{\begin{sideways}\parbox{20mm}{\textbf{Saída}}\end{sideways}} & \multicolumn{1}{c|}{} & Positivo & Negativo \\
+        \cline{2-4}
+        & \multicolumn{1}{c|}{Positivo} & Positivo & Falso positivo\\
+        & \multicolumn{1}{c|}{Negativo} & Falso negativo & Negativo\\
+    \end{tabular}
+    \caption{Tabela de confusão}
+    \label{fraud:confusion}
+\end{table}
+
+Como exemplo, inspirado em \citet{Bewick2004}, será apresentado um sistema de detecção de fraude de empréstimos simples, que considera como único atributo das instâncias o número de ocorrências de inadimplência. Nesse ambiente simplificado, a instância é considerada fraudulenta caso um limiar de ocorrências seja ultrapassado. Um exemplo de teste é mostrado na tabela \ref{fraud:ex}. A partir desses dados, a avaliação dos resultados é feita usando dois conceitos: sensitividade e especificidade.
+
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{c l c c}
+        & & \multicolumn{2}{c}{\textbf{Dados reais}} \\
+        \multirow{3}{5mm}{\begin{sideways}\parbox{20mm}{\textbf{Saída}}\end{sideways}} & \multicolumn{1}{c|}{} & Fraude & Legítimo & Total \\
+        \cline{2-4}
+        & \multicolumn{1}{c|}{Fraude}   & 300 & 200   & 500  \\
+        & \multicolumn{1}{c|}{Legítimo} & 100 & 1000  & 1100 \\
+        & \multicolumn{1}{c|}{Total}    & 400 & 1200  &      \\
+    \end{tabular}
+    \caption{Tabela de confusão}
+    \label{fraud:confusion}
+\end{table}
+
+\emph{Sensitividade} refere-se à proporção de instâncias corretamente classificadas como positivas. \emph{Especificidade} refere-se à proporção de instâncias corretamente classificadas como negativas. No exemplo, a sensitividade é igual a 300 / 400 = 0.75; e a especificidade é igual a 1000 / 1200 = 0.8333. Ou, visto de outra maneira, 75\% das fraudes foram realmente classificadas como fraudes; e 83.33\% das instâncias legítimas foram classificadas como legítimas.
+
+Apenas a consideração desses dois valores pode levar a uma correta avaliação dos resultados do teste, principalmente nos domínios da detecção de fraude. Uma alta sensitividade não necessariamente implica em uma alta especificidade, e vice versa. Dessas duas informações são derivados os \emph{valores preditivos positivos e negativos}.
+
+O \emph{valor preditivo positivo} é a chance de uma instância ser realmente uma fraude caso seja classificada como tal pelo sistema. O \emph{valor preditivo negativo} é a chance de uma instância ser realmente legítima caso seja classificada como tal pelo sistema. Para os dados de exemplo, o valor preditivo positivo é 300 / 500 = 0.6; e o valor preditivo negativo é 1000 / 1100 = 0.9091. Ou, visto de outra maneira, 60\% das instâncias que foram classificadas como fraude eram realmente fraudes, e 90.91\% das instâncias classificadas como legítimas eram realmente legítimas.
+
+Esses dois valores são o oposto da sensibilidade e especificidade, respectivamente. Enquanto os valores preditivos dão uma avaliação direta sobre os resultados dos testes, a sensibilidade e especificidade não são afetadas pela proporção dos valores nas instâncias. Uma alteração na proporção de fraudes alteraria aqueles, mas não estes.
+
 \iffalse
 
 Uma alternativa é atribuir uma pontuação a cada instância de acordo com uma razão entre a similaridade com casos conhecidos de fraude e a dissimilaridade com casos legais.
