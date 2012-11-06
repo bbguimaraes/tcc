@@ -107,13 +107,14 @@ Como exemplo, inspirado em \citet{Bewick2004}, será apresentado um sistema de d
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h!]
     \centering
-    \begin{tabular}{c l c c}
+    \begin{tabular}{c l c c c}
         & & \multicolumn{2}{c}{\textbf{Dados reais}} \\
-        \multirow{3}{5mm}{\begin{sideways}\parbox{20mm}{\textbf{Saída}}\end{sideways}} & \multicolumn{1}{c|}{} & Fraude & Legítimo & Total \\
-        \cline{2-4}
-        & \multicolumn{1}{c|}{Fraude}   & 300 & 200   & 500  \\
-        & \multicolumn{1}{c|}{Legítimo} & 100 & 1000  & 1100 \\
-        & \multicolumn{1}{c|}{Total}    & 400 & 1200  &      \\
+        \multirow{3}{5mm}{\begin{sideways}\parbox{20mm}{\textbf{Saída}}\end{sideways}} & \multicolumn{1}{c|}{} & Fraude & Legítimo & \multicolumn{1}{|c}{Total} \\
+        \cline{2-5}
+        & \multicolumn{1}{c|}{Fraude}   & 300 & 200   & \multicolumn{1}{|c}{500}  \\
+        & \multicolumn{1}{c|}{Legítimo} & 100 & 1000  & \multicolumn{1}{|c}{1100} \\
+        \cline{2-5}
+        & \multicolumn{1}{c|}{Total}    & 400 & 1200  & \multicolumn{1}{|c}{}     \\
     \end{tabular}
     \caption{Tabela de confusão}
     \label{fraud:confusion}
