@@ -89,6 +89,7 @@ Classificadores binários são aqueles que, para um dado conjunto de valores de 
 A avaliação dos classificadores binários é feita com base em uma \emph{tabela de confusão}, conforme mostrado na tabela \ref{fraud:confusion}. Nessa tabela são listados o número de valores (ou porcentagem) para cada combinação de saída do sistema e a classificação real. Instâncias corretamente classificadas ocupam as colunas Positivo e Negativo, enquanto instâncias cujo classificação difere da realidade ocupam as colunas Falsos Positivos e Falsos Negativos.
 
 \renewcommand{\arraystretch}{1.5}
+\vspace{2mm}
 \begin{table}[h!]
     \centering
     \begin{tabular}{c l c c}
@@ -101,10 +102,12 @@ A avaliação dos classificadores binários é feita com base em uma \emph{tabel
     \caption{Tabela de confusão}
     \label{fraud:confusion}
 \end{table}
+\vspace{2mm}
 
 Como exemplo, inspirado em \citet{Bewick2004}, será apresentado um sistema de detecção de fraude de empréstimos simples, que considera como único atributo das instâncias o número de ocorrências de inadimplência. Nesse ambiente simplificado, a instância é considerada fraudulenta caso um limiar de ocorrências seja ultrapassado. Um exemplo de teste é mostrado na tabela \ref{fraud:ex}. A partir desses dados, a avaliação dos resultados é feita usando dois conceitos: sensitividade e especificidade.
 
 \renewcommand{\arraystretch}{1.5}
+\vspace{2mm}
 \begin{table}[h!]
     \centering
     \begin{tabular}{c l c c c}
@@ -119,6 +122,7 @@ Como exemplo, inspirado em \citet{Bewick2004}, será apresentado um sistema de d
     \caption{Tabela de confusão}
     \label{fraud:confusion}
 \end{table}
+\vspace{2mm}
 
 \subsection{Sensibilidade e especificidade}
 
@@ -136,17 +140,21 @@ Esses dois valores são o oposto da sensibilidade e especificidade, respectivame
 
 A sensibilidade e especificidade tornam-se ainda mais úteis quando combinadas, gerando as taxas de verossimilhança. A taxa de verossimilhança de um resultado positivo (LR\textsuperscript{+}) é a razão entre a probabilidade de um resultado positivo no teste se a instância é realmente positiva (coluna "positivo" da tabela de confusão) e a probabilidade de um resultado positivo no teste se a instância é na verdade negativa:
 
+\vspace{2mm}
 \begin{equation}
     LR^{+}=\frac{sensitividade}{1 - especificidade}
 \end{equation}
+\vspace{2mm}
 
 No exemplo, LR\textsuperscript{+} = 0.75 / (1 - 0.8333) = 4.4991. Isso significa que um resultado positivo nos testes é 4.4991 vezes mais provável para instâncias que são realmente positivas do que para aquelas que não são.
 
 De maneira, similar, a taxa de verossimilhança negativa (LR\textsuperscript{-}) é a razão entre a probabilidade de um resultado negativo no teste se a instância é realmente negativa (coluna "negativo" da tabela de confusão) e a probabilidade de um resultado negativo no teste se a instância é na verdade positiva:
 
+\vspace{2mm}
 \begin{equation}
     LR^{-}=\frac{1 - sensitividade}{especificidade}
 \end{equation}
+\vspace{2mm}
 
 No exemplo, LR\textsuperscript{-} = (1 - 0.75) / 0.8333 = 0.3, o que significa que um resultado negativo no teste é 0.3 vezes mais provável para instâncias que são realmente negativas do que para aquelas que não são.
 
@@ -156,6 +164,7 @@ Desses valores, pode-se atestar a utilidade do método para classificação. Uma
 
 Os dados de teste do exemplo até agora consideraram apenas um valor como limiar de classificação. No entanto, em sistemas reais, é comum que sejam testados diversos valores para esse limiar sobre uma mesma base de dados, para que o melhor seja identificado e usado no sistema final. A tabela \ref{fraud:youden} é um exemplo de resultados para esse tipo de teste.
 
+\vspace{2mm}
 \begin{table}[h!]
     \centering
     \begin{tabular}{l c c c c c}
@@ -175,19 +184,24 @@ Os dados de teste do exemplo até agora consideraram apenas um valor como limiar
     \caption{Exemplo de resultados para testes comparativos de limiares (inspirado em \citet{Bewick2004}}
     \label{fraud:youden}
 \end{table}
+\vspace{2mm}
 
 Uma medida para a avaliação dos diferentes limiares pode ser a sensibilidade e especificidade. O índice de Youden é uma medida apropriada nesses casos (eq. \ref{fraud:yindex}). Esse índice é um valor normalizado na faixa [0, 1], onde 1 significa um teste perfeito, classificando todas as instâncias corretamente; e 0 significa um teste sem valor nenhum. A tabela \ref{fraud:yindex} mostra os valores para os resultados com diversos limiares. É importante notar como valores extremos maximizam a sensibilidade e a especificidade, mas apenas aqueles limiares que maximizam os dois valores recebem índices significativos.
 
+\vspace{2mm}
 \begin{equation}
     J = sensibilidade + especificidade - 1
     \label{fraud:yindex}
 \end{equation}
+\vspace{2mm}
 
 Uma característica importante do índice de Youden é que ele estabelece uma equivalência na relevância dos falsos positivos e negativos. Quando um é mais relevante que o outro, devido à peculiaridades nos dados ou no domínio do problema, ele não é apropriado. Nesses casos, pode-se atribuir pesos diferentes a ambos os valores. Um exemplo de adaptação do cálculo do índice de Youden é mostrado abaixo. Nessa fórmula, os valores ainda são mantidos na mesma faixa, mas falsos positivos recebem o dobro da significância.
 
+\vspace{2mm}
 \begin{equation}
     J = 0.75 * sensibilidade + 0.25 * especificidade
 \end{equation}
+\vspace{2mm}
 
 \iffalse
 
