@@ -216,6 +216,16 @@ No gráfico é visualmente aparente que o valor 3 como limiar de classificação
 
 Caso as instâncias fossem classificadas aleatoriamente, tendo chances iguais de serem classificadas tanto positivas quanto negativas, a sensibilidade e a especificidade seria ambas 0.5, e o teste não teria qualquer valor. Essa situação é representada pela linha diagonal entre os pontos (0, 1) e (1, 0). Essa linha é outro indicador visual útil: testes abaixo dela (na direção do canto inferior direito) têm muito pouco valor; testes próximos dela têm valor mediano; e testes acima (na direção do canto superior esquerdo) têm grande valor.
 
+Uma das maneiras de quantificar a (dar um valor à) validade de um atributo como variável de diagnóstico é através do cálculo dá área sob a curva ROC (denominada AUROC, \emph{area under the ROC curve}). O teste ideal citado acima teria área igual a 1, enquanto testes completamente aleatórios teriam área 0.5. Testes reais normalmente situam-se entre esses dois valores, com valores mais próximos de 1 representando testes mais precisos.
+
+Essa área pode ser calculada através da soma das áreas dos trapézios: a área sob a curva entre os pontos (0.5, 0.1667) e (0.9375, 0.3125) é igual a (0.9375 - 0.5) x (0.3125 + 0.1667)/2 = 0.1048. Aplicando essa regra aos outros pontos da curva, obtêm-se uma área total de 0.8161, ou seja, uma instância fraudulenta tem 81.61\% de ter um número de ocorrências de inadimplência maior do que uma instância legítima.
+
+\subsection{Análise de resultados}
+
+Uma vez que possa ser quantificada, a capacidade de diagnóstico de uma variávei pode ser comparada com outras, simplesmente comparando-se as suas curvas ROC e as áreas sob essas curvas. Variáveis com uma maior área sob a curva geram diagnósticos mais confiáveis. O formato da curva também pode servir como instrumento de análise: uma variável pode ter comportamentos preferíveis caso as condições de teste sejam diferenciadas, ou para filtrar casos específicos. Por exemplo, uma variável que, para valores muito baixos de sensibilidade, apresenta uma alta taxa de especificidade pode ser usada quando quer-se favorecer a especificidade.
+
+A área sob a curva ROC é um método útil para a medição da precisão de diagnósticos, além da comparação de performance entre diferentes testes. No entanto, ela não deve ser tomada como verdade absoluta. A sensibilidde e a especificidade podem manter-se fixas em um ambiente de testes, mas podem variar conforme as características da populaçõ analisada.
+
 \iffalse
 
 Uma alternativa é atribuir uma pontuação a cada instância de acordo com uma razão entre a similaridade com casos conhecidos de fraude e a dissimilaridade com casos legais.
