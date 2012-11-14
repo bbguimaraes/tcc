@@ -15,14 +15,34 @@ O primeiro trabalho a considerar necessária a auditoria automática de sistemas
 \item Levar em consideração as estratégias dos invasores no projeto do sistema.
 \end{enumerate}
 
+\iffalse
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.75\textwidth]{img/anderson.png}
 \caption{Matriz de ameaças}
 \label{fig:and}
 \end{figure}
+\fi
+
 A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{controle de fraude}. Nesse contexto, a detecção automática ajuda a reduzir o trabalho manual de verificação das instâncias \cite{Phua2010}. O objetivo principal desses sistemas é identificar padrões de transações suspeitas em meio às transações comuns de uma organização. O fraudador pode, por exemplo, contratar um seguro usando informações de outra pessoa ou informações falsas. O sistema procura detectar e impedir a fraude o mais cedo possível.
 
+\renewcommand{\arraystretch}{1.5}
+\vspace{1cm}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{c p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|}
+        \cline{3-4}
+        & & Uso não autorizado dos dados/programa & Uso autorizado dos dados/programa \\
+        \hhline{~---}
+        \multicolumn{0}{c|}{} & Uso não autorizado do computador & Invasão externa & \cellcolor{gray!90} \\
+        \cline{2-4}
+        \multicolumn{0}{c|}{} & Uso autorizado do computador & Invasão interna & Abuso de poder \\
+        \cline{2-4}
+    \end{tabular}
+    \caption{Matriz de ameaças \cite{Anderson1972}}
+    \label{fraud:and}
+\end{table}
+\vspace{1cm}
 
 Geralmente não é possível ter absoluta certeza sobre a legitimidade das transações de um negócio a partir dos dados disponíveis. Não seria possível verificar todas as entidades com as quais uma empresa mantém relações, que em algumas empresas podem ser milhares. Assim, não existe uma técnica infalível para a detecção de fraudes. Isso não significa que elas não possam ser detectadas. A melhor alterantiva, na prática, é uma busca penosa por possíveis evidências de fraude nos dados disponíveis. Métodos matemáticos e estatísticos são utilizados para comparar um banco de dados de transações existentes com as novas, com o objetivo de encontrar evidências de possíveis fraudes. Mesmo assim, geralmente há um processo de análise e revisão caso a caso por um especialista.
 
