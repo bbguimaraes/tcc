@@ -8,12 +8,12 @@ O monitoramento de sistemas com o objetivo de encontrar comportamentos fraudulen
 
 O primeiro trabalho a considerar necessária a auditoria automática de sistemas foi \citet{Anderson1972}. Nesse trabalho, Anderson classifica os riscos e ameaças a sistemas, diferenciando fontes internas e externas, como na figura \ref{fig:and}. Também cita diversos objetivos para um sistema de auditoria:
 
-\begin{itemize}
+\begin{enumerate}[a)]
 \item Prover informações suficientes para que o problema possa ser localizado, mas que não exponham detalhes que possibilitem um ataque.
 \item Obter dados de diversas fontes para otimizar o conteúdo do banco de dados.
 \item Discernir uma atividade ``normal'' do sistema, para que se possa detectar abusos interno.
 \item Levar em consideração as estratégias dos invasores no projeto do sistema.
-\end{itemize}
+\end{enumerate}
 
 \begin{figure}[h!]
 \centering
@@ -57,10 +57,10 @@ A maioria dos sistemas de detecção de fraude opera usando listas negras (\emph
 
 A maioria dos estudos relacionados à detecção de fraude considera a detecção de \emph{outliers} como uma ferramenta principal de detecção \cite{Aral2011}. Existem muitos métodos aplicados à detecção de fraude: (1) auditoria, (2) sistemas especialistas, (3) lógica nebulosa (\emph{fuzzy}), (4) redes neurais, (5) reconhecimento de padrões, (6) árvores de decisão, (7) regressão, etc \cite{Huang2010}. As duas técnicas mais usadas são:
 
-\begin{itemize}
+\begin{enumerate}[a)]
 \item Dados para treinamento classificadas (A + B + C + D) processados por um algoritmo supervisionado.
 \item Instâncias legais (C) processadas por um algoritmo semi-supervisionado.
-\end{itemize}
+\end{enumerate}
 
 Algoritmos supervisionados examinam as instâncias previamente classificadas (A + B + C + D) para identificar matematicamente os padrões presentes nas classificadas como fraudulentas. Os algoritmos mais utilizados nessa categoria são as redes neurais. Outros algoritmos incluem máquinas de vetores de suporte (\emph{support vector machine}, SVM), árvores de decisão e raciocínio baseado em casos. Para aumentar a eficácia dos métodos supervisionados, esses algoritmos podem ser aplicados em sequência. Também podem ser combinados resultados de bancos de dados distintos.
 
