@@ -226,12 +226,6 @@ Os dados de teste do exemplo mostrados nas tabelas até agora consideraram apena
 \end{table}
 \vspace{2mm}
 
-\iffalse
-
-gráfico aqui
-
-\fi
-
 Uma medida para a avaliação dos diferentes limiares pode ser a sensibilidade e especificidade. O índice de Youden (J), que é uma derivação desses valores, é uma medida apropriada nesses casos (eq. \ref{fraud:yindex}). Esse índice é um valor normalizado na faixa [0, 1], onde 1 significa um teste perfeito, classificando todas as instâncias corretamente; e 0 significa um teste sem valor nenhum. A tabela \ref{fraud:yindex} mostra os valores para os resultados com diversos limiares. É importante notar como valores extremos maximizam a sensibilidade e a especificidade, mas apenas aqueles limiares que maximizam os dois valores recebem índices significativos.
 
 \vspace{2mm}
@@ -249,7 +243,16 @@ Uma característica importante do índice de Youden é que ele estabelece uma eq
 \end{equation}
 \vspace{2mm}
 
-Como pode-se observar na tabela \ref{fraud:yindex}, alterações no valor usado na classificação alteram o número de instâncias classificadas como positivas e negativas. Geralmente os resultados são distribuídos começando com um grande valor de sensibilidade e um valor baixo de especificidade; esses valores convergem até um máximo global; e então terminam em com um valor baixo de sensibilidade e um grande valor de especificidade. Um gráfico dos valores de sensibilidade e 1 - especificidade é denominado ROC (característica operativa do receptor, \emph{receiver operating characteristic}, conforme mostrado na figura \ref{fraud:roc}.
+Como pode-se observar na tabela \ref{fraud:yindex}, alterações no valor usado na classificação alteram o número de instâncias classificadas como positivas e negativas. Geralmente os resultados são distribuídos começando com um grande valor de sensibilidade e um valor baixo de especificidade; esses valores convergem até um máximo global; e então terminam em com um valor baixo de sensibilidade e um grande valor de especificidade. A variação desses três valores, e a interação entre eles, é mostrada no gráfico da figura \ref{fraud:threshold}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{img/threshold.png}
+\caption{Variação dos valores de avaliação conforme o limiar de detecção}
+\label{fraud:threshold}
+\end{figure}
+
+No lado esquerdo, onde o limiar é muito baixo, a sensibilidade é 1 e a especificidade, zero; enquanto no lado direito, onde o limiar é muito alto, ocorre o oposto: a sensibilidade é zero e a sensibilidade, 1. Conforme o limiar aumenta (começando do lado esquerdo e caminhando para a direita), ocorreu uma diminuição na especificidade (algumas instâncias fraudulentas começam a ser classificadas como legítimas). No entanto, há um aumento muito maior na especificidade (instâncias legítimas começam a ser classificadas corretamente). É possível ver como o índice de Youden mostra a real proporção entre esses dois valores. Uma forma mais sucinta para apresentar esse tipo de informação é através de um gráfico dos valores de sensibilidade e 1 - especificidade, que é denominado ROC (característica operativa do receptor, \emph{receiver operating characteristic}, conforme mostrado na figura \ref{fraud:roc}.
 
 \begin{figure}[h!]
 \centering
