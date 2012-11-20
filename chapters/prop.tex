@@ -1,9 +1,149 @@
 \chapter{Proposta}
-\section{Objetivos}
-\section{Arquitetura}
-\section{Critérios}
-\section{Resultados}
-\chapter{Conclusão}
-\section{Síntese}
-\section{TCC II}
 
+\section{Objetivos}
+
+Conforme apresentado nos capítulos anteriores, a modelagem de um sistema de detecção de fraude com a utilização de técnicas inspiradas no sistema imunológico natural oferece diversas vantagens. Esse trabalho busca identificar exatamente \emph{quanto} esses modelos podem aperfeiçoar os métodos existentes. O método utilizado é a comparação dos resultados da classificação de algoritmos algoritmos tradicionais e Sistemas Imunológicos Artificiais sobre uma mesma base de dados.
+
+\subsection{Bases de dados}
+
+Para os testes, serão utilizadas duas bases contendo informações de contas de cartões de crédito. Essas bases de dados estão disponíveis publicamente, e fazem parte de um projeto chamado StatLog. Esse projeto foi concebido para testar diversos métodos de classificação em problemas grandes e comercialmente relevantes, comparando os resultados e determinando o quanto essas diferentes técnicas atendiam as necessidades da indústria. Conforme a própria descrição do projeto, os objetivos do projeto eram três:
+
+\begin{enumerate}[a)]
+    \item Possibilitar medidas críticas de desempenho para procedimentos de classificação disponíveis
+    \item Indicar a natureza e escopo dos desenvolvimentos futuros necessários para que os métodos atendam as necessidades e expectativas dos usuários
+    \item Indicar as direções mais promissoras de desenvolvimento para abordagens comercialmente imaturas.
+\end{enumerate}
+
+Os atributos do primeiro \emph{dataset} são descritos na listagem \ref{lst:german_dataset} \footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231\textunderscore{}2.en.html).}.
+
+\begin{lstlisting}[caption=Atributos do primeiro dataset,label=lst:german_dataset]
+    Atributo 1: (qualitativo)
+    Situação da conta corrente existente
+    A11 : ... < 0 DM
+    A12 : 0 <= ... < 200 DM
+    A13 : ... >= 200 DM
+    A14 : sem conta corrente
+
+    Atributo 2: (numérico)
+    Duração em meses
+
+    Atributo 3: (qualitativo)
+    Histórico de crédito
+    A30 : nenhum crédito retirado / todos os créditos pagos apropriadamente
+    A31 : todos os créditos nesse banco pagos apropriadamente
+    A32 : créditos existentes pagos apropriadamente até agora
+    A33 : atraso no pagamento no passado
+    A34 : conta crítica / outros créditos existentes (não nesse banco)
+
+    Atributo 4: (qualitativo)
+    Propósito
+    A40 : carro (novo)
+    A41 : carro (usado)
+    A42 : móveis/equipamento
+    A43 : rádio/televisão
+    A44 : eletrodomésico
+    A45 : reparos
+    A46 : educação
+    A47 : (férias - não existe no dataset)
+    A48 : reciclagem profissional
+    A49 : negócios
+    A410 : outros
+
+    Atributo 5: (numérico)
+    Quantidade de crédito
+
+    Atributo 6: (qualitativo)
+    Poupança
+    A61 : ... < 100 DM
+    A62 : 100 <= ... < 500 DM
+    A63 : 500 <= ... < 1000 DM
+    A64 : .. >= 1000 DM
+    A65 : desconhecido / sem poupança
+
+    Atributo 7: (qualitativo)
+    Emprego atual desde
+    A71 : desempregado
+    A72 : ... < 1 ano
+    A73 : 1 <= ... < 4 anos
+    A74 : 4 <= ... < 7 anos
+    A75 : .. >= 7 anos
+
+    Atributo 8: (numérico)
+    Taxa de parcelamento em porcentagem do rendimento disponível
+
+    Atributo 9: (qualitativo)
+    Estado civil e sexo
+    A91 : masculino : divorciado/separado
+    A92 : feminino : divorciada/separada/casada
+    A93 : masculino : solteiro
+    A94 : masculino : casado/viúvo
+    A95 : feminino : solteira
+
+    Atributo 10: (qualitativo)
+    Outros devedores / fiadores
+    A101 : nenhum
+    A102 : devedor solidário
+    A103 : fiador
+
+    Atributo 11: (numérico)
+    Residência atual desde
+
+    Atributo 12: (qualitativo)
+    Propriedade
+    A121 : imóvel
+    A122 : se não A121 : financiamento / seguro de vida
+    A123 : se não A121/A122 : carro ou outro, não incluso no atributo 6
+    A124 : desconhecido / sem propriedade
+
+    Atributo 13: (numérico)
+    Idade em anos
+
+    Atributo 14: (qualitativo)
+    Outros planos de parcelamento
+    A141 : banco
+    A142 : lojas
+    A143 : nenhum
+
+    Atributo 15: (qualitativo)
+    Residência
+    A151 : alugada
+    A152 : própria
+    A153 : gratuita
+
+    Atributo 16: (numérico)
+    Número de créditos existentes nesse banco
+
+    Atributo 17: (qualitativo)
+    Emprego
+    A171 : desempregado / sem proficiência / não-doméstico
+    A172 : sem proficiência / doméstico
+    A173 : proficiente / funcionário público
+    A174 : administrador / auto-empregado / empregado altamente qualificado / oficial
+
+    Atributo 18: (numérico)
+    Número de dependentes
+
+    Atributo 19: (qualitativo)
+    Telefone
+    A191 : nenhum
+    A192 : sim, registrado sob o nom do consumidor
+
+    Atributo 20: (qualitativo)
+    Trabalhador estrangeiro
+    A201 : sim
+    A202 : não
+\end{lstlisting}
+
+\section{Arquitetura}
+
+\section{Critérios}
+
+Uma consideração importante quando analisa-se o desempenho de dois ou mais sistemas é que muito difícil (ou até mesmo impossível) excluir-se todos os fatores externos, resultando em uma análise completamente imparcial. Nesse caso específico, o resultado dos testes em cada algoritmo é fortemente influenciado pelas características dos dados na base de dados, embora os métodos de análise dos resultados procuram minimizar essa influência (conforme apresentado na seção \ref{sec:fraud_criteria}).
+
+\section{Resultados}
+
+\chapter{Conclusão}
+
+\section{Síntese}
+
+\section{TCC II}
