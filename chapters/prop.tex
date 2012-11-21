@@ -20,7 +20,7 @@ Os datasets são denominados German Credit (Cr.Ger) e Australian Credit (Cr.Aust
 
 \subsubsection{Cr.Ger}
 
-Esse dataset foi cedido pelo professor Hans Hoffman, da Universidade de Hamburgo. Os atributos do dataset são descritos na listagem \ref{lst:ge_dataset} \footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231\textunderscore{}2.en.html).}.
+Esse dataset foi cedido pelo professor Hans Hoffman, da Universidade de Hamburgo. Os atributos do dataset são descritos na listagem \ref{lst:ge_dataset} \footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231\textunderscore2.en.html).}.
 
 \begin{lstlisting}[caption=Atributos do dataset alemão,label=lst:ge_dataset]
     Atributo 1: (qualitativo)
@@ -161,9 +161,23 @@ A15: contínuo
 A16: +,- (atributo de classe)
 \end{lstlisting}
 
-\subsection{Weka}
+\subsection{Algoritmos}
 
-Como plataforma de testes, será utilizado o \emph{software} Weka. Weka (\emph{Waikato Environment for Knowledge Analysis}) é uma suite de aplicações de aprendizagem de máquina, desenvolvida na Universidade de Waikato, na Nova Zelândia. Essa ferramenta é largamente utilizada em projetos nessa área, devido a sua licença aberta (GNU GPL), que permite que seja utilizada quase sem restrições.
+Os algoritmos que serão utilizados para a comparação são um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2007}. Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina Weka (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma liceça aberta (GNU GPL). Nele, são implementados diversos algoritmos de redes imunológicas e sistemas imunológicos artificiais, conforme a listagem abaixo:
+
+\begin{enumerate}[a)]
+    \item \textbf{Learning Vector Quantization (LVQ)}
+    \item \textbf{Self-Organizing Map (SOM)}
+    \item \textbf{Feed-Forward Artificial Neural Network (FF-ANN)} \iffalse obtain paper (?) \fi
+    \item \textbf{Artificial Immune Recognition System (AIRS)}
+    \item \textbf{Clonal Selection Algorithm (CLONALG)}: descrito na seção \ref{sec:ais_clonalg}.
+    \item \textbf{Immunos-81}
+\end{enumerate}
+
+\subsection{Weka}{}
+\label{sec:prop_weka}
+
+Como plataforma de testes, será utilizado o \emph{software} Weka. Weka (\emph{Waikato Environment for Knowledge Analysis}, Ambiente para Aprendizagem de Máquina de Waikato) é uma suite de aplicações de aprendizagem de máquina, desenvolvida na Universidade de Waikato, na Nova Zelândia. Essa ferramenta é largamente utilizada em projetos nessa área, devido a sua licença aberta (GNU GPL), que permite que seja utilizada quase sem restrições.
 
 A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execução, mostrando a visualização do \emph{dataset} alemão.
 
