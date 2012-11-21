@@ -14,9 +14,15 @@ Para os testes, serão utilizadas duas bases contendo informações de contas de
     \item Indicar as direções mais promissoras de desenvolvimento para abordagens comercialmente imaturas.
 \end{enumerate}
 
-Os atributos do primeiro \emph{dataset} são descritos na listagem \ref{lst:german_dataset} \footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231\textunderscore{}2.en.html).}.
+Os datasets são denominados German Credit (Cr.Ger) e Australian Credit (Cr.Aust), e ambos contém informações sobre contas de crédito.
 
-\begin{lstlisting}[caption=Atributos do primeiro dataset,label=lst:german_dataset]
+\iffalse read paper about au dataset \fi
+
+\subsubsection{Cr.Ger}
+
+Esse dataset foi cedido pelo professor Hans Hoffman, da Universidade de Hamburgo. Os atributos do dataset são descritos na listagem \ref{lst:ge_dataset} \footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231\textunderscore{}2.en.html).}.
+
+\begin{lstlisting}[caption=Atributos do dataset alemão,label=lst:ge_dataset]
     Atributo 1: (qualitativo)
     Situação da conta corrente existente
     A11 : ... < 0 DM
@@ -132,6 +138,27 @@ Os atributos do primeiro \emph{dataset} são descritos na listagem \ref{lst:germ
     Trabalhador estrangeiro
     A201 : sim
     A202 : não
+\end{lstlisting}
+
+Os atributos do dataset australiano são descritos na listagem \ref{lst:au_dataset}. Uma grande desvantagem, muito comum nesse tipo de dataset (seção \ref{fraud:data}), é a de o nome dos campos ter sido alterado, perdendo o significado original.
+
+\begin{lstlisting}[caption=Atributos do dataset australiano ,label=lst:au_dataset]
+A1: b, a
+A2: contínuo
+A3: contínuo
+A4: u, y, l, t
+A5: g, p, gg
+A6: c, d, cc, i, j, k, m, r, q, w, x, e, aa, ff
+A7: v, h, bb, j, n, z, dd, ff, o
+A8: contínuo
+A9: t, f
+A10: t, f
+A11: contínuo
+A12: t, f
+A13: g, p, s
+A14: contínuo
+A15: contínuo
+A16: +,- (atributo de classe)
 \end{lstlisting}
 
 \section{Arquitetura}
