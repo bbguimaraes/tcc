@@ -1,6 +1,6 @@
 # Makefile used on my Ubuntu system.
 # Packages needed:
-#     texlive-common, texlive-latex-recommended, texlive-fonts-recommended.
+#     texlive-common, texlive-latex-recommended, texlive-fonts-recommended, texlive-latex-exta.
 
 CHAPTERS= \
 	chapters/intro.tex  \
