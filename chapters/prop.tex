@@ -20,7 +20,7 @@ Os conjuntos de dados são denominados German Credit (Cr.Ger) e Australian Credi
 
 \subsubsection{Cr.Ger}
 
-Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade de Hamburgo. Os atributos e valores que esses atrbutos podem são descritos na listagem \ref{lst:ge_dataset} \footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231\textunderscore2.en.html).}.
+Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade de Hamburgo. Os atributos e valores que esses atributos podem assumir são descritos na listagem \ref{lst:ge_dataset} \footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231\textunderscore2.en.html).}.
 
 \vspace{1cm}
 \begin{lstlisting}[caption=Atributos do conjunto de dados alemão,label=lst:ge_dataset]
@@ -144,12 +144,12 @@ Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade d
 
 \subsubsection{Cr.Aust}
 
-Os atributos do conjunto de dados australiano são descritos na listagem \ref{lst:au_dataset}. Uma grande desvantagem, muito comum nesse tipo de conjunto de dados (seção \ref{fraud:data}), é a de o nome dos campos ter sido alterado, perdendo o significado original. Para garantir a privacidade das informações contidas no conjunto de dados, provavelmente por questões competitivas, a empresa que cedeu os dados utilizou um processo de anonimização, garantindo que as informações confidenciais não possam ser recuperadas.
+Os atributos do conjunto de dados australiano são descritos na listagem \ref{lst:prop_au_dataset}. Uma grande desvantagem, muito comum nesse tipo de conjunto de dados (seção \ref{fraud:data}), é a de o nome dos campos ter sido alterado, perdendo o significado original. Para garantir a privacidade das informações contidas no conjunto de dados, provavelmente por questões competitivas, a empresa que cedeu os dados utilizou um processo de anonimização, garantindo que as informações confidenciais não possam ser recuperadas.
 
 Os dados ainda podem ser utilizados para a validação de sistemas de detecção, mas não é possível saber de que forma o sistema chegou ao diagnóstico, tornando o resultado bem menos útil.
 
 \vspace{1cm}
-\begin{lstlisting}[caption=Atributos do conjunto de dados australiano ,label=lst:au_dataset]
+\begin{lstlisting}[caption=Atributos do conjunto de dados Cr.Aust, label=lst:prop_au_dataset]
 A1: b, a
 A2: contínuo
 A3: contínuo
@@ -243,6 +243,70 @@ A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execuçã
 
 \iffalse arff file format \fi
 
+A listagem \ref{lst:prop_weka_out} mostra um exemplo dos dados de saída após a execução de um teste de um dos algoritmos (LVQ) em um conjunto de dados de teste.
+
+\vspace{1cm}
+\begin{lstlisting}[caption=Exemplo de saída de uma execução do WEKA, label=lst:prop_weka_out]
+    === Run information ===
+
+    Scheme:       weka.classifiers.neural.lvq.MultipassLvq -A
+    "weka.classifiers.neural.lvq.Olvq1 -M 1 -C 20 -I 1000 -L 1 -R 0.3 -S 1 -G
+    false" -B "weka.classifiers.neural.lvq.Lvq3 -M 1 -C 20 -I 10000 -L 1 -R 0.05 -S
+    1 -G false -W 0.3 -E 0.1"
+    Relation:     weather
+    Instances:    14
+    Attributes:   5
+                  outlook
+                  temperature
+                  humidity
+                  windy
+                  play
+    Test mode:    10-fold cross-validation
+
+    === Classifier model (full training set) ===
+
+    -- Training Time Breakdown --
+    Pass 0: 17ms
+    Pass 1: 51ms
+    Total Model Preparation Time: 68ms
+
+    -- Cass Distribution --
+    yes :  15 (75%)
+    no :  5 (25%)
+
+
+
+    Time taken to build model: 0.07 seconds
+
+    === Stratified cross-validation ===
+    === Summary ===
+
+    Correctly Classified Instances           5               35.7143 %
+    Incorrectly Classified Instances         9               64.2857 %
+    Kappa statistic                         -0.4651
+    Mean absolute error                      0.6429
+    Root mean squared error                  0.8018
+    Relative absolute error                135      %
+    Root relative squared error            162.5137 %
+    Total Number of Instances               14
+
+    === Detailed Accuracy By Class ===
+
+                   TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area
+    Class
+                     0.556     1          0.5       0.556     0.526      0.278
+    yes
+                     0         0.444      0         0         0          0.278
+    no
+    Weighted Avg.    0.357     0.802      0.321     0.357     0.338      0.278
+
+    === Confusion Matrix ===
+
+     a b   <-- classified as
+     5 4 | a = yes
+     5 0 | b = no
+\end{lstlisting}
+
 \section{Método de pesquisa}
 
 \subsection{Critérios}
@@ -251,20 +315,20 @@ Uma consideração importante quando analisa-se o desempenho de dois ou mais sis
 
 \section{Cronograma}
 
-As atividades da segunda etapa do Trabalho de Conclusão de Curso serão desenvolvidas conforme apresentadas na tabela \ref{tab:prop_cron}.
+As atividades da segunda etapa do Trabalho de Conclusão de Curso serão desenvolvidas conforme apresentadas na tabela \ref{tab:prop_cron} e serão descritas à seguir.
 
 \begin{table}[!h]
     \caption{Cronograma}
     \centering
-    \begin{tabular}{c l c c}
-        & Etapa & Resultado & Data \\
+    \begin{tabular}{l >{\arraybackslash}m{4cm} >{\centering\arraybackslash}m{7cm} c}
+        \multicolumn{2}{c}{Etapa} & Resultado & Data \\
         \hline
-        1 & Coleta e preparação dos dados & Arquivos no formato esperado pelo WEKA & março/2013 \\
-        2 & & & \\
-        3 & & & \\
-        4 & & & \\
-        5 & & & \\
-        6 & & & \\
+        1 & Coleta e preparação dos dados       & Arquivos no formato esperado pelo WEKA & março/2013 \\
+        2 & Aplicação dos algoritmos            & Resultados da execução (taxas de acerto, métricas, tempo de execução, listagem \ref{lst:prop_weka_out} & abril/2013 \\
+        3 & Comparação e análise dos resultados & Ranking de resultados & maio/2013 \\
+        4 & Conclusão e contribuições           & Análise & junho/2013 \\
+        5 & Redação e revisão                   & & março-julho/2013 \\
+        6 & Apresentação                        & & julho/2013 \\
     \end{tabular}
     \label{tab:prop_cron}
 \end{table}
