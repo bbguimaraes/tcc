@@ -22,6 +22,7 @@ Os conjuntos de dados são denominados German Credit (Cr.Ger) e Australian Credi
 
 Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade de Hamburgo. Os atributos e valores que esses atrbutos podem são descritos na listagem \ref{lst:ge_dataset} \footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231\textunderscore2.en.html).}.
 
+\vspace{1cm}
 \begin{lstlisting}[caption=Atributos do conjunto de dados alemão,label=lst:ge_dataset]
     Atributo 1: (qualitativo)
     Situação da conta corrente existente
@@ -143,8 +144,11 @@ Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade d
 
 \subsubsection{Cr.Aust}
 
-Os atributos do conjunto de dados australiano são descritos na listagem \ref{lst:au_dataset}. Uma grande desvantagem, muito comum nesse tipo de conjunto de dados (seção \ref{fraud:data}), é a de o nome dos campos ter sido alterado, perdendo o significado original.
+Os atributos do conjunto de dados australiano são descritos na listagem \ref{lst:au_dataset}. Uma grande desvantagem, muito comum nesse tipo de conjunto de dados (seção \ref{fraud:data}), é a de o nome dos campos ter sido alterado, perdendo o significado original. Para garantir a privacidade das informações contidas no conjunto de dados, provavelmente por questões competitivas, a empresa que cedeu os dados utilizou um processo de anonimização, garantindo que as informações confidenciais não possam ser recuperadas.
 
+Os dados ainda podem ser utilizados para a validação de sistemas de detecção, mas não é possível saber de que forma o sistema chegou ao diagnóstico, tornando o resultado bem menos útil.
+
+\vspace{1cm}
 \begin{lstlisting}[caption=Atributos do conjunto de dados australiano ,label=lst:au_dataset]
 A1: b, a
 A2: contínuo
@@ -166,16 +170,31 @@ A16: +,- (atributo de classe)
 
 \subsection{Algoritmos}
 
-Os algoritmos que serão utilizados para a comparação são um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2007}. Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina Weka (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma liceça aberta (GNU GPL). Nele, são implementados diversos algoritmos de redes imunológicas e sistemas imunológicos artificiais, conforme a listagem abaixo:
+Os algoritmos que serão utilizados para a comparação são um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual, a versão 1.8 de maio de 2011. Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina Weka (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementados diversas categorias de algoritmos de redes imunológicas e Sistemas Imunológicos Artificiais:
 
-\begin{enumerate}[a)]
-    \item \textbf{Learning Vector Quantization (LVQ)}: similar às redes neurais, que utiliza aprendizagem supervisionada, baseada em protótipos, para classificação de dados. É similar ao algoritmo de k-vizinhos mais próximos e um precursor do próximo algoritmo.
-    \item \textbf{Self-Organizing Map (SOM)}: algoritmo de redes neurais que utiliza aprendizagem não-supervisionada. Mapeia os valores da base de dados produzindo um mapa: um espaço de duas dimensões, uma representação discreta dos dados de entrada.
-    \item \textbf{Feed-Forward Artificial Neural Network (FF-ANN)}: tipo de algoritmo de redes neurais onde o sinal é propagado na direção entrada-saída, sem conexões de \emph{feedback}.
-    \item \textbf{Artificial Immune Recognition System (AIRS)}: algoritmo imunológico supervisionado descrito na seção \ref{sec:prop_airs}.
-    \item \textbf{Clonal Selection Algorithm (CLONALG)}: um dos principais algoritmos imunológicos, descrito na seção \ref{sec:ais_clonalg}.
-    \item \textbf{Immunos-81}: algoritmo imunológico descrito na seção \ref{sec:prop_immunos}.
+\begin{enumerate}
+    \item Redes neurais
+    \begin{enumerate}[a)]
+        \item \textbf{Learning Vector Quantization (LVQ)}: similar às redes neurais, que utiliza aprendizagem supervisionada, baseada em protótipos, para classificação de dados. É similar ao algoritmo de k-vizinhos mais próximos e um precursor do próximo algoritmo.
+        \item \textbf{Self-Organizing Map (SOM)}: algoritmo de redes neurais que utiliza aprendizagem não-supervisionada. Mapeia os valores da base de dados produzindo um mapa: um espaço de duas dimensões, uma representação discreta dos dados de entrada.
+        \item \textbf{Feed-Forward Artificial Neural Network (FF-ANN)}: tipo de algoritmo de redes neurais onde o sinal é propagado na direção entrada-saída, sem conexões de \emph{feedback}.
+    \end{enumerate}
+    \item Sistemas Imunológicos Artificiais
+    \begin{enumerate}[a)]
+        \item \textbf{Artificial Immune Recognition System (AIRS)}: algoritmo imunológico supervisionado descrito na seção \ref{sec:prop_airs}.
+        \item \textbf{Clonal Selection Algorithm (CLONALG)}: um dos principais algoritmos imunológicos, descrito na seção \ref{sec:ais_clonalg}.
+        \item \textbf{Immunos-81}: algoritmo imunológico descrito na seção \ref{sec:prop_immunos}.
+    \end{enumerate}
 \end{enumerate}
+
+Desses, os algoritmos de Sistemas Imunológicos Artificiais (2) serão utilizados para comparação com os métodos tradicionais. O algoritmo da seleção clonal foi descrito na seção \ref{sec:ais_clonalg}. Os outros dois são descritos nas próximas seções. A figura \ref{fig:prop_wekaais} mostra esses algoritmos conforme apresentados na interface do WEKA (seção \ref{sec:prop_weka}).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\textwidth]{img/weka_ais.png}
+\caption{Algoritmos no WEKA}
+\label{fig:prop_wekaais}
+\end{figure}
 
 \subsubsection{AIRS}
 \label{sec:prop_airs}
@@ -211,9 +230,9 @@ O principal elemento na modelagem do algoritmo foi a utilização de pequenas e 
 \subsection{Weka}{}
 \label{sec:prop_weka}
 
-Como plataforma de testes, será utilizado o \emph{software} Weka. Weka (\emph{Waikato Environment for Knowledge Analysis}, Ambiente para Aprendizagem de Máquina de Waikato) é uma suite de aplicações de aprendizagem de máquina, desenvolvida na Universidade de Waikato, na Nova Zelândia. Essa ferramenta é largamente utilizada em projetos nessa área, devido a sua licença aberta (GNU GPL), que permite que seja utilizada quase sem restrições.
+Como plataforma de testes será utilizado o \emph{software} Weka. Weka (\emph{Waikato Environment for Knowledge Analysis}, Ambiente para Aprendizagem de Máquina de Waikato) é uma suite de aplicações de aprendizagem de máquina desenvolvida na Universidade de Waikato na Nova Zelândia. Essa ferramenta é largamente utilizada em projetos nessa área, devido a sua licença aberta (GNU GPL), que permite que seja utilizada quase sem restrições.
 
-A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execução, mostrando a visualização do conjunto de dados alemão.
+A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execução, mostrando a visualização de um conjunto de dados de exemplo.
 
 \begin{figure}[h!]
 \centering
@@ -224,9 +243,9 @@ A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execuçã
 
 \iffalse arff file format \fi
 
-\section{Arquitetura}
+\section{Método de pesquisa}
 
-\section{Critérios}
+\subsection{Critérios}
 
 Uma consideração importante quando analisa-se o desempenho de dois ou mais sistemas é que muito difícil (ou até mesmo impossível) excluir-se todos os fatores externos, resultando em uma análise completamente imparcial. Nesse caso específico, o resultado dos testes em cada algoritmo é fortemente influenciado pelas características dos dados na base de dados, embora os métodos de análise dos resultados procuram minimizar essa influência (conforme apresentado na seção \ref{sec:fraud_criteria}).
 
