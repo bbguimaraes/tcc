@@ -1,14 +1,14 @@
 \chapter{Proposta}
 
-Conforme apresentado nos capítulos anteriores, a modelagem de um sistema de detecção de fraude com a utilização de técnicas inspiradas no sistema imunológico natural oferece diversas vantagens. Esse trabalho busca identificar exatamente \emph{quanto} esses modelos podem aperfeiçoar os métodos existentes. O método utilizado é a comparação dos resultados da classificação de algoritmos tradicionais e Sistemas Imunológicos Artificiais sobre um mesmo conjunto de dados. Esta seção apresenta os elementos principais para o desenvolvimento da proposta.
+Conforme apresentado nos capítulos anteriores, a modelagem de um sistema de detecção de fraude com a utilização de técnicas inspiradas no sistema imunológico natural busca trazer diversas vantagens tanto no processo de planejamento quanto na sua arquitetura final. Esse trabalho busca identificar exatamente \emph{quanto} esses modelos podem aperfeiçoar os métodos existentes. O método utilizado é a comparação dos resultados da classificação de algoritmos tradicionais e Sistemas Imunológicos Artificiais sobre um mesmo conjunto de dados. Esta seção apresenta os elementos principais para o desenvolvimento da proposta.
 
 \section{Descrição geral}
 
-Os principais elementos no desenvolvimento do trabalho são: os conjuntos de dados utilizados na execução dos testes, os algoritmos que serão testados nesses dados e os métodos de avliação dos resultados.
+Os principais elementos no desenvolvimento do trabalho são: os conjuntos de dados utilizados na execução dos testes, os algoritmos que serão testados nesses dados e os métodos de avaliação dos resultados.
 
 \subsection{Descrição dos dados}
 
-Para os testes, serão utilizados dois conjuntos de dados contendo informações de contas de cartões de crédito. Esses dados estão disponíveis publicamente e fazem parte de um projeto chamado StatLog. Esse projeto foi concebido para testar diversos métodos de classificação em problemas grandes e comercialmente relevantes, comparando os resultados e determinando o quanto essas diferentes técnicas atendiam as necessidades da indústria. Conforme a própria descrição do projeto, os objetivos do projeto eram três:
+Para os testes serão utilizados dois conjuntos de dados contendo informações de contas de cartões de crédito. Esses dados estão disponíveis publicamente e fazem parte de um projeto chamado StatLog \cite{Michie1994}. Esse projeto foi concebido para testar diversos métodos de classificação em problemas grandes e comercialmente relevantes, comparando os seus resultados e determinando o quanto eles atendiam as necessidades da indústria. Conforme a sua própria descrição, os objetivos do projeto eram três:
 
 \begin{enumerate}[a)]
     \item Possibilitar medidas críticas de desempenho para procedimentos de classificação disponíveis,
@@ -20,7 +20,7 @@ Os conjuntos de dados são denominados German Credit (Cr.Ger) e Australian Credi
 
 \subsubsection{Cr.Ger}
 
-Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade de Hamburgo. Os atributos e valores que esses atributos podem assumir são descritos na listagem \ref{lst:ge_dataset} \footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231\textunderscore2.en.html).}.
+Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade de Hamburgo. Os atributos e valores que esses atributos podem assumir são descritos na listagem \ref{lst:ge_dataset} (traduzido do original)\footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231$\textunderscore$2.en.html).}.
 
 \vspace{1cm}
 \begin{lstlisting}[caption=Atributos do conjunto de dados alemão,label=lst:ge_dataset]
@@ -144,7 +144,7 @@ Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade d
 
 \subsubsection{Cr.Aust}
 
-Os atributos do conjunto de dados australiano são descritos na listagem \ref{lst:prop_au_dataset}. Uma grande desvantagem, muito comum nesse tipo de conjunto de dados (seção \ref{fraud:data}), é a de o nome dos campos ter sido alterado, perdendo o significado original. Para garantir a privacidade das informações contidas no conjunto de dados, provavelmente por questões competitivas, a empresa que cedeu os dados utilizou um processo de anonimização, garantindo que as informações confidenciais não possam ser recuperadas.
+Os atributos do conjunto de dados australiano são descritos na listagem \ref{lst:prop_au_dataset} (traduzido do original). Uma grande desvantagem, muito comum nesse tipo de conjunto de dados (seção \ref{fraud:data}), é a de o nome dos campos ter sido alterado, perdendo o significado original. Para garantir a privacidade das informações contidas no conjunto de dados, provavelmente por questões competitivas, a empresa que cedeu os dados utilizou um processo de anonimização, garantindo que as informações confidenciais não possam ser recuperadas.
 
 Os dados ainda podem ser utilizados para a validação de sistemas de detecção, mas não é possível saber de que forma o sistema chegou ao diagnóstico, tornando o resultado bem menos útil.
 
@@ -170,7 +170,7 @@ A16: +,- (atributo de classe)
 
 \subsection{Algoritmos}
 
-Os algoritmos que serão utilizados para a comparação são um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual, a versão 1.8 de maio de 2011. Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina Weka (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementados diversas categorias de algoritmos de redes imunológicas e Sistemas Imunológicos Artificiais:
+Os algoritmos que serão utilizados para a comparação são um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011w}, na versão mais atual (1.8, maio de 2011). Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina Weka (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementados diversas categorias de algoritmos de Redes Neurais e Sistemas Imunológicos Artificiais:
 
 \begin{enumerate}
     \item Redes neurais
@@ -182,12 +182,12 @@ Os algoritmos que serão utilizados para a comparação são um pacote de algori
     \item Sistemas Imunológicos Artificiais
     \begin{enumerate}[a)]
         \item \textbf{Artificial Immune Recognition System (AIRS)}: algoritmo imunológico supervisionado descrito na seção \ref{sec:prop_airs}.
-        \item \textbf{Clonal Selection Algorithm (CLONALG)}: um dos principais algoritmos imunológicos, descrito na seção \ref{sec:ais_clonalg}.
+        \item \textbf{Clonal Selection Algorithm (CLONALG)}: um dos principais algoritmos imunológicos, o algoritmo da seleção clonal, descrito na seção \ref{sec:ais_clonalg}.
         \item \textbf{Immunos-81}: algoritmo imunológico descrito na seção \ref{sec:prop_immunos}.
     \end{enumerate}
 \end{enumerate}
 
-Desses, os algoritmos de Sistemas Imunológicos Artificiais (2) serão utilizados para comparação com os métodos tradicionais. O algoritmo da seleção clonal foi descrito na seção \ref{sec:ais_clonalg}. Os outros dois são descritos nas próximas seções. A figura \ref{fig:prop_wekaais} mostra esses algoritmos conforme apresentados na interface do WEKA (seção \ref{sec:prop_weka}).
+Desses, os algoritmos de Sistemas Imunológicos Artificiais (2) serão utilizados para comparação com os métodos tradicionais. O algoritmo da seleção clonal (CLONALG) foi descrito na seção \ref{sec:ais_clonalg}. Os outros dois são descritos nas próximas seções. A figura \ref{fig:prop_wekaais} mostra esses algoritmos conforme apresentados na interface do WEKA.
 
 \begin{figure}[h!]
 \centering
@@ -199,18 +199,18 @@ Desses, os algoritmos de Sistemas Imunológicos Artificiais (2) serão utilizado
 \subsubsection{AIRS}
 \label{sec:prop_airs}
 
-Esse algoritmo foi criado por Andrew Watkins \cite{Andrew2003}. Ele tinha como objetivo implementar um Sistema Imunológico Artificial que utilizasse aprendizagem supervisionada, já que, na época de seu desenvolvimento, a área de algoritmos imunológicos supervisionados não havia sido explorada, apesar da pesquisa intensa na área de algoritmos imunológicos não-supervisionados \footnote{De acordo com o autor, o único outro algoritmo imunológico supervisionado era o Immunos, apresentado na próxima seção.}
+Esse algoritmo foi criado por Andrew Watkins \cite{Andrew2003} e tinha como objetivo implementar um Sistema Imunológico Artificial que utilizasse aprendizagem supervisionada. Na época de seu desenvolvimento, a área de algoritmos imunológicos supervisionados não havia sido explorada, apesar da pesquisa intensa na área de algoritmos imunológicos não-supervisionados \footnote{De acordo com o autor, o único outro algoritmo imunológico supervisionado era o Immunos, apresentado na próxima seção.}
 
 Por esse motivo, esse foi o primeiro algoritmo supervisionado a implementar a maior parte das técnicas inspiradas nos sistemas imunológicos, como: modelagem dos dados como antígenos e anticorpos, expansão clonal dos linfócitos, mutação e maturação de afinidade e memória imunológica.
 
-Na definição desse algoritmo, também foi aplicado o formalismo do espaço de formas. Conforme apresentado na seção \ref{sec:ais_shape}, esse é um formalismo bastante apropriado para a modelagem de Sistemas Imunológicos Artificiais, devido a forte semelhança entre o espaço de formas e as diferentes formas que os receptores dos linfócitos no sistema imunológico apresentam. Os antígenos identificados por esses receptores formam a região de reconhecimento ao redor de cada ponto no espaço de formas. Em um algoritmo de aprendizagem, isso representa a correspondência entre as instâncias de treinamento (antígenos) e as possíveis soluções (células B).
+Na definição desse algoritmo também foi aplicado o formalismo do espaço de formas. Conforme apresentado na seção \ref{sec:ais_shape}, esse é um formalismo bastante apropriado para a modelagem de Sistemas Imunológicos Artificiais, devido a forte semelhança entre o espaço de formas e as diferentes formas que os receptores dos linfócitos no sistema imunológico apresentam. Os antígenos identificados por esses receptores formam a região de reconhecimento ao redor de cada ponto no espaço de formas. Em um algoritmo de aprendizagem, isso representa a correspondência entre as instâncias de treinamento (antígenos) e as possíveis soluções (células B).
 
 \subsubsection{Immunos}
 \label{sec:prop_immunos}
 
-Esse algoritmo foi apresentado por Jerome Carter \cite{Carter2000}. O algoritmo Imunnos foi desenvolvido em oposição aos algoritmos que tentavam simular fielmente o comportamento do sistema imunológico. Segundo o autor, do ponto de vista da computação, construir sistema que utilize equações cuidadosamente derivadas dos estudos teóricos a imunologia seria um feito notável, mas não ideal. Os elementos do sistema imunológico foram reduzidos ao nível mais fundamental para que fossem introduzidos no sistema.
+Esse algoritmo foi apresentado por Jerome Carter \cite{Carter2000}. O algoritmo Imunnos foi desenvolvido em oposição aos algoritmos que tentavam simular fielmente o comportamento do sistema imunológico. Segundo o autor, do ponto de vista da computação, construir um sistema que utilize equações cuidadosamente derivadas dos estudos teóricos a imunologia seria um feito notável, mas não ideal. Os elementos do sistema imunológico foram reduzidos ao nível mais fundamental para que fossem introduzidos no sistema.
 
-O principal elemento na modelagem do algoritmo foi a utilização de pequenas e simples unidades de processamento conectadas em paralelo das redes neurais e linfócitos do sistema imunológico. As principais metas da modelagem eram:
+O principal elemento na modelagem do algoritmo foi a utilização de pequenas e simples unidades de processamento conectadas em paralelo, como pode ser observado nos nodos das redes neurais e linfócitos do sistema imunológico. As principais metas da modelagem eram:
 
 \vspace{2mm}
 \begin{enumerate}[a)]
@@ -309,15 +309,9 @@ A listagem \ref{lst:prop_weka_out} mostra um exemplo dos dados de saída após a
 
 \section{Método de pesquisa}
 
-\subsection{Critérios}
-
-Uma consideração importante quando analisa-se o desempenho de dois ou mais sistemas é que muito difícil (ou até mesmo impossível) excluir-se todos os fatores externos, resultando em uma análise completamente imparcial. Nesse caso específico, o resultado dos testes em cada algoritmo é fortemente influenciado pelas características dos dados na base de dados, embora os métodos de análise dos resultados procuram minimizar essa influência (conforme apresentado na seção \ref{sec:fraud_criteria}).
-
-\section{Cronograma}
-
 As atividades da segunda etapa do Trabalho de Conclusão de Curso serão desenvolvidas conforme apresentadas na tabela \ref{tab:prop_cron} e serão descritas à seguir.
 
-\begin{table}[!h]
+\begin{table}[h]
     \caption{Cronograma}
     \centering
     \begin{tabular}{l >{\arraybackslash}m{4cm} >{\centering\arraybackslash}m{7cm} c}
