@@ -327,12 +327,36 @@ As atividades da segunda etapa do Trabalho de Conclusão de Curso serão desenvo
     \label{tab:prop_cron}
 \end{table}
 
-\iffalse
+A etapa de coleta e preparação de dados envolverá a adaptação dos dados nos conjuntos ao formato de entrada esperado pelo WEKA, já que eles se encontram em estado bruto. O formato mais comum para utilização nesse programa são arquivos \emph{Attribute Relationship File Format} (ARFF, Formato de Arquivo de Atributo-Relação). Um arquivo nesse formato é apresentado na listagem \ref{lst:prop_arff}. Esse mesmo arquivo foi apresentado na figura \ref{fig:prop_weka}, mostrando a visualização pela interface do WEKA.
 
-\chapter{Conclusão}
+\vspace{1cm}
+\begin{lstlisting}[caption=Exemplo de arquivo no formato ARFF, label=lst:prop_arff]
+    @relation weather
 
-\section{Síntese}
+    @attribute outlook {sunny, overcast, rainy}
+    @attribute temperature real
+    @attribute humidity real
+    @attribute windy {TRUE, FALSE}
+    @attribute play {yes, no}
 
-\section{TCC II}
+    @data
+    sunny,85,85,FALSE,no
+    sunny,80,90,TRUE,no
+    overcast,83,86,FALSE,yes
+    rainy,70,96,FALSE,yes
+    rainy,68,80,FALSE,yes
+    rainy,65,70,TRUE,no
+    overcast,64,65,TRUE,yes
+    sunny,72,95,FALSE,no
+    sunny,69,70,FALSE,yes
+    rainy,75,80,FALSE,yes
+    sunny,75,70,TRUE,yes
+    overcast,72,90,TRUE,yes
+    overcast,81,75,FALSE,yes
+    rainy,71,91,TRUE,no
+\end{lstlisting}
+\vspace{1cm}
 
-\fi
+Ainda, podem ser necessários ajustes específicos nos dados para que possam servir como entrada para alguns dos algoritmos, caso estes não tenham suporte aos tipos de dados. Com os dados prontos, iniciará a fase de execução dos diferentes algoritmos sobre esses conjuntos de dados. A coleta dos resultados será feita através dos dados de saída, mostrados na listagem \ref{lst:prop_weka_out}.
+
+Uma característica positiva da ferramenta WEKA é a possibilidade de alterar parâmetros tanto do algoritmo em si (caso eles ofereçam essa funcionalidade) quanto da execução do teste em si. Assim, pode-se executar diversos testes, variando esses parâmetros, para ao final comparar também essas configurações. A princípio, será definida apenas uma configuração, que será usada para a execução de todos os testes. No entanto, conforme for possível, poderão ser executados testes variando essa configuração, gerando comparação mais diversificadas.
