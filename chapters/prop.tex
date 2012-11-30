@@ -189,14 +189,14 @@ Os algoritmos que serão utilizados para a comparação são um pacote de algori
 
 Desses, os algoritmos de Sistemas Imunológicos Artificiais (2) serão utilizados para comparação com os métodos tradicionais. O algoritmo da seleção clonal (CLONALG) foi descrito na seção \ref{sec:ais_clonalg}. Os outros dois são descritos nas próximas seções. A figura \ref{fig:prop_wekaais} mostra esses algoritmos conforme apresentados na interface do WEKA.
 
-\vspace{1cm}
 \begin{figure}[h!]
-\centering
-\includegraphics[width=0.75\textwidth]{img/weka_ais.png}
-\caption{Algoritmos no WEKA}
-\label{fig:prop_wekaais}
+    \vspace{1cm}
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/weka_ais.png}
+    \caption{Algoritmos no WEKA}
+    \label{fig:prop_wekaais}
+    \vspace{1cm}
 \end{figure}
-\vspace{1cm}
 
 \subsubsection{AIRS}
 \label{sec:prop_airs}
@@ -214,8 +214,8 @@ Esse algoritmo foi apresentado por Jerome Carter \cite{Carter2000}. O algoritmo 
 
 O principal elemento na modelagem do algoritmo foi a utilização de pequenas e simples unidades de processamento conectadas em paralelo, como pode ser observado nos nodos das redes neurais e linfócitos do sistema imunológico. As principais metas da modelagem eram:
 
-\vspace{2mm}
 \begin{enumerate}[a)]
+    \vspace{2mm}
     \itemsep1pt
     \item Representação interna simples de ser entendida,
     \item Capacidade de generalização sobre os dados de entrada,
@@ -226,8 +226,8 @@ O principal elemento na modelagem do algoritmo foi a utilização de pequenas e 
     \item Capacidade de aprendizagem e recuperação de um grande número de padrões,
     \item Aprendizagem baseada em experiência e
     \item Aprendizagem supervisionada.
+    \vspace{2mm}
 \end{enumerate}
-\vspace{2mm}
 
 \subsection{Weka}{}
 \label{sec:prop_weka}
@@ -236,14 +236,14 @@ Como plataforma de testes será utilizado o \emph{software} Weka. Weka (\emph{Wa
 
 A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execução, mostrando a visualização de um conjunto de dados de exemplo.
 
-\vspace{1cm}
 \begin{figure}[h!]
-\centering
-\includegraphics[width=0.75\textwidth]{img/weka.png}
-\caption{Janela do módulo Explorer - Weka 3.6.4}
-\label{fig:prop_weka}
+    \vspace{1cm}
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/weka.png}
+    \caption{Janela do módulo Explorer - Weka 3.6.4}
+    \label{fig:prop_weka}
+    \vspace{1cm}
 \end{figure}
-\vspace{1cm}
 
 \iffalse arff file format \fi
 
@@ -315,24 +315,6 @@ A listagem \ref{lst:prop_weka_out} mostra um exemplo dos dados de saída após a
 
 As atividades da segunda etapa do Trabalho de Conclusão de Curso serão desenvolvidas conforme apresentadas na tabela \ref{tab:prop_cron} e serão descritas à seguir.
 
-\vspace{1cm}
-\begin{table}[h]
-    \caption{Cronograma}
-    \centering
-    \begin{tabular}{l >{\arraybackslash}m{4cm} >{\centering\arraybackslash}m{7cm} c}
-        \multicolumn{2}{c}{Etapa} & Resultado & Data \\
-        \hline
-        1 & Coleta e preparação dos dados       & Arquivos no formato esperado pelo WEKA & março/2013 \\
-        2 & Aplicação dos algoritmos            & Resultados da execução (taxas de acerto, métricas, tempo de execução, listagem \ref{lst:prop_weka_out} & abril/2013 \\
-        3 & Comparação e análise dos resultados & Ranking de resultados & maio/2013 \\
-        4 & Conclusão e contribuições           & Análise & junho/2013 \\
-        5 & Redação e revisão                   & & março-julho/2013 \\
-        6 & Apresentação                        & & julho/2013 \\
-    \end{tabular}
-    \label{tab:prop_cron}
-\end{table}
-\vspace{1cm}
-
 A etapa de coleta e preparação de dados envolverá a adaptação dos dados nos conjuntos ao formato de entrada esperado pelo WEKA, já que eles se encontram em estado bruto. O formato mais comum para utilização nesse programa são arquivos \emph{Attribute Relationship File Format} (ARFF, Formato de Arquivo de Atributo-Relação). Um arquivo nesse formato é apresentado na listagem \ref{lst:prop_arff}. Esse mesmo arquivo foi apresentado na figura \ref{fig:prop_weka}, mostrando a visualização pela interface do WEKA.
 
 \vspace{1cm}
@@ -370,3 +352,21 @@ Uma característica positiva da ferramenta WEKA é a possibilidade de alterar pa
 De posse dos resultados dos testes de todos os algoritmos, iniciará a etapa de análise. Os resultados dos algoritmos imunológicos serão comparados com os resultados dos algoritmos tradicionais. Essa comparação envolve diversos níveis: taxas de erros e acertos (conforme apresentado na seção \ref{sec:fraud_criteria}), tempos de execução (que inclui tempo de treinamento do algoritmo e o tempo dos testes), utilização de recursos, etc. Para a visualização dos resultados, serão criados elementos visuais, como tabelas e gráficos.
 
 Esse período também inclui a documentação do processo através da redação da monografia e a apresentação ao fim do semestre.
+
+\begin{table}[h]
+    \vspace{1cm}
+    \caption{Cronograma}
+    \centering
+    \begin{tabular}{l >{\arraybackslash}m{4cm} >{\centering\arraybackslash}m{7cm} c}
+        \multicolumn{2}{c}{Etapa} & Resultado & Data \\
+        \hline
+        1 & Coleta e preparação dos dados       & Arquivos no formato esperado pelo WEKA & março/2013 \\
+        2 & Aplicação dos algoritmos            & Resultados da execução (taxas de acerto, métricas, tempo de execução, listagem \ref{lst:prop_weka_out} & abril/2013 \\
+        3 & Comparação e análise dos resultados & Ranking de resultados & maio/2013 \\
+        4 & Conclusão e contribuições           & Análise & junho/2013 \\
+        5 & Redação e revisão                   & & março-julho/2013 \\
+        6 & Apresentação                        & & julho/2013 \\
+    \end{tabular}
+    \label{tab:prop_cron}
+    \vspace{1cm}
+\end{table}
