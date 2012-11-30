@@ -18,8 +18,8 @@ O primeiro trabalho a considerar necessária a auditoria automática de sistemas
 A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{controle de fraude}. Nesse contexto, a detecção automática ajuda a reduzir o trabalho manual de verificação das instâncias \cite{Phua2010}. O objetivo principal desses sistemas é identificar padrões de transações suspeitas em meio às transações comuns de uma organização. O fraudador pode, por exemplo, contratar um seguro usando informações de outra pessoa ou informações falsas. O sistema procura detectar e impedir a fraude o mais cedo possível.
 
 \renewcommand{\arraystretch}{1.5}
-\vspace{1cm}
 \begin{table}[h!]
+    \vspace{1cm}
     \caption{Matriz de ameaças \cite{Anderson1972}}
     \centering
     \begin{tabular}{c p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|}
@@ -32,8 +32,8 @@ A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{c
         \cline{2-4}
     \end{tabular}
     \label{fraud:and}
+    \vspace{1cm}
 \end{table}
-\vspace{1cm}
 
 Geralmente não é possível ter absoluta certeza sobre a legitimidade das transações de um negócio a partir dos dados disponíveis. Não seria possível verificar todas as entidades com as quais uma empresa mantém relações, que em algumas empresas podem ser milhares. Assim, não existe uma técnica infalível para a detecção de fraudes. Isso não significa que elas não possam ser detectadas. A melhor alterantiva, na prática, é uma busca por possíveis evidências de fraude nos dados disponíveis. Métodos matemáticos e estatísticos são utilizados para comparar um banco de dados de transações existentes com as novas, com o objetivo de encontrar evidências de possíveis fraudes. Mesmo assim, geralmente há um processo de análise e revisão caso a caso por um especialista.
 
@@ -62,14 +62,14 @@ Uma alternativa é a criação de um banco de dados artificial, inspirado em dad
 
 A maioria dos sistemas de detecção de fraude opera usando listas negras (\emph{black-lists}) de dados (transações, contas, etc.), que são comparadas com as nova instâncias. Algumas utilizam regras fixas para a classificação. A figura \ref{fig:fraud-data} mostra a organização dos dados nesses sistemas. Uma parte do banco de dados é usada para o treinamento. Esses são os dados onde o sistema aprenderá os padrões e regras utilizados para a detecção. O restante das instâncias é usada para a avaliação do treinamento. Também é comum que haja bancos de dados distintos para o treinamento e avaliação.
 
-\vspace{1cm}
 \begin{figure}[h!]
+    \vspace{1cm}
 \centering
 \includegraphics[width=0.75\textwidth]{img/fraud-data.png}
 \caption{Dados para a análise \cite{Phua2010}}
 \label{fig:fraud_data}
+    \vspace{1cm}
 \end{figure}
-\vspace{1cm}
 
 A maioria dos estudos relacionados à detecção de fraude considera a detecção de \emph{outliers} como uma ferramenta principal de detecção \cite{Aral2011}. Existem muitos métodos aplicados à detecção de fraude: auditoria, sistemas especialistas, lógica nebulosa (\emph{fuzzy}), redes neurais, reconhecimento de padrões, árvores de decisão, regressão, etc \cite{Huang2010}. Considerando os dados dividos conforme a figura \ref{fig:fraud_data}, as duas técnicas mais usadas são:
 
@@ -108,8 +108,8 @@ Classificadores binários são aqueles que, para um dado conjunto de valores de 
 A avaliação dos classificadores binários é feita com base em uma \emph{tabela de confusão}, conforme mostrado na tabela \ref{fraud:confusion}. Nessa tabela são listados o número de valores (ou porcentagem) para cada combinação de saída do sistema e a classificação real. Instâncias corretamente classificadas ocupam as colunas Positivo e Negativo, enquanto instâncias cujo classificação difere da realidade ocupam as colunas ``Falsos positivos'' e ``Falsos negativos''.
 
 \renewcommand{\arraystretch}{1.5}
-\vspace{1cm}
 \begin{table}[h!]
+    \vspace{1cm}
     \caption{Tabela de confusão}
     \centering
     \begin{tabular}{c l c c}
@@ -120,14 +120,14 @@ A avaliação dos classificadores binários é feita com base em uma \emph{tabel
         & \multicolumn{1}{c|}{Negativo} & Falso negativo & Negativo\\
     \end{tabular}
     \label{fraud:confusion}
+    \vspace{1cm}
 \end{table}
-\vspace{1cm}
 
 Como exemplo, inspirado em \citet{Bewick2004}, é apresentado nessa seção um sistema de detecção de fraude, que considera como único atributo das instâncias o número de ocorrências de um determinado valor. Nesse ambiente simplificado, a instância é considerada fraudulenta caso um limiar de ocorrências seja ultrapassado. Um exemplo de dados presentes na base desse sistema é mostrado na tabela \ref{fraud:ex_data}.
 
 \renewcommand{\arraystretch}{1.5}
-\vspace{2mm}
 \begin{table}[h!]
+    \vspace{2mm}
     \caption{Base de dados de exemplo}
     \centering
     \begin{tabular}{l|c|l}
@@ -139,16 +139,16 @@ Como exemplo, inspirado em \citet{Bewick2004}, é apresentado nessa seção um s
         3 & 1           & \\
     \end{tabular}
     \label{fraud:ex_data}
+    \vspace{2mm}
 \end{table}
-\vspace{2mm}
 
 Esse sistema de testes utiliza como único critério de avaliação o número de ocorrências (segunda coluna). Um \emph{limiar de classificação} é definido: um parâmetro que o sistema de detecção utilizará para guiar a previsão da detecção. Se o limiar de classificação fosse 1, todas as instâncias que tivessem mais de uma ocorrência (nos valores de exemplo, as instâncias 0 e 2) seriam consideradas fraudulentas.
 
 Um exemplo do resultado de um teste nesse sistema é mostrado na tabela \ref{fraud:ex}. As colunas sob ``Dados reais'' mostram o número de instâncias fraudulentas e legítimas; as linhas sob ``Saída'' mostram a classificação gerada pelo sistema. A partir desses dados, a avaliação dos resultados é feita usando dois conceitos: sensibilidade e especificidade.
 
 \renewcommand{\arraystretch}{1.5}
-\vspace{2mm}
 \begin{table}[h!]
+    \vspace{2mm}
     \centering
     \begin{tabular}{c l c c c}
         & & \multicolumn{2}{c}{\textbf{Dados reais}} \\
@@ -161,8 +161,8 @@ Um exemplo do resultado de um teste nesse sistema é mostrado na tabela \ref{fra
     \end{tabular}
     \caption{Exemplo de tabela de confusão}
     \label{fraud:ex}
+    \vspace{2mm}
 \end{table}
-\vspace{2mm}
 
 \subsection{Sensibilidade e especificidade}
 
@@ -180,21 +180,21 @@ Esses dois valores são o oposto da sensibilidade e especificidade, respectivame
 
 A sensibilidade e especificidade tornam-se ainda mais úteis quando combinadas, gerando as taxas de verossimilhança. A taxa de verossimilhança de um resultado positivo (LR\textsuperscript{+}) é a razão entre a probabilidade de um resultado positivo no teste caso a instância seja realmente positiva (coluna "positivo" da tabela de confusão) e a probabilidade de um resultado positivo no teste caso a instância seja na verdade negativa:
 
-\vspace{2mm}
 \begin{equation}
+    \vspace{2mm}
     LR^{+}=\frac{sensibilidade}{1 - especificidade}
+    \vspace{2mm}
 \end{equation}
-\vspace{2mm}
 
 No exemplo, LR\textsuperscript{+} = 0.75 / (1 - 0.8333) = 4.4991. Isso significa que um resultado positivo nos testes é 4.4991 vezes mais provável para instâncias que são realmente positivas do que para aquelas que não são.
 
 De maneira, similar, a taxa de verossimilhança negativa (LR\textsuperscript{-}) é a razão entre a probabilidade de um resultado negativo no teste caso a instância seja realmente negativa (coluna "negativo" da tabela de confusão) e a probabilidade de um resultado negativo no teste caso a instância seja na verdade positiva:
 
-\vspace{2mm}
 \begin{equation}
+    \vspace{2mm}
     LR^{-}=\frac{1 - sensibilidade}{especificidade}
+    \vspace{2mm}
 \end{equation}
-\vspace{2mm}
 
 No exemplo, LR\textsuperscript{-} = (1 - 0.75) / 0.8333 = 0.3, o que significa que um resultado negativo no teste é 0.3 vezes mais provável para instâncias que são realmente negativas do que para aquelas que não são.
 
@@ -204,8 +204,8 @@ Desses valores, pode-se atestar a utilidade do método para classificação. Uma
 
 Os dados de teste do exemplo mostrados nas tabelas até agora consideraram apenas um valor como limiar de classificação. Mudanças nesse limiar afetam a precisão dos testes: caso o limiar seja seja igual a -1, todas as instâncias são classificadas como fraudulentas, já que todas possuem como número de ocorrências um número maior ou igual a zero. Por outro lado, caso o limiar seja um número maior do que qualquer uma das instâncias, todas serão classificadas como legítimas. Em sistemas reais, é comum que sejam testados diversos valores para esse limiar sobre uma mesma base de dados, para que o melhor seja identificado e usado no sistema final. A tabela \ref{fraud:youden} é um exemplo de resultados para esse tipo de teste.
 
-\vspace{2mm}
 \begin{table}[h!]
+    \vspace{2mm}
     \caption{Exemplo de resultados para testes comparativos de limiares (inspirado em \citet{Bewick2004}}
     \centering
     \begin{tabular}{l c c c c c}
@@ -223,47 +223,47 @@ Os dados de teste do exemplo mostrados nas tabelas até agora consideraram apena
         \hline
     \end{tabular}
     \label{fraud:youden}
+    \vspace{2mm}
 \end{table}
-\vspace{2mm}
 
 Uma medida para a avaliação dos diferentes limiares pode ser a sensibilidade e especificidade. O índice de Youden (J), que é uma derivação desses valores, é uma medida apropriada nesses casos (eq. \ref{fraud:yindex}). Esse índice é um valor normalizado na faixa [0, 1], onde 1 significa um teste perfeito, classificando todas as instâncias corretamente; e 0 significa um teste sem valor nenhum. A tabela \ref{fraud:yindex} mostra os valores para os resultados com diversos limiares. É importante notar como valores extremos maximizam a sensibilidade e a especificidade, mas apenas aqueles limiares que maximizam os dois valores recebem índices significativos.
 
-\vspace{2mm}
 \begin{equation}
+    \vspace{2mm}
     J = sensibilidade + especificidade - 1
     \label{fraud:yindex}
+    \vspace{2mm}
 \end{equation}
-\vspace{2mm}
 
 Uma característica importante do índice de Youden é que ele estabelece uma equivalência na relevância dos falsos positivos e negativos. Quando um é mais relevante que o outro, devido à peculiaridades nos dados ou no domínio do problema, ele não é apropriado. Nesses casos, pode-se atribuir pesos diferentes a ambos os valores. Um exemplo de adaptação do cálculo do índice de Youden é mostrado abaixo. Nessa fórmula, os valores ainda são mantidos na mesma faixa, mas falsos positivos recebem o dobro da significância.
 
-\vspace{2mm}
 \begin{equation}
+    \vspace{2mm}
     J = 0.75 * sensibilidade + 0.25 * especificidade
+    \vspace{2mm}
 \end{equation}
-\vspace{2mm}
 
 Como pode-se observar na tabela \ref{fraud:yindex}, alterações no valor usado na classificação alteram o número de instâncias classificadas como positivas e negativas. Geralmente os resultados são distribuídos começando com um grande valor de sensibilidade e um valor baixo de especificidade; esses valores convergem até um máximo global; e então terminam em com um valor baixo de sensibilidade e um grande valor de especificidade. A variação desses três valores, e a interação entre eles, é mostrada no gráfico da figura \ref{fraud:threshold}.
 
-\vspace{1cm}
 \begin{figure}[h!]
-\centering
-\includegraphics[scale=0.5]{img/threshold.png}
-\caption{Variação dos valores de avaliação conforme o limiar de detecção}
-\label{fraud:threshold}
+    \vspace{1cm}
+    \centering
+    \includegraphics[scale=0.5]{img/threshold.png}
+    \caption{Variação dos valores de avaliação conforme o limiar de detecção}
+    \label{fraud:threshold}
+    \vspace{1cm}
 \end{figure}
-\vspace{1cm}
 
 No lado esquerdo, onde o limiar é muito baixo, a sensibilidade é 1 e a especificidade, zero; enquanto no lado direito, onde o limiar é muito alto, ocorre o oposto: a sensibilidade é zero e a sensibilidade, 1. Conforme o limiar aumenta (começando do lado esquerdo e caminhando para a direita), ocorreu uma diminuição na especificidade (algumas instâncias fraudulentas começam a ser classificadas como legítimas). No entanto, há um aumento muito maior na especificidade (instâncias legítimas começam a ser classificadas corretamente). É possível ver como o índice de Youden mostra a real proporção entre esses dois valores. Uma forma mais sucinta para apresentar esse tipo de informação é através de um gráfico dos valores de sensibilidade e 1 - especificidade, que é denominado ROC (característica operativa do receptor, \emph{receiver operating characteristic}), conforme mostrado na figura \ref{fraud:roc}.
 
-\vspace{1cm}
 \begin{figure}[h!]
-\centering
-\includegraphics[scale=0.5]{img/roc.png}
-\caption{Gráfico da curva ROC dos valores de exemplo}
-\label{fraud:roc}
+    \vspace{1cm}
+    \centering
+    \includegraphics[scale=0.5]{img/roc.png}
+    \caption{Gráfico da curva ROC dos valores de exemplo}
+    \label{fraud:roc}
+    \vspace{1cm}
 \end{figure}
-\vspace{1cm}
 
 No gráfico é visualmente aparente que o valor 3 como limiar de classificação oferece o melhor balanceamento entre sensibilidade e especificidade. Também é possível perceber como as alterações no limiar influenciam a distribuição desses dois valores. Um teste perfeito, que classificasse todas as instâncias corretamente, teria ambos os valores iguais a 1, tendo portanto um ponto no canto superior esquerdo do gráfico. Os pontos mais próximos dessa localização são aqueles que melhor classificam as instâncias.
 
