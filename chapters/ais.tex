@@ -1,4 +1,4 @@
-\chapter{Sistemas imunológicos artificiais}
+\chapter{Sistemas Imunológicos Artificiais}
 
 O estudo sobre os Sistemas Imunológicos Artificiais (um subcampo da área de Inteligência Computacional) iniciou nos anos 90, baseado na proposição de aplicar modelos teóricos da Imunologia a problemas de aprendizagem de máquina e automação.
 
@@ -8,7 +8,7 @@ Os algoritmos modernos são inspirados em três campos principais: seleção clo
 
 A última década mostrou um grande aumento no interesse pelos algoritmos baseados em sistemas imunológicos por serem uma boa fonte de inspiração para novas abordagens para solução de problemas complexos. O sistema imunológico natural oferece metáforas ricas pelo fato de ser um sistema altamente distribuído, adaptativo e auto-organizável, além de suas capacidades de aprendizado, memorização, extração de características e reconhecimento de padrões. A tabela \ref{ais:recent} mostra uma tabela (inspirada em \citet{Dasgupta2010}) contendo uma lista dos algoritmos utilizados nos trabalhos recentes na área.
 
-\vspace{2mm}
+\vspace{1cm}
 \begin{table}[h!]
     \centering
     \begin{tabular}{l c r}
@@ -27,7 +27,7 @@ A última década mostrou um grande aumento no interesse pelos algoritmos basead
     \label{ais:recent}
     \caption{Trabalhos recentes na área de Sistema Imunológico Natural \cite{Dasgupta2010}}
 \end{table}
-\vspace{2mm}
+\vspace{1cm}
 
 \section{Algoritmos}
 
@@ -62,7 +62,7 @@ A parte essencial dessa teoria é que, quando um linfócito é clonado, sofre pe
 
 \subsection{Teoria do Perigo}
 
-No primeiro artigo a propor a aplicação da Teoria do Perigo em um sistema computacional, \citet{Aickelin2002} apresentam como a Teoria do Perigo pode auxiliar na aplicação de sistemas imunológicos artificiais em problemas complexos de detecção de anomalia, citando algumas analogias dos sistemas imunológicos presentes na Teoria do Perigo:
+No primeiro artigo a propor a aplicação da Teoria do Perigo em um sistema computacional, \citet{Aickelin2002} apresentam como a Teoria do Perigo pode auxiliar na aplicação de Sistemas Imunológicos Artificiais em problemas complexos de detecção de anomalia, citando algumas analogias dos sistemas imunológicos presentes na Teoria do Perigo:
 
 \begin{enumerate}[a)]
     \item Uma APC é necessária para apresentar o sinal de perigo.
@@ -92,7 +92,7 @@ O algoritmo aplica pesos pré-definidos aos sinais de entrada para produzir trê
 
 \section{Implementação}
 
-A modelagem de um problema como um sistema imunológico artificial requer a definição de quatro componentes: codificação, medida de similaridade, seleção e mutação. De maneira geral, o funcionamento de um sistema baseado no modelo imunológico é: uma vez que a \emph{codificação} e uma \emph{medida de similaridade} tenham sido escolhidas, o sistema executa a \emph{seleção} e \emph{mutação}, ambas baseadas na medida de similaridade, até que o critério de parada seja satisfeito \cite{Aickelin2005}. Essas quatro etapas são detalhadas nas próximas seções.
+A modelagem de um problema como um Sistema Imunológico Artificial requer a definição de quatro componentes: codificação, medida de similaridade, seleção e mutação. De maneira geral, o funcionamento de um sistema baseado no modelo imunológico é: uma vez que a \emph{codificação} e uma \emph{medida de similaridade} tenham sido escolhidas, o sistema executa a \emph{seleção} e \emph{mutação}, ambas baseadas na medida de similaridade, até que o critério de parada seja satisfeito \cite{Aickelin2005}. Essas quatro etapas são detalhadas nas próximas seções.
 
 \subsection{Codificação}
 
@@ -102,7 +102,7 @@ Um antígeno é uma parte do objetivo ou solução da aplicação, que pode ser 
 
 A tabela \ref{tab:ais_map} mostra as formas mais comuns do mapeamento das estruturas do sistema imunológico para as estruturas computacionais nos Sistemas Imunológicos Artificiais.
 
-\vspace{2mm}
+\vspace{1cm}
 \begin{table}[h!]
     \caption{Mapeamento das estruturas do sistema imunológico \cite{Andrew2003}}
     \centering
@@ -120,7 +120,7 @@ A tabela \ref{tab:ais_map} mostra as formas mais comuns do mapeamento das estrut
     \end{tabular}
     \label{tab:ais_map}
 \end{table}
-\vspace{2mm}
+\vspace{1cm}
 
 \subsection{Medida de similaridade}
 
@@ -157,7 +157,7 @@ A otimização da aptidão dos modelos em muitos casos não é realmente o objet
 
 \subsection{Seleção}
 
-O papel da seleção é explicado a seguir, no contexto do funcionamento do sistema. Esse processo é descrito em pseudocódigo no trecho \ref{lst:ais_aisalg}. Supondo um estado inicial onde sistema se encontra vazio, o antígeno então codificado (conforme a representação definida anteriormente) e adicionado ao sistema. Cada anticorpo é codificado e adicionado ao sistema, um a cada iteração. Os anticorpos iniciam com um determinado valor de concentração, que é análogo ao número de células presentes no sistema imunológico artificial. Esse valor é constantemente decrementado conforme o tempo passa, representando a morte natural de parte das células.
+O papel da seleção é explicado a seguir, no contexto do funcionamento do sistema. Esse processo é descrito em pseudocódigo no trecho \ref{lst:ais_aisalg}. Supondo um estado inicial onde sistema se encontra vazio, o antígeno então codificado (conforme a representação definida anteriormente) e adicionado ao sistema. Cada anticorpo é codificado e adicionado ao sistema, um a cada iteração. Os anticorpos iniciam com um determinado valor de concentração, que é análogo ao número de células presentes no Sistema Imunológico Artificial. Esse valor é constantemente decrementado conforme o tempo passa, representando a morte natural de parte das células.
 
 \vspace{1cm}
 \begin{lstlisting}[caption=Pseudo código de um Sistema Imunológico Artificial \cite{Aickelin2005},label=lst:ais_aisalg]
@@ -186,16 +186,18 @@ Mesmo assim, a mutação pode ser muito útil quando aplicada a alguns problemas
 \section{Espaço de formas}
 \label{sec:ais_shape}
 
-Os formalismos do espaço de formas e topologia de afinidade são dois paradigmas geométricos populares, originados na imunologia teórica e computacional, muito utilizados em aplicações recentes do campo de sistemas imunológicos artificiais \cite{Brownlee2007}. \citeauthor{Perelson1979} apresentaram o formalismo do espaço de formas em \citet{Perelson1979}, onde os autores fizeram uma investigação teórica das diferentes formas e capacidades de reconhecimento dos anticorpos. As ideias apresentadas nesse trabalho influenciaram muitos trabalhos no fim dos anos 80 e início dos anos 90, principalmente em trabalhos teóricos sobre seleção clonal e redes imunológicas.
+Os formalismos do espaço de formas e topologia de afinidade são dois paradigmas geométricos populares, originados na imunologia teórica e computacional, muito utilizados em aplicações recentes do campo de Sistemas Imunológicos Artificiais \cite{Brownlee2007}. \citeauthor{Perelson1979} apresentaram o formalismo do espaço de formas em \citet{Perelson1979}, onde os autores fizeram uma investigação teórica das diferentes formas e capacidades de reconhecimento dos anticorpos. As ideias apresentadas nesse trabalho influenciaram muitos trabalhos no fim dos anos 80 e início dos anos 90, principalmente em trabalhos teóricos sobre seleção clonal e redes imunológicas.
 
 Dados um anticorpo \emph{ab} e um antígeno \emph{ag} é criado um vetor onde as características relacionadas à ligação entre esses dois são discretizadas e transformadas em valores reais. Os parâmetros no trabalho original representavam características físicas, como a estrutura geométrica, carga eletrostática, entre outras. Assim, a interação \emph{ab-ag} pode ser definida como um ponto em um espaço vetorial Euclidiano \emph{S} de \emph{n} dimensões, onde \emph{n} é o número de características que compõem o vetor. Uma representação do espaço de estados, adaptada de \citet{Brownlee2007} é apresentada na Figura \ref{img:space}.
 
+\vspace{1cm}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.75\textwidth]{img/space.png}
     \label{img:space}
     \caption{Diagrama do formalismo do espaço de estados \cite{Brownlee2007}}
 \end{figure}
+\vspace{1cm}
 
 O espaço de formas é um hipercubo de volume V. Cada anticorpo é definido como uma área de reconhecimento nesse espaço ($\epsilon$). Na definição original, essas áreas de reconhecimento eram funções Gaussianas. A distância euclidiana entre \emph{ab} e \emph{ag} é considerada como a `afinidade' ou `medida de complementaridade'. Para isso, a natureza complementar dos anticorpos e antígenos é ignorada: uma ligação perfeita é considerada quando \emph{ab == ag}, ao contrário de \emph{ab != ag}. Anticorpos possuem uma hiper-região de reconhecimento, onde antígenos podem gerar uma resposta imune.
 
