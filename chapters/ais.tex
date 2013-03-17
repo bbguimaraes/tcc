@@ -1,6 +1,8 @@
 \chapter{Sistemas Imunológicos Artificiais}
 
-O estudo sobre os Sistemas Imunológicos Artificiais (um subcampo da área de Inteligência Computacional) iniciou nos anos 90, baseado na proposição de aplicar modelos teóricos da Imunologia a problemas de aprendizagem de máquina e automação.
+O estudo sobre os Sistemas Imunológicos Artificiais (um subcampo da área de Inteligência Computacional) iniciou nos anos 90, baseado na proposição de aplicar modelos teóricos da Imunologia a problemas de aprendizagem de máquina e automação, procurando estudar e desenvolver abstrações computacionalmente interessantes do sistema imunológico natural.
+
+Conforme explicado anteriormente, os Sistemas Imunológico Artificiais podem ser divididos em dois tipos. No entanto, os sistemas que buscam simular fielmente as estruturas da Imunologia não são tão interessantes para a computação. A maioria dos estudos é baseada em modelos que se inspiram nos modelos naturais, mas que têm como objetivo final a construção de sistemas computacionais.
 
 Os primeiros trabalhos basearam-se em paradigmas como o das Redes Imunológicas Artificiais, os Algoritmos Genéticos, Aprendizagem por Reforço e Sistemas de Classificação. Os primeiros trabalhos a formarem uma identidade própria desses algoritmos foram aqueles que relacionavam o sistema imunológico como uma analogia aos sistemas computacionais de proteção da informação, tais como \citet{Forrest1994} e \citet{Forrest1997}.
 
@@ -37,13 +39,41 @@ Em \citet{Dasgupta2010}, os autores apresentam pesquisas recentes na área de Si
 
 Forrest et al \cite{Forrest1994} publicou um artigo chamado "Self-Nonself Discrimination in a Computer" (Discriminação do Próprio-Não-Próprio em um Computador), que propunha um método chamado de \emph{algoritmo de seleção negativa}. Esse algoritmo é baseado na capacidade de discriminação entre o próprio e o não-próprio no sistema imunológico adaptativo através do processo de seleção negativa na geração de células T no sistema imunológico. Foi projetado para aplicações de detecção de alteração, detecção de intrusão e outros problemas de reconhecimento de padrões e classificação binária, aplicado inicialmente a um problema de detecção de vírus de computador.
 
-O princípio da técnica da seleção negativa é a modelagem do que é desconhecido como um complemento do que é conhecido. Isso é conseguido através de um processo contínuo de seleção negativa, que elimina células que reajam a células próprias. No sistema imunológico natural, as precursoras das células T deslocam-se da medula óssea para o timo, onde ocorre o seu desenvolvimento. As células proliferam-se e diferenciam-se, através de mutação genética. A seleção negativa é aplicada sobre aquelas células T que são ativadas por células próprias.
+O princípio da técnica da seleção negativa é a modelagem do que é desconhecido como um complemento do que é conhecido. A seleção negativa ocorre no timo, quando as células T (assim chamadas porque se desenvolvem no timo) que reagem a células próprias são eliminadas, mantendo apenas aquelas células com ligação fraca ou nula com as células próprias. No sistema imunológico natural, as precursoras das células T deslocam-se da medula óssea para o timo, onde ocorre o seu desenvolvimento. As células proliferam-se e diferenciam-se, através de mutação genética. A seleção negativa é aplicada sobre aquelas células T que são ativadas por células próprias. Essas células, no futuro, respondem aos diferentes tipos de agentes não-próprios invasores que precisam ser removidos da corrente sanguínea e linfática, tecidos, etc.
+
+Na área dos Sistemas Imunológicos Artificiais, é comum referir-se à seleção negativa como "detecção de vírus". Na verdade, o conceito refere-se à detecção de qualquer mudança no "próprio", seja ela causada por vírus ou outro tipo de agente. É esse processo que foi abstraído para formar um algoritmo para detecção de mudanças em um conjunto de objetos.
 
 Os algoritmos inspirados na seleção negativa são baseados nesse comportamento, e suas principais características são a representação negativa da informação, geração distribuída do conjunto de detectores e classificação dos dados em apenas uma classe. A representação dos dados é um dos principais aspectos desse algoritmo: geralmente são usados \emph{strings} ou vetores de valores reais. Existe também uma regra de combinação particular de cada algoritmo, tipicamente baseada em distância ou alguma medida similar. Muitas variações desse algoritmo foram desenvolvidas, mas todas compartilham essas características básicas.
 
+O modelo para um algoritmo baseado na seleção natural é:
+
+\begin{enumerate}[a)]
+    \item Criar um conjunto de \emph{strings} próprias, \emph{S}.
+    \item Criar um conjunto de \emph{strings} aleatórias, \emph{R$_{0}$}.
+    \item Para cada \emph{r$_{0}$} $\in$ \emph{R$_{0}$}, criar um conjunto, \emph{R}, dos elementos de \emph{r$_{0}$} que não são fortemente similares a qualquer \emph{s} $\in$ \emph{S}. A similaridade é definida por uma função \emph{m}(\emph{r$_{0}$}, \emph{s}), tal que: (i) \emph{m}(\emph{r$_{0}$}, \emph{s}) $\bowtie \theta$, (ii) $\bowtie$ é um operador (como $\ge$) que define se valores altos ou baixos de \emph{m}(\emph{r$_{0}$}, \emph{s}) indicam maior similaridade entre \emph{strings} e (iii) $\theta$ define um limiar.
+    \item Para cada \emph{r} $\in$ \emph{R}, garantir que nenhum \emph{s} $\in$ \emph{S} está acima (ou abaixo, dependendo de $\bowtie$) do limiar $\theta$.
+    \item Retornar ao item d) enquanto a detecção de mudanças em \emph{S} seja necessária.
+\end{enumerate}
+
+O conjunto \emph{R} é conhecido como conjunto de detectores, e é ele que será o responsável por detectar mudanças nos elementos próprios. Uma alteração nesse conjunto faz com que os elementos aproximem-se do conjunto de elementos não-próprios, aumentado a similaridade com os elementos de \emph{R} \cite{Garrett2005}.
+
+Aplicações típicas da seleção clonal são:
+
+\iffalse
+Read papers' abstracts to complement the list below:
+
+Dasgupta, D. and Forrest, S. (1999). An anomaly detection algorithm inspired by the immune system. In Artificial Immune Systems and Their Applications, chapter 14, pages 262–277. Springer-Verlag, Inc.
+
+\fi
+
+\begin{enumerate}[a)]
+    \item Deteção de alterações em códigos de máquina de programas causadas por vírus de computador, detecção de alterações em redes de sistemas distribuídos e detecção de intrusão em redes de computadores.
+    \item Detecção e diagnósticos de falhas, como em máquinas automatizadas, sensores, monitoramento de usinas químicas e nucleares e desenvolvimento de hardware tolerante a falhas.
+\end{enumerate}
+
 \subsection{Redes imunológicas artificiais}
 
-Redes imunológicas artificiais (\emph{Artificial immune networks}, AINs) são inspiradas no modelo de redes imunológicas de Farmer et. al \cite{Farmer1986}, foram propostas por \citet{Ishida1990} e foram redefinidos e reimplementdados em \citet{Timmis2000}. Esses trabalhos foram nomeados conjuntamente como AINEs (\emph{Artificial Immune NEtworks}, Rede Imunológicas Artificiais). Uma rede imunológica artificial consiste de um conjunto de células B e ligações entre essas células. Essas redes permitem ao sistema imunológico ter uma memória imunológica: as células estimulam ou reprimem umas às outras, atingindo uma memória estável. Sua utilização é ampla em campos como a mineração de dados e aprendizagem de máquina. 
+Redes imunológicas artificiais (\emph{Artificial immune networks}, AINs) são inspiradas no modelo de redes imunológicas de Farmer et. al \cite{Farmer1986}, foram propostas por \citet{Ishida1990} e foram redefinidos e reimplementdados em \citet{Timmis2000}. Esses trabalhos foram nomeados conjuntamente como AINEs (\emph{Artificial Immune NEtworks}, Rede Imunológicas Artificiais). Uma rede imunológica artificial consiste de um conjunto de células B e ligações entre essas células. Essas redes permitem ao sistema imunológico ter uma memória imunológica: as células estimulam ou reprimem umas às outras, atingindo uma memória estável. Sua utilização é ampla em campos como a mineração de dados e aprendizagem de máquina.
 
 O sistema proposto por \citeauthor{Timmis2000} era composto de uma medula óssea, uma rede de células B e uma população de antígenos. A população de células B é inicializada aleatoriamente e, uma a uma, são inseridas em um ponto também aleatório na rede. Caso a célula seja capaz de ligar-se à população de antígenos, clones das células B são gerados, e aqueles com maior afinidade com as células da rede são mantidos. Os algoritmos de redes imunológicas artificiais incorporaram algumas ideias das teorias da seleção clonal: as células B nas AINE sofrem clonagem, mutação e seleção quando são estimuladas pela rede.
 
@@ -212,6 +242,22 @@ Essa superfície teórica é geralmente considerada como contínua e possui dive
 Os formalismos do espaço de formas e topologia de afinidades são a base da definição do espaço de formas binário usado na seleção negativa e nas redes imunológicas, das regiões e limiares de detecção nos algoritmos de mineração de dados e classificação, e da movimentação na topologia das funções de custo nos algoritmos de otimização.
 
 A interpretação geométrica genérica proporcionada por esses dois formalismos constitui um \emph{framework} para a investigação de princípios imunológicos, não limitada aos problemas de reconhecimento de padrões.
+
+\section{Comparação dos agoritmos}
+
+Garrett faz um estudo detalhado de comparação entre os principais algoritmos imunológicos \cite{Garrett2005}. Nesse trabalho, o autor define o método de comparação entre esses algoritmos em dois termos: distintividade e eficiência.
+
+Para que um algoritmo seja considerado distinto, é avaliado se seus símbolos e expressões são únicos, assim como os processos aplicados sobre estes dois, ou se podem ser transformados em símbolos, expressões ou processos de outros métodos, sem afetar a dinâmica do algoritmo. Por outro lado, para que seja considerado eficiente, é avaliado se ele obtém os resultados através de meios únicos, apresenta resultados melhores ou obtém um conjunto de resultados mais rapidamente que métodos existentes. Nessa comparação, é importante que um mesmo tipo de experimento seja executado em todos os casos, e que a mesma métrica seja aplicada na avaliação dos resultados.
+
+\subsection{Seleção negativa}
+
+Apesar de ser uma das mais importantes abstrações do sistema imunológico, análises de algoritmos baseados na seleção negativa demonstraram que eles sofrem de problemas de escalabilidade. Considerando o conjunto de cadeias de bits consideradas próprias (\emph{S}), o número de cadeias aleatórias (\emph{R$_{0}$}) aumenta exponencialmente com o crescimento de \emph{S}. Somado a isso, há o fato de que pode haver sobreposição nas partes do espaço de estados coberta por cada detector, enquanto outras partes podem não ser cobertas. Ou ainda podem haver áreas do espaço não-próprio que não podem ser cobertas por um detector sem que ele cubra também uma área própria.
+
+Já foi questionada a tentativa de cobrir, aleatoriamente, um espaço não-próprio infinito utilizando detectores de tamanho finito. Como autores como Dasgupta, Forrest e Nino apontam, esse tipo de modelagem permite que múltiplos detectores identifiquem um elemento não-próprio por aproximação, além de permitir a criação de detectores sem que se tenha conhecimento do espaço de estados. De fato, caso o conjunto próprio fosse desconhecido, e existisse apenas uma função que, dado um elemento, determinasse se ele pertence ou não ao conjunto próprio, a seleção negativa seria o único método, entre os discutidos, que poderia ser aplicado.
+
+Conforme demonstrou D’haeseleer, a seleção negativa muitas vezes não é tão efetiva quanto outras técnicas, mas oferece um nível de segurança maior por ser menos suscetível à tentativas deliberadas dos agentes maliciosos de enganar o sistema\iffalse melhorar essa frase\fi. Outras vantagens apontadas incluem a habilidade de detecção de mudanças nos eventos do sistema, de verificar mudanças em partes de um objeto sem a necessidade de verificar o objeto como um todo e de aplicar diversos detectores diferentes sobre um mesmo objeto, aumentando a probabilidade de detecção conforme o número de detectores utilizado. O autor também aponta que subconjuntos dos detectores podem ser utilizados de maneira autônoma e distribuída.
+
+Alguns trabalhos incorporam processes da seleção clonal na seleção negativa \cite{Garret2005}: os detectores são gerados aleatoriamente, como no algoritmo original, e aqueles que identificam elementos próprios passam pelo processo de seleção clonal. O objetivo é que esses detectores sejam ajustados até que não cubram mais o espaço próprio. A vantagem, nesse caso, é a de utilizar o poder de exploração do espaço de estados da seleção clonal para dispensar o controle determinístico complexo dos detectores feito na maior parte dos trabalhos da área.
 
 \iffalse
 
