@@ -1,10 +1,10 @@
 # Makefile used on my Ubuntu system.
 # Packages needed:
-#     texlive-common, texlive-latex-recommended, texlive-fonts-recommended, texlive-latex-exta.
+# 	  rubber texlive-common texlive-latex-recommended texlive-fonts-recommended
+# 	  texlive-latex-exta.
 
 LATEX=pdflatex
 BIBTEX=bibtex
-AUX_DIRECTORY=aux
 FLAGS=
 
 CHAPTERS= \
@@ -14,14 +14,11 @@ CHAPTERS= \
 	chapters/prop.tex   \
 	chapters/fraud.tex
 
-all: tcc.pdf clean
-.PHONY: clean all
+all: tcc.pdf
+.PHONY: all clean
 
 tcc.pdf: $(CHAPTERS) tcc.bib tcc.tex
-	$(LATEX) $(FLAGS) tcc
-	$(BIBTEX) tcc
-	$(LATEX) $(FLAGS) tcc
-	$(LATEX) $(FLAGS) tcc
+	rubber --pdf tcc.tex
 
 clean:
 	rm -f chapters/*.aux
