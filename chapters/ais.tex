@@ -102,7 +102,11 @@ No primeiro artigo a propor a aplicação da Teoria do Perigo em um sistema comp
     \item Uma resposta imunológica não deve gerar novos sinais de perigo.
 \end{enumerate}
 
-Segundo a Teoria do Perigo, a resposta imunológica é desencadeada por sinais de perigo. Representações dos sinais de perigo podem incluir uso anormal de memória, atividade de disco imprópria, etc. O sistema imunológico reage aos antígenos dentro de uma zona de perigo centrada no local da origem do sinal, que pode ser modelada como uma medida de similaridade ou relação de causalidade. Aqueles anticorpos que combinam-se aos antígenos (sinal um) dentro de uma zona de perigo (sinal dois) proliferam, gerando células de memória.
+A contribuição da Teoria do Perigo para sistemas de detecção é a habilidade de focar-se apenas naqueles eventos que têm mais chance de serem nocivos, o que geralmente representa um subconjunto reduzido do conjunto não-próprio. A mudança da teoria do conceito de ``próprio'' e ``não-próprio'' para o de ``perigo'' pode paracer sem sentido, mas existem diferenças importantes: o conceito de próprio é relativo às próprias conhecidas, que podem não representar o conjunto próprio inteiro, além de poderem mudar com o passar do tempo e podem conter muitas características ou atributos.
+
+O conceito de perigo, por outro lado, é baseado em eventos indesejados, possibilitando ao sistema de detecção utilizar apenas características ou atributos relacionados à situação de perigo. Representações dos sinais de perigo podem ser positivas ou negativas (ou ambas). Sinais positivos podem representam a presença de eventos como grande utilização de meória ou disco, alterações frequentes em arquivos ou sinais incomuns do sistema operacional (como SIGABRT em sistemas UNIX). Sinais negativos podem representar a ausência de eventos como a falta de resposta de um servidor, ausência de um arquivo ou falta de espaço em disco ou memória.
+
+O sistema imunológico reage aos antígenos dentro de uma zona de perigo centrada no local da origem do sinal, que pode ser modelada como uma medida de similaridade ou relação de causalidade. Aqueles anticorpos que combinam-se aos antígenos (sinal um) dentro de uma zona de perigo (sinal dois) proliferam, gerando células de memória.
 
 \subsection{Algoritmo de células dendríticas}
 
@@ -258,6 +262,10 @@ Já foi questionada a tentativa de cobrir, aleatoriamente, um espaço não-próp
 Conforme demonstrou D’haeseleer, a seleção negativa muitas vezes não é tão efetiva quanto outras técnicas, mas oferece um nível de segurança maior por ser menos suscetível à tentativas deliberadas dos agentes maliciosos de enganar o sistema\iffalse melhorar essa frase\fi. Outras vantagens apontadas incluem a habilidade de detecção de mudanças nos eventos do sistema, de verificar mudanças em partes de um objeto sem a necessidade de verificar o objeto como um todo e de aplicar diversos detectores diferentes sobre um mesmo objeto, aumentando a probabilidade de detecção conforme o número de detectores utilizado. O autor também aponta que subconjuntos dos detectores podem ser utilizados de maneira autônoma e distribuída.
 
 Alguns trabalhos incorporam processes da seleção clonal na seleção negativa \cite{Garret2005}: os detectores são gerados aleatoriamente, como no algoritmo original, e aqueles que identificam elementos próprios passam pelo processo de seleção clonal. O objetivo é que esses detectores sejam ajustados até que não cubram mais o espaço próprio. A vantagem, nesse caso, é a de utilizar o poder de exploração do espaço de estados da seleção clonal para dispensar o controle determinístico complexo dos detectores feito na maior parte dos trabalhos da área.
+
+\subsection{Teoria do Perigo}
+
+As dificuldades na implementação de sistemas baseados na Teoria do Perigo são as mesmas encontradas na aceitação da teoria na imunologia: a natureza dos sinais de perigo não é facilmente identificável; e o sistema aparentemente deve primeiro sofrer o dano para que as medidas de proteção possam ser tomadas.
 
 \iffalse
 
