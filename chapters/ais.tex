@@ -57,7 +57,7 @@ O modelo para um algoritmo baseado na seleção natural é:
 
 O conjunto \emph{R} é conhecido como conjunto de detectores, e é ele que será o responsável por detectar mudanças nos elementos próprios. Uma alteração nesse conjunto faz com que os elementos aproximem-se do conjunto de elementos não-próprios, aumentado a similaridade com os elementos de \emph{R} \cite{Garrett2005}.
 
-Aplicações típicas da seleção clonal são:
+Aplicações típicas da seleção negativa são:
 
 \iffalse
 Read papers' abstracts to complement the list below:
@@ -67,7 +67,7 @@ Dasgupta, D. and Forrest, S. (1999). An anomaly detection algorithm inspired by 
 \fi
 
 \begin{enumerate}[a)]
-    \item Deteção de alterações em códigos de máquina de programas causadas por vírus de computador, detecção de alterações em redes de sistemas distribuídos e detecção de intrusão em redes de computadores.
+    \item Detecção de alterações em códigos de máquina de programas causadas por vírus de computador, detecção de alterações em redes de sistemas distribuídos e detecção de intrusão em redes de computadores.
     \item Detecção e diagnósticos de falhas, como em máquinas automatizadas, sensores, monitoramento de usinas químicas e nucleares e desenvolvimento de hardware tolerante a falhas.
 \end{enumerate}
 
@@ -82,13 +82,30 @@ O sistema proposto por \citeauthor{Timmis2000} era composto de uma medula óssea
 
 Em 2000, Castro et al.\cite{Castro2000} propôs o algoritmo de seleção clonal (CSA), mais tarde conhecido como CLONALG. Esse algoritmo é baseado nos princípios da imunidade adquirida de seleção clonal e maturação de afinidade, que são por sua vez baseados nos princípios da teoria de Darwin da seleção natural.
 
-Segundo a teoria da seleção clonal, quando um linfócito identifica um antígeno, ele prolifera, criando milhares de cópias de si mesmo, e diferenciando-se em diferentes tipos de células: de plasma e de memória.
+As etapas do CLONALG são:
 
-Células de plasma têm vida curta e produzem grandes quantidades de anticorpos moleculares. Células de memória vivem por um longo período, fazendo parte das respostas secundárias caso o antígeno venha a ser identificado novamente.
+\begin{enumerate}[a)]
+    \item Criar uma população inicial aleatória de anticorpos, \emph{P$_{0}$}.
+    \item Repetir as etapas seguintes enquanto a condição de término não for atingida.
+    \item Escolher um subconjunto de \emph{P$_{t}$}, \emph{F}, contendo os anticorpos com maior aptidão de acordo com uma função de aptidão \emph{f}(\emph{ab{$_{i}$}}).
+    \item Para cada \emph{ab} $\in$ \emph{F}, criar um conjunto de clones, \emph{C$_{i}$}, tal que $|$\emph{C$_{i}$}$|$ = \emph{nc}(\emph{ab$_{i}$}). O conjunto de todos os clones, \emph{C} $= \bigcup_{i}$\emph{C$_{i}$}.
+    \item Aplicar mutação em cada clone \emph{c} $\in$ \emph{C} através de uma função \emph{am}(\emph{ab$_{i}$}). Adicionar esses novos clones que sofreram mutação, \emph{C'}, ao conjunto \emph{P$_{t}$}, gerando \emph{P'$_{t}$}.
+    \item Selecionar um subconjunto de \emph{P'$_{t}$}, \emph{F'}, contendo os anticorpos com maior aptidão.
+    \item Adicionar \emph{r} células B geradas aleatoriamente a \emph{F'}, gerando uma nova população \emph{P''$_{t}$}.
+    \item Reter apenas os $|$\emph{P$_{t}$}$|$ melhores membros de \emph{P''$_{t}$}, gerando \emph{P$_{t+1}$}. Todas as outras células B são consideradas mortas.
+\end{enumerate}
 
-A clonagem de células B causa um aumento na afinidade do antígeno que provocou a clonagem, através de um processo denominado maturação de afinidade. Esse processo é composto de duas partes: hipermutação somática, que diversifica os anticorpos introduzindo mudanças aleatórias nas novas gerações; e um mecanismo de seleção, que garante que apenas os clones com maior afinidade sobrevivam. Assim, uma geração de células inclui a inicialização de soluções candidatas, seleção, clonagem, mutação, reseleção e substituição de população, semelhante a um algoritmo genético.
+O resultado de cada nova geração é que as células B tendem a aproximarem-se ao ponto ótimo do espaço de estados, em relação à geração anterior. A adição de membros aleatórios em cada geração faz com que o espaço seja melhor explorado.
 
-A parte essencial dessa teoria é que, quando um linfócito é clonado, sofre pequenas alterações em sua estrutura (hipermutação somática), que alteram seus receptores e sua capacidade de reconhecimento, assim como os anticorpos que são gerados por ele. Assim, essa teoria sugere que um repertório inicial de células imunes genéricas é capaz de evoluir para responder a mudanças no ambiente, sem ter informações detalhadas sobre os agentes que compõem esse ambiente.
+Aplicações típicas da seleção clonal são:
+
+\begin{enumerate}[a)]
+    \item Diversos tipos de reconhecimento de padrões.
+    \item Problema da colocaração de grafos, reconhecimento de caracteres e alguns problemas NP-completo.
+    \item Diversos tipos de esclonamento.
+    \item Classificação de documentos.
+    \item Otimização de funções combinatoriais, uni-modais e multi-modais e o problema da inicialização dos centros em funções de base radial.
+\end{enumerate}
 
 \subsection{Teoria do Perigo}
 
@@ -102,9 +119,9 @@ No primeiro artigo a propor a aplicação da Teoria do Perigo em um sistema comp
     \item Uma resposta imunológica não deve gerar novos sinais de perigo.
 \end{enumerate}
 
-A contribuição da Teoria do Perigo para sistemas de detecção é a habilidade de focar-se apenas naqueles eventos que têm mais chance de serem nocivos, o que geralmente representa um subconjunto reduzido do conjunto não-próprio. A mudança da teoria do conceito de ``próprio'' e ``não-próprio'' para o de ``perigo'' pode paracer sem sentido, mas existem diferenças importantes: o conceito de próprio é relativo às próprias conhecidas, que podem não representar o conjunto próprio inteiro, além de poderem mudar com o passar do tempo e podem conter muitas características ou atributos.
+A contribuição da Teoria do Perigo para sistemas de detecção é a habilidade de focar-se apenas naqueles eventos que têm mais chance de serem nocivos, o que geralmente representa um subconjunto reduzido do conjunto não-próprio. A mudança da teoria do conceito de ``próprio'' e ``não-próprio'' para o de ``perigo'' pode parecer sem sentido, mas existem diferenças importantes: o conceito de próprio é relativo às próprias conhecidas, que podem não representar o conjunto próprio inteiro, além de poderem mudar com o passar do tempo e podem conter muitas características ou atributos.
 
-O conceito de perigo, por outro lado, é baseado em eventos indesejados, possibilitando ao sistema de detecção utilizar apenas características ou atributos relacionados à situação de perigo. Representações dos sinais de perigo podem ser positivas ou negativas (ou ambas). Sinais positivos podem representam a presença de eventos como grande utilização de meória ou disco, alterações frequentes em arquivos ou sinais incomuns do sistema operacional (como SIGABRT em sistemas UNIX). Sinais negativos podem representar a ausência de eventos como a falta de resposta de um servidor, ausência de um arquivo ou falta de espaço em disco ou memória.
+O conceito de perigo, por outro lado, é baseado em eventos indesejados, possibilitando ao sistema de detecção utilizar apenas características ou atributos relacionados à situação de perigo. Representações dos sinais de perigo podem ser positivas ou negativas (ou ambas). Sinais positivos podem representam a presença de eventos como grande utilização de memória ou disco, alterações frequentes em arquivos ou sinais incomuns do sistema operacional (como SIGABRT em sistemas UNIX). Sinais negativos podem representar a ausência de eventos como a falta de resposta de um servidor, ausência de um arquivo ou falta de espaço em disco ou memória.
 
 O sistema imunológico reage aos antígenos dentro de uma zona de perigo centrada no local da origem do sinal, que pode ser modelada como uma medida de similaridade ou relação de causalidade. Aqueles anticorpos que combinam-se aos antígenos (sinal um) dentro de uma zona de perigo (sinal dois) proliferam, gerando células de memória.
 
@@ -116,7 +133,7 @@ As células dendríticas encontram-se distribuídas em todos os tecidos e execut
 
 \begin{description}
     \item[Imaturas]: coletam partes dos antígenos e sinais
-    \item[Semi-maduras]: decidem que os sinais locais não representam perigo e apresentam um sinal de tolerância às céulas T
+    \item[Semi-maduras]: decidem que os sinais locais não representam perigo e apresentam um sinal de tolerância às células T
     \item[Maduras]: decidem que os sinais locais são de perigo e apresentam um sinal de reposta imune às células T
 \end{description}
 
@@ -207,15 +224,15 @@ ENQUANTO (sistema não cheio) E (ainda existem anticorpos) FACA
 FIMENQUANTO
 \end{lstlisting}
 
-Anticorpos cuja concentração ultrapassa um certo limiar mínimo são removidos do sistema. Um anticorpo aumenta sua concentração de acordo com a sua similaridade com o antígeno. Quanto maior a similaridade, mais sua concentração aumenta, em um processo similar à expansão clonal que ocorre com as células imunológicas quando identificam um antígeno. Após todos os antígenos serem adicionados ao sistema, começa um processo iterativo de decremento de concentração e clonagem, até que o sistema entre em equilíbro: não ocorram remoções por um determinado período de tempo. Assim, conforme o número de iterações do processo de seleção, apenas aqueles antígenos que apresentarem uma maior taxa de similaridade com o antígeno são mantidos no sistema.
+Anticorpos cuja concentração ultrapassa um certo limiar mínimo são removidos do sistema. Um anticorpo aumenta sua concentração de acordo com a sua similaridade com o antígeno. Quanto maior a similaridade, mais sua concentração aumenta, em um processo similar à expansão clonal que ocorre com as células imunológicas quando identificam um antígeno. Após todos os antígenos serem adicionados ao sistema, começa um processo iterativo de decremento de concentração e clonagem, até que o sistema entre em equilíbrio: não ocorram remoções por um determinado período de tempo. Assim, conforme o número de iterações do processo de seleção, apenas aqueles antígenos que apresentarem uma maior taxa de similaridade com o antígeno são mantidos no sistema.
 
 \subsection{Mutação}
 
-A mutação utilizada nos sistemas imunológicos é similar àquela encontrada em Algoritmos Genéticos. \emph{Strings} binárias têm seus dígitos invertidos, valores reais são alterados aleatoriamente e os outros tipos são trocados de posição. Além disso, geralmente usa-se a mutação somática, inspirada na reprodução de células do sistema imunológico, onde a mutação é mais severa conforme o grau de similaridade entre o anticorpo e o antígeno aumenta (ou diminui, caso esteja-se aplicando a seleção positiva). 
+A mutação utilizada nos sistemas imunológicos é similar àquela encontrada em Algoritmos Genéticos. \emph{Strings} binárias têm seus dígitos invertidos, valores reais são alterados aleatoriamente e os outros tipos são trocados de posição. Além disso, geralmente usa-se a mutação somática, inspirada na reprodução de células do sistema imunológico, onde a mutação é mais severa conforme o grau de similaridade entre o anticorpo e o antígeno aumenta (ou diminui, caso esteja-se aplicando a seleção positiva).
 
 A estratégia de mutação deve ser planejada com cuidado, porque nem todas as técnicas funcionam para qualquer tipo de dados. Um exemplo de um sistema de recomendação de filmes é apresentado em \citet{Aickelin2005}, onde uma base de dados é utilizada para recomendar filmes aos usuários, analisando usuários que recomendaram filmes semelhantes àqueles recomendados por ele. Nesse caso, não faria sentido aplicar qualquer tipo de mutação: ao fim, os anticorpos convergiriam para o próprio usuário.
 
-Mesmo assim, a mutação pode ser muito útil quando aplicada a alguns problemas, como detecção de intrusão e mineração de dados \cite{DeCastro2002}. 
+Mesmo assim, a mutação pode ser muito útil quando aplicada a alguns problemas, como detecção de intrusão e mineração de dados \cite{DeCastro2002}.
 
 \section{Espaço de formas}
 \label{sec:ais_shape}
@@ -247,7 +264,7 @@ Os formalismos do espaço de formas e topologia de afinidades são a base da def
 
 A interpretação geométrica genérica proporcionada por esses dois formalismos constitui um \emph{framework} para a investigação de princípios imunológicos, não limitada aos problemas de reconhecimento de padrões.
 
-\section{Comparação dos agoritmos}
+\section{Comparação dos algoritmos}
 
 Garrett faz um estudo detalhado de comparação entre os principais algoritmos imunológicos \cite{Garrett2005}. Nesse trabalho, o autor define o método de comparação entre esses algoritmos em dois termos: distintividade e eficiência.
 
@@ -266,6 +283,12 @@ Alguns trabalhos incorporam processes da seleção clonal na seleção negativa 
 \subsection{Teoria do Perigo}
 
 As dificuldades na implementação de sistemas baseados na Teoria do Perigo são as mesmas encontradas na aceitação da teoria na imunologia: a natureza dos sinais de perigo não é facilmente identificável; e o sistema aparentemente deve primeiro sofrer o dano para que as medidas de proteção possam ser tomadas.
+
+\subsection{Seleção clonal}
+
+A principal característica da seleção clonal, que a difere dos outros métodos, é seu mecanismo de ajuste da mutação. Enquanto nos outros métodos o grau de mutação (ou o grau em que a mutação muda) é constante, na seleção clonal esse grau é determinado por uma função baseada na aptidão da solução. Soluções com pouca derivação do estado ótimo sofres pequenos graus de mutação. Da mesma maneira, outra característica única da seleção clonal é a função que define o número de clones de acordo com a aptidão da solução.
+
+No entanto, algoritmos baseados na seleção clonal podem ser lentos em sua execução devido ao número de clones, que aumenta conforme a média função de aptidão aumenta.
 
 \iffalse
 
