@@ -3,10 +3,11 @@
 # 	  rubber texlive-common texlive-latex-recommended texlive-fonts-recommended
 # 	  texlive-latex-exta.
 
-LATEX=pdflatex
+LATEX=rubber --pdf
 BIBTEX=bibtex
 FLAGS=
 
+MAIN_TEX = tcc.tex
 CHAPTERS= \
 	chapters/intro.tex  \
 	chapters/nis.tex    \
@@ -18,13 +19,7 @@ all: tcc.pdf
 .PHONY: all clean
 
 tcc.pdf: $(CHAPTERS) tcc.bib tcc.tex
-	rubber --pdf tcc.tex
+	$(LATEX) $(MAIN_TEX)
 
 clean:
-	rm -f chapters/*.aux
-	rm -f *.aux
-	rm -f *.toc
-	rm -f *.log
-	rm -f *.lof
-	rm -f *.bbl
-	rm -f *.blg
+	$(LATEX) --clean $(MAIN_TEX)
