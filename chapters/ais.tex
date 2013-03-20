@@ -77,6 +77,15 @@ Redes imunológicas artificiais (\emph{Artificial immune networks}, AINs) são i
 
 O sistema proposto por \citeauthor{Timmis2000} era composto de uma medula óssea, uma rede de células B e uma população de antígenos. A população de células B é inicializada aleatoriamente e, uma a uma, são inseridas em um ponto também aleatório na rede. Caso a célula seja capaz de ligar-se à população de antígenos, clones das células B são gerados, e aqueles com maior afinidade com as células da rede são mantidos. Os algoritmos de redes imunológicas artificiais incorporaram algumas ideias das teorias da seleção clonal: as células B nas AINE sofrem clonagem, mutação e seleção quando são estimuladas pela rede.
 
+Aplicações típicas das redes imunológicas são:
+
+\begin{enumerate}[a)]
+    \item Mineração de dados
+    \item Diagnósticos
+    \item Análise de clusters
+    \item Detecção de sequências de genes promotores.
+\end{enumerate}
+
 \subsection{Seleção clonal}
 \label{sec:ais_clonalg}
 
@@ -280,15 +289,19 @@ Conforme demonstrou D’haeseleer, a seleção negativa muitas vezes não é tã
 
 Alguns trabalhos incorporam processes da seleção clonal na seleção negativa \cite{Garret2005}: os detectores são gerados aleatoriamente, como no algoritmo original, e aqueles que identificam elementos próprios passam pelo processo de seleção clonal. O objetivo é que esses detectores sejam ajustados até que não cubram mais o espaço próprio. A vantagem, nesse caso, é a de utilizar o poder de exploração do espaço de estados da seleção clonal para dispensar o controle determinístico complexo dos detectores feito na maior parte dos trabalhos da área.
 
-\subsection{Teoria do Perigo}
-
-As dificuldades na implementação de sistemas baseados na Teoria do Perigo são as mesmas encontradas na aceitação da teoria na imunologia: a natureza dos sinais de perigo não é facilmente identificável; e o sistema aparentemente deve primeiro sofrer o dano para que as medidas de proteção possam ser tomadas.
-
 \subsection{Seleção clonal}
 
 A principal característica da seleção clonal, que a difere dos outros métodos, é seu mecanismo de ajuste da mutação. Enquanto nos outros métodos o grau de mutação (ou o grau em que a mutação muda) é constante, na seleção clonal esse grau é determinado por uma função baseada na aptidão da solução. Soluções com pouca derivação do estado ótimo sofres pequenos graus de mutação. Da mesma maneira, outra característica única da seleção clonal é a função que define o número de clones de acordo com a aptidão da solução.
 
-No entanto, algoritmos baseados na seleção clonal podem ser lentos em sua execução devido ao número de clones, que aumenta conforme a média função de aptidão aumenta.
+No entanto, algoritmos baseados na seleção clonal podem ser lentos em sua execução devido ao número de clones, que aumenta conforme a média função de aptidão aumenta. A otimização é uma área onde os algoritmos baseados na seleção clonal têm mostrado bons resultados \cite{Garret2005}.
+
+\subsection{Redes imunológicas artificiais}
+
+Devido às comparações entre cada possível par de anticorpos, as redes imunológicas são, de maneira geral, lentas. Como cada anticorpo é comparado com cada um dos outros, a complexidade (em questão de tempo) é geralmente \emph{O}(\emph{n$^{2}$}). Algumas pesquisas na área tentam reduzir essa complexidade, permitindo apenas um número finito de comparações em cada iteração. No entanto, isso pode comprometer os resultados, devido ao menor número de interações entre os elementos da rede, o que parece ir contra o propósito inicial do modelo.
+
+\subsection{Teoria do Perigo}
+
+As dificuldades na implementação de sistemas baseados na Teoria do Perigo são as mesmas encontradas na aceitação da teoria na imunologia: a natureza dos sinais de perigo não é facilmente identificável; e o sistema aparentemente deve primeiro sofrer o dano para que as medidas de proteção possam ser tomadas.
 
 \iffalse
 
