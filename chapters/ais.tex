@@ -8,7 +8,7 @@ Os primeiros trabalhos basearam-se em paradigmas como o das Redes Imunológicas 
 
 Os algoritmos modernos são inspirados em três campos principais: seleção clonal, seleção negativa e redes imunológicas. Esse tipo de sistema é comummente aplicado a problemas de detecção de padrões, classificação, otimização, \emph{clustering} e outros domínios de aprendizagem de máquina.
 
-A última década mostrou um grande aumento no interesse pelos algoritmos baseados em sistemas imunológicos por serem uma boa fonte de inspiração para novas abordagens para solução de problemas complexos. O sistema imunológico natural oferece metáforas ricas pelo fato de ser um sistema altamente distribuído, adaptativo e auto-organizável, além de suas capacidades de aprendizado, memorização, extração de características e reconhecimento de padrões. A tabela \ref{ais:recent} mostra uma tabela (inspirada em \citet{Dasgupta2010}) contendo uma lista dos algoritmos utilizados nos trabalhos recentes na área.
+A última década mostrou um grande aumento no interesse pelos algoritmos baseados em sistemas imunológicos por serem uma boa fonte de inspiração para novas abordagens para solução de problemas complexos. O sistema imunológico natural oferece metáforas ricas pelo fato de ser um sistema altamente distribuído, adaptativo e auto-organizável, além de suas capacidades de aprendizado, memorização, extração de características e reconhecimento de padrões. A tabela \ref{ais:recent} (inspirada em \citet{Dasgupta2010}) mostra uma lista dos algoritmos utilizados nos trabalhos recentes na área.
 
 \begin{table}[h!]
     \centering
@@ -33,7 +33,7 @@ A última década mostrou um grande aumento no interesse pelos algoritmos basead
 
 \section{Algoritmos}
 
-Em \citet{Dasgupta2010}, os autores apresentam pesquisas recentes na área de Sistemas Imunológicos Artificiais, e mostram que as pesquisas recentes nessa área têm se focado em quatro algoritmos principais. Esse algoritmos são: (1) seleção negativa, (2) redes imunológicas artificiais, (3) seleção clonal e (4) Teoria do Perigo e algoritmos de células dendríticas, apresentados nas seções seguintes.
+Em \citet{Dasgupta2010}, os autores apresentam pesquisas recentes na área de Sistemas Imunológicos Artificiais, e mostram que as pesquisas recentes nessa área têm se focado em cinco algoritmos principais. Esse algoritmos são: (1) seleção negativa, (2) redes imunológicas artificiais, (3) seleção clonal, (4) Teoria do Perigo e (5) algoritmos de células dendríticas, apresentados nas seções seguintes.
 
 \subsection{Seleção negativa}
 
@@ -73,7 +73,7 @@ Dasgupta, D. and Forrest, S. (1999). An anomaly detection algorithm inspired by 
 
 \subsection{Redes imunológicas artificiais}
 
-Redes imunológicas artificiais (\emph{Artificial immune networks}, AINs) são inspiradas no modelo de redes imunológicas de Farmer et. al \cite{Farmer1986}, foram propostas por \citet{Ishida1990} e foram redefinidos e reimplementdados em \citet{Timmis2000}. Esses trabalhos foram nomeados conjuntamente como AINEs (\emph{Artificial Immune NEtworks}, Rede Imunológicas Artificiais). Uma rede imunológica artificial consiste de um conjunto de células B e ligações entre essas células. Essas redes permitem ao sistema imunológico ter uma memória imunológica: as células estimulam ou reprimem umas às outras, atingindo uma memória estável. Sua utilização é ampla em campos como a mineração de dados e aprendizagem de máquina.
+Redes imunológicas artificiais (\emph{Artificial immune networks}, AINs) são inspiradas no modelo de redes imunológicas de Farmer et. al \cite{Farmer1986}, foram propostas por \citet{Ishida1990} e foram redefinidos e reimplementados em \citet{Timmis2000}. Esses trabalhos foram nomeados conjuntamente como AINEs (\emph{Artificial Immune NEtworks}, Rede Imunológicas Artificiais). Uma rede imunológica artificial consiste de um conjunto de células B e ligações entre essas células. Essas redes permitem ao sistema imunológico ter uma memória imunológica: as células estimulam ou reprimem umas às outras, atingindo uma memória estável. Sua utilização é ampla em campos como a mineração de dados e aprendizagem de máquina.
 
 O sistema proposto por \citeauthor{Timmis2000} era composto de uma medula óssea, uma rede de células B e uma população de antígenos. A população de células B é inicializada aleatoriamente e, uma a uma, são inseridas em um ponto também aleatório na rede. Caso a célula seja capaz de ligar-se à população de antígenos, clones das células B são gerados, e aqueles com maior afinidade com as células da rede são mantidos. Os algoritmos de redes imunológicas artificiais incorporaram algumas ideias das teorias da seleção clonal: as células B nas AINE sofrem clonagem, mutação e seleção quando são estimuladas pela rede.
 
@@ -130,7 +130,7 @@ No primeiro artigo a propor a aplicação da Teoria do Perigo em um sistema comp
 
 A contribuição da Teoria do Perigo para sistemas de detecção é a habilidade de focar-se apenas naqueles eventos que têm mais chance de serem nocivos, o que geralmente representa um subconjunto reduzido do conjunto não-próprio. A mudança da teoria do conceito de ``próprio'' e ``não-próprio'' para o de ``perigo'' pode parecer sem sentido, mas existem diferenças importantes: o conceito de próprio é relativo às próprias conhecidas, que podem não representar o conjunto próprio inteiro, além de poderem mudar com o passar do tempo e podem conter muitas características ou atributos.
 
-O conceito de perigo, por outro lado, é baseado em eventos indesejados, possibilitando ao sistema de detecção utilizar apenas características ou atributos relacionados à situação de perigo. Representações dos sinais de perigo podem ser positivas ou negativas (ou ambas). Sinais positivos podem representam a presença de eventos como grande utilização de memória ou disco, alterações frequentes em arquivos ou sinais incomuns do sistema operacional (como SIGABRT em sistemas UNIX). Sinais negativos podem representar a ausência de eventos como a falta de resposta de um servidor, ausência de um arquivo ou falta de espaço em disco ou memória.
+O conceito de perigo, por outro lado, é baseado em eventos indesejados, possibilitando ao sistema de detecção utilizar apenas características ou atributos relacionados à situação de perigo. Representações dos sinais de perigo em um ambiente computacional podem ser positivas ou negativas (ou ambas). Sinais positivos podem representam a presença de eventos como grande utilização de memória ou disco, alterações frequentes em arquivos ou sinais incomuns do sistema operacional (como SIGABRT em sistemas UNIX). Sinais negativos podem representar a ausência de eventos como a falta de resposta de um servidor, ausência de um arquivo ou falta de espaço em disco ou memória.
 
 O sistema imunológico reage aos antígenos dentro de uma zona de perigo centrada no local da origem do sinal, que pode ser modelada como uma medida de similaridade ou relação de causalidade. Aqueles anticorpos que combinam-se aos antígenos (sinal um) dentro de uma zona de perigo (sinal dois) proliferam, gerando células de memória.
 
@@ -173,7 +173,7 @@ A tabela \ref{tab:ais_map} mostra as formas mais comuns do mapeamento das estrut
         Anticorpo               & Vetor de características                                \\
         Antígenos               & Dados de treinamento                                    \\
         Expansão clonal         & Reprodução de instâncias que combinam com os antígenos  \\
-        Maturação de afinidade  & Mutação aleatória eliminação de anticorpos              \\
+        Maturação de afinidade  & Mutação aleatória, eliminação de anticorpos             \\
         Memória imunológica     & Conjunto de anticorpos de memória                       \\
         Espaço de formas        & Tipo e valores possíveis dos vetores de características \\
         \hline
@@ -280,19 +280,19 @@ Para que um algoritmo seja considerado distinto, é avaliado se seus símbolos e
 
 \subsection{Seleção negativa}
 
-Apesar de ser uma das mais importantes abstrações do sistema imunológico, análises de algoritmos baseados na seleção negativa demonstraram que eles sofrem de problemas de escalabilidade. Considerando o conjunto de cadeias de bits consideradas próprias (\emph{S}), o número de cadeias aleatórias (\emph{R$_{0}$}) aumenta exponencialmente com o crescimento de \emph{S}. Somado a isso, há o fato de que pode haver sobreposição nas partes do espaço de estados coberta por cada detector, enquanto outras partes podem não ser cobertas. Ou ainda podem haver áreas do espaço não-próprio que não podem ser cobertas por um detector sem que ele cubra também uma área própria.
+Apesar de ser uma das mais importantes abstrações do sistema imunológico, análises de algoritmos baseados na seleção negativa demonstraram que eles sofrem de problemas de escalabilidade. Considerando o conjunto de cadeias de bits consideradas próprias (\emph{S}), o número de cadeias aleatórias (\emph{R$_{0}$}) aumenta exponencialmente com o crescimento de \emph{S}. Soma-se a isso o fato de que pode haver sobreposição nas partes do espaço de estados coberta por cada detector, enquanto outras partes podem não ser cobertas. Ou ainda podem haver áreas do espaço não-próprio que não podem ser cobertas por um detector sem que ele cubra também uma área própria.
 
 Já foi questionada a tentativa de cobrir, aleatoriamente, um espaço não-próprio infinito utilizando detectores de tamanho finito. Como autores como Dasgupta, Forrest e Nino apontam, esse tipo de modelagem permite que múltiplos detectores identifiquem um elemento não-próprio por aproximação, além de permitir a criação de detectores sem que se tenha conhecimento do espaço de estados. De fato, caso o conjunto próprio fosse desconhecido, e existisse apenas uma função que, dado um elemento, determinasse se ele pertence ou não ao conjunto próprio, a seleção negativa seria o único método, entre os discutidos, que poderia ser aplicado.
 
 Conforme demonstrou D’haeseleer, a seleção negativa muitas vezes não é tão efetiva quanto outras técnicas, mas oferece um nível de segurança maior por ser menos suscetível à tentativas deliberadas dos agentes maliciosos de enganar o sistema\iffalse melhorar essa frase\fi. Outras vantagens apontadas incluem a habilidade de detecção de mudanças nos eventos do sistema, de verificar mudanças em partes de um objeto sem a necessidade de verificar o objeto como um todo e de aplicar diversos detectores diferentes sobre um mesmo objeto, aumentando a probabilidade de detecção conforme o número de detectores utilizado. O autor também aponta que subconjuntos dos detectores podem ser utilizados de maneira autônoma e distribuída.
 
-Alguns trabalhos incorporam processes da seleção clonal na seleção negativa \cite{Garret2005}: os detectores são gerados aleatoriamente, como no algoritmo original, e aqueles que identificam elementos próprios passam pelo processo de seleção clonal. O objetivo é que esses detectores sejam ajustados até que não cubram mais o espaço próprio. A vantagem, nesse caso, é a de utilizar o poder de exploração do espaço de estados da seleção clonal para dispensar o controle determinístico complexo dos detectores feito na maior parte dos trabalhos da área.
+Alguns trabalhos incorporam processos da seleção clonal na seleção negativa \cite{Garrett2005}: os detectores são gerados aleatoriamente, como no algoritmo original, e aqueles que identificam elementos próprios passam pelo processo de seleção clonal. O objetivo é que esses detectores sejam ajustados até que não cubram mais o espaço próprio. A vantagem, nesse caso, é a de utilizar o poder de exploração do espaço de estados da seleção clonal para dispensar o controle determinístico complexo dos detectores feito na maior parte dos trabalhos da área.
 
 \subsection{Seleção clonal}
 
-A principal característica da seleção clonal, que a difere dos outros métodos, é seu mecanismo de ajuste da mutação. Enquanto nos outros métodos o grau de mutação (ou o grau em que a mutação muda) é constante, na seleção clonal esse grau é determinado por uma função baseada na aptidão da solução. Soluções com pouca derivação do estado ótimo sofres pequenos graus de mutação. Da mesma maneira, outra característica única da seleção clonal é a função que define o número de clones de acordo com a aptidão da solução.
+A principal característica da seleção clonal, que a difere dos outros métodos, é seu mecanismo de ajuste da mutação. Enquanto nos outros métodos o grau de mutação (ou o grau em que a mutação muda) é constante, na seleção clonal esse grau é determinado por uma função baseada na aptidão da solução. Soluções com pouca derivação do estado ótimo sofrem pequenos graus de mutação. Da mesma maneira, outra característica única da seleção clonal é a função que define o número de clones de acordo com a aptidão da solução.
 
-No entanto, algoritmos baseados na seleção clonal podem ser lentos em sua execução devido ao número de clones, que aumenta conforme a média função de aptidão aumenta. A otimização é uma área onde os algoritmos baseados na seleção clonal têm mostrado bons resultados \cite{Garret2005}.
+No entanto, algoritmos baseados na seleção clonal podem ser lentos em sua execução devido ao número de clones, que aumenta conforme a média função de aptidão aumenta. A otimização é uma área onde os algoritmos baseados na seleção clonal têm mostrado bons resultados \cite{Garrett2005}.
 
 \subsection{Redes imunológicas artificiais}
 
@@ -303,6 +303,8 @@ Devido às comparações entre cada possível par de anticorpos, as redes imunol
 As dificuldades na implementação de sistemas baseados na Teoria do Perigo são as mesmas encontradas na aceitação da teoria na imunologia: a natureza dos sinais de perigo não é facilmente identificável; e o sistema aparentemente deve primeiro sofrer o dano para que as medidas de proteção possam ser tomadas.
 
 \iffalse
+
+\subsection{Algoritmo de células dendríticas}
 
 \section{Considerações finais}
 
