@@ -18,8 +18,11 @@ CHAPTERS= \
 all: tcc.pdf
 .PHONY: all clean
 
-tcc.pdf: $(CHAPTERS) tcc.bib tcc.tex
+tcc.pdf: tcc.nls $(CHAPTERS) tcc.bib tcc.tex
 	$(LATEX) $(MAIN_TEX)
+
+tcc.nls: $(CHAPTERS)
+	makeindex tcc.nlo -s nomencl.ist -o tcc.nls
 
 clean:
 	$(LATEX) --clean $(MAIN_TEX)
