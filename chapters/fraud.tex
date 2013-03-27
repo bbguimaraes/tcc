@@ -101,6 +101,27 @@ Phua e outros autores listam as diversas medidas de performance utilizadas em tr
 
 A razão para isso é que o custo das classificações errôneas, no caso da detecção de fraude, são irregulares, incertos, variam de exemplo a exemplo e podem variar conforme o tempo. Falsos negativos são geralmente mais custosos do que falsos positivos. Um falso positivo geralmente leva apenas a uma verificação desnecessária por um especialista. Um falso negativo, no entanto, acarreta em uma fraude que não é detectada pelo sistema e não será reportada, deixando o fraudador impune. Mesmo assim, muitos dos sistemas de detecção comerciais, como a maioria dos departamentos governamentais que atuam na área de detecção de fraude, utilizam valores monetários como medida de avaliação \cite{Phua2010}.
 
+Em relação à comparação da eficácia dos métodos, destacam-se os seguintes critérios:
+
+\begin{enumerate}[a)]
+    \item Similaridade de uma instância com os exemplos de fraude conhecidos divida pela dissimilaridade com exemplos legais.
+    \item Análise da curva ROC (\emph{Receiver Operating Characteristic}, Característica de Operação do Receptor): a taxa de verdadeiros positivos para falsos positivos.
+    \item Análise da área sob a curva ROC, que mede a probabilidade de uma instância positiva ser classificada como "mais positiva" do que uma instância negativa.
+    \item Entropia cruzada: mede a diferença entre o valor atribuído na classificação de uma instância e o valor real atribuído àquela instância nos dados de teste.
+    \item Escore Brier: o erro quadrático médio, ou seja, a média do somatório dos quadrados da diferença entre a classificação de uma instância e a classificação real.
+    \item Alguns trabalhos adotam um critério peculiar: as instâncias são classificadas de acordo com o seu valor monetário. Esse valor pode ser tanto explícito quanto baseado em modelos financeiros.
+\end{enumerate}
+
+Em relação à eficiência dos métodos, destacam-se os seguintes critérios:
+
+\begin{enumerate}[a)]
+    \item Velocidade de detecção (tempo até o alarme).
+    \item Número de tipos ou estilos de fraude detectados.
+    \item Processo de de detecção em tempo real ou em lote.
+\end{enumerate}
+
+\subsection{Avaliação de classificadores}
+
 Classificadores binários são aqueles que, para um dado conjunto de valores de entrada, geram como valor de saída um valor Booleano: verdadeiro ou falso, positivo ou negativo. Os sistemas de detecção de fraude se situam, na maioria dos casos, nessa categoria: os dados referentes a uma instância passam pelo sistema de detecção e são classificados como legítimos ou fraudulentos \cite{Bewick2004}. Sistemas mais complexos podem gerar saídas com mais informações sobre a instância, como o grau de certeza da previsão ou o grau de semelhança entre a instância e os dados da base.
 
 A avaliação dos classificadores binários é feita com base em uma \emph{tabela de confusão}, conforme mostrado na tabela \ref{fraud:confusion}. Nessa tabela são listados o número de valores (ou porcentagem) para cada combinação de saída do sistema e a classificação real. Instâncias corretamente classificadas ocupam as colunas Positivo e Negativo, enquanto instâncias cujo classificação difere da realidade ocupam as colunas ``Falsos positivos'' e ``Falsos negativos''.
