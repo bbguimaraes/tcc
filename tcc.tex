@@ -18,6 +18,10 @@
 \usepackage{setspace}
 \onehalfspacing
 
+\usepackage{nomencl}
+\makenomenclature
+\renewcommand{\nomname}{Lista de Siglas}
+
 \def\lstlistlistingname{Lista de Trechos de Código}
 \def\lstlistingname{Trecho de Código}
 \lstset{
@@ -72,6 +76,12 @@
 
 % Lista de figuras.
 \listoffigures
+
+% Lista de tabelas.
+\listoftables
+
+% Lista de siglas.
+\printnomenclature
 
 \begin{abstract}
     Os Sistemas Imunológicos Artificiais são um campo da Inteligência Artificial que se desenvolveu no início dos anos 90, e continua sendo objeto de pesquisa até hoje. Iniciando na área de segurança de computadores, os algoritmos baseados no sistema imunológico foram utilizados em diversas áreas da computação. O poder de abstração da modelagem dos elementos do sistema como componentes do sistema imunológico natural ajudaram no desenvolvimento desse sistemas. Utilizando um pacote de algoritmos imunológicos e a ferramenta WEKA, esse trabalho tem o objetivo de verificar como a utilização de Sistemas Imunológicos Artificiais influencia um sistema computacional, comparando-os com técnicas mais tradicionais da Mineração de Dados e da Inteligência Artificial.
