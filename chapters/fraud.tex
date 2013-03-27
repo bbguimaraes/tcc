@@ -19,8 +19,8 @@ A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{c
 
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h!]
-    \vspace{1cm}
-    \caption{Matriz de ameaças \cite{Anderson1972}}
+    \caption{Matriz de ameaças}
+    \label{fraud:and}
     \centering
     \begin{tabular}{c p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|}
         \cline{3-4}
@@ -31,8 +31,7 @@ A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{c
         \multicolumn{0}{c|}{} & Uso autorizado do computador & Invasão interna & Abuso de poder \\
         \cline{2-4}
     \end{tabular}
-    \label{fraud:and}
-    \vspace{1cm}
+    \\ Fonte: \cite{Anderson1972}.
 \end{table}
 
 Geralmente não é possível ter absoluta certeza sobre a legitimidade das transações de um negócio a partir dos dados disponíveis. Não seria possível verificar todas as entidades com as quais uma empresa mantém relações, que em algumas empresas podem ser milhares. Assim, não existe uma técnica infalível para a detecção de fraudes. Isso não significa que elas não possam ser detectadas. A melhor alterantiva, na prática, é uma busca por possíveis evidências de fraude nos dados disponíveis. Métodos matemáticos e estatísticos são utilizados para comparar um banco de dados de transações existentes com as novas, com o objetivo de encontrar evidências de possíveis fraudes. Mesmo assim, geralmente há um processo de análise e revisão caso a caso por um especialista.
@@ -63,12 +62,11 @@ Uma alternativa é a criação de um banco de dados artificial, inspirado em dad
 A maioria dos sistemas de detecção de fraude opera usando listas negras (\emph{black-lists}) de dados (transações, contas, etc.), que são comparadas com as nova instâncias. Algumas utilizam regras fixas para a classificação. A figura \ref{fig:fraud-data} mostra a organização dos dados nesses sistemas. Uma parte do banco de dados é usada para o treinamento. Esses são os dados onde o sistema aprenderá os padrões e regras utilizados para a detecção. O restante das instâncias é usada para a avaliação do treinamento. Também é comum que haja bancos de dados distintos para o treinamento e avaliação.
 
 \begin{figure}[h!]
-    \vspace{1cm}
-\centering
-\includegraphics[width=0.75\textwidth]{img/fraud-data.png}
-\caption{Dados para a análise \cite{Phua2010}}
-\label{fig:fraud_data}
-    \vspace{1cm}
+    \centering
+    \caption{Dados para a análise}
+    \label{fig:fraud_data}
+    \includegraphics[width=0.75\textwidth]{img/fraud-data.png}
+    \\ Fonte: \cite{Phua2010}.
 \end{figure}
 
 A maioria dos estudos relacionados à detecção de fraude considera a detecção de \emph{outliers} como uma ferramenta principal de detecção \cite{Aral2011}. Existem muitos métodos aplicados à detecção de fraude: auditoria, sistemas especialistas, lógica nebulosa (\emph{fuzzy}), redes neurais, reconhecimento de padrões, árvores de decisão, regressão, etc \cite{Huang2010}. Considerando os dados dividos conforme a figura \ref{fig:fraud_data}, as duas técnicas mais usadas são:
@@ -123,24 +121,7 @@ A avaliação dos classificadores binários é feita com base em uma \emph{tabel
     \vspace{1cm}
 \end{table}
 
-Como exemplo, inspirado em \citet{Bewick2004}, é apresentado nessa seção um sistema de detecção de fraude, que considera como único atributo das instâncias o número de ocorrências de um determinado valor. Nesse ambiente simplificado, a instância é considerada fraudulenta caso um limiar de ocorrências seja ultrapassado. Um exemplo de dados presentes na base desse sistema é mostrado na tabela \ref{fraud:ex_data}.
-
-\renewcommand{\arraystretch}{1.5}
-\begin{table}[h!]
-    \vspace{2mm}
-    \caption{Base de dados de exemplo}
-    \centering
-    \begin{tabular}{l|c|l}
-        id & nº de ocorrências & \emph{outros dados...} \\
-        \hline
-        0 & 2           & \\
-        1 & 0           & \\
-        2 & 7           & \\
-        3 & 1           & \\
-    \end{tabular}
-    \label{fraud:ex_data}
-    \vspace{2mm}
-\end{table}
+Como exemplo, inspirado em \citet{Bewick2004}, é apresentado nessa seção um sistema de detecção de fraude, que considera como único atributo das instâncias o número de ocorrências de um determinado valor. Nesse ambiente simplificado, a instância é considerada fraudulenta caso um limiar de ocorrências seja ultrapassado.
 
 Esse sistema de testes utiliza como único critério de avaliação o número de ocorrências (segunda coluna). Um \emph{limiar de classificação} é definido: um parâmetro que o sistema de detecção utilizará para guiar a previsão da detecção. Se o limiar de classificação fosse 1, todas as instâncias que tivessem mais de uma ocorrência (nos valores de exemplo, as instâncias 0 e 2) seriam consideradas fraudulentas.
 
@@ -148,8 +129,9 @@ Um exemplo do resultado de um teste nesse sistema é mostrado na tabela \ref{fra
 
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h!]
-    \vspace{2mm}
     \centering
+    \caption{Exemplo de tabela de confusão}
+    \label{fraud:ex}
     \begin{tabular}{c l c c c}
         & & \multicolumn{2}{c}{\textbf{Dados reais}} \\
         \multirow{3}{5mm}{\begin{sideways}\parbox{20mm}{\textbf{Saída}}\end{sideways}} & \multicolumn{1}{c|}{} & Fraude & Legítimo & \multicolumn{1}{|c}{Total} \\
@@ -159,9 +141,6 @@ Um exemplo do resultado de um teste nesse sistema é mostrado na tabela \ref{fra
         \cline{2-5}
         & \multicolumn{1}{c|}{Total}    & 400 & 1200  & \multicolumn{1}{|c}{1600} \\
     \end{tabular}
-    \caption{Exemplo de tabela de confusão}
-    \label{fraud:ex}
-    \vspace{2mm}
 \end{table}
 
 \subsection{Sensibilidade e especificidade}
@@ -205,8 +184,8 @@ Desses valores, pode-se atestar a utilidade do método para classificação. Uma
 Os dados de teste do exemplo mostrados nas tabelas até agora consideraram apenas um valor como limiar de classificação. Mudanças nesse limiar afetam a precisão dos testes: caso o limiar seja seja igual a -1, todas as instâncias são classificadas como fraudulentas, já que todas possuem como número de ocorrências um número maior ou igual a zero. Por outro lado, caso o limiar seja um número maior do que qualquer uma das instâncias, todas serão classificadas como legítimas. Em sistemas reais, é comum que sejam testados diversos valores para esse limiar sobre uma mesma base de dados, para que o melhor seja identificado e usado no sistema final. A tabela \ref{fraud:youden} é um exemplo de resultados para esse tipo de teste.
 
 \begin{table}[h!]
-    \vspace{2mm}
-    \caption{Exemplo de resultados para testes comparativos de limiares (inspirado em \citet{Bewick2004}}
+    \caption{Exemplo de resultados para testes comparativos de limiares}
+    \label{fraud:youden}
     \centering
     \begin{tabular}{l c c c c c}
         \hline
@@ -222,8 +201,7 @@ Os dados de teste do exemplo mostrados nas tabelas até agora consideraram apena
         Total & 400 & 1200 &    -   &    -   &    -   \\
         \hline
     \end{tabular}
-    \label{fraud:youden}
-    \vspace{2mm}
+    \\ Fonte: inspirado em \citet{Bewick2004}.
 \end{table}
 
 Uma medida para a avaliação dos diferentes limiares pode ser a sensibilidade e especificidade. O índice de Youden (J), que é uma derivação desses valores, é uma medida apropriada nesses casos (eq. \ref{fraud:yindex}). Esse índice é um valor normalizado na faixa [0, 1], onde 1 significa um teste perfeito, classificando todas as instâncias corretamente; e 0 significa um teste sem valor nenhum. A tabela \ref{fraud:yindex} mostra os valores para os resultados com diversos limiares. É importante notar como valores extremos maximizam a sensibilidade e a especificidade, mas apenas aqueles limiares que maximizam os dois valores recebem índices significativos.
@@ -246,23 +224,19 @@ Uma característica importante do índice de Youden é que ele estabelece uma eq
 Como pode-se observar na tabela \ref{fraud:yindex}, alterações no valor usado na classificação alteram o número de instâncias classificadas como positivas e negativas. Geralmente os resultados são distribuídos começando com um grande valor de sensibilidade e um valor baixo de especificidade; esses valores convergem até um máximo global; e então terminam em com um valor baixo de sensibilidade e um grande valor de especificidade. A variação desses três valores, e a interação entre eles, é mostrada no gráfico da figura \ref{fraud:threshold}.
 
 \begin{figure}[h!]
-    \vspace{1cm}
     \centering
-    \includegraphics[scale=0.5]{img/threshold.png}
     \caption{Variação dos valores de avaliação conforme o limiar de detecção}
     \label{fraud:threshold}
-    \vspace{1cm}
+    \includegraphics[scale=0.5]{img/threshold.png}
 \end{figure}
 
 No lado esquerdo, onde o limiar é muito baixo, a sensibilidade é 1 e a especificidade, zero; enquanto no lado direito, onde o limiar é muito alto, ocorre o oposto: a sensibilidade é zero e a sensibilidade, 1. Conforme o limiar aumenta (começando do lado esquerdo e caminhando para a direita), ocorreu uma diminuição na especificidade (algumas instâncias fraudulentas começam a ser classificadas como legítimas). No entanto, há um aumento muito maior na especificidade (instâncias legítimas começam a ser classificadas corretamente). É possível ver como o índice de Youden mostra a real proporção entre esses dois valores. Uma forma mais sucinta para apresentar esse tipo de informação é através de um gráfico dos valores de sensibilidade e 1 - especificidade, que é denominado ROC (característica operativa do receptor, \emph{receiver operating characteristic}), conforme mostrado na figura \ref{fraud:roc}.
 
 \begin{figure}[h!]
-    \vspace{1cm}
     \centering
-    \includegraphics[scale=0.5]{img/roc.png}
     \caption{Gráfico da curva ROC dos valores de exemplo}
     \label{fraud:roc}
-    \vspace{1cm}
+    \includegraphics[scale=0.5]{img/roc.png}
 \end{figure}
 
 No gráfico é visualmente aparente que o valor 3 como limiar de classificação oferece o melhor balanceamento entre sensibilidade e especificidade. Também é possível perceber como as alterações no limiar influenciam a distribuição desses dois valores. Um teste perfeito, que classificasse todas as instâncias corretamente, teria ambos os valores iguais a 1, tendo portanto um ponto no canto superior esquerdo do gráfico. Os pontos mais próximos dessa localização são aqueles que melhor classificam as instâncias.
