@@ -10,41 +10,40 @@ No entanto, alguns agentes infecciosos são capazes de ultrapassar essas barreir
 
 A primeira resposta, ou \emph{resposta primária}, é lenta, levando até algumas semanas para remover a infecção. Caso o agente patogênico seja encontrado novamente, ocorre uma \emph{resposta secundária}, onde é aplicado o que foi aprendido na resposta primária, tornando a resposta imunológica mais rápida e eficiente. A memória adquirida tem duração longa, geralmente provendo imunidade por toda a vida do hospedeiro (dois exemplos são varicela e sarampo).
 
-O primeiro modelo do sistema imunológico foi o da distinção entre o próprio e o não-próprio, proposto por \citet{Burnet1959}. Ao longo do tempo, novos modelos foram criados, tentando resolver as questões que os outros modelos não explicavam. Entre esses, destacam-se o modelo do não-próprio infeccioso \cite{Janeway1989}, sendo aceito atualmente como o mais completo pelos imunologistas. As figuras \ref{img:signals-first} a \ref{img:signals-last} mostram a evolução dos modelos, e foram retiradas de \citet{Aickelin2002}.
+O primeiro modelo do sistema imunológico foi o da distinção entre o próprio e o não-próprio, proposto por \citet{Burnet1959}. Ao longo do tempo, novos modelos foram criados, tentando resolver as questões que os outros modelos não explicavam. Entre esses, destacam-se o modelo do não-próprio infeccioso \cite{Janeway1989}, sendo aceito atualmente como o mais completo pelos imunologistas. As figuras \ref{fig:signals_first} a \ref{fig:signals_last} mostram a evolução dos modelos, e foram retiradas de \citet{Aickelin2002}.
 
 \section{Discriminação do próprio e não-próprio}
 
 No modelo de disciminação do próprio e não próprio (Self Non-self Discrimination, SNSD) de Burnet, existia apenas um tipo de linfócito, o linfócito B, responsável por identificar os antígenos e produzir os respectivos anticorpos. A resposta imune adaptativa é gerada apenas pela identificação desses antígenos, sem qualquer mecanismo de controle.
 
 \begin{figure}[h!]
-    \vspace{1cm}
+    \caption{SNSD: Antígeno no controle}
+    \label{fig:nis_antigen}
+    \label{fig:signals_first}
     \centering
-    \includegraphics[width=0.75\textwidth]{img/signals1-antigen.png}
-    \caption{SNSD: Antígeno no controle \cite{Aickelin2002}}
-    \label{img:signals-first}
-    \vspace{1cm}
+    \includegraphics[width=0.75\textwidth]{img/signals1-antigen_br.png}
+    \\ Fonte: \citet{Aickelin2002}.
 \end{figure}
+
 
 Em algum ponto no início da vida os linfócitos aprendem a diferenciar o próprio, células pertencentes ao corpo, do não-próprio, células estranhas ao corpo, que devem ser eliminadas. As células que geram respostas auto-imunes (reações contra as células próprias) são removidas nesse ponto, restando apenas as capazes de identificar o não-próprio.
 
 \begin{figure}[h!]
-    \vspace{1cm}
-    \centering
-    \includegraphics[width=0.75\textwidth]{img/signals2-helper.png}
-    \caption{Auxiliar no controle \cite{Aickelin2002}}
+    \caption{Auxiliar no controle}
     \label{fig:nis_helper}
-    \vspace{1cm}
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/signals2-helper_br.png}
+    \\ Fonte: \citet{Aickelin2002}.
 \end{figure}
 
 Mais tarde, Bretscher e Cohn introduziram uma segunda célula, o linfócito T auxiliar, ou T$_{h}$ (T \emph{helper}), que regulava a ativação dos linfócitos B (figura \ref{fig:nis_helper}). O linfócito B apresenta o antígeno ao linfócito T e aguarda sua confirmação para iniciar a resposta. A introdução dessa célula tem o objetivo de evitar uma reação auto-imune sem controle. Lafferty e Cunningham introduziram uma terceira célula, a Célula Apresentadora de Antígeno (APC, \emph{Antigen Presenting Cell}), cuja função é decompor os antígenos e apresentá-los aos linfócitos T. Dessa forma, o funcionamento das células do modelo anterior agora depende da ativação do linfócito T pela APC (figura \ref{fig:nis_apc}).
 
 \begin{figure}[h!]
-    \vspace{1cm}
-    \centering
-    \includegraphics[width=0.75\textwidth]{img/signals3-apc.png}
-    \caption{APC no controle \cite{Aickelin2002}}
+    \caption{APC no controle}
     \label{fig:nis_apc}
-    \vspace{1cm}
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/signals3-apc_br.png}
+    \\ Fonte: \citet{Aickelin2002}.
 \end{figure}
 
 \section{Não-próprio infeccioso}
@@ -52,12 +51,12 @@ Mais tarde, Bretscher e Cohn introduziram uma segunda célula, o linfócito T au
 O modelo mais aceito na imunologia atualmente é o modelo não-próprio infeccioso (Infectious Non-Self, INS), que foi proposto por Janeway \cite{Janeway1989}. Nele, as APCs também têm de ser ativadas: elas só enviam o sinal dois aos linfócitos T quando tiverem reconhecido padrões patológicos no antígeno (figura \ref{fig:nis_nsinf}). Assim, da mesma forma que no modelo anterior, o funcionamento de todo o sistema depende de um fator externo. No modelo anterior, a APC ativava o sistema, no modelo de Janeway, a APC tem que ser ativada através do reconhecimento de padrões no antígeno, e então ativar o sistem.
 
 \begin{figure}[h!]
-    \vspace{1cm}
-    \centering
-    \includegraphics[width=0.75\textwidth]{img/signals4-ins.png}
-    \caption{INS: Não-próprio infeccioso no controle \cite{Aickelin2002}}
+    \caption{INS: Não-próprio infeccioso no controle}
     \label{fig:nis_nsinf}
-    \vspace{1cm}
+    \label{fig:signals_last}
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/signals4-ins_br.png}
+    \\ Fonte: \citet{Aickelin2002}.
 \end{figure}
 
 \section{A Teoria do Perigo}
@@ -79,12 +78,11 @@ Além disso, alguns linfócitos T são mantidos como células de memória. Duran
 Existe ainda um outro tipo de linfócito, o T \emph{killer} (T$_{k}$), que não tem receptores antígeno-específicos, mas é capaz de reconhecer células infectadas e algumas células anormais. O objetivo dessas células é atuar como a primeira defesa contra infecções, e são muito importantes nos começo da vida.
 
 \begin{figure}[h!]
-    \vspace{1cm}
-    \centering
-    \includegraphics[width=0.75\textwidth]{img/signals5-danger.png}
-    \caption{Perigo no controle \cite{Aickelin2002}}
+    \caption{Perigo no controle}
     \label{img:nis_danger}
-    \vspace{1cm}
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/signals5-danger_br.png}
+    \\ Fonte: \citet{Aickelin2002}.
 \end{figure}
 
 O comportamento dos linfócitos T e B se baseia em três regras:
