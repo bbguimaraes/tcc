@@ -44,10 +44,12 @@ A redução dos falsos positivos é um dos objetivos principais de um sistema de
 
 Dependendo do domínio da organização, para que um sistema possa prever fraudes com antecedência suficiente para que elas sejam evitadas, ele deve monitorar constantemente as novas transações em andamento. Esse fator reduz a utilização de sistemas que necessitam de um longo tempo de treinamento ou de análise. O ideal seria que ele estivesse em constante execução, analisando as transações conforme elas ocorrem. Para aplicações grandes ou descentralizadas, pode ser muito difícil conseguir isso sem afetar a performance geral das transações.
 
-Para cada domínio, tipos diferentes de fraude podem existir, e mais de um tipo pode ocorrer simultaneamente, sem uma ordem definida. 
+Para cada domínio, tipos diferentes de fraude podem existir, e mais de um tipo pode ocorrer simultaneamente, sem uma ordem definida.
 
 \section{Dados}
 \label{fraud:data}
+
+Existem alguns conceitos sobre as bases de dados que são característicos da área de mineração de dados e aprendizagem de máquina. O número de instâncias na base é chamado de número de \emph{amostras} e o número de atributos de cada instância é chamado de número de \emph{características} (em inglês, \emph{samples} e \emph{features}).
 
 Os atributos das instâncias em um banco de dados usado para detecção de fraude geralmente limitam-se a valores binários, numéricos, categóricos ou uma mistura desses três. Os atributos específicos usados geralmente são semelhantes. Aplicações de seguro utilizam o histórico do cliente: tempo de contrato, histórico e total de pagamentos, lucro anual valor médio depositado em conta bancária. Para fraudes de crédito, utilizam-se informações sobre as transações: valor, data, localização geográfica, conta de destino, tempo de conta, etc. Fraudes em seguros de automóveis utilizam valores binários para atributos como acidente e tratamento hospitalar, além de dados do motorista, custo, tipo de ferimento, etc.
 
@@ -118,6 +120,26 @@ Em relação à eficiência dos métodos, destacam-se os seguintes critérios:
     \item Velocidade de detecção (tempo até o alarme).
     \item Número de tipos ou estilos de fraude detectados.
     \item Processo de de detecção em tempo real ou em lote.
+\end{enumerate}
+
+\subsection{\emph{Cross-validation}}
+
+Quando um modelo é criado à partir de um conjunto de dados e os testes são executados sobre esse mesmo conjunto, é muito provável que eles apresentem um bom resultado. No entanto, isso não garante que o modelo pode ser aplicado com a mesma eficácia sobre novos dados, o que geralmente é o objetivo dos sistemas de detecção.
+
+Para que seja possível avaliar se um modelo pode prever novos dados após o treinamento, a base de dados deve ser dividida em duas partes: um conjunto de treinamento e um conjunto de teste. O modelo é criado utilizando apenas os dados de treinamento e avaliado utilizando os dados de teste.
+
+Caso o resultado dos testes de um modelo quando aplicado aos mesmos dados utilizados no treinamento seja bom, mas o resultado quando aplicado aos dados de teste sejam ruims, diz-se que ocorre \emph{overfitting}: o modelo ajusta-se tanto aos dados de treinamento que não consegue criar regras genéricas o suficiente para identificar amostras semelhantes mas não exatamente iguais.
+
+Há ainda a possibilidade do modelo não gerar um resultado bom nem mesmo para os dados de treinamento. Nesse caso, diz-se que ocorre \emph{underfitting}: o modelo não é capaz de criar regras que se ajustem aos dados de treinamento.
+
+No entanto, o resultado dessa separação pode ser altamente dependente da separação dos dados. Separar os dados de forma diferente geralmente altera o resultado dos testes. Para evitar essa dependência, pode ser utilizado um processo denominado \emph{cross-validation}:
+
+\begin{enumerate}[a)]
+    \item Dividir aleatoriamente os dados em dois conjuntos, treinamento e testes.
+    \item Criar o modelo com base no conjunto de dados de treinamento.
+    \item Testar o modelo utilizando o conjunto de dados de testes.
+    \item Repetir os passos a) a c).
+    \item Calcular a média e o erro padrão da média dos resultados de cada iteração.
 \end{enumerate}
 
 \subsection{Avaliação de classificadores}
