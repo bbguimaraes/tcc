@@ -99,11 +99,7 @@ Os sistemas de detecção podem ser divididos em dois tipos gerais, denominados 
 \section{Critérios de avaliação}
 \label{sec:fraud_criteria}
 
-Phua e outros autores listam as diversas medidas de performance utilizadas em trabalhos recentes na área de detecção de fraude \cite{Phua2010}. Os métodos tradicionais de medição, como a taxa de positivos (número de fraudes detectadas corretamente dividido pelo número de fraudes verdadeiras) e a precisão a um determinado limite (número de instâncias classificadas corretamente, dividido pelo número total de instâncias) foram abandonados pelos trabalhos recentes, devido à natureza peculiar da detecção de fraude.
-
-A razão para isso é que o custo das classificações errôneas, no caso da detecção de fraude, são irregulares, incertos, variam de exemplo a exemplo e podem variar conforme o tempo. Falsos negativos são geralmente mais custosos do que falsos positivos. Um falso positivo geralmente leva apenas a uma verificação desnecessária por um especialista. Um falso negativo, no entanto, acarreta em uma fraude que não é detectada pelo sistema e não será reportada, deixando o fraudador impune. Mesmo assim, muitos dos sistemas de detecção comerciais, como a maioria dos departamentos governamentais que atuam na área de detecção de fraude, utilizam valores monetários como medida de avaliação \cite{Phua2010}.
-
-Em relação à comparação da eficácia dos métodos, destacam-se os seguintes critérios:
+Phua e outros autores listam as diversas medidas de performance utilizadas em trabalhos recentes na área de detecção de fraude \cite{Phua2010}. Em relação à comparação da eficácia dos métodos, destacam-se os seguintes critérios:
 
 \begin{enumerate}[a)]
     \item Similaridade de uma instância com os exemplos de fraude conhecidos divida pela dissimilaridade com exemplos legais.
@@ -122,7 +118,15 @@ Em relação à eficiência dos métodos, destacam-se os seguintes critérios:
     \item Processo de de detecção em tempo real ou em lote.
 \end{enumerate}
 
-\subsection{\emph{Cross-validation}}
+ Os métodos tradicionais de medição, como a taxa de positivos (número de fraudes detectadas corretamente dividido pelo número de fraudes verdadeiras) e a precisão a um determinado limite (número de instâncias classificadas corretamente, dividido pelo número total de instâncias) foram abandonados pelos trabalhos recentes, devido à natureza peculiar da detecção de fraude.
+
+A razão para isso é que o custo das classificações errôneas, no caso da detecção de fraude, são irregulares, incertos, variam de exemplo a exemplo e podem variar conforme o tempo. Falsos negativos são geralmente mais custosos do que falsos positivos. Um falso positivo geralmente leva apenas a uma verificação desnecessária por um especialista. Um falso negativo, no entanto, acarreta em uma fraude que não é detectada pelo sistema e não será reportada, deixando o fraudador impune. Mesmo assim, muitos dos sistemas de detecção comerciais, como a maioria dos departamentos governamentais que atuam na área de detecção de fraude, utilizam valores monetários como medida de avaliação \cite{Phua2010}.
+
+\subsection{Avaliação dos modelos}
+
+A primeira parte na avaliação de um algoritmo de classificação é a avaliação dos modelos criados por ele. Um modelo é a saída de um algoritmo de classificação ou a estrutura intermediária utilizada por ele, e define como as instâncias serão classificadas. O modelo é então aplicado a cada uma das instâncias da base de dados e gera uma classificação dessas instâncias. Essa classificação pode ser comparada com as classificações verdadeiras das instâncias, gerando um total de instâncias classificadas corretamente. Esse valor é comumente representado como uma porcentagem, um valor entre 0 e 1.
+
+\subsubsection{\emph{Cross-validation}}
 
 Quando um modelo é criado à partir de um conjunto de dados e os testes são executados sobre esse mesmo conjunto, é muito provável que eles apresentem um bom resultado. No entanto, isso não garante que o modelo pode ser aplicado com a mesma eficácia sobre novos dados, o que geralmente é o objetivo dos sistemas de detecção.
 
@@ -130,7 +134,7 @@ Para que seja possível avaliar se um modelo pode prever novos dados após o tre
 
 Caso o resultado dos testes de um modelo quando aplicado aos mesmos dados utilizados no treinamento seja bom, mas o resultado quando aplicado aos dados de teste sejam ruims, diz-se que ocorre \emph{overfitting}: o modelo ajusta-se tanto aos dados de treinamento que não consegue criar regras genéricas o suficiente para identificar amostras semelhantes mas não exatamente iguais.
 
-Há ainda a possibilidade do modelo não gerar um resultado bom nem mesmo para os dados de treinamento. Nesse caso, diz-se que ocorre \emph{underfitting}: o modelo não é capaz de criar regras que se ajustem aos dados de treinamento.
+Há ainda a possibilidade do modelo não gerar um resultado bom nem mesmo para os dados de treinamento. Nesse caso, diz-se que ocorre \emph{underfitting}: o modelo não é capaz de criar regras que se ajustem aos dados de treinamento, ou seja, o modelo não é capaz de memorizar os dados de treinamento.
 
 No entanto, o resultado dessa separação pode ser altamente dependente da separação dos dados. Separar os dados de forma diferente geralmente altera o resultado dos testes. Para evitar essa dependência, pode ser utilizado um processo denominado \emph{cross-validation}:
 
@@ -141,6 +145,26 @@ No entanto, o resultado dessa separação pode ser altamente dependente da separ
     \item Repetir os passos a) a c).
     \item Calcular a média e o erro padrão da média dos resultados de cada iteração.
 \end{enumerate}
+
+\subsubsection{\emph{Grid search}}
+
+A maioria dos modelos pode ter seu comportamento alterado através de parâmetros. Esses parâmetros são valores numéricos ou condições que alteram o funcionamento da classificação das instâncias. Um exemplo disso é um classificador que aceita apenas valores maiores do que um determinado limiar. Diminuir ou aumentar esse limiar faz com que mais ou menos valores sejam aceitos.
+
+Consequentemente, alterar o valor de um parâmetro afeta a precisão do classificador. Modelos mais complexos podem ter diversos parâmetros, e a relação entre estes pode também afetar a precisão. O treinamento é, então, dependente do valor dos parâmetros de um modelo. Uma técnica chamada de \emph{grid search} permite comparar a execução utilizando diversos valores para os parâmetros, para decidir qual é a melhor combinação para uma base de dados específico.
+
+\emph{Grid search} é um processo de diversas iterações de \emph{cross-validation} utilizando diferentes valores para os parâmetros de um modelo. No entanto, como os valores dos parâmetros podem ser dependentes entre si (e geralmente são), devem ser testadas todas as combinações de valores para cada e entre cada parâmetro. Esse é um processo computacionalmente custoso, já que o número de combinações é uma função exponencial do número de parâmetros e do número de valores distintos de cada parâmetro. Além disso, alguns parâmetros podem ter um número infinito de valores, como é o caso para parâmetros que são números reais.
+
+Para resolver esse problema, no \emph{grid search} são utilizados um conjunto finito de valores para cada parâmetro. Esse conjunto é geralmente uma faixa de valores organizada em uma progressão aritmética, geométrica ou exponencial. Dessa forma é possível reduzir o conjunto (potencialmente infinito) de combinações possíveis para um tamanho razoável, através de um comprometimento no número de valores testados.
+
+O resultado de um \emph{grid search} é a lista de resultados para a execução do algoritmo utilizando cada combinação de parâmetros e os resultados. Dessa forma, é possível utilizar a combinação de parâmetros que gera o melhor resultado.
+
+\subsubsection{Dados baseados em tempo}
+
+Uma característica importante de algumas áreas da detecção de fraude é que os dados são baseados em tempo, ou seja, o momento em que os dados de uma instância foram coletados é um atributo importante daquela instância. Para esse tipo de base de dados, é interessante que o treinamento seja feito utilizando dados mais antigos, e os testes utilizando dados recentes. Dessa maneira, é possível detectar se existe uma evolução nos dados conforme o tempo.
+
+A razão para isso é que, caso os dados sejam misturados aleatoriamente, a informação da evolução dos padrões é perdida durante o treinamento. Caso sejam utilizados dados recentes para os testes, essas alterações podem ser detectadas caso haja uma variação entre os resultados dos testes nos dados de treinamento (antigos) e de testes (recentes).
+
+Caso essa diferença seja detectada, uma solução para adicionar essa informação ao modelo é aplicar um peso sobre as instâncias de acordo com o tempo. Assim, instâncias mais recentes teriam mais importância para o treinamento do que instâncias mais antigas. Deve ser utilizado um balanceamento para essa solução, já que utilizar todos os dados disponíveis (incluindo os dados recentes) torna o modelo mais completo, mas torna impossível avaliar com segurança a eficácia desse modelo.
 
 \subsection{Avaliação de classificadores}
 
