@@ -158,6 +158,8 @@ Para resolver esse problema, no \emph{grid search} são utilizados um conjunto f
 
 O resultado de um \emph{grid search} é a lista de resultados para a execução do algoritmo utilizando cada combinação de parâmetros e os resultados. Dessa forma, é possível utilizar a combinação de parâmetros que gera o melhor resultado.
 
+É importante notar que o \emph{grid search} é um processo facilmente paralelizável. Considerando que um algoritmo aceite dois parâmetros, e cada um desses parâmetros tenha 3 valores possíveis, cada uma das 9 combinações possíveis é testada. Como cada teste é independente do outro, pode-se executar até 9 processos ao mesmo tempo. Caso a divisão aleatória dos dados nas iterações do \emph{cross-validation} seja calculada previamente, é possível que cada uma delas seja executada também em paralelo, aumentando ainda mais o número de processos simultâneos que podem ser executados.
+
 \subsubsection{Dados baseados em tempo}
 
 Uma característica importante de algumas áreas da detecção de fraude é que os dados são baseados em tempo, ou seja, o momento em que os dados de uma instância foram coletados é um atributo importante daquela instância. Para esse tipo de base de dados, é interessante que o treinamento seja feito utilizando dados mais antigos, e os testes utilizando dados recentes. Dessa maneira, é possível detectar se existe uma evolução nos dados conforme o tempo.
@@ -167,6 +169,32 @@ A razão para isso é que, caso os dados sejam misturados aleatoriamente, a info
 Caso essa diferença seja detectada, uma solução para adicionar essa informação ao modelo é aplicar um peso sobre as instâncias de acordo com o tempo. Assim, instâncias mais recentes teriam mais importância para o treinamento do que instâncias mais antigas. Deve ser utilizado um balanceamento para essa solução, já que utilizar todos os dados disponíveis (incluindo os dados recentes) torna o modelo mais completo, mas torna impossível avaliar com segurança a eficácia desse modelo.
 
 \subsection{Avaliação de classificadores}
+
+\iffalse[1] R. Barr, B. Golden, J. Kelly, M. Rescende, and W. Stewart. Designing and reporting on computational experiments with heuristic methods.  Journal of Heuristics, 1:9–32, 1995.\fi
+
+Segundo \citeauthor{Barr}, um método pode ser avaliado em diversos aspectos: eficiência, eficácia, robustez, complexidade, impacto, potencial para generalização e inovação \cite{Barr}. \citeauthor{Brownlee2007} nota que isso é notável, já que muitos (ou a maioria) dos trabalhos foca apenas na qualidade da solução, que é apenas um aspecto da eficácia. Em seu trabalho, \citeauthor{Barr} apresentam os passos básicos para a experimentação como:
+
+\begin{enumerate}[a)]
+    \item Definir os objetivos do experimento
+    \item Selecionar uma medida de performance e os fatores a serem explorados
+    \item Planejar e executar o experimento
+    \item Analisar os dados e tirar conclusões
+    \item Divulgar os resultados do experimento
+\end{enumerate}
+
+Além disso, sugerem diretrizes para o formato de divulgação:
+
+\begin{enumerate}[a)]
+    \item O experimento deve ser facilmente reproduzido
+    \item Todos os fatores que influenciam os resultados dever ser listados (código, ambiente de execução, etc)
+    \item As medições devem ser precisas
+    \item Os parâmetros devem ser especificados
+    \item Comparações com outros métodos
+    \item Reduzir a variabilidade dos resultados
+    \item Garantir que os resultados são abrangentes
+\end{enumerate}
+
+\ldots
 
 Classificadores binários são aqueles que, para um dado conjunto de valores de entrada, geram como valor de saída um valor Booleano: verdadeiro ou falso, positivo ou negativo. Os sistemas de detecção de fraude se situam, na maioria dos casos, nessa categoria: os dados referentes a uma instância passam pelo sistema de detecção e são classificados como legítimos ou fraudulentos \cite{Bewick2004}. Sistemas mais complexos podem gerar saídas com mais informações sobre a instância, como o grau de certeza da previsão ou o grau de semelhança entre a instância e os dados da base.
 
