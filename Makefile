@@ -10,10 +10,11 @@ FLAGS=
 MAIN_TEX = tcc.tex
 CHAPTERS= \
 	chapters/intro.tex  \
+	chapters/fraud.tex  \
 	chapters/nis.tex    \
 	chapters/ais.tex    \
-	chapters/prop.tex   \
-	chapters/fraud.tex
+	chapters/eval.tex   \
+	chapters/prop.tex
 
 all: tcc.pdf
 .PHONY: all clean
