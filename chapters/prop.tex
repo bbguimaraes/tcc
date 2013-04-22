@@ -2,6 +2,25 @@
 
 Conforme apresentado nos capítulos anteriores, a modelagem de um sistema de detecção de fraude com a utilização de técnicas inspiradas no sistema imunológico natural busca trazer diversas vantagens tanto no processo de planejamento quanto na sua arquitetura final. Esse trabalho busca identificar exatamente \emph{quanto} esses modelos podem aperfeiçoar os métodos existentes. O método utilizado é a comparação dos resultados da classificação de algoritmos tradicionais e Sistemas Imunológicos Artificiais sobre um mesmo conjunto de dados. Esta seção apresenta os elementos principais para o desenvolvimento da proposta.
 
+\section{Comparação dos algoritmos}
+
+Conforme apresentado no capítulo \ref{chap:eval}, a comparação do desempenho de diferentes algoritmos deve ser baseada em critérios sólidos para que tenha algum valor prático. Assim, nesse trabalho, o método para comparação será o seguinte:
+
+\begin{enumerate}[a)]
+    \item Para cada algoritmo:
+        \begin{enumerate}[a)]
+            \item Utilizar \emph{grid search} para otimizar os parâmetros para os dados.
+            \item Utilizando esses parâmetros, executar os testes usando cross-validation.
+            \item Guardar os resultados da execução.
+        \end{enumerate}
+    \item Calcular, para o resultado de cada algoritmo:
+        \begin{enumerate}[a)]
+            \item \iffalse critérios aqui \fi
+        \end{enumerate}
+\end{enumerate}
+
+Como será apresentado nas próximas seções, os critérios escolhidos já são parte integrante dos resultados exibidos na execução do WEKA. Essa escolha reflete tanto a aderência dessa plataforma aos padrões da área como a facilidade que uma ferramenta desse tipo oferece na determinação do método de avaliação.
+
 \iffalse
 
 \section{Mineração de dados}
@@ -24,11 +43,9 @@ ALgoritmos inspirados no sistema imunológico que serão utilizados.
 \subsection{Immunos}
 \fi
 
-\section{Descrição geral}
-
 Os principais elementos no desenvolvimento do trabalho são: os conjuntos de dados utilizados na execução dos testes, os algoritmos que serão testados nesses dados e os métodos de avaliação dos resultados.
 
-\subsection{Descrição dos dados}
+\section{Descrição dos dados}
 
 Para os testes serão utilizados dois conjuntos de dados contendo informações de contas de cartões de crédito. Esses dados estão disponíveis publicamente e fazem parte de um projeto chamado StatLog \cite{Michie1994}. Esse projeto foi concebido para testar diversos métodos de classificação em problemas grandes e comercialmente relevantes, comparando os seus resultados e determinando o quanto eles atendiam as necessidades da indústria. Conforme a sua própria descrição, os objetivos do projeto eram três:
 
@@ -40,7 +57,7 @@ Para os testes serão utilizados dois conjuntos de dados contendo informações 
 
 Os conjuntos de dados são denominados German Credit (Cr.Ger) e Australian Credit (Cr.Aust). Ambos contém informações sobre contas de crédito, conforme apresentado nas próximas seções.
 
-\subsubsection{Cr.Ger}
+\subsection{Cr.Ger}
 
 Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade de Hamburgo. Os atributos e valores que esses atributos podem assumir são descritos na listagem \ref{lst:ge_dataset} (traduzido do original)\footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231$\textunderscore$2.en.html).}.
 
@@ -164,7 +181,7 @@ Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade d
     A202 : não
 \end{lstlisting}
 
-\subsubsection{Cr.Aust}
+\subsection{Cr.Aust}
 
 Os atributos do conjunto de dados australiano são descritos na listagem \ref{lst:prop_au_dataset} (traduzido do original). Uma grande desvantagem, muito comum nesse tipo de conjunto de dados (seção \ref{sec:fraud_data}), é a de o nome dos campos ter sido alterado, perdendo o significado original. Para garantir a privacidade das informações contidas no conjunto de dados, provavelmente por questões competitivas, a empresa que cedeu os dados utilizou um processo de anonimização, garantindo que as informações confidenciais não possam ser recuperadas.
 
@@ -190,7 +207,7 @@ A15: contínuo
 A16: +,- (atributo de classe)
 \end{lstlisting}
 
-\subsection{Algoritmos}
+\section{Algoritmos}
 
 Os algoritmos que serão utilizados para a comparação são um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual (1.8, maio de 2011). Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina Weka (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementados diversas categorias de algoritmos de Redes Neurais e Sistemas Imunológicos Artificiais:
 
@@ -218,7 +235,7 @@ Desses, os algoritmos de Sistemas Imunológicos Artificiais (2) serão utilizado
     \includegraphics[width=0.75\textwidth]{img/weka_ais.png}
 \end{figure}
 
-\subsubsection{AIRS}
+\subsection{AIRS}
 \label{sec:prop_airs}
 
 Esse algoritmo foi criado por Andrew Watkins \cite{Andrew2003} e tinha como objetivo implementar um Sistema Imunológico Artificial que utilizasse aprendizagem supervisionada. Na época de seu desenvolvimento, a área de algoritmos imunológicos supervisionados não havia sido explorada, apesar da pesquisa intensa na área de algoritmos imunológicos não-supervisionados \footnote{De acordo com o autor, o único outro algoritmo imunológico supervisionado era o Immunos, apresentado na próxima seção.}.
@@ -227,7 +244,7 @@ Por esse motivo, esse foi o primeiro algoritmo supervisionado a implementar a ma
 
 Na definição desse algoritmo também foi aplicado o formalismo do espaço de formas. Conforme apresentado na seção \ref{sec:ais_shape}, esse é um formalismo bastante apropriado para a modelagem de Sistemas Imunológicos Artificiais, devido a forte semelhança entre o espaço de formas e as diferentes formas que os receptores dos linfócitos no sistema imunológico apresentam. Os antígenos identificados por esses receptores formam a região de reconhecimento ao redor de cada ponto no espaço de formas. Em um algoritmo de aprendizagem, isso representa a correspondência entre as instâncias de treinamento (antígenos) e as possíveis soluções (células B).
 
-\subsubsection{Immunos}
+\subsection{Immunos}
 \label{sec:prop_immunos}
 
 Esse algoritmo foi apresentado por Jerome Carter \cite{Carter2000}. O algoritmo Imunnos foi desenvolvido em oposição aos algoritmos que tentavam simular fielmente o comportamento do sistema imunológico. Segundo o autor, do ponto de vista da computação, construir um sistema que utilize equações cuidadosamente derivadas dos estudos teóricos a imunologia seria um feito notável, mas não ideal. Os elementos do sistema imunológico foram reduzidos ao nível mais fundamental para que fossem introduzidos no sistema.
@@ -249,7 +266,7 @@ O principal elemento na modelagem do algoritmo foi a utilização de pequenas e 
     \vspace{2mm}
 \end{enumerate}
 
-\subsubsection{Algoritmos para comparação}
+\subsection{Algoritmos para comparação}
 
 Para a comparação dos algoritmos apresentados na seção anterior, os resultados serão comparados com os resultados de algoritmos tradicionais da área da Inteligência Artificial.
 
@@ -263,12 +280,10 @@ Para a comparação dos algoritmos apresentados na seção anterior, os resultad
 
 Implementações de todos esses algoritmos estão disponíveis na versão oficial da ferramenta WEKA. Isso facilita a comparação dos resultados com os resultados dos algoritmos imunológicos.
 
-\subsection{Weka}{}
+\section{Weka}
 \label{sec:prop_weka}
 
-Como plataforma de testes será utilizado o \emph{software} Weka. Weka (\emph{Waikato Environment for Knowledge Analysis}, Ambiente para Aprendizagem de Máquina de Waikato) é uma suite de aplicações de aprendizagem de máquina desenvolvida na Universidade de Waikato na Nova Zelândia. Essa ferramenta é largamente utilizada em projetos nessa área, devido a sua licença aberta (GNU GPL), que permite que seja utilizada quase sem restrições.
-
-A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execução, mostrando a visualização de um conjunto de dados de exemplo.
+Como plataforma de testes será utilizado o \emph{software} Weka. Weka (\emph{Waikato Environment for Knowledge Analysis}, Ambiente para Aprendizagem de Máquina de Waikato) é uma suite de aplicações de aprendizagem de máquina desenvolvida na Universidade de Waikato na Nova Zelândia. Essa ferramenta é largamente utilizada em projetos nessa área, devido a sua licença aberta (GNU GPL), que permite que seja utilizada quase sem restrições. A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execução, mostrando a visualização de um conjunto de dados de exemplo.
 
 \begin{figure}[h!]
     \centering
@@ -277,7 +292,59 @@ A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execuçã
     \includegraphics[width=0.75\textwidth]{img/weka.png}
 \end{figure}
 
-\iffalse arff file format \fi
+\subsection{Arquivos ARFF}
+\label{sec:prop_arff}
+
+Para que um conjunto de dados possa ser utilizado no WEKA, ele deve estar em um formato específico, denominado ARFF (\emph{Attribute Relationship File Format}, Formato de Arquivo de Relação de Atributos). Um arquivo nesse formato é apresentado na listagem \ref{lst:prop_arff}. Esse é o mesmo arquivo apresentado na figura \ref{fig:prop_weka}, onde é mostrada a visualização dos dados pela interface gráfica.
+
+\vspace{1cm}
+\begin{lstlisting}[caption=Exemplo de arquivo no formato ARFF, label=lst:prop_arff]
+    @relation weather
+
+    @attribute outlook {sunny, overcast, rainy}
+    @attribute temperature real
+    @attribute humidity real
+    @attribute windy {TRUE, FALSE}
+    @attribute play {yes, no}
+
+    @data
+    sunny,85,85,FALSE,no
+    sunny,80,90,TRUE,no
+    overcast,83,86,FALSE,yes
+    rainy,70,96,FALSE,yes
+    rainy,68,80,FALSE,yes
+    rainy,65,70,TRUE,no
+    overcast,64,65,TRUE,yes
+    sunny,72,95,FALSE,no
+    sunny,69,70,FALSE,yes
+    rainy,75,80,FALSE,yes
+    sunny,75,70,TRUE,yes
+    overcast,72,90,TRUE,yes
+    overcast,81,75,FALSE,yes
+    rainy,71,91,TRUE,no
+\end{lstlisting}
+\vspace{1cm}
+
+Um arquivo ARFF é um arquivo de texto simples, em um formato padronizado, que combina a descrição dos dados e os dados em si \cite{Hall2009}. Ele é dividido em duas seções. A primeira, chamada de cabeçalho (\emph{header}) contém o nome do conjunto de dados (\emph{@relation}) e a lista de atributos (colunas) e seus tipos (\emph{@attribute}). Esses arquivos também podem conter comentários, que são ignorados quando o arquivo é analisado, e podem ser utilizados para adicionar informações ao arquivo como fonte, licença, etc. Um comentário é inserido através do caractere '\%', e tem efeito até o caractere de nova linha. Após o cabeçalho, vem a seção que contém os dados em si (\emph{@data}).
+
+O nome do conjunto de dados é uma \emph{string} arbitrária, e serve apenas para a identificação na interface (figura \ref{fig:prop_weka}). A lista de atributos é uma sequência de entradas \emph{@attribute}. Cada atributo no conjunto de dados tem uma entrada \emph{@attribute} correspondente, que identifica o atributo. A ordem da declaração deve ser exatamente a ordem em que os atributos são listados na seção de dados. Isso facilita a listagem de dados, onde não é necessário indicar, para cada valor, o atributo ao qual ele se refere. O formato de cada \emph{@attribute} é:
+
+\begin{lstlisting}[caption=Formato de uma entrada \emph{@attribute}, label=lst:prop_attribute_out]
+@attribute nome tipo
+\end{lstlisting}
+
+O WEKA suporta quatro tipos de atributos. O formato ARFF, no entanto, suporta seis, e a conversão é feita automaticamente:
+
+\begin{description}
+    \item[numeric] um atributo que pode ser tanto um número inteiro como real.
+    \item[inteiro] tratado pelo WEKA como \emph{numeric}.
+    \item[real] tratado pelo WEKA como \emph{numeric}.
+    \item[nominal] um atributo com valores pré-definidos. Esses valores são especificados através de uma lista no formato: \{ valor1, valor2, valor3, \emph{...} \}.
+    \item[string] uma \emph{string} de caracteres.
+    \item[date] uma data, com um campo opcional que especifica o formato da data, como "yyyy-MM-dd HH:mm:ss".
+\end{description}
+
+A seção de dados inicia com a entrada \emph{@data}, e segue até o final do arquivo. Nela são listados os valores do conjunto de dados. Cada entrada é representada em uma linha, ou seja, as entradas são separadas pelo caractere de nova linha. Em cada entrada, seus atributos são listados em uma lista separada por vírgulas. Como dito anteriormente, os atributos são identificados pela ordem ordem de declaração, logo ela deve ser a mesma no cabeçalho e nessa seção. Valores ausentes são representados por um caractere de ponto de interrogação (\emph{?}). Os atributos do tipo nominal e \emph{string} são \emph{case sensitive}, e devem ser envolvidos em aspas se contém espaços.
 
 A listagem \ref{lst:prop_weka_out} mostra um exemplo dos dados de saída após a execução de um teste de um dos algoritmos (LVQ) em um conjunto de dados de teste.
 
@@ -377,7 +444,7 @@ A etapa de coleta e preparação de dados envolverá a adaptação dos dados nos
 \end{lstlisting}
 \vspace{1cm}
 
-Ainda, podem ser necessários ajustes específicos nos dados para que possam servir como entrada para alguns dos algoritmos, caso estes não tenham suporte aos tipos de dados. Com os dados prontos, iniciará a fase de execução dos diferentes algoritmos sobre esses conjuntos de dados. A coleta dos resultados será feita através dos dados de saída, mostrados na listagem \ref{lst:prop_weka_out}.
+Ainda, podem ser necessários ajustes específicos nos dados para que possam servir como entrada para alguns dos algoritmos, caso estes não tenham suporte aos tipos de dados. Com os dados prontos, iniciará a fase de execução dos diferentes algoritmos sobre esses conjuntos de dados. A coleta dos resultados será feita através dos dados de saída, mostrados na listagem \ref{lst:prop_weka_out}. Com os dados prontos, iniciará a fase de execução dos diferentes algoritmos sobre esses conjuntos de dados. A coleta dos resultados será feita através dos dados de saída, mostrados na listagem \ref{lst:prop_weka_out}.
 
 Uma característica positiva da ferramenta WEKA é a possibilidade de alterar parâmetros tanto do algoritmo em si (caso eles ofereçam essa funcionalidade) quanto da execução do teste em si. Assim, pode-se executar diversos testes, variando esses parâmetros, para ao final comparar também essas configurações. A princípio, será definida apenas uma configuração, que será usada para a execução de todos os testes. No entanto, conforme for possível, poderão ser executados testes variando essa configuração, gerando comparação mais diversificadas.
 

@@ -1,0 +1,75 @@
+\chapter{Desenvolvimento}
+
+\section{Preparação dos dados}
+
+Os dois conjuntos de dados se encontravam em formato de texto, com os atributos separados por espaços e as instâncias separadas pelo caractere nova linha. A listagem \ref{lst:dev_data} mostra as primeiras cinco instâncias do \emph{Cr.Ger} no formato do arquivo original (a primeira coluna representa o número da linha, e não faz parte dos dados).
+
+\begin{lstlisting}[caption=Formato original dos dados (\emph{Cr.Ger}), label=lst:dev_data]
+A11 6 A34 A43 1169 A65 A75 4 A93 A101 4 A121 67 A143 A152 2 A173 1 A192 A201 1
+A12 48 A32 A43 5951 A61 A73 2 A92 A101 2 A121 22 A143 A152 1 A173 1 A191 A201 2
+A14 12 A34 A46 2096 A61 A74 2 A93 A101 3 A121 49 A143 A152 1 A172 2 A191 A201 1
+A11 42 A32 A42 7882 A61 A74 2 A93 A103 4 A122 45 A143 A153 1 A173 2 A191 A201 1
+A11 24 A33 A40 4870 A61 A73 3 A93 A101 4 A124 53 A143 A153 2 A173 2 A191 A201 2
+\end{lstlisting}
+
+A preparação dos dados para a importação no WEKA consistiu na adição de uma seção de cabeçalho e da formatação dos dados para valores separados por vírgula (seção \ref{sec:prop_arff}), e o resultado é mostrado nas listagens \ref{lst:dev_arff_ger} e \ref{lst:dev_arff_aust} (essas listagens mostram apenas as primeiras cinco instâncias na seção de dados).
+
+\begin{lstlisting}[caption=Arquivo ARFF do \emph{Cr.Ger}, label=lst:dev_arff_ger]
+@relation cr.ger
+
+@attribute A1  {A11,A12,A13,A14}
+@attribute A2  numeric
+@attribute A3  {A30,A31,A32,A33,A34}
+@attribute A4  {A40,A41,A42,A43,A44,A45,A46,A47,A48,A49,A410}
+@attribute A5  numeric
+@attribute A6  {A61,A62,A63,A64,A65}
+@attribute A7  {A71,A72,A73,A74,A75}
+@attribute A8  numeric
+@attribute A9  {A91,A92,A93,A94,A95}
+@attribute A10 {A101,A102,A103}
+@attribute A11 numeric
+@attribute A12 {A121,A122,A123,A124}
+@attribute A13 numeric
+@attribute A14 {A141,A142,A143}
+@attribute A15 {A151,A152,A153}
+@attribute A16 numeric
+@attribute A17 {A171,A172,A173,A174}
+@attribute A18 numeric
+@attribute A19 {A191,A192}
+@attribute A20 {A201,A202}
+@attribute A21 {1,2}
+
+@data
+A11,6,A34,A43,1169,A65,A75,4,A93,A101,4,A121,67,A143,A152,2,A173,1,A192,A201,1
+A12,48,A32,A43,5951,A61,A73,2,A92,A101,2,A121,22,A143,A152,1,A173,1,A191,A201,2
+A14,12,A34,A46,2096,A61,A74,2,A93,A101,3,A121,49,A143,A152,1,A172,2,A191,A201,1
+A11,42,A32,A42,7882,A61,A74,2,A93,A103,4,A122,45,A143,A153,1,A173,2,A191,A201,1
+A11,24,A33,A40,4870,A61,A73,3,A93,A101,4,A124,53,A143,A153,2,A173,2,A191,A201,2
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Arquivo ARFF do \emph{Cr.Aust}, label=lst:dev_arff_aust]
+@relation cr.aust
+
+@attribute A1  {0,1}
+@attribute A2  numeric
+@attribute A3  numeric
+@attribute A4  {1,2,3}
+@attribute A5  {1,2,3,4,5,6,7,8,9,10,11,12,13,14}
+@attribute A6  {1,2,3,4,5,6,7,8,9}
+@attribute A7  numeric
+@attribute A8  {1,0}
+@attribute A9  {1,0}
+@attribute A10 numeric
+@attribute A11 {1,0}
+@attribute A12 {1,2,3}
+@attribute A13 numeric
+@attribute A14 numeric
+@attribute A15 {0,1}
+
+@data
+1,22.08,11.46,2,4,4,1.585,0,0,0,1,2,100,1213,0
+0,22.67,7,2,8,4,0.165,0,0,0,0,2,160,1,0
+0,29.58,1.75,1,4,4,1.25,0,0,0,1,2,280,1,0
+0,21.67,11.5,1,5,3,0,1,1,11,1,2,0,1,1
+1,20.17,8.17,2,6,4,1.96,1,1,14,0,2,60,159,1
+\end{lstlisting}

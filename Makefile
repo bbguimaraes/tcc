@@ -14,10 +14,13 @@ CHAPTERS= \
 	chapters/nis.tex    \
 	chapters/ais.tex    \
 	chapters/eval.tex   \
-	chapters/prop.tex
+	chapters/prop.tex   \
+	chapters/dev.tex   \
+	chapters/outro.tex
+
+.PHONY: all clean
 
 all: tcc.pdf
-.PHONY: all clean
 
 tcc.pdf: tcc.nls $(CHAPTERS) tcc.bib tcc.tex
 	$(LATEX) $(MAIN_TEX)
