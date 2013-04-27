@@ -28,7 +28,7 @@ Além disso, sugerem, no mesmo trabalho, diretrizes de alto-nível para o format
 Com isso em mente, é importante considerar as características únicas do domínio onde o método é aplicado. Os dados nos problemas de detecção de fraude apresentam desafios únicos que devem ser levados em consideração durante o desenvolvimento de um sistema de detecção, conforme apresentado na seção \ref{sec:fraud_data}.
 
 \section{Detecção de fraude}
-\label{sec:fraud_criteria}
+\label{sec:eval_fraud}
 
 Phua e outros autores listam as diversas medidas de performance utilizadas em trabalhos recentes na área de detecção de fraude \cite{Phua2010}. Em relação à comparação da eficácia dos métodos, destacam-se os seguintes critérios:
 
@@ -60,6 +60,7 @@ A razão para isso é que o custo das classificações errôneas, no caso da det
 A primeira parte na avaliação de um algoritmo de classificação é a avaliação dos modelos criados por ele. Um modelo é a saída de um algoritmo de classificação ou a estrutura intermediária utilizada por ele, e define como as instâncias serão classificadas. O modelo é então aplicado a cada uma das instâncias da base de dados e gera uma classificação dessas instâncias. Essa classificação pode ser comparada com as classificações verdadeiras das instâncias, gerando um total de instâncias classificadas corretamente. Esse valor é comumente representado como uma porcentagem, um valor entre 0 e 1.
 
 \subsection{\emph{Cross-validation}}
+\label{sec:eval_cross_validation}
 
 Quando um modelo é criado à partir de um conjunto de dados e os testes são executados sobre esse mesmo conjunto, é muito provável que eles apresentem um bom resultado. No entanto, isso não garante que o modelo pode ser aplicado com a mesma eficácia sobre novos dados, o que geralmente é o objetivo dos sistemas de detecção.
 
