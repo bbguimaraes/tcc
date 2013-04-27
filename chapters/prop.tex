@@ -346,7 +346,25 @@ O WEKA suporta quatro tipos de atributos. O formato ARFF, no entanto, suporta se
 
 A seção de dados inicia com a entrada \emph{@data}, e segue até o final do arquivo. Nela são listados os valores do conjunto de dados. Cada entrada é representada em uma linha, ou seja, as entradas são separadas pelo caractere de nova linha. Em cada entrada, seus atributos são listados em uma lista separada por vírgulas. Como dito anteriormente, os atributos são identificados pela ordem ordem de declaração, logo ela deve ser a mesma no cabeçalho e nessa seção. Valores ausentes são representados por um caractere de ponto de interrogação (\emph{?}). Os atributos do tipo nominal e \emph{string} são \emph{case sensitive}, e devem ser envolvidos em aspas se contém espaços.
 
-A listagem \ref{lst:prop_weka_out} mostra um exemplo dos dados de saída após a execução de um teste de um dos algoritmos (LVQ) em um conjunto de dados de teste.
+\subsection{Resultados}
+\label{sec:prop_results}
+
+A listagem \ref{lst:prop_weka_out} mostra um exemplo dos dados de saída após a execução de um teste de um dos algoritmos (LVQ) em um conjunto de dados de teste. O atributo ``\emph{Scheme}'' mostra o classificador e todos os parâmetros correspondentes utilizados no treinamento. Os atributos ``\emph{Relation}'', ``\emph{Instances}'' e ``\emph{Atttributes}'' mostram informações do conjunto de dados: o nome, número de instâncias e atributos, respectivamente.
+
+Por fim, ``\emph{Test mode}'' mostra o método utilizado para a execução dos testes. As quatro opções disponíveis são:
+
+\begin{description}
+    \item[Use training set] Executa os testes utilizando os mesmos dados utilizados no treinamento.
+    \item[Supplied test set] Executa os testes utilizando um arquivo de testes fornecido.
+    \item[Cross-validation] Executa os testes utilizando \emph{\emph{k}-fold cross-validation} (seção \ref{sec:eval_cross_validation}). O número de \emph{folds} pode ser definido.
+    \item[Percentage split] Executa os testes utilizando uma parte dos dados para testes e outra para o treinamento. A procentagem pode ser definida.
+\end{description}
+
+A seguir são mostrados dados sobre o processo de treinamento: tempos de execução e informações sobre o modelo gerado pelo classificador. A próxima seção mostra os resultados dos testes. Os dados dessa seção são: número de instâncias corretamente classificadas, número de instâncias incorretamente classificadas, o coeficiente \emph{kappa}, o erro de aproximação e a raiz quadrada do erro de aproximação, o erro relativo e a raiz quadrada do erro relativo e o número total de instâncias.
+
+Também é gerada uma tabela com os resultados para cada classe presente nos dados: taxa de verdadeiros e falsos positivos, \emph{precision}, \emph{recall} e \emph{f-measure} e a área sob a curva ROC.
+
+A última parte é uma matriz de confusão. As colunas dessa matriz mostram a classificação das instâncias e as linhas, a classe verdadeira. Dessa forma, é possível identificar o número de instâncias correta e incorretamente classificadas. Para um conjunto de dados que contém apenas duas classes, essa tabela também mostra o número de falsos positivos e negativos.
 
 \vspace{1cm}
 \begin{lstlisting}[caption=Exemplo de saída de uma execução do WEKA, label=lst:prop_weka_out]
