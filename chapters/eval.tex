@@ -79,6 +79,8 @@ No entanto, o resultado dessa separação pode ser altamente dependente da separ
     \item Calcular a média e o erro padrão da média dos resultados de cada iteração.
 \end{enumerate}
 
+Um dos métodos mais comuns para a divisão do primeiro passo é chamado \emph{\emph{k}-fold}, onde o conjunto de dados é divido em \emph{k} partições. A cada iteração, uma dessas partições é utilizada para testes, enquanto as outras \emph{k - 1} são utilizadas para o treinamento.
+
 \subsection{\emph{Grid search}}
 
 Os modelos podem ter seu comportamento alterado através de parâmetros. Esses parâmetros são valores numéricos ou condições que alteram o funcionamento da classificação das instâncias. Um exemplo disso é um classificador que aceita apenas valores maiores do que um determinado limiar. Diminuir ou aumentar esse limiar faz com que mais ou menos valores sejam aceitos.
