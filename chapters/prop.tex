@@ -209,7 +209,7 @@ A16: +,- (atributo de classe)
 
 \section{Algoritmos}
 
-Os algoritmos que serão utilizados para a comparação são um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual (1.8, maio de 2011). Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina Weka (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementados diversas categorias de algoritmos de Redes Neurais e Sistemas Imunológicos Artificiais:
+Os algoritmos que serão utilizados para a comparação são um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual (1.8, maio de 2011). Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina WEKA (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementados diversas categorias de algoritmos de Redes Neurais e Sistemas Imunológicos Artificiais:
 
 \begin{enumerate}
     \item Redes neurais
@@ -280,14 +280,14 @@ Para a comparação dos algoritmos apresentados na seção anterior, os resultad
 
 Implementações de todos esses algoritmos estão disponíveis na versão oficial da ferramenta WEKA. Isso facilita a comparação dos resultados com os resultados dos algoritmos imunológicos.
 
-\section{Weka}
+\section{WEKA}
 \label{sec:prop_weka}
 
-Como plataforma de testes será utilizado o \emph{software} Weka. Weka (\emph{Waikato Environment for Knowledge Analysis}, Ambiente para Aprendizagem de Máquina de Waikato) é uma suite de aplicações de aprendizagem de máquina desenvolvida na Universidade de Waikato na Nova Zelândia. Essa ferramenta é largamente utilizada em projetos nessa área, devido a sua licença aberta (GNU GPL), que permite que seja utilizada quase sem restrições. A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execução, mostrando a visualização de um conjunto de dados de exemplo.
+Como plataforma de testes será utilizado o \emph{software} WEKA. WEKA (\emph{Waikato Environment for Knowledge Analysis}, Ambiente para Aprendizagem de Máquina de Waikato) é uma suite de aplicações de aprendizagem de máquina desenvolvida na Universidade de Waikato na Nova Zelândia. Essa ferramenta é largamente utilizada em projetos nessa área, devido a sua licença aberta (GNU GPL), que permite que seja utilizada quase sem restrições. A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execução, mostrando a visualização de um conjunto de dados de exemplo.
 
 \begin{figure}[h!]
     \centering
-    \caption{Janela do módulo Explorer - Weka 3.6.4}
+    \caption{Janela do módulo Explorer - WEKA 3.6.4}
     \label{fig:prop_weka}
     \includegraphics[width=0.75\textwidth]{img/weka.png}
 \end{figure}
@@ -389,18 +389,18 @@ A listagem \ref{lst:prop_weka_out} mostra um exemplo dos dados de saída após a
     Kappa statistic                         -0.4651
     Mean absolute error                      0.6429
     Root mean squared error                  0.8018
-    Relative absolute error                135      %
-    Root relative squared error            162.5137 %
-    Total Number of Instances               14
+    Relative absolute error                  135      %
+    Root relative squared error              162.5137 %
+    Total Number of Instances                14
 
     === Detailed Accuracy By Class ===
 
-                   TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area
-    Class
-                     0.556     1          0.5       0.556     0.526      0.278
-    yes
-                     0         0.444      0         0         0          0.278
-    no
+    Class          TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area
+
+    yes              0.556     1          0.5       0.556     0.526      0.278
+
+    no               0         0.444      0         0         0          0.278
+
     Weighted Avg.    0.357     0.802      0.321     0.357     0.338      0.278
 
     === Confusion Matrix ===
