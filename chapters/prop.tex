@@ -4,22 +4,33 @@ Conforme apresentado nos capítulos anteriores, a modelagem de um sistema de det
 
 \section{Comparação dos algoritmos}
 
-Conforme apresentado no capítulo \ref{chap:eval}, a comparação do desempenho de diferentes algoritmos deve ser baseada em critérios sólidos para que tenha algum valor prático. Assim, nesse trabalho, o método para comparação será o seguinte:
+A comparação do desempenho de diferentes algoritmos deve ser baseada em critérios sólidos para que tenha algum valor prático. Assim, nesse trabalho, o método para comparação será o seguinte (os conceitos usados nessa seção são explicados no capítulo \ref{chap:eval}):
 
-\begin{enumerate}[a)]
+\begin{enumerate}
     \item Para cada algoritmo:
-        \begin{enumerate}[a)]
+        \begin{enumerate}
             \item Utilizar \emph{grid search} para otimizar os parâmetros para os dados.
-            \item Utilizando esses parâmetros, executar os testes usando cross-validation.
-            \item Guardar os resultados da execução.
+            \item Utilizando esses parâmetros, executar os testes usando \emph{cross-validation}.
         \end{enumerate}
     \item Calcular, para o resultado de cada algoritmo:
-        \begin{enumerate}[a)]
-            \item \iffalse critérios aqui \fi
+        \begin{enumerate}
+            \item O erro médio relativo.
+            \item O índice de Youden.
+            \item O índice de Youden com significância maior para os falsos negativos (seção.
         \end{enumerate}
 \end{enumerate}
 
-Como será apresentado nas próximas seções, os critérios escolhidos já são parte integrante dos resultados exibidos na execução do WEKA. Essa escolha reflete tanto a aderência dessa plataforma aos padrões da área como a facilidade que uma ferramenta desse tipo oferece na determinação do método de avaliação.
+O erro médio relativo é uma medida padrão simples, que mostra o quanto o resultado de um teste difere dos valores corretos. Ele é utilizado como uma métrica simples para o desempenho de um algoritmo. No entanto, a simplicidade do cálculo do erro médio relativo não é suficiente para a análise de áreas mais complexas como a detecção de fraude.
+
+O índice de Youden é uma medida de performance que leva em consideração não só o número de instâncias classificadas corretamente. Para que o índice de Youden seja alto, tanto a taxa de falsos positivos quanto a de falsos negativos deve ser baixa. Conforme apresentado na seção \ref{sec:eval_fraud}, na detecção de fraude os falsos positivos são muito mais críticos do que os falsos positivos. Assim, serão calculados dois índices: o índice de Youden padrão e o índice de Youden com maior significância para os falsos negativos. Esse é calculado através da fórmula:
+
+\begin{equation}
+    \vspace{2mm}
+    J = 0.25 * sensibilidade + 0.75 * especificidade
+    \vspace{2mm}
+\end{equation}
+
+Conforme o padrão nesse tipo de experimento, os dados serão apresentados em formato de tabela e gráfico. Como será apresentado em uma seção posterior, os critérios escolhidos já são parte integrante dos resultados exibidos na execução do WEKA. Essa escolha reflete tanto a aderência dessa plataforma aos padrões da área como a facilidade que uma ferramenta desse tipo oferece na determinação do método de avaliação.
 
 \iffalse
 
@@ -466,7 +477,7 @@ Ainda, podem ser necessários ajustes específicos nos dados para que possam ser
 
 Uma característica positiva da ferramenta WEKA é a possibilidade de alterar parâmetros tanto do algoritmo em si (caso eles ofereçam essa funcionalidade) quanto da execução do teste em si. Assim, pode-se executar diversos testes, variando esses parâmetros, para ao final comparar também essas configurações. A princípio, será definida apenas uma configuração, que será usada para a execução de todos os testes. No entanto, conforme for possível, poderão ser executados testes variando essa configuração, gerando comparação mais diversificadas.
 
-De posse dos resultados dos testes de todos os algoritmos, iniciará a etapa de análise. Os resultados dos algoritmos imunológicos serão comparados com os resultados dos algoritmos tradicionais. Essa comparação envolve diversos níveis: taxas de erros e acertos (conforme apresentado na seção \ref{sec:fraud_criteria}), tempos de execução (que inclui tempo de treinamento do algoritmo e o tempo dos testes), utilização de recursos, etc. Para a visualização dos resultados, serão criados elementos visuais, como tabelas e gráficos.
+De posse dos resultados dos testes de todos os algoritmos, iniciará a etapa de análise. Os resultados dos algoritmos imunológicos serão comparados com os resultados dos algoritmos tradicionais. Essa comparação envolve diversos níveis: taxas de erros e acertos (conforme apresentado na seção \ref{sec:eval_fraud}), tempos de execução (que inclui tempo de treinamento do algoritmo e o tempo dos testes), utilização de recursos, etc. Para a visualização dos resultados, serão criados elementos visuais, como tabelas e gráficos.
 
 Esse período também inclui a documentação do processo através da redação da monografia e a apresentação ao fim do semestre.
 
