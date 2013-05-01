@@ -1,4 +1,4 @@
-\chapter{Mineração de dados e Detecção de fraude}
+\chapter{Detecção de fraude}
 
 A fraude pode ter origem tanto interna quanto externa a uma organização. Por exemplo, uma empresa está sujeita a fraude por seus administradores (denominada de alto-nível) ou empregados que não sejam gestores (baixo-nível) \cite{Phua2010}. Em um documento de 2012, a Associação de Investigadores Certificados de Fraude (Association of Certified Fraud Examiners, ACFE) definiu a fraude interna como a exploração ilegal dos recursos e bens de uma empresa, por um empregado, para enriquecimento próprio \cite{ACFE2012}.
 
@@ -97,3 +97,11 @@ Os sistemas de detecção podem ser divididos em dois tipos gerais, denominados 
 \citet{Aral2011} apresentam um sistema de detecção de fraude em prescrições médicas que calcula um fator de risco associado a cada prescrição. Matrizes de incidências são geradas através de uma medida de distância entre valores cruzados (\emph{cross-features}) de uma base de conhecimento. Dessas matrizes são geradas matrizes de riscos, e cada instância da base de dados cujo risco for maior que um limiar é relatada como uma possível fraude. Os autores indicam que o raciocínio por trás desse modelo é de que os padrões no comportamento fraudulento são \emph{outliers} quando considerados no contexto do \emph{dataset} como um todo. Os limiares são configuráveis, permitindo ao usuário um controle sobre o número de falsos positivos gerados.
 
 \fi
+
+\section{Considerações finais}
+
+A detecção de fraude é uma área que pode ser muito aprimorada através da utilização de sistemas computacionais. No entanto, a implementação de um sistema para detecção de fraude é complexa, devido às peculiaridades dessa área: os dados utilizados são sensíveis e esparsos, ocorrências de fraude são raras, comparadas ao grande volume de dados de transações legítimas nas bases de dados. Outro fator importante é que o sistema deve ser adaptável, já que os fraudadores aprimoram constantemente os seus métodos.
+
+Além disso, a detecção, como parte do processo de controle de fraude, deve estar integrada aos outros processos, como a obtenção e segurança dos dados e a divulgação dos resultados. Todos esses processos devem estar em constante funcionamento para que a detecção e a contenção da fraude sejam efetivas, evitando o máximo de danos possível. O sistema de detecção deve fornecer informações suficientes para que a instância possa ser analisada por um especialista para atestar se trata-se realmente de uma fraude. Também é importante que possa haver uma forma de otimização para que o sistema possa ser adaptado aos requisitos da detecção de fraude. Em especial, o número de falsos negativos deve ser o mínimo possível.
+
+Busca-se constantemente aprimorar e adaptar as técnicas tradicionais da mineração de dados para a detecção de fraude. Uma área que oferece uma interessante inspiração é a biologia. Em especial, a imunologia trabalha com cenários muito semelhantes aos sistemas de detecção. Nos próximos dois capítulos, serão apresentados os algoritmos inspirados no sistema imunológico natural e os benefícios que eles podem trazer para os sistemas de detecção.
