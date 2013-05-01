@@ -389,11 +389,7 @@
 \newenvironment{englishabstract}[2]{%
         \if@openright\cleardoublepage\else\clearpage\fi%
         \gdef\@englishkeywords{#2}%
-        \iflanguage{english}{
-                \begin{otherlanguage}{brazilian}
-        }{
                 \begin{otherlanguage}{english}
-        }
                 \chapter*{\abstractname}
                 % os 22ex abaixo fazem o título em inglês iniciar a
                 % aproximadamente 5cm da borda superior
