@@ -263,3 +263,9 @@ Uma consideração importante quando analisa-se o desempenho de dois ou mais sis
 \subsection{Sistemas imunológicos artificiais}
 
 Uma característica dos algoritmos inspirados na biologia é que eles tem um elemento estocástico, ou seja, em qualquer momento da sua execução, seu estado tem um elemento não-determinístico. Por isso, ao contrário dos métodos tradicionais, diversas execuções do treinamento podem apresentar resultados diferentes, mesmo quando os mesmos valores são usados para os parâmetros.
+
+\section{Considerações finais}
+
+A aplicação de critérios é vital para que um experimento possa ser analisado corretamente. Critérios não apropriados podem levar a informações erradas e conclusões que não seguem a realidade. Um exemplo clássico disso é um modelo que apresenta \emph{overfitting} (seção \ref{sec:eval_cross_validation}). Caso o modelo fosse testado apenas nos dados de treinamento, o resultado pareceria extremamente satisfatório. No entanto, o modelo apresentaria um desempenho péssimo em outros conjuntos de dados, o que tornaria-o inútil para qualquer aplicação.
+
+A partir do próximo capítulo é apresentado o desenvolvimento do experimento. Nele serão utilizados diversos conceitos apresentados nesse capítulo: \emph{grid search} e \emph{corss-validation}, falsos positivos e falsos negativos, sensibilidade e especificidade, etc. Serão utilizados métodos para aumentar a confiabilidade dos testes (\emph{grid search} e \emph{cross-validation}) e medidas de performance (sensibilidade e especificidade, índice de Youden e curvas ROC).
