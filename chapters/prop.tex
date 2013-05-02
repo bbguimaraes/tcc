@@ -4,7 +4,11 @@ Conforme apresentado nos capítulos anteriores, a modelagem de um sistema de det
 
 \section{Comparação dos algoritmos}
 
-A comparação do desempenho de diferentes algoritmos deve ser baseada em critérios sólidos para que tenha algum valor prático. Assim, nesse trabalho, o método para comparação será o seguinte (os conceitos usados nessa seção são explicados no capítulo \ref{chap:eval}):
+A comparação do desempenho de diferentes algoritmos deve ser baseada em critérios sólidos para que tenha algum valor prático. Assim, nesse trabalho, a comparação dos algoritmos foi divida em duas etapas: execução e análise.
+
+A etapa de execução consiste em executar os algoritmos utilizando \emph{grid search} e \emph{cross-validation}. Utilizar \emph{cross-validation} diminui a influência do conjunto de dados no resultado dos testes. Como o algoritmo é treinado e testado várias vezes, cada vez com uma divisão diferente do conjunto de dados para treinamento e testes, quaisquer tendências nos dados são eliminadas, e o resultado se torna mais confiável.
+
+Geralmente, o \emph{grid search} é utilizado para selecionar os melhores parâmetros para um modelo, para que esses parâmetros sejam incorporados no sistema final, obtendo a melhor performance possível. Nesse trabalho, ele será utilizado para gerar o melhor modelo possível para cada algoritmo, para que eles possam ser comparados igualmente. Em resumo, a etapa de execução consiste em:
 
 \begin{enumerate}
     \item Para cada algoritmo:
@@ -12,15 +16,20 @@ A comparação do desempenho de diferentes algoritmos deve ser baseada em crité
             \item Utilizar \emph{grid search} para otimizar os parâmetros para os dados.
             \item Utilizando esses parâmetros, executar os testes usando \emph{cross-validation}.
         \end{enumerate}
+\end{enumerate}
+
+Durante a etapa de execução, serão coletados dados sobre os resultados dos testes. Esses dados serão utilizados na etapa de análise, gerando, por fim, a comparação. Esses critérios foram selecionados de acordo com a análise de trabalhos recentes e relevantes nas áreas de mineração de dados e detecção de fraude. Em resumo, a etapa de análise consiste em::
+
+\begin{enumerate}
     \item Calcular, para o resultado de cada algoritmo:
         \begin{enumerate}
             \item O erro médio relativo.
             \item O índice de Youden.
-            \item O índice de Youden com significância maior para os falsos negativos (seção.
+            \item O índice de Youden com significância maior para os falsos negativos.
         \end{enumerate}
 \end{enumerate}
 
-O erro médio relativo é uma medida padrão simples, que mostra o quanto o resultado de um teste difere dos valores corretos. Ele é utilizado como uma métrica simples para o desempenho de um algoritmo. No entanto, a simplicidade do cálculo do erro médio relativo não é suficiente para a análise de áreas mais complexas como a detecção de fraude.
+O erro médio relativo é uma medida padrão simples, que mostra o quanto o resultado de um teste difere dos valores corretos. Ele é utilizado como uma métrica simples para o desempenho de um algoritmo, e pode ser utilizado como análise superficial na comparação de algoritmos. No entanto, o erro médio relativo não pode ser utilizado como métrica única: devido a simplicidade do seu cálculo, não é suficiente para a análise de áreas mais complexas como a detecção de fraude.
 
 O índice de Youden é uma medida de performance que leva em consideração não só o número de instâncias classificadas corretamente. Para que o índice de Youden seja alto, tanto a taxa de falsos positivos quanto a de falsos negativos deve ser baixa. Conforme apresentado na seção \ref{sec:eval_fraud}, na detecção de fraude os falsos positivos são muito mais críticos do que os falsos positivos. Assim, serão calculados dois índices: o índice de Youden padrão e o índice de Youden com maior significância para os falsos negativos. Esse é calculado através da fórmula:
 
@@ -30,7 +39,7 @@ O índice de Youden é uma medida de performance que leva em consideração não
     \vspace{2mm}
 \end{equation}
 
-Conforme o padrão nesse tipo de experimento, os dados serão apresentados em formato de tabela e gráfico. Como será apresentado em uma seção posterior, os critérios escolhidos já são parte integrante dos resultados exibidos na execução do WEKA. Essa escolha reflete tanto a aderência dessa plataforma aos padrões da área como a facilidade que uma ferramenta desse tipo oferece na determinação do método de avaliação.
+Conforme o padrão nesse tipo de experimento, os dados serão apresentados em formato de tabela e gráfico. Os critérios escolhidos já são parte integrante dos resultados exibidos na execução do WEKA. Essa escolha reflete tanto a aderência dessa plataforma aos padrões da área como a facilidade que uma ferramenta desse tipo oferece na determinação do método de avaliação.
 
 \iffalse
 
@@ -54,11 +63,9 @@ ALgoritmos inspirados no sistema imunológico que serão utilizados.
 \subsection{Immunos}
 \fi
 
-Os principais elementos no desenvolvimento do trabalho são: os conjuntos de dados utilizados na execução dos testes, os algoritmos que serão testados nesses dados e os métodos de avaliação dos resultados.
-
 \section{Descrição dos dados}
 
-Para os testes serão utilizados dois conjuntos de dados contendo informações de contas de cartões de crédito. Esses dados estão disponíveis publicamente e fazem parte de um projeto chamado StatLog \cite{Michie1994}. Esse projeto foi concebido para testar diversos métodos de classificação em problemas grandes e comercialmente relevantes, comparando os seus resultados e determinando o quanto eles atendiam as necessidades da indústria. Conforme a sua própria descrição, os objetivos do projeto eram três:
+Para os testes foram utilizados dois conjuntos de dados contendo informações de contas de cartões de crédito. Esses dados estão disponíveis publicamente e fazem parte de um projeto chamado StatLog \cite{Michie1994}. Esse projeto foi concebido para testar diversos métodos de classificação em problemas grandes e comercialmente relevantes, comparando os seus resultados e determinando o quanto eles atendiam as necessidades da indústria. Conforme a sua própria descrição, os objetivos do projeto eram três:
 
 \begin{enumerate}[a)]
     \item Possibilitar medidas críticas de desempenho para procedimentos de classificação disponíveis,
