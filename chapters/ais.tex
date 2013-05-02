@@ -150,6 +150,37 @@ O primeiro algoritmo baseado no comportamento dessas células foi desenvolvido e
 
 O algoritmo aplica pesos pré-definidos aos sinais de entrada para produzir três sinais de saída: sinal de coestimulação, sinal de semi-maturação e sinal de maturação. Se a soma dos valores dos sinais de maturação for maior que a somas dos sinais de semi-maturação, a célula é diferenciada para um estado maduro e tem assinalado um valor de contexto. O algoritmo calcula a proporção de valores de contexto maduro de um antígeno para o total de antígenos, chamada de MCAV (\emph{Mature Context Antigen Value}, Valor de Contexto Maduro do Antígeno), e aqueles antígenos cujo MCAV excede um limite pré-definido são classificados como anômalos.
 
+\subsection{AIRS}
+\label{sec:prop_airs}
+
+Esse algoritmo foi criado por Andrew Watkins \cite{Andrew2003} e tinha como objetivo implementar um Sistema Imunológico Artificial que utilizasse aprendizagem supervisionada. Na época de seu desenvolvimento, a área de algoritmos imunológicos supervisionados não havia sido explorada, apesar da pesquisa intensa na área de algoritmos imunológicos não-supervisionados \footnote{De acordo com o autor, o único outro algoritmo imunológico supervisionado era o Immunos, apresentado na próxima seção.}.
+
+Por esse motivo, esse foi o primeiro algoritmo supervisionado a implementar a maior parte das técnicas inspiradas nos sistemas imunológicos, como: modelagem dos dados como antígenos e anticorpos, expansão clonal dos linfócitos, mutação e maturação de afinidade e memória imunológica.
+
+Na definição desse algoritmo também foi aplicado o formalismo do espaço de formas. Conforme apresentado na seção \ref{sec:ais_shape}, esse é um formalismo bastante apropriado para a modelagem de Sistemas Imunológicos Artificiais, devido a forte semelhança entre o espaço de formas e as diferentes formas que os receptores dos linfócitos no sistema imunológico apresentam. Os antígenos identificados por esses receptores formam a região de reconhecimento ao redor de cada ponto no espaço de formas. Em um algoritmo de aprendizagem, isso representa a correspondência entre as instâncias de treinamento (antígenos) e as possíveis soluções (células B).
+
+\subsection{Immunos}
+\label{sec:prop_immunos}
+
+Esse algoritmo foi apresentado por Jerome Carter \cite{Carter2000}. O algoritmo Imunnos foi desenvolvido em oposição aos algoritmos que tentavam simular fielmente o comportamento do sistema imunológico. Segundo o autor, do ponto de vista da computação, construir um sistema que utilize equações cuidadosamente derivadas dos estudos teóricos a imunologia seria um feito notável, mas não ideal. Os elementos do sistema imunológico foram reduzidos ao nível mais fundamental para que fossem introduzidos no sistema.
+
+O principal elemento na modelagem do algoritmo foi a utilização de pequenas e simples unidades de processamento conectadas em paralelo, como pode ser observado nos nodos das redes neurais e linfócitos do sistema imunológico. As principais metas da modelagem eram:
+
+\begin{enumerate}[a)]
+    \vspace{2mm}
+    \itemsep1pt
+    \item Representação interna simples de ser entendida,
+    \item Capacidade de generalização sobre os dados de entrada,
+    \item Tempos de treinamento previsíveis,
+    \item Aprendizagem \emph{online},
+    \item Potencial para atuar como memória associativa,
+    \item Suporte a atributos contínuos e qualitativos,
+    \item Capacidade de aprendizagem e recuperação de um grande número de padrões,
+    \item Aprendizagem baseada em experiência e
+    \item Aprendizagem supervisionada.
+    \vspace{2mm}
+\end{enumerate}
+
 \section{Implementação}
 
 A modelagem de um problema como um Sistema Imunológico Artificial requer a definição de quatro componentes: codificação, medida de similaridade, seleção e mutação. De maneira geral, o funcionamento de um sistema baseado no modelo imunológico é: uma vez que a \emph{codificação} e uma \emph{medida de similaridade} tenham sido escolhidas, o sistema executa a \emph{seleção} e \emph{mutação}, ambas baseadas na medida de similaridade, até que o critério de parada seja satisfeito \cite{Aickelin2005}. Essas quatro etapas são detalhadas nas próximas seções.

@@ -227,24 +227,13 @@ A16: +,- (atributo de classe)
 
 \section{Algoritmos}
 
-Os algoritmos que serão utilizados para a comparação são um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual (1.8, maio de 2011). Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina WEKA (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementados diversas categorias de algoritmos de Redes Neurais e Sistemas Imunológicos Artificiais:
+Os algoritmos utilizados para a comparação são parte de um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual (1.8, maio de 2011). Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina WEKA (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementados diversas categorias de algoritmos de Redes Neurais e Sistemas Imunológicos Artificiais. A figura \ref{fig:prop_wekaais} mostra esses algoritmos conforme apresentados na interface do WEKA. Desses, os algoritmos que serão utilizados são:
 
-\begin{enumerate}
-    \item Redes neurais
-    \begin{enumerate}[a)]
-        \item \textbf{Learning Vector Quantization (LVQ)}: similar às redes neurais, que utiliza aprendizagem supervisionada, baseada em protótipos, para classificação de dados. É similar ao algoritmo de k-vizinhos mais próximos e um precursor do próximo algoritmo.
-        \item \textbf{Self-Organizing Map (SOM)}: algoritmo de redes neurais que utiliza aprendizagem não-supervisionada. Mapeia os valores da base de dados produzindo um mapa: um espaço de duas dimensões, uma representação discreta dos dados de entrada.
-        \item \textbf{Feed-Forward Artificial Neural Network (FF-ANN)}: tipo de algoritmo de redes neurais onde o sinal é propagado na direção entrada-saída, sem conexões de \emph{feedback}.
-    \end{enumerate}
-    \item Sistemas Imunológicos Artificiais
-    \begin{enumerate}[a)]
-        \item \textbf{Artificial Immune Recognition System (AIRS)}: algoritmo imunológico supervisionado descrito na seção \ref{sec:prop_airs}.
-        \item \textbf{Clonal Selection Algorithm (CLONALG)}: um dos principais algoritmos imunológicos, o algoritmo da seleção clonal, descrito na seção \ref{sec:ais_clonalg}.
-        \item \textbf{Immunos-81}: algoritmo imunológico descrito na seção \ref{sec:prop_immunos}.
-    \end{enumerate}
+\begin{enumerate}[a)]
+    \item \textbf{Artificial Immune Recognition System (AIRS)}: algoritmo imunológico supervisionado descrito na seção \ref{sec:prop_airs}.
+    \item \textbf{Clonal Selection Algorithm (CLONALG)}: um dos principais algoritmos imunológicos, o algoritmo da seleção clonal, descrito na seção \ref{sec:ais_clonalg}.
+    \item \textbf{Immunos-81}: algoritmo imunológico descrito na seção \ref{sec:prop_immunos}.
 \end{enumerate}
-
-Desses, os algoritmos de Sistemas Imunológicos Artificiais (2) serão utilizados para comparação com os métodos tradicionais. O algoritmo da seleção clonal (CLONALG) foi descrito na seção \ref{sec:ais_clonalg}. Os outros dois são descritos nas próximas seções. A figura \ref{fig:prop_wekaais} mostra esses algoritmos conforme apresentados na interface do WEKA.
 
 \begin{figure}[h!]
     \centering
@@ -253,38 +242,7 @@ Desses, os algoritmos de Sistemas Imunológicos Artificiais (2) serão utilizado
     \includegraphics[width=0.75\textwidth]{img/weka_ais.png}
 \end{figure}
 
-\subsection{AIRS}
-\label{sec:prop_airs}
-
-Esse algoritmo foi criado por Andrew Watkins \cite{Andrew2003} e tinha como objetivo implementar um Sistema Imunológico Artificial que utilizasse aprendizagem supervisionada. Na época de seu desenvolvimento, a área de algoritmos imunológicos supervisionados não havia sido explorada, apesar da pesquisa intensa na área de algoritmos imunológicos não-supervisionados \footnote{De acordo com o autor, o único outro algoritmo imunológico supervisionado era o Immunos, apresentado na próxima seção.}.
-
-Por esse motivo, esse foi o primeiro algoritmo supervisionado a implementar a maior parte das técnicas inspiradas nos sistemas imunológicos, como: modelagem dos dados como antígenos e anticorpos, expansão clonal dos linfócitos, mutação e maturação de afinidade e memória imunológica.
-
-Na definição desse algoritmo também foi aplicado o formalismo do espaço de formas. Conforme apresentado na seção \ref{sec:ais_shape}, esse é um formalismo bastante apropriado para a modelagem de Sistemas Imunológicos Artificiais, devido a forte semelhança entre o espaço de formas e as diferentes formas que os receptores dos linfócitos no sistema imunológico apresentam. Os antígenos identificados por esses receptores formam a região de reconhecimento ao redor de cada ponto no espaço de formas. Em um algoritmo de aprendizagem, isso representa a correspondência entre as instâncias de treinamento (antígenos) e as possíveis soluções (células B).
-
-\subsection{Immunos}
-\label{sec:prop_immunos}
-
-Esse algoritmo foi apresentado por Jerome Carter \cite{Carter2000}. O algoritmo Imunnos foi desenvolvido em oposição aos algoritmos que tentavam simular fielmente o comportamento do sistema imunológico. Segundo o autor, do ponto de vista da computação, construir um sistema que utilize equações cuidadosamente derivadas dos estudos teóricos a imunologia seria um feito notável, mas não ideal. Os elementos do sistema imunológico foram reduzidos ao nível mais fundamental para que fossem introduzidos no sistema.
-
-O principal elemento na modelagem do algoritmo foi a utilização de pequenas e simples unidades de processamento conectadas em paralelo, como pode ser observado nos nodos das redes neurais e linfócitos do sistema imunológico. As principais metas da modelagem eram:
-
-\begin{enumerate}[a)]
-    \vspace{2mm}
-    \itemsep1pt
-    \item Representação interna simples de ser entendida,
-    \item Capacidade de generalização sobre os dados de entrada,
-    \item Tempos de treinamento previsíveis,
-    \item Aprendizagem \emph{online},
-    \item Potencial para atuar como memória associativa,
-    \item Suporte a atributos contínuos e qualitativos,
-    \item Capacidade de aprendizagem e recuperação de um grande número de padrões,
-    \item Aprendizagem baseada em experiência e
-    \item Aprendizagem supervisionada.
-    \vspace{2mm}
-\end{enumerate}
-
-\subsection{Algoritmos para comparação}
+\section{Algoritmos para comparação}
 
 Para a comparação dos algoritmos apresentados na seção anterior, os resultados serão comparados com os resultados de algoritmos tradicionais da área da Inteligência Artificial.
 
