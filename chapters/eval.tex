@@ -110,11 +110,13 @@ Na área de detecção de fraude, geralmente se lida com classificadores binári
 
 A avaliação dos classificadores binários é feita com base em uma \emph{tabela de confusão}, conforme mostrado na tabela \ref{fraud:confusion}. Nessa tabela são listados o número de valores (ou porcentagem) para cada combinação de saída do sistema e a classificação real. Instâncias corretamente classificadas ocupam as colunas Positivo e Negativo, enquanto instâncias cujo classificação difere da realidade ocupam as colunas ``Falsos positivos'' e ``Falsos negativos''.
 
+\vspace{0.5cm}
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h!]
-    \vspace{1cm}
-    \caption{Tabela de confusão}
     \centering
+    \caption{Tabela de confusão}
+    \label{fraud:confusion}
+    \vspace{0.5cm}
     \begin{tabular}{c l c c}
         & & \multicolumn{2}{c}{\textbf{Dados reais}} \\
         \multirow{3}{5mm}{\begin{sideways}\parbox{20mm}{\textbf{Saída}}\end{sideways}} & \multicolumn{1}{c|}{} & Positivo & Negativo \\
@@ -122,21 +124,20 @@ A avaliação dos classificadores binários é feita com base em uma \emph{tabel
         & \multicolumn{1}{c|}{Positivo} & Positivo & Falso positivo\\
         & \multicolumn{1}{c|}{Negativo} & Falso negativo & Negativo\\
     \end{tabular}
-    \label{fraud:confusion}
-    \vspace{1cm}
 \end{table}
+\vspace{0.5cm}
 
 Como exemplo, inspirado em \citet{Bewick2004}, é apresentado nessa seção um sistema de detecção de fraude, que considera como único atributo das instâncias o número de ocorrências de um determinado valor. Nesse ambiente simplificado, a instância é considerada fraudulenta caso um limiar de ocorrências seja ultrapassado.
 
 Esse sistema de testes utiliza como único critério de avaliação o número de ocorrências. Um \emph{limiar de classificação} é definido: um parâmetro que o sistema de detecção utilizará para guiar a previsão da detecção. Se o limiar de classificação fosse 1, todas as instâncias que tivessem mais de uma ocorrência (nos valores de exemplo, as instâncias 0 e 2) seriam consideradas fraudulentas.
 
-Um exemplo do resultado de um teste nesse sistema é mostrado na tabela \ref{fraud:ex}. As colunas sob ``Dados reais'' mostram o número de instâncias fraudulentas e legítimas; as linhas sob ``Saída'' mostram a classificação gerada pelo sistema. A partir desses dados, a avaliação dos resultados é feita usando dois conceitos: sensibilidade e especificidade.
-
+\vspace{0.5cm}
 \renewcommand{\arraystretch}{1.5}
-\begin{table}[h!]
+\begin{table}[h]
     \centering
     \caption{Exemplo de tabela de confusão}
     \label{fraud:ex}
+    \vspace{0.5cm}
     \begin{tabular}{c l c c c}
         & & \multicolumn{2}{c}{\textbf{Dados reais}} \\
         \multirow{3}{5mm}{\begin{sideways}\parbox{20mm}{\textbf{Saída}}\end{sideways}} & \multicolumn{1}{c|}{} & Fraude & Legítimo & \multicolumn{1}{|c}{Total} \\
@@ -147,6 +148,9 @@ Um exemplo do resultado de um teste nesse sistema é mostrado na tabela \ref{fra
         & \multicolumn{1}{c|}{Total}    & 400 & 1200  & \multicolumn{1}{|c}{1600} \\
     \end{tabular}
 \end{table}
+\vspace{0.5cm}
+
+Um exemplo do resultado de um teste nesse sistema é mostrado na tabela \ref{fraud:ex}. As colunas sob ``Dados reais'' mostram o número de instâncias fraudulentas e legítimas; as linhas sob ``Saída'' mostram a classificação gerada pelo sistema. A partir desses dados, a avaliação dos resultados é feita usando dois conceitos: sensibilidade e especificidade.
 
 \subsection{Sensibilidade e especificidade}
 
@@ -188,10 +192,12 @@ Desses valores, pode-se atestar a utilidade do método para classificação. Uma
 
 Os dados de teste do exemplo mostrados nas tabelas até agora consideraram apenas um valor como limiar de classificação. Mudanças nesse limiar afetam a precisão dos testes: caso o limiar seja seja igual a -1, todas as instâncias são classificadas como fraudulentas, já que todas possuem como número de ocorrências um número maior ou igual a zero. Por outro lado, caso o limiar seja um número maior do que qualquer uma das instâncias, todas serão classificadas como legítimas. Em sistemas reais, é comum que sejam testados diversos valores para esse limiar sobre uma mesma base de dados, para que o melhor seja identificado e usado no sistema final. A tabela \ref{fraud:youden} é um exemplo de resultados para esse tipo de teste.
 
+\vspace{0.5cm}
 \begin{table}[h!]
+    \centering
     \caption{Exemplo de resultados para testes comparativos de limiares}
     \label{fraud:youden}
-    \centering
+    \vspace{0.5cm}
     \begin{tabular}{l c c c c c}
         \hline
         Limiar & Fraudes & Legítimos & Sensibilidade & Especificidade & Índice de Youden \\
@@ -206,8 +212,10 @@ Os dados de teste do exemplo mostrados nas tabelas até agora consideraram apena
         Total & 400 & 1200 &    -   &    -   &    -   \\
         \hline
     \end{tabular}
+    \vspace{0.5cm}
     \\ Fonte: inspirado em \citet{Bewick2004}.
 \end{table}
+\vspace{0.5cm}
 
 Uma medida para a avaliação dos diferentes limiares pode ser a sensibilidade e especificidade. O índice de Youden (J), que é uma derivação desses valores, é uma medida apropriada nesses casos (eq. \ref{fraud:yindex}). Esse índice é um valor normalizado na faixa [0, 1], onde 1 significa um teste perfeito, classificando todas as instâncias corretamente; e 0 significa um teste sem valor nenhum. A tabela \ref{fraud:yindex} mostra os valores para os resultados com diversos limiares. É importante notar como valores extremos maximizam a sensibilidade e a especificidade, mas apenas aqueles limiares que maximizam os dois valores recebem índices significativos.
 
