@@ -236,21 +236,28 @@ Uma característica importante do índice de Youden é que ele estabelece uma eq
 
 Como pode-se observar na tabela \ref{fraud:yindex}, alterações no valor usado na classificação alteram o número de instâncias classificadas como positivas e negativas. Geralmente os resultados são distribuídos começando com um grande valor de sensibilidade e um valor baixo de especificidade; esses valores convergem até um máximo global; e então terminam em com um valor baixo de sensibilidade e um grande valor de especificidade. A variação desses três valores, e a interação entre eles, é mostrada no gráfico da figura \ref{fraud:threshold}.
 
+\vspace{0.5cm}
 \begin{figure}[h!]
     \centering
     \caption{Variação dos valores de avaliação conforme o limiar de detecção}
     \label{fraud:threshold}
+    \vspace{0.5cm}
     \includegraphics[scale=0.5]{img/threshold.png}
+    \vspace{0.5cm}
 \end{figure}
+\vspace{0.5cm}
 
 No lado esquerdo, onde o limiar é muito baixo, a sensibilidade é 1 e a especificidade, zero; enquanto no lado direito, onde o limiar é muito alto, ocorre o oposto: a sensibilidade é zero e a sensibilidade, 1. Conforme o limiar aumenta (começando do lado esquerdo e caminhando para a direita), ocorreu uma diminuição na especificidade (algumas instâncias fraudulentas começam a ser classificadas como legítimas). No entanto, há um aumento muito maior na especificidade (instâncias legítimas começam a ser classificadas corretamente). É possível ver como o índice de Youden mostra a real proporção entre esses dois valores. Uma forma mais sucinta para apresentar esse tipo de informação é através de um gráfico dos valores de sensibilidade e 1 - especificidade, que é denominado ROC (característica operativa do receptor, \emph{receiver operating characteristic}), conforme mostrado na figura \ref{fraud:roc}.
 
+\vspace{0.5cm}
 \begin{figure}[h!]
     \centering
     \caption{Gráfico da curva ROC dos valores de exemplo}
     \label{fraud:roc}
+    \vspace{0.5cm}
     \includegraphics[scale=0.5]{img/roc.png}
 \end{figure}
+\vspace{0.5cm}
 
 No gráfico é visualmente aparente que o valor 3 como limiar de classificação oferece o melhor balanceamento entre sensibilidade e especificidade. Também é possível perceber como as alterações no limiar influenciam a distribuição desses dois valores. Um teste perfeito, que classificasse todas as instâncias corretamente, teria ambos os valores iguais a 1, tendo portanto um ponto no canto superior esquerdo do gráfico. Os pontos mais próximos dessa localização são aqueles que melhor classificam as instâncias.
 
