@@ -229,18 +229,21 @@ A16: +,- (atributo de classe)
 
 Os algoritmos utilizados para a comparação são parte de um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual (1.8, maio de 2011). Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina WEKA (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementados diversas categorias de algoritmos de Redes Neurais e Sistemas Imunológicos Artificiais. A figura \ref{fig:prop_wekaais} mostra esses algoritmos conforme apresentados na interface do WEKA. Desses, os algoritmos que serão utilizados são:
 
+\vspace{0.5cm}
+\begin{figure}[h]
+    \centering
+    \caption{Algoritmos no WEKA}
+    \label{fig:prop_wekaais}
+    \vspace{0.5cm}
+    \includegraphics[width=0.75\textwidth]{img/weka_ais.png}
+\end{figure}
+\vspace{0.5cm}
+
 \begin{enumerate}[a)]
     \item \textbf{Artificial Immune Recognition System (AIRS)}: algoritmo imunológico supervisionado descrito na seção \ref{sec:prop_airs}.
     \item \textbf{Clonal Selection Algorithm (CLONALG)}: um dos principais algoritmos imunológicos, o algoritmo da seleção clonal, descrito na seção \ref{sec:ais_clonalg}.
     \item \textbf{Immunos-81}: algoritmo imunológico descrito na seção \ref{sec:prop_immunos}.
 \end{enumerate}
-
-\begin{figure}[h!]
-    \centering
-    \caption{Algoritmos no WEKA}
-    \label{fig:prop_wekaais}
-    \includegraphics[width=0.75\textwidth]{img/weka_ais.png}
-\end{figure}
 
 \section{Algoritmos para comparação}
 
@@ -261,12 +264,15 @@ Implementações de todos esses algoritmos estão disponíveis na versão oficia
 
 Como plataforma de testes será utilizado o \emph{software} WEKA. WEKA (\emph{Waikato Environment for Knowledge Analysis}, Ambiente para Aprendizagem de Máquina de Waikato) é uma suite de aplicações de aprendizagem de máquina desenvolvida na Universidade de Waikato na Nova Zelândia. Essa ferramenta é largamente utilizada em projetos nessa área, devido a sua licença aberta (GNU GPL), que permite que seja utilizada quase sem restrições. A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execução, mostrando a visualização de um conjunto de dados de exemplo.
 
-\begin{figure}[h!]
+\vspace{0.5cm}
+\begin{figure}[h]
     \centering
     \caption{Janela do módulo Explorer - WEKA 3.6.4}
     \label{fig:prop_weka}
+    \vspace{0.5cm}
     \includegraphics[width=0.75\textwidth]{img/weka.png}
 \end{figure}
+\vspace{0.5cm}
 
 \subsection{Arquivos ARFF}
 \label{sec:prop_arff}
