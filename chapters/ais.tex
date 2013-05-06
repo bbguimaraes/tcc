@@ -256,8 +256,8 @@ A otimização da aptidão dos modelos em muitos casos não é realmente o objet
 
 O papel da seleção é explicado a seguir, no contexto do funcionamento do sistema. Esse processo é descrito em pseudocódigo no trecho \ref{lst:ais_aisalg}. Supondo um estado inicial onde sistema se encontra vazio, o antígeno então codificado (conforme a representação definida anteriormente) e adicionado ao sistema. Cada anticorpo é codificado e adicionado ao sistema, um a cada iteração. Os anticorpos iniciam com um determinado valor de concentração, que é análogo ao número de células presentes no Sistema Imunológico Artificial. Esse valor é constantemente decrementado conforme o tempo passa, representando a morte natural de parte das células.
 
-\vspace{1cm}
-\begin{lstlisting}[caption=Pseudo código de um Sistema Imunológico Artificial \cite{Aickelin2005},label=lst:ais_aisalg]
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Pseudo código de um Sistema Imunológico Artificial,label=lst:ais_aisalg]
 Inicializar o sistema
 Codificar o antígeno Ag
 ENQUANTO (sistema não cheio) E (ainda existem anticorpos) FACA
@@ -269,6 +269,9 @@ ENQUANTO (sistema não cheio) E (ainda existem anticorpos) FACA
     FIMENQUANTO
 FIMENQUANTO
 \end{lstlisting}
+\vspace{0.25cm}
+\centerline{Fonte: \cite{Aickelin2005}}
+\vspace{0.5cm}
 
 Anticorpos cuja concentração ultrapassa um certo limiar mínimo são removidos do sistema. Um anticorpo aumenta sua concentração de acordo com a sua similaridade com o antígeno. Quanto maior a similaridade, mais sua concentração aumenta, em um processo similar à expansão clonal que ocorre com as células imunológicas quando identificam um antígeno. Após todos os antígenos serem adicionados ao sistema, começa um processo iterativo de decremento de concentração e clonagem, até que o sistema entre em equilíbrio: não ocorram remoções por um determinado período de tempo. Assim, conforme o número de iterações do processo de seleção, apenas aqueles antígenos que apresentarem uma maior taxa de similaridade com o antígeno são mantidos no sistema.
 

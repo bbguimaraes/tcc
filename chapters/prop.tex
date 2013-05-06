@@ -79,7 +79,7 @@ Os conjuntos de dados são denominados German Credit (Cr.Ger) e Australian Credi
 
 Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade de Hamburgo. Os atributos e valores que esses atributos podem assumir são descritos na listagem \ref{lst:ge_dataset} (traduzido do original)\footnote{Na descrição dos atributos, DM significa \emph{deutsche mark} (marco alemão), a moeda corrente na Alemanha na época da coleta dos dados. Para efeito de comparação, o Banco Central Europeu estipulou a conversão irrevogável do marco alemão, a partir de 1º de janeiro de 1999, em DM 1.95583 = \euro 1 (http://www.ecb.int/press/pr/date/1998/html/pr981231$\textunderscore$2.en.html).}.
 
-\vspace{1cm}
+\vspace{0.5cm}
 \begin{lstlisting}[caption=Atributos do conjunto de dados alemão,label=lst:ge_dataset]
     Atributo 1: (qualitativo)
     Situação da conta corrente existente
@@ -198,6 +198,7 @@ Esse conjunto de dados foi cedido pelo professor Hans Hoffman, da Universidade d
     A201 : sim
     A202 : não
 \end{lstlisting}
+\vspace{0.5cm}
 
 \subsection{Cr.Aust}
 
@@ -205,7 +206,7 @@ Os atributos do conjunto de dados australiano são descritos na listagem \ref{ls
 
 Os dados ainda podem ser utilizados para a validação de sistemas de detecção, mas não é possível saber de que forma o sistema chegou ao diagnóstico, tornando o resultado bem menos útil.
 
-\vspace{1cm}
+\vspace{0.5cm}
 \begin{lstlisting}[caption=Atributos do conjunto de dados Cr.Aust, label=lst:prop_au_dataset]
 A1: b, a
 A2: contínuo
@@ -224,6 +225,7 @@ A14: contínuo
 A15: contínuo
 A16: +,- (atributo de classe)
 \end{lstlisting}
+\vspace{0.5cm}
 
 \section{Algoritmos}
 
@@ -279,7 +281,7 @@ Como plataforma de testes será utilizado o \emph{software} WEKA. WEKA (\emph{Wa
 
 Para que um conjunto de dados possa ser utilizado no WEKA, ele deve estar em um formato específico, denominado ARFF (\emph{Attribute Relationship File Format}, Formato de Arquivo de Relação de Atributos). Um arquivo nesse formato é apresentado na listagem \ref{lst:prop_arff}. Esse é o mesmo arquivo apresentado na figura \ref{fig:prop_weka}, onde é mostrada a visualização dos dados pela interface gráfica.
 
-\vspace{1cm}
+\vspace{0.5cm}
 \begin{lstlisting}[caption=Exemplo de arquivo no formato ARFF, label=lst:prop_arff]
     @relation weather
 
@@ -305,15 +307,21 @@ Para que um conjunto de dados possa ser utilizado no WEKA, ele deve estar em um 
     overcast,81,75,FALSE,yes
     rainy,71,91,TRUE,no
 \end{lstlisting}
-\vspace{1cm}
+\vspace{0.25cm}
+\centerline{Fonte: \cite{Hall2009}}
+\vspace{0.5cm}
 
 Um arquivo ARFF é um arquivo de texto simples, em um formato padronizado, que combina a descrição dos dados e os dados em si \cite{Hall2009}. Ele é dividido em duas seções. A primeira, chamada de cabeçalho (\emph{header}) contém o nome do conjunto de dados (\emph{@relation}) e a lista de atributos (colunas) e seus tipos (\emph{@attribute}). Esses arquivos também podem conter comentários, que são ignorados quando o arquivo é analisado, e podem ser utilizados para adicionar informações ao arquivo como fonte, licença, etc. Um comentário é inserido através do caractere '\%', e tem efeito até o caractere de nova linha. Após o cabeçalho, vem a seção que contém os dados em si (\emph{@data}).
 
 O nome do conjunto de dados é uma \emph{string} arbitrária, e serve apenas para a identificação na interface (figura \ref{fig:prop_weka}). A lista de atributos é uma sequência de entradas \emph{@attribute}. Cada atributo no conjunto de dados tem uma entrada \emph{@attribute} correspondente, que identifica o atributo. A ordem da declaração deve ser exatamente a ordem em que os atributos são listados na seção de dados. Isso facilita a listagem de dados, onde não é necessário indicar, para cada valor, o atributo ao qual ele se refere. O formato de cada \emph{@attribute} é:
 
+\vspace{0.5cm}
 \begin{lstlisting}[caption=Formato de uma entrada \emph{@attribute}, label=lst:prop_attribute_out]
 @attribute nome tipo
 \end{lstlisting}
+\vspace{0.25cm}
+\centerline{Fonte: \cite{Hall2009}}
+\vspace{0.5cm}
 
 O WEKA suporta quatro tipos de atributos. O formato ARFF, no entanto, suporta seis, e a conversão é feita automaticamente:
 
@@ -348,7 +356,7 @@ Também é gerada uma tabela com os resultados para cada classe presente nos dad
 
 A última parte é uma matriz de confusão. As colunas dessa matriz mostram a classificação das instâncias e as linhas, a classe verdadeira. Dessa forma, é possível identificar o número de instâncias correta e incorretamente classificadas. Para um conjunto de dados que contém apenas duas classes, essa tabela também mostra o número de falsos positivos e negativos.
 
-\vspace{1cm}
+\vspace{0.5cm}
 \begin{lstlisting}[caption=Exemplo de saída de uma execução do WEKA, label=lst:prop_weka_out]
     === Run information ===
 
@@ -409,6 +417,9 @@ A última parte é uma matriz de confusão. As colunas dessa matriz mostram a cl
      5 4 | a = yes
      5 0 | b = no
 \end{lstlisting}
+\vspace{0.25cm}
+\centerline{Fonte: \cite{Hall2009}}
+\vspace{0.5cm}
 
 \section{Método de pesquisa}
 
@@ -416,7 +427,7 @@ As atividades da segunda etapa do Trabalho de Conclusão de Curso serão desenvo
 
 A etapa de coleta e preparação de dados envolverá a adaptação dos dados nos conjuntos ao formato de entrada esperado pelo WEKA, já que eles se encontram em estado bruto. O formato mais comum para utilização nesse programa são arquivos \emph{Attribute Relationship File Format} (ARFF, Formato de Arquivo de Atributo-Relação). Um arquivo nesse formato é apresentado na listagem \ref{lst:prop_arff}. Esse mesmo arquivo foi apresentado na figura \ref{fig:prop_weka}, mostrando a visualização pela interface do WEKA.
 
-\vspace{1cm}
+\vspace{0.5cm}
 \begin{lstlisting}[caption=Exemplo de arquivo no formato ARFF, label=lst:prop_arff]
     @relation weather
 
@@ -442,7 +453,9 @@ A etapa de coleta e preparação de dados envolverá a adaptação dos dados nos
     overcast,81,75,FALSE,yes
     rainy,71,91,TRUE,no
 \end{lstlisting}
-\vspace{1cm}
+\vspace{0.25cm}
+\centerline{Fonte: \cite{Hall2009}}
+\vspace{0.5cm}
 
 Ainda, podem ser necessários ajustes específicos nos dados para que possam servir como entrada para alguns dos algoritmos, caso estes não tenham suporte aos tipos de dados. Com os dados prontos, iniciará a fase de execução dos diferentes algoritmos sobre esses conjuntos de dados. A coleta dos resultados será feita através dos dados de saída, mostrados na listagem \ref{lst:prop_weka_out}. Com os dados prontos, iniciará a fase de execução dos diferentes algoritmos sobre esses conjuntos de dados. A coleta dos resultados será feita através dos dados de saída, mostrados na listagem \ref{lst:prop_weka_out}.
 

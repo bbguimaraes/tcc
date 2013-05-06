@@ -22,34 +22,34 @@
 \makenomenclature
 \renewcommand{\nomname}{Lista de Siglas}
 
-\def\lstlistlistingname{Lista de Trechos de Código}
-\def\lstlistingname{Trecho de Código}
+\def\lstlistlistingname{Listagens}
+\def\lstlistingname{Listagem}
 \lstset{
-    inputencoding=utf8,
-    extendedchars=true,
     basicstyle=\scriptsize\color{black}\ttfamily,
-    numbers=left,
-    numberstyle=\scriptsize\ttfamily,
-    stepnumber=1,
-    numbersep=10pt,
-    tabsize=4,
+    belowcaptionskip=0.5cm,
+    extendedchars=true,
     frame=single,
-    keywordstyle=\color{black}\textbf,
+    framexbottommargin=4pt,
+    framexleftmargin=25pt,
+    framexrightmargin=5pt,
+    framextopmargin=4pt,
+    inputencoding=utf8,
     keywordstyle=[1]\color{black}\textbf,
     keywordstyle=[2]\color{black}\textbf,
     keywordstyle=[3]\color{black}\textbf,
     keywordstyle=[4]\color{black}\textbf,
-    stringstyle=\color{black}\ttfamily,
-    showspaces=false,
-    showtabs=false,
-    xleftmargin=17pt,
-    framextopmargin=4pt,
-    framexleftmargin=25pt,
-    framexrightmargin=5pt,
-    framexbottommargin=4pt,
-    captionpos=b,
-    showstringspaces=false,
+    keywordstyle=\color{black}\textbf,
     literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ç}{{\c{c}}}1 {ã}{{\~a}}1 {ê}{{\^e}}1 {ú}{{\'u}}1,
+    numbersep=10pt,
+    numbers=left,
+    numberstyle=\scriptsize\ttfamily,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    stepnumber=1,
+    stringstyle=\color{black}\ttfamily,
+    tabsize=4,
+    xleftmargin=17pt,
 }
 
 \title{Mineração de Dados baseada nos Sistemas Imunológicos: um estudo de caso na Detecção de Fraude}
@@ -79,6 +79,9 @@
 
 % Lista de tabelas.
 \listoftables
+
+% Listagens.
+\lstlistoflistings
 
 % Lista de siglas.
 \printnomenclature
