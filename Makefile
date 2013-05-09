@@ -24,6 +24,7 @@ all: tcc.pdf
 
 tcc.pdf: tcc.nls $(CHAPTERS) tcc.bib tcc.tex
 	$(LATEX) $(MAIN_TEX)
+	@touch tcc.pdf
 
 tcc.nls: $(CHAPTERS)
 	makeindex tcc.nlo -s nomencl.ist -o tcc.nls
