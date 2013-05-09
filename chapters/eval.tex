@@ -57,20 +57,26 @@ A razão para isso é que o custo das classificações errôneas, no caso da det
 
 \section{Avaliação dos modelos}
 
-A primeira parte na avaliação de um algoritmo de classificação é a avaliação dos modelos criados por ele. Um modelo é a saída de um algoritmo de classificação ou a estrutura intermediária utilizada por ele, e define como as instâncias serão classificadas. O modelo é então aplicado a cada uma das instâncias da base de dados e gera uma classificação dessas instâncias. Essa classificação pode ser comparada com as classificações verdadeiras das instâncias, gerando um total de instâncias classificadas corretamente. Esse valor é comumente representado como uma porcentagem, um valor entre 0 e 1.
+A primeira parte na avaliação de um algoritmo de classificação é a avaliação dos modelos criados por ele. Um modelo é a saída de um algoritmo de classificação ou a estrutura intermediária utilizada por ele, e define como as instâncias serão classificadas. O modelo é então aplicado a cada uma das instâncias da base de dados e gera uma classificação dessas instâncias.
 
-\subsection{\emph{Cross-validation}}
-\label{sec:eval_cross_validation}
+Essa classificação pode ser comparada com as classificações verdadeiras das instâncias, gerando um total de instâncias classificadas corretamente. Esse valor é comumente representado como uma porcentagem, um valor entre 0 e 1, calculado como \emph{1 - taxaDeErros} e é chamado de \emph{precisão}.
 
-Quando um modelo é criado à partir de um conjunto de dados e os testes são executados sobre esse mesmo conjunto, é muito provável que eles apresentem um bom resultado. No entanto, isso não garante que o modelo pode ser aplicado com a mesma eficácia sobre novos dados, o que geralmente é o objetivo dos sistemas de detecção.
+\subsection{\emph{Holdout}}
 
-Para que seja possível avaliar se um modelo pode prever novos dados após o treinamento, a base de dados deve ser dividida em duas partes: um conjunto de treinamento e um conjunto de teste. O modelo é criado utilizando apenas os dados de treinamento e avaliado utilizando os dados de teste.
+Quando um modelo é criado à partir de um conjunto de dados e os testes são executados sobre esse mesmo conjunto, é muito provável que eles apresentem um bom resultado. No entanto, isso não garante que o modelo pode ser aplicado com a mesma eficácia sobre novos dados, o que geralmente é o objetivo dos sistemas de detecção. Para isso, o conjunto de dados é dividido em dados de treinamento e de testes.
+
+O resultado dos testes pode ser altamente dependente dessa separação dos dados. Separar os dados de forma diferente geralmente altera o resultado dos testes. Para evitar essa dependência, foram criados métodos como \emph{holdout} e \emph{cross-validation}.
+
+Para que seja possível avaliar se um modelo pode prever novos dados após o treinamento, a base de dados deve ser dividida em duas partes: um conjunto de treinamento e um conjunto de teste. O modelo é criado utilizando apenas os dados de treinamento e avaliado utilizando os dados de teste. Essa técnica é denominada \emph{holdout}, porque uma parte dos dados é retirada do processo de treinamento para que possa ser utilizada nos testes. Os resultados podem ser melhorados executando várias iterações de \emph{holdout}, dividindo um conjunto de dados aleatoriamente a cada vez e calculando a média e o desvio padrão da precisão.
 
 Caso o resultado dos testes de um modelo quando aplicado aos mesmos dados utilizados no treinamento seja bom, mas o resultado quando aplicado aos dados de teste sejam ruims, diz-se que ocorre \emph{overfitting}: o modelo ajusta-se tanto aos dados de treinamento que não consegue criar regras genéricas o suficiente para identificar amostras semelhantes mas não exatamente iguais.
 
 Há ainda a possibilidade do modelo não gerar um resultado bom nem mesmo para os dados de treinamento. Nesse caso, diz-se que ocorre \emph{underfitting}: o modelo não é capaz de criar regras que se ajustem aos dados de treinamento, ou seja, o modelo não é capaz de memorizar os dados de treinamento.
 
-No entanto, o resultado dessa separação pode ser altamente dependente da separação dos dados. Separar os dados de forma diferente geralmente altera o resultado dos testes. Para evitar essa dependência, pode ser utilizado um processo denominado \emph{cross-validation}:
+\subsection{\emph{Cross-validation}}
+\label{sec:eval_cross_validation}
+
+Uma alternativa mais sofisticada e eficiente do \emph{holdout} é denominada \emph{cross-validation}. Nela, os dados são divididos em \emph{n} partições, chamadas de \emph{folds}. A cada iteração, uma partição é utilizada dados de testes, enquato as outras \emph{n - 1} são utilizadas como treinamento.
 
 \begin{enumerate}[a)]
     \item Dividir aleatoriamente os dados em dois conjuntos, treinamento e testes.
@@ -80,7 +86,9 @@ No entanto, o resultado dessa separação pode ser altamente dependente da separ
     \item Calcular a média e o erro padrão da média dos resultados de cada iteração.
 \end{enumerate}
 
-Um dos métodos mais comuns para a divisão do primeiro passo é chamado \emph{\emph{k}-fold}, onde o conjunto de dados é divido em \emph{k} partições. A cada iteração, uma dessas partições é utilizada para testes, enquanto as outras \emph{k - 1} são utilizadas para o treinamento.
+Uma alternativa à divisão aleatória dos dados, chamada de \emph{cross-validation} estratificada, é a divisão onde a proporção das classes em cada partição é a mesma do conjunto total de dados. Isso aumenta ainda mais a fidelidade do treinamento e dos testes. Obviamente, esse método só pode ser utilizado em conjuntos de dados que contém um atributo de classe (ou seja, supervisionados).
+
+Quando um conjunto de dados é pequeno, pode-se utilizar um tipo de \emph{cross-validation} chamado \emph{leave-one-out}, onde \emph{n}, o número de partições, é igual ao número de instâncias no conjunto de dados (ou seja, cada partição tem tamanho 1). Assim, a cada iteração, \emph{n - 1} instâncias são usadas no treinamento e o teste é feito sobre a instância restante.
 
 \subsection{\emph{Grid search}}
 
