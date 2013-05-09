@@ -79,3 +79,40 @@ A11,24,A33,A40,4870,A61,A73,3,A93,A101,4,A124,53,A143,A153,2,A173,2,A191,A201,2
 1,20.17,8.17,2,6,4,1.96,1,1,14,0,2,60,159,1
 \end{lstlisting}
 \vspace{0.5cm}
+
+\subsection{Interfaces}
+
+O WEKA apresenta duas interfaces principais: linha de comando e gráfica (Interface Gráfica, GUI\nomenclature{GUI}{Graphical User Interface}). A interface gráfica é mais apropriada para exploração e experimentação, e para a apresentação dos dados, algoritmos e resultados. Porém, para usos mais avançados e experimentos mais complexos, a linha de comando é mais apropriada. Além da possibilidade muito maior de automação de tarefas e exposição de opções avançadas que não estão disponíveis na interface gráfica, essa interface consume menos recursos.
+
+Nesse trabalho foi utilizada a interface por linha de comando, já que a repetição dos testes para cada algoritmo é muito mais fácil do que se utiliza-se a interface gráfica. Os exemplos de execução são apresentados conforme devem ser digitados em uma interface de linha de comando, em um emulador de terminal.
+
+\subsection{Out of Memory}
+
+Todas as aplicações java possuem um limite máximo de memória que pode ser alocado por cada processo da máquina virtual java (Java Virtual Machine, JVM\nomenclature{JVM}{Java Virtual Machine}). Caso não seja especificado, o valor padrão de 64\emph{mb} é utilizado. Para a maioria das aplicações, esse valor é insuficiente. É possível alterar esse valor através da opção \emph{-Xmx} para o executável, passando como parâmetro o novo valor para o limite. Para utilizar 4\emph{gb} como limite, por exemplo, pode-se utilizar as seguintes notações, onde \emph{k} e \emph{m} significam \emph{kilo} e \emph{mega}, respectivamente:
+
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Opções para aumentar o limite de meória da JVM, label=lst:dev_java_xmx]
+java -Xmx4294967296
+java -Xmx4194304k
+java -Xmx4096m
+\end{lstlisting}
+\vspace{0.25cm}
+\centerline{Fonte: \cite{Oracle1995}}
+\vspace{0.5cm}
+
+\subsection{Filtros}
+
+No WEKA, um filtro é um objeto que recebe um conjunto de dados como entrada e produz um conjunto de dados modificado. Esse é um processo comum da Mineração de Dados, chamado de pré-processamento dos dados: adicionar, remover ou alterar atributos, etc.
+
+Um filtro comum, que é utilizado nesse trabalho, é o de criação de partições para o \emph{cross-validation}. Para esse filtro, são passados três argumentos. O argumento \emph{c} indica qual dos atributos é o atributo correspondente à classe, e é representado por um índice, iniciado em 1, conforme a declaração na seção de atributos do arquivo de dados (caso o padrão do WEKA seja usado, ou seja, o atributo de classe seja o último da listagem, pode ser utilizado o valor ``\emph{last}'' como argumento). O argumento \emph{N} indica o número de partições, e o argumento \emph{F} indica a partição selecionada.
+
+Além desses, o argumento \emph{V} pode ser utilizado para gerar o conjunto inverso de seleções, útil para dividir o conjunto em duas partes complementares. Dessa forma, para gerar um conjunto de dados para testes e outro para treinamento, podem ser usados os seguintes comandos\footnote{Nesses exemplos, é usado o redirecionamento de entrada e saída presentes na maioria dos \emph{shells} UNIX. O caractere ``<'' seguido de um nome de arquivo indica que aquele arquivo será usado como entrada para o comando. De maneira semelhante, o caractere ``>'' seguido de um nome de arquivo indica que ele será usado como saída. O WEKA também permite que sejam utilizadas as opções \emph{i} e \emph{o}, respectivamente, para obter os mesmos resultados. No primeiro exemplo, a forma equivalente seria ``\emph{-i dataset.arff -o dataset\_test.arff}''.}:
+
+\begin{lstlisting}[caption=Filtro para geração de partições para \emph{cross-validation}, label=lst:dev_filter]
+java weka.filters.supervised.instance.StratifiedRemoveFolds -c last -N 4 -F 1 \
+    < dataset.arff > dataset_test.arff
+java weka.filters.supervised.instance.StratifiedRemoveFolds -c last -N 4 -F 1 -V \
+    < dataset.arff > dataset_train.arff
+\end{lstlisting}
+
+\subsection{Execução de um teste}

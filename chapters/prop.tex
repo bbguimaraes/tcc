@@ -336,6 +336,8 @@ O WEKA suporta quatro tipos de atributos. O formato ARFF, no entanto, suporta se
 
 A seção de dados inicia com a entrada \emph{@data}, e segue até o final do arquivo. Nela são listados os valores do conjunto de dados. Cada entrada é representada em uma linha, ou seja, as entradas são separadas pelo caractere de nova linha. Em cada entrada, seus atributos são listados em uma lista separada por vírgulas. Como dito anteriormente, os atributos são identificados pela ordem ordem de declaração, logo ela deve ser a mesma no cabeçalho e nessa seção. Valores ausentes são representados por um caractere de ponto de interrogação (\emph{?}). Os atributos do tipo nominal e \emph{string} são \emph{case sensitive}, e devem ser envolvidos em aspas se contém espaços.
 
+Por padrão, o último atributo é considerado o objetivo ou classe da instância (o atributo que é considerado uma função dos outros atributos). Isso pode ser alterado através da interface de configuração do experimento.
+
 \subsection{Resultados}
 \label{sec:prop_results}
 
