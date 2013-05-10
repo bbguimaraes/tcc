@@ -352,6 +352,33 @@ As dificuldades na implementação de sistemas baseados na Teoria do Perigo são
 
 \section{Considerações finais}
 
-Os algoritmos apresentados nesse capítulo foram aplicados em sistemas computacionais de diversas áreas, apresentado resultados satisfatórios, em especial em sistemas de detecção. O domínio dos problemas de detecção de fraude é promissor para esses algoritmos, como a maioria dos problemas de detecção. Nas próximas seções, será mostrada a aplicação de três algoritmos baseados no sistema imunológico natural (seleção clonal, AIRS e Immunos) a conjuntos de dados de fraudes. Os resultados são então comparados com algoritmos tradicionais da inteligência artificial.
+Os algoritmos apresentados nesse capítulo foram aplicados em sistemas computacionais de diversas áreas, apresentado resultados satisfatórios, em especial em sistemas de detecção. O domínio dos problemas de detecção de fraude é promissor para esses algoritmos, como a maioria dos problemas de detecção.
+
+Para a comparação dos algoritmos apresentados nas seções anteriores, os resultados foram comparados com os resultados de algoritmos tradicionais da área da Inteligência Artificial. Dos algoritmos imunológicos, são usados: AIRS, Immunos e seleção clonal. Esses algoritmos foram escolhidos por serem representantes característicos da área de sistema imunológicos artificiais e por terem implementações atualizadas e disponíveis abertamente.
+
+Para os algoritmos tradicionais, foram escolhidos aqueles que são comumente usados na área de mineração de dados. Em especial, os algoritmos genéticos, que têm características semelhantes aos imunológicos, já que ambos têm inspiração na biologia.
+
+\vspace{0.5cm}
+\begin{table}[h]
+    \centering
+    \caption{Algoritmos utilizados para comparação}
+    \label{tbl:ais_algs}
+    \vspace{0.5cm}
+    \begin{tabular}{c c}
+        \hline
+        Algoritmos tradicionais & Algoritmos imunológicos   \\
+        \hline
+        Redes neurais                & AIRS    \\
+        Máquina de vetor de suporte  & Immunos \\
+        Algoritmos genéticos         & CLONALG \\
+        Árvores de decisão           &         \\
+\iffalse (j48) (http://www.slideshare.net/butest/weka-tutorial) \fi
+        Learning Vector Quantization &         \\
+        \hline
+    \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+Nas próximas seções, será mostrada a aplicação de três algoritmos baseados no sistema imunológico natural a conjuntos de dados de fraudes. Os resultados são então comparados com algoritmos tradicionais da inteligência artificial.
 
 Para que essa comparação tenha utilidade prática, primeiro é necessário que se estabeleçam critérios para a avaliação do desempenho desses algoritmos. O próximo capítulo apresenta os critérios de avaliação comumente empregados na mineração de dados. Apresenta também como esses critérios devem ser adaptados para a aplicação na detecção de fraude e demonstra como estes são aplicados nesse trabalho.
