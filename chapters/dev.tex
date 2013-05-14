@@ -133,3 +133,13 @@ java weka.filters.supervised.instance.StratifiedRemoveFolds -c last -N 4 -F 1 -V
 \end{lstlisting}
 
 \subsection{Execução de um teste}
+
+A execução de um algoritmo é feita através da classe que implementa o algoritmo no WEKA. Diversas opções podem ser passadas na linha de comando para mudar os parâmetros do algoritmo. Existem algumas opções adicionais para especificar dados adicionais, como os arquivos de dados para treinamento e testes. Além das opções gerais, cada algoritmo pode aceitar diferentes tipo de opções específicas. Como exemplo, para gerar a saída da listagem \ref{lst:prop_weka_out}, foi utilizado o comando da listagem \ref{lst:dev_exec_classifier}.
+
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Execução de um classificador, label=lst:dev_exec_classifier]
+java weka.classifiers.neural.lvq.Lvq1 -t data/weather.numeric.arff -i
+\end{lstlisting}
+\vspace{0.5cm}
+
+Como é possível ver, a linha de comando é reproduzida no atributo ``\emph{Scheme}'' na saída. Esse atributo pode ser consultado para executar exatamente o mesmo teste novamente, tornando a reprodução do experimento muito mais fácil. As diversas opções do atributo que não estão presentes na linha de comando são os parâmetros do algoritmo. Como não foram especificados na linha de comando, foram assumidos os valores padrão, que são mostrados na saída. As duas opções que não estão presentes na saída são a opção ``\emph{i}'', que mostra uma saída mais complete e a opção ``\emph{t}'', que indica o arquivo que será utilizado como entrada.
