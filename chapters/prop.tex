@@ -310,64 +310,59 @@ A última seção, ``\emph{Confusion matrix}'', é uma matriz de confusão. As c
 
 \vspace{0.5cm}
 \begin{lstlisting}[caption=Exemplo de saída de uma execução do WEKA, label=lst:prop_weka_out]
-    === Run information ===
+=== Run information ===
 
-    Scheme:       weka.classifiers.neural.lvq.MultipassLvq -A
-    "weka.classifiers.neural.lvq.Olvq1 -M 1 -C 20 -I 1000 -L 1 -R 0.3 -S 1 -G
-    false" -B "weka.classifiers.neural.lvq.Lvq3 -M 1 -C 20 -I 10000 -L 1 -R 0.05 -S
-    1 -G false -W 0.3 -E 0.1"
-    Relation:     weather
-    Instances:    14
-    Attributes:   5
-                  outlook
-                  temperature
-                  humidity
-                  windy
-                  play
-    Test mode:    10-fold cross-validation
+Scheme:       weka.classifiers.neural.lvq.Lvq1 -M 1 -C 20 -I 1000 -L 1 -R 0.3 \
+    -S 1 -G false
+Relation:     weather
+Instances:    14
+Attributes:   5
+              outlook
+              temperature
+              humidity
+              windy
+              play
+Test mode:    10-fold cross-validation
 
-    === Classifier model (full training set) ===
+=== Classifier model (full training set) ===
 
-    -- Training Time Breakdown --
-    Pass 0: 17ms
-    Pass 1: 51ms
-    Total Model Preparation Time: 68ms
+-- Training Time Breakdown --
+Model Initialisation Time   : 4ms
+Model Training Time         : 43ms
+Total Model Preparation Time: 47ms
 
-    -- Cass Distribution --
-    yes :  15 (75%)
-    no :  5 (25%)
+-- Cass Distribution --
+yes :  15 (75%)
+no :  5 (25%)
 
 
 
-    Time taken to build model: 0.07 seconds
+Time taken to build model: 0.05 seconds
 
-    === Stratified cross-validation ===
-    === Summary ===
+=== Stratified cross-validation ===
+=== Summary ===
 
-    Correctly Classified Instances           5               35.7143 %
-    Incorrectly Classified Instances         9               64.2857 %
-    Kappa statistic                         -0.4651
-    Mean absolute error                      0.6429
-    Root mean squared error                  0.8018
-    Relative absolute error                  135      %
-    Root relative squared error              162.5137 %
-    Total Number of Instances                14
+Correctly Classified Instances           5               35.7143 %
+Incorrectly Classified Instances         9               64.2857 %
+Kappa statistic                         -0.4651
+Mean absolute error                      0.6429
+Root mean squared error                  0.8018
+Relative absolute error                135      %
+Root relative squared error            162.5137 %
+Total Number of Instances               14
 
-    === Detailed Accuracy By Class ===
+=== Detailed Accuracy By Class ===
 
-    Class          TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.556     1          0.5       0.556     0.526      0.278    yes
+                 0         0.444      0         0         0          0.278    no
+Weighted Avg.    0.357     0.802      0.321     0.357     0.338      0.278
 
-    yes              0.556     1          0.5       0.556     0.526      0.278
+=== Confusion Matrix ===
 
-    no               0         0.444      0         0         0          0.278
-
-    Weighted Avg.    0.357     0.802      0.321     0.357     0.338      0.278
-
-    === Confusion Matrix ===
-
-     a b   <-- classified as
-     5 4 | a = yes
-     5 0 | b = no
+ a b   <-- classified as
+ 5 4 | a = yes
+ 5 0 | b = no
 \end{lstlisting}
 \vspace{0.25cm}
 \centerline{Fonte: \cite{Hall2009}}
