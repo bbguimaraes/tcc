@@ -1,9 +1,23 @@
+# PDF output.
+tcc.pdf
+# Auxiliary intermediate file.
 *.aux
-*.toc
-*.out
-*.lof
-*.log
-*.blg
-*.swp
-*.bbl
-*.pdf
+# Main log.
+tcc.log
+# Bookmarks.
+tcc.out
+# Bibliography.
+tcc.blg
+# Bibliography entries.
+tcc.bbl
+# Table of contents.
+tcc.toc
+# List of listings, list of tables, list of figures.
+tcc.lol
+tcc.lot
+tcc.lof
+# Index (makeindex) log.
+tcc.ilg
+# Nomenclature output, nomenclature list..
+tcc.nlo
+tcc.nls
