@@ -116,25 +116,6 @@ Caso essa diferença seja detectada, uma solução para adicionar essa informaç
 
 Na área de detecção de fraude, geralmente se lida com classificadores binários. Classificadores binários são aqueles que, para um dado conjunto de valores de entrada, geram como valor de saída um valor Booleano: verdadeiro ou falso, positivo ou negativo. Os sistemas de detecção de fraude se situam, na maioria dos casos, nessa categoria: os dados referentes a uma instância passam pelo sistema de detecção e são classificados como legítimos ou fraudulentos \cite{Bewick2004}. Sistemas mais complexos podem gerar saídas com mais informações sobre a instância, como o grau de certeza da previsão ou o grau de semelhança entre a instância e os dados da base.
 
-A avaliação dos classificadores binários é feita com base em uma \emph{tabela de confusão}, conforme mostrado na tabela \ref{fraud:confusion}. Nessa tabela são listados o número de valores (ou porcentagem) para cada combinação de saída do sistema e a classificação real. Instâncias corretamente classificadas ocupam as colunas Positivo e Negativo, enquanto instâncias cujo classificação difere da realidade ocupam as colunas ``Falsos positivos'' e ``Falsos negativos''.
-
-\vspace{0.5cm}
-\renewcommand{\arraystretch}{1.5}
-\begin{table}[h!]
-    \centering
-    \caption{Tabela de confusão}
-    \label{fraud:confusion}
-    \vspace{0.5cm}
-    \begin{tabular}{c l c c}
-        & & \multicolumn{2}{c}{\textbf{Dados reais}} \\
-        \multirow{3}{5mm}{\begin{sideways}\parbox{20mm}{\textbf{Saída}}\end{sideways}} & \multicolumn{1}{c|}{} & Positivo & Negativo \\
-        \cline{2-4}
-        & \multicolumn{1}{c|}{Positivo} & Positivo & Falso positivo\\
-        & \multicolumn{1}{c|}{Negativo} & Falso negativo & Negativo\\
-    \end{tabular}
-\end{table}
-\vspace{0.5cm}
-
 Como exemplo, inspirado em \citet{Bewick2004}, é apresentado nessa seção um sistema de detecção de fraude, que considera como único atributo das instâncias o número de ocorrências de um determinado valor. Nesse ambiente simplificado, a instância é considerada fraudulenta caso um limiar de ocorrências seja ultrapassado.
 
 Esse sistema de testes utiliza como único critério de avaliação o número de ocorrências. Um \emph{limiar de classificação} é definido: um parâmetro que o sistema de detecção utilizará para guiar a previsão da detecção. Se o limiar de classificação fosse 1, todas as instâncias que tivessem mais de uma ocorrência (nos valores de exemplo, as instâncias 0 e 2) seriam consideradas fraudulentas.
@@ -143,7 +124,7 @@ Esse sistema de testes utiliza como único critério de avaliação o número de
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h]
     \centering
-    \caption{Exemplo de tabela de confusão}
+    \caption{Exemplo de resultado}
     \label{fraud:ex}
     \vspace{0.5cm}
     \begin{tabular}{c l c c c}
@@ -160,6 +141,38 @@ Esse sistema de testes utiliza como único critério de avaliação o número de
 
 Um exemplo do resultado de um teste nesse sistema é mostrado na tabela \ref{fraud:ex}. As colunas sob ``Dados reais'' mostram o número de instâncias fraudulentas e legítimas; as linhas sob ``Saída'' mostram a classificação gerada pelo sistema. A partir desses dados, a avaliação dos resultados é feita usando dois conceitos: sensibilidade e especificidade.
 
+\subsection{Matriz de confusão}
+
+A avaliação dos classificadores binários é feita com base em uma \emph{matriz de confusão}, conforme mostrado na tabela \ref{fraud:confusion}. Nessa tabela são listados o número de valores (ou porcentagem) para cada combinação de saída do sistema e a classificação real. Instâncias corretamente classificadas ocupam as colunas Positivo e Negativo, enquanto instâncias cujo classificação difere da realidade ocupam as colunas ``Falsos positivos'' e ``Falsos negativos''.
+
+\vspace{0.5cm}
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[h]
+    \centering
+    \caption{Matriz de confusão}
+    \label{fraud:confusion}
+    \vspace{0.5cm}
+    \begin{tabular}{c l c c}
+        & & \multicolumn{2}{c}{\textbf{Dados reais}} \\
+        \multirow{3}{5mm}{\begin{sideways}\parbox{20mm}{\textbf{Saída}}\end{sideways}} & \multicolumn{1}{c|}{} & Positivo & Negativo \\
+        \cline{2-4}
+        & \multicolumn{1}{c|}{Positivo} & Positivo & Falso positivo\\
+        & \multicolumn{1}{c|}{Negativo} & Falso negativo & Negativo\\
+    \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+Como o conjunto de dados possui apenas duas classes, a matriz de confusão é $2 x 2$, mas o número de linhas e colunas pode ser maior, sendo igual ao número de classes. Todos os principais indicadores podem ser extraídos através da matriz de confusão, fazendo dela uma forma sucinta de apresentação dos resultados.
+
+A diagonal principal representa as instâncias corretamente classificadas (\emph{i.e.} instâncias positivas classificadas como positivas, negativas classificadas como negativas). Todas as outras células da matriz são instâncias incorretamente classificadas, onde o cruzamento do nome da coluna e da linha mostra a classificação gerada pela algoritmo e a classificação real. Através dos elementos da diagonal principal, é possível calcular:
+
+\begin{enumerate}[a)]
+    \item \emph{Taxa de positivos verdadeiros (TP)\nomenclature{TP}{Taxa de positivos verdadeiros}}: a proporção das instâncias classificadas como \emph{x} entre todas as que realmente fazem parte da classe \emph{x}, calculada dividindo o elemento da classe na diagonal principal pela soma dos elementos na mesma linha. Também é conhecida como \emph{recall}.
+    \item \emph{Taxa de falsos positivos (FP)\nomenclature{FP}{Taxa de falsos positivos}}: a proporção das instâncias classificadas como \emph{x} que na verdade pertencem a outra classe entre todas as que não fazem parte da classe {x}, calculada subtraindo o elemento da classe na diagonal principal da soma dos elementos na mesma coluna e dividindo o valor resultante pela soma dos elementos nas linhas de todas as outras classes.
+    \item \emph{Precisão}: a proporção de instâncias que fazem parte da classe \emph{x} entre todas as que foram classificadas como \emph{x}, calculada dividindo o elemento da classe na diagonal principal pela soma dos elementos na mesma coluna.
+    \item \emph{\emph{F-measure}}: uma combinação da precisão e taxa de positivos verdadeiros, calculada através da média harmônica da precisão e \emph{recall}, 2 * (precisão * \emph{recall}) / (precisão + \emph{recall}).
+\end{enumerate}
+
 \subsection{Sensibilidade e especificidade}
 
 \emph{Sensibilidade} refere-se à proporção de instâncias corretamente classificadas como positivas. \emph{Especificidade} refere-se à proporção de instâncias corretamente classificadas como negativas. Tomando como exemplo os dados da tabela \ref{fraud:ex}, a sensibilidade é igual a 300 / 400 = 0.75; e a especificidade é igual a 1000 / 1200 = 0.8333. Ou, visto de outra maneira, 75\% das fraudes foram realmente classificadas como fraudes; e 83.33\% das instâncias legítimas foram classificadas como legítimas.
@@ -174,7 +187,7 @@ Esses dois valores são o oposto da sensibilidade e especificidade, respectivame
 
 \subsection{Taxas de verossimilhança}
 
-A sensibilidade e especificidade tornam-se ainda mais úteis quando combinadas, gerando as taxas de verossimilhança. A taxa de verossimilhança de um resultado positivo (LR\textsuperscript{+}) é a razão entre a probabilidade de um resultado positivo no teste caso a instância seja realmente positiva (coluna "positivo" da tabela de confusão) e a probabilidade de um resultado positivo no teste caso a instância seja na verdade negativa:
+A sensibilidade e especificidade tornam-se ainda mais úteis quando combinadas, gerando as taxas de verossimilhança. A taxa de verossimilhança de um resultado positivo (LR\textsuperscript{+}) é a razão entre a probabilidade de um resultado positivo no teste caso a instância seja realmente positiva (coluna "positivo" da matriz de confusão) e a probabilidade de um resultado positivo no teste caso a instância seja na verdade negativa:
 
 \begin{equation}
     \vspace{2mm}
@@ -184,7 +197,7 @@ A sensibilidade e especificidade tornam-se ainda mais úteis quando combinadas, 
 
 No exemplo, LR\textsuperscript{+} = 0.75 / (1 - 0.8333) = 4.4991. Isso significa que um resultado positivo nos testes é 4.4991 vezes mais provável para instâncias que são realmente positivas do que para aquelas que não são.
 
-De maneira, similar, a taxa de verossimilhança negativa (LR\textsuperscript{-}) é a razão entre a probabilidade de um resultado negativo no teste caso a instância seja realmente negativa (coluna "negativo" da tabela de confusão) e a probabilidade de um resultado negativo no teste caso a instância seja na verdade positiva:
+De maneira, similar, a taxa de verossimilhança negativa (LR\textsuperscript{-}) é a razão entre a probabilidade de um resultado negativo no teste caso a instância seja realmente negativa (coluna "negativo" da matriz de confusão) e a probabilidade de um resultado negativo no teste caso a instância seja na verdade positiva:
 
 \begin{equation}
     \vspace{2mm}
