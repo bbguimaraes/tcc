@@ -101,7 +101,7 @@ Com os arquivos no formato ARFF, os conjuntos de dados podem ser importados no W
 
 O WEKA apresenta duas interfaces principais: linha de comando e gráfica (Interface Gráfica, GUI\nomenclature{GUI}{Graphical User Interface}). A interface gráfica é mais apropriada para exploração e experimentação, e para a apresentação dos dados, algoritmos e resultados. Porém, para usos mais avançados e experimentos mais complexos, a linha de comando é mais apropriada. Além da possibilidade muito maior de automação de tarefas e exposição de opções avançadas que não estão disponíveis na interface gráfica, essa interface consume menos recursos.
 
-Nesse trabalho foi utilizada a interface por linha de comando, já que a repetição dos testes para cada algoritmo é muito mais fácil do que se utiliza-se a interface gráfica. Os exemplos de execução são apresentados conforme devem ser digitados em uma interface de linha de comando, em um emulador de terminal.
+Nesse trabalho foi utilizada a interface por linha de comando, já que a repetição dos testes para cada algoritmo é muito mais fácil do que se utiliza-se a interface gráfica. Os exemplos de execução são apresentados conforme devem ser digitados em uma interface de linha de comando, em um emulador de terminal, utilizando um \emph{shell} como \emph{sh} ou \emph{bash}.
 
 \subsection{Out of Memory}
 
@@ -143,3 +143,29 @@ java weka.classifiers.neural.lvq.Lvq1 -t data/weather.numeric.arff -i
 \vspace{0.5cm}
 
 Como é possível ver, a linha de comando é reproduzida no atributo ``\emph{Scheme}'' na saída. Esse atributo pode ser consultado para executar exatamente o mesmo teste novamente, tornando a reprodução do experimento muito mais fácil. As diversas opções do atributo que não estão presentes na linha de comando são os parâmetros do algoritmo. Como não foram especificados na linha de comando, foram assumidos os valores padrão, que são mostrados na saída. As duas opções que não estão presentes na saída são a opção ``\emph{i}'', que mostra uma saída mais complete e a opção ``\emph{t}'', que indica o arquivo que será utilizado como entrada.
+
+Para executar os algoritmos do pacote de algoritmos imunológicos, é necessário informar à maquina virtual a localização do arquivo que contém o código executável. Esse código é disponibilizado em um arquivo \emph{jar}, um tipo de arquivo específico da linguagem java que é semelhante a um arquivo compactado utilizando os programas \emph{tar} ou \emph{zip}.
+
+Para indicar que esse arquivo deve ser utilizado, é utilizada a opção \emph{classpath} da máquina virtual. Essa opção pode ser utilizada tanto para indicar um diretório quanto um arquivo \emph{jar}. Alternativamente, o arquivo \emph{jar} pode ser descompactado e o diretório gerado utilizado. Essa opção pode ser passada na linha de comando ou como uma variável de ambiente. Para executar o algoritmo AIRS, por exemplo, é utilizado qualquer um dos comandos da listagem \ref{lst:dev_weka_airs}. A sintaxe da opção \emph{classpath} é semelhante ao \emph{path} da maioria dos sistemas operacionais, ou seja, uma lista dos caminhos e arquivos separados pelo caractere ``:'' (dois-pontos).
+
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Execução de um algoritmo do pacote de algoritmos imunológicos, label=lst:dev_weka_airs]
+# Opção na linha de comando.
+java -classpath wekaclassalgos.jar weka.classifiers.immune.airs.AIRS1 # parâmetros
+# Variável de ambiente.
+CLASSPATH=wekaclassalgos.jar
+java weka.classifiers.immune.airs.AIRS1 # parâmetros
+\end{lstlisting}
+\vspace{0.5cm}
+
+Combinando os conceitos apresentados nessa seção, a execução de um teste para um algoritmo imunológico utilizando um dos conjuntos de dados é feita de acordo com a listagem \ref{lst:dev_weka_single}. Aqui, é usado a opção ``\emph{t}'' para especificar o conjunto de dados \emph{Cr.Ger}. Todas as outras opções são parâmetros do filtro (os valores utilizados são os valores padrão para esse algoritmo).
+
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Execução de um algoritmo do pacote de algoritmos imunológicos utilizando um dos conjuntos de dados, label=lst:dev_weka_single]
+# Variável de ambiente.
+CLASSPATH=wekaclassalgos.jar
+java weka.classifiers.immune.airs.AIRS1 \
+    -S 1 -F 0.2 -C 10.0 -H 2.0 -M 0.1 -R 150.0 -V 0.9 -A -1 -B 1 -E 1 -K 3 \
+    -t german.arff
+\end{lstlisting}
+\vspace{0.5cm}
