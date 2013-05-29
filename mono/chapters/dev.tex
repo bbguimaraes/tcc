@@ -1,6 +1,6 @@
 \chapter{Desenvolvimento do experimento}
 
-\iffalse introduction text \fi
+Nesse capítulo é apresentado desenvolvimento do experimento, baseado nos conceitos apresentados nos capítulos anteriores. Em especial, esse capítulo mostra como as ferramentas do capítulo \ref{chap:prop} (\nameref{chap:prop}) foram utilizadas para a comparação dos algoritmos apresentados no capítulo \ref{chap:ais} (\nameref{chap:ais}).
 
 \section{Preparação dos dados}
 
@@ -169,3 +169,83 @@ java weka.classifiers.immune.airs.AIRS1 \
     -t german.arff
 \end{lstlisting}
 \vspace{0.5cm}
+
+\subsection{Execução dos testes}
+
+Para a execução de um teste, pode ser criado um executor genérico de classificadores, com base na listagem \ref{lst:dev_weka_single}:
+
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Execução genérica de um teste, label=lst:dev_weka_template]
+# Variável de ambiente.
+java -classpath "$classpath" \
+    "$classificador" "$parametros" -t "$conjunto_de_dados" \
+    > "$arquivo_resultados"
+\end{lstlisting}
+\vspace{0.5cm}
+
+Dessa forma, é possível utilizar o mesmo comando para execução, variando apenas os valores das variáveis. Os valores utilizados para cada variável foram:
+
+\begin{enumerate}[a)]
+    \item \emph{classpath}: conforme explicado na sessão anterior. Esse valor não muda entre as execuções dos testes, mas é mantido como uma variável para que ele possa ser facilmente alterado caso necessário.
+    \item \emph{classificador}: essa variável tem o valor do classificador utilizado no teste.
+    \item \emph{parametros}: os parâmetros para o classificador. O valor dessa variável depende do classificador utilizado.
+    \item \emph{conjunto\_de\_dados}: o conjunto de dados utilizado para o treinamento e testes.
+    \item \emph{arquivo\_resultados}: o arquivo onde a saída da execução será gravada.
+\end{enumerate}
+
+Para facilitar a execução de todos os algoritmos, foi utilizado um \emph{script} na linguagem. O propósito desse programa é ler arquivos de configuração onde são listados os conjuntos de dados utilizados e os classificadores e executar os testes usando todas as combinações de conjunto de dados e classificador. Ou seja, esse programa recebe os classificadores e conjuntos de dados, roda os testes e grava os resultados. Mais concretamente, esse programa dá valores às variáveis descritas acima, da seguinte forma:
+
+\begin{enumerate}[a)]
+    \item \emph{classpath}: o arquivo \emph{jar} do WEKA que contém a implementação dos algoritmos imunológicos (\emph{wekaclassalgos.jar}). Esse arquivo também contém os algoritmos do WEKA, então ele é a única dependência necessária para utilizar os classificadores imunológicos e os que já são incluídos no WEKA.
+    \item \emph{classificador}: todos os classificadores que foram comparados:
+        \begin{enumerate}[a)]
+            \item weka.classifiers.immune.airs.AIRS2
+            \item weka.classifiers.immune.immunos.Immunos99
+            \item weka.classifiers.immune.clonalg.CLONALG
+            \item weka.classifiers.functions.MultilayerPerceptron
+            \item weka.classifier.functions.SMO
+            \item weka.classifiers.meta.AttributeSelectedClassifier
+            \item weka.classifiers.trees.J48
+            \item weka.classifiers.neural.lvq.Lvq2\_1
+        \end{enumerate}
+    \item \emph{parametros}: os parâmetros são listados junto com cada classificador no arquivo de configuração.
+    \item \emph{conjunto\_de\_dados}: o caminho para o arquivo ARFF dos dois conjuntos de dados utilizados.
+    \item \emph{arquivo\_resultados}: o nome do arquivo de saída é criado dinamicamente, combinando a data de execução, o classificador e o conjunto de dados.
+\end{enumerate}
+
+O formato exato é mostrado na listagem \ref{lst:dev_output_filename}. O objetivo desse formato é que todos os resultados podem ser colocados em um mesmo diretório evitando conflitos com execuções anteriores da mesma combinação de classificador e conjunto de dados.
+
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Formato do nome do arquivo de resultados, label=lst:dev_output_filename]
+# ex: 2013-05-23-23-26-16_Immunos99_australian.txt
+data=${ano}-${mes}-${dia}-${hora}-${minuto}-${segundo}
+${data}_${classificador}_${conjunto_de_dados}.txt
+\end{lstlisting}
+\vspace{0.5cm}
+
+Exemplos dos arquivos de configuração são mostrados nas listagens \ref{lst:dev_classifiers_json} e \ref{lst:dev_datasets_json}. Esses arquivos são lidos no formato JSON (\emph{JavaScript Object Notation}), um formato muito popular em aplicações recentes por ser de fácil leitura e escrita, tanto por humanos quanto por programas.
+
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Exemplo de arquivos de configuração de classificadores, label=lst:dev_classifiers_json]
+[
+    {
+        "classifier": "weka.classifiers.trees.J48",
+        "params": {
+            "C": ["0.25"],
+            "M": ["2"]
+        }
+    }
+]
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Exemplo de arquivos de configuração de conjuntos de dados, label=lst:dev_datasets_json]
+[
+    {
+        "name": "german",
+        "file": "data/statlog_german/german.arff"
+    }
+]
+\end{lstlisting}
+\vspace{0.5cm}
+
+O primeiro arquivo lista os calcificadores e seus parâmetros, o segundo os conjuntos de dados. Eles são gravados em um formato que permite que sejam facilmente transformados nas opções correspondentes na linha de comando.
