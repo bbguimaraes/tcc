@@ -233,3 +233,23 @@ O primeiro arquivo lista os classificadores e seus parâmetros, o segundo os con
 \end{lstlisting}
 \vspace{0.5cm}
 
+\subsection{Seleção de parâmetros no WEKA}
+
+Conforme descrito no capítulo \ref{chap:eval}, o desempenho de um algoritmo depende da escolha dos parâmetros utilizados. Como o processo de escolha de parâmetros é repetitivo e fácil de ser automatizado, existem métodos para escolher os parâmetros que geram o melhor valor para os parâmetros de um modelo para um conjunto de dados específico. Um desses métodos, muito utilizado por sua simplicidade e eficácia (embora não seja tão eficiente), é o \emph{grid search}.
+
+No WEKA, existem duas implementações desse método. Ambos fazem parte de uma categoria denominada \emph{meta-classificadores}\footnote{Esses e outros meta-classificadores que o WEKA disponibiliza podem ser encontrados no pacote \emph{weka.classifiers.meta}.}, ou seja, classificadores que atuam sobre a execução de outros classificadores. Esses dois componentes são \emph{GridSearch} e \emph{CVParameterSelection}, e seu funcionamento é semelhante. O processo para utilizá-los para a escolha de parâmetros é o seguinte:
+
+\begin{enumerate}[a)]
+    \item Utilizar um dos meta-classificadores como classificador.
+    \item Indicar o classificador real que será utilizado.
+    \item Listar os parâmetros que serão testados.
+    \item Listar a faixa de valores para os parâmetros.
+    \item Indicar o conjunto de dados que será utilizado.
+    \item Executar o teste.
+\end{enumerate}
+
+Com exceção dos itens \emph{a)} e \emph{d)}, o processo é semelhante ã execução de um classificador comum. De fato, o meta-classificador executará o classificador da mesma forma que o WEKA faria. No entanto, ao invés de um única execução com parâmetros fixos, esses dois meta-classificadores fazem diversos testes, utilizando todas as combinações possíveis dos valores listados no item \emph{d)} para os parâmetros.
+
+É importante levar em consideração que, conforme discutido anteriormente, esse processo é de grande utilidade para determinar os melhores valores para os parâmetros do classificador, no entanto, uma óbvia desvantagem é o grande aumento no tempo de execução. O número de combinações possíveis cresce exponencialmente com o número de parâmetros e número de elementos na faixa de valores para esses parâmetros.
+
+Existem formas de amenizar o efeito da explosão combinatória desses métodos. A opção mais popular aproveita o grande potencial de paralelização do processo de execução do classificador com diferentes parâmetros. Como cada execução é completamente independente das outras, e podem ser executadas em paralelo. Na prática, grandes quantidades de unidades de processamento (denominados \emph{clusters}) são utilizados, e conjuntos de combinações de valores são distribuídas para cada um. Dessa forma, é possível aproveitar ao máximo a quantidade de recursos disponíveis. Os resultados dos testes podem então ser combinados em uma única unidade para a análise final.
