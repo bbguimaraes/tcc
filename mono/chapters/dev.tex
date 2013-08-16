@@ -107,7 +107,7 @@ Com os arquivos no formato ARFF, os conjuntos de dados podem ser importados no W
 
 \section{Utilizando o WEKA}
 
-O WEKA apresenta duas interfaces principais: linha de comando (\emph{command-line interface}, CLI\nomenclature{CLI}{Command-line Interface}) e gráfica (\emph{graphical user interface}, GUI\nomenclature{GUI}{Graphical User Interface}). A interface gráfica é mais apropriada para exploração e experimentação, e para a apresentação dos dados, algoritmos e resultados. Porém, para usos mais avançados e experimentos mais complexos, a linha de comando é mais apropriada. Além da possibilidade muito maior de automação de tarefas e exposição de opções avançadas que não estão disponíveis na interface gráfica, essa interface consume menos recursos.
+O WEKA apresenta duas interfaces principais: linha de comando (\emph{command-line interface}, CLI\nomenclature{CLI}{Command-line Interface}) e gráfica (\emph{graphical user interface}, GUI\nomenclature{GUI}{Graphical User Interface}). A interface gráfica é mais apropriada para exploração e experimentação, e para a apresentação dos dados, algoritmos e resultados. Porém, para usos mais avançados e experimentos mais complexos, a linha de comando é mais apropriada. Além da possibilidade muito maior de automação de tarefas e exposição de opções avançadas que não estão disponíveis na interface gráfica, essa interface consome menos recursos.
 
 Nesse trabalho foi utilizada a interface por linha de comando, já que a repetição dos testes para cada algoritmo é muito mais fácil do que se fosse utilizada a interface gráfica. Os exemplos de execução são apresentados conforme devem ser digitados em uma interface de linha de comando, em um emulador de terminal, utilizando um \emph{shell} como \emph{sh} ou \emph{bash}.
 
@@ -138,9 +138,9 @@ java weka.classifiers.neural.lvq.Lvq1 -t data/weather.numeric.arff -i
 
 Como é possível ver, a linha de comando é reproduzida no atributo ``\emph{Scheme}'' na saída. Esse atributo pode ser consultado para executar exatamente o mesmo teste novamente, tornando a reprodução do experimento muito mais fácil. As diversas opções do atributo que não estão presentes na linha de comando são os parâmetros do algoritmo. Como não foram especificados na linha de comando, foram assumidos os valores padrão, que são mostrados na saída. As duas opções que não estão presentes na saída são a opção ``\emph{i}'', que mostra uma saída mais completa e a opção ``\emph{t}'', que indica o arquivo que será utilizado como entrada.
 
-Para executar os algoritmos do pacote de algoritmos imunológicos, é necessário informar à maquina virtual a localização do arquivo que contém o código executável. Esse código é disponibilizado em um arquivo \emph{jar}, um tipo de arquivo específico da linguagem java que é semelhante a um arquivo compactado utilizando os programas \emph{tar} ou \emph{zip}.
+Para executar os algoritmos do pacote de algoritmos imunológicos, é necessário informar à máquina virtual a localização do arquivo que contém o código executável. Esse código é disponibilizado em um arquivo \emph{jar}, um tipo de arquivo específico da linguagem java que é semelhante a um arquivo compactado utilizando os programas \emph{tar} ou \emph{zip}.
 
-Para indicar que esse arquivo deve ser utilizado, é utilizada a opção \emph{classpath} da máquina virtual. Essa opção pode ser utilizada tanto para indicar um diretório contendo os arquivos compilados (arquivos \emph{.class}) quanto um arquivo \emph{jar}. Alternativamente, o arquivo \emph{jar} pode ser descompactado e o diretório gerado utilizado. Essa opção pode ser passada na linha de comando ou como uma variável de ambiente. Para executar o algoritmo AIRS, por exemplo, é utilizado qualquer um dos comandos da listagem \ref{lst:dev_weka_airs}. A sintaxe da opção \emph{classpath} é semelhante ao \emph{path} da maioria dos sistemas operacionais, ou seja, uma lista dos caminhos e arquivos separados pelo caractere ``:'' (dois-pontos) em sistemas Unix ou ``;'' (ponto-e-vírgula) em sistemas Windows.
+Para indicar o arquivo, é utilizada a opção \emph{classpath} da máquina virtual. Essa opção pode ser utilizada tanto para indicar um diretório contendo os arquivos compilados (arquivos \emph{.class}) quanto um arquivo \emph{jar}. Alternativamente, o arquivo \emph{jar} pode ser descompactado e o diretório gerado utilizado. Essa opção pode ser passada na linha de comando ou como uma variável de ambiente. Para executar o algoritmo AIRS, por exemplo, é utilizado qualquer um dos comandos da listagem \ref{lst:dev_weka_airs}. A sintaxe da opção \emph{classpath} é semelhante ao \emph{path} da maioria dos sistemas operacionais, ou seja, uma lista dos caminhos e arquivos separados pelo caractere ``:'' (dois-pontos) em sistemas Unix ou ``;'' (ponto-e-vírgula) em sistemas Windows.
 
 \vspace{0.5cm}
 \begin{lstlisting}[caption=Execução de um algoritmo do pacote de algoritmos imunológicos, label=lst:dev_weka_airs]
@@ -166,7 +166,7 @@ java weka.classifiers.immune.airs.AIRS1 \
 
 \subsection{Execução dos testes}
 
-Para a execução de um teste, pode ser criado um executor genérico de classificadores, com base na listagem \ref{lst:dev_weka_single}:
+Para a execução de um teste, pode ser criado um executor genérico de classificadores, com base na listagem \ref{lst:dev_weka_template}:
 
 \vspace{0.5cm}
 \begin{lstlisting}[caption=Execução genérica de um teste, label=lst:dev_weka_template]
@@ -187,11 +187,11 @@ Dessa forma, é possível utilizar o mesmo comando para execução, variando ape
     \item \emph{arquivo\_resultados}: o arquivo onde a saída da execução será gravada.
 \end{enumerate}
 
-Para facilitar a execução de todos os algoritmos, foi utilizado um \emph{script}. O propósito desse programa é ler arquivos de configuração onde são listados os conjuntos de dados utilizados e os classificadores e executar os testes usando todas as combinações de conjunto de dados e classificador. Ou seja, esse programa recebe os classificadores e conjuntos de dados, roda os testes e grava os resultados. Mais concretamente, esse programa dá valores às variáveis descritas acima, da seguinte forma:
+Para facilitar a execução de todos os algoritmos, foi utilizado um \emph{script}. O propósito desse programa é ler arquivos de configuração onde são listados os conjuntos de dados utilizados e os classificadores e executar os testes usando todas as combinações de conjunto de dados e classificador. Ou seja, esse programa recebe os classificadores e conjuntos de dados, executa os testes e grava os resultados. Mais concretamente, esse programa dá valores às variáveis descritas acima, da seguinte forma:
 
 \begin{enumerate}[a)]
     \item \emph{classpath}: o arquivo \emph{jar} do WEKA que contém a implementação dos algoritmos imunológicos (\emph{wekaclassalgos.jar}). Esse arquivo também contém os algoritmos do WEKA, então ele é a única dependência necessária para utilizar os classificadores imunológicos e os que já são incluídos no WEKA.
-    \item \emph{classificador}: todos os classificadores que foram comparados:
+    \item \emph{classificador}: todos os classificadores testados no experimento:
         \begin{enumerate}[a)]
             \item weka.classifiers.immune.airs.AIRS2
             \item weka.classifiers.immune.immunos.Immunos99
@@ -202,7 +202,7 @@ Para facilitar a execução de todos os algoritmos, foi utilizado um \emph{scrip
             \item weka.classifiers.trees.J48
             \item weka.classifiers.neural.lvq.Lvq2\_1
         \end{enumerate}
-    \item \emph{parametros}: os parâmetros são listados junto com cada classificador no arquivo de configuração.
+    \item \emph{parâmetros}: os parâmetros são listados junto com cada classificador no arquivo de configuração. \iffalse tabela com os parâmetros de cada classificador \fi
     \item \emph{conjunto\_de\_dados}: o caminho para o arquivo ARFF dos dois conjuntos de dados utilizados.
     \item \emph{arquivo\_resultados}: o nome do arquivo de saída é criado dinamicamente, combinando o nome do classificador, seus parâmetros e o nome do conjunto de dados.
 \end{enumerate}
@@ -250,7 +250,7 @@ Conforme descrito no capítulo \ref{chap:eval}, o desempenho de um algoritmo dep
 No WEKA, existem duas implementações desse método. Ambos fazem parte de uma categoria denominada \emph{meta-classificadores}\footnote{Esses e outros meta-classificadores que o WEKA disponibiliza podem ser encontrados no pacote \emph{weka.classifiers.meta}.}, ou seja, classificadores que atuam sobre a execução de outros classificadores. Esses dois componentes são \emph{GridSearch} e \emph{CVParameterSelection}, e seu funcionamento é semelhante. O processo para utilizá-los para a escolha de parâmetros é o seguinte:
 
 \begin{enumerate}[a)]
-    \item Utilizar um dos meta-classificadores como classificador.
+    \item Indicar o meta-classificador utilizado.
     \item Indicar o classificador real que será utilizado.
     \item Listar os parâmetros que serão testados.
     \item Listar a faixa de valores para os parâmetros.
