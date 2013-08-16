@@ -97,25 +97,9 @@ Com os arquivos no formato ARFF, os conjuntos de dados podem ser importados no W
 
 \section{Utilizando o WEKA}
 
-\subsection{Interfaces}
+O WEKA apresenta duas interfaces principais: linha de comando (\emph{command-line interface}, CLI\nomenclature{CLI}{Command-line Interface}) e gráfica (\emph{graphical user interface}, GUI\nomenclature{GUI}{Graphical User Interface}). A interface gráfica é mais apropriada para exploração e experimentação, e para a apresentação dos dados, algoritmos e resultados. Porém, para usos mais avançados e experimentos mais complexos, a linha de comando é mais apropriada. Além da possibilidade muito maior de automação de tarefas e exposição de opções avançadas que não estão disponíveis na interface gráfica, essa interface consume menos recursos.
 
-O WEKA apresenta duas interfaces principais: linha de comando e gráfica (Interface Gráfica, GUI\nomenclature{GUI}{Graphical User Interface}). A interface gráfica é mais apropriada para exploração e experimentação, e para a apresentação dos dados, algoritmos e resultados. Porém, para usos mais avançados e experimentos mais complexos, a linha de comando é mais apropriada. Além da possibilidade muito maior de automação de tarefas e exposição de opções avançadas que não estão disponíveis na interface gráfica, essa interface consume menos recursos.
-
-Nesse trabalho foi utilizada a interface por linha de comando, já que a repetição dos testes para cada algoritmo é muito mais fácil do que se utiliza-se a interface gráfica. Os exemplos de execução são apresentados conforme devem ser digitados em uma interface de linha de comando, em um emulador de terminal, utilizando um \emph{shell} como \emph{sh} ou \emph{bash}.
-
-\subsection{Out of Memory}
-
-Todas as aplicações java possuem um limite máximo de memória que pode ser alocado por cada processo da máquina virtual java (Java Virtual Machine, JVM\nomenclature{JVM}{Java Virtual Machine}). Caso não seja especificado, o valor padrão de 64\emph{mb} é utilizado. Para a maioria das aplicações, esse valor é insuficiente. É possível alterar esse valor através da opção \emph{-Xmx} para o executável, passando como parâmetro o novo valor para o limite. Para utilizar 4\emph{gb} como limite, por exemplo, pode-se utilizar as seguintes notações, onde \emph{k} e \emph{m} significam \emph{kilo} e \emph{mega}, respectivamente:
-
-\vspace{0.5cm}
-\begin{lstlisting}[caption=Opções para aumentar o limite de meória da JVM, label=lst:dev_java_xmx]
-java -Xmx4294967296
-java -Xmx4194304k
-java -Xmx4096m
-\end{lstlisting}
-\vspace{0.25cm}
-\centerline{Fonte: \cite{Oracle1995}}
-\vspace{0.5cm}
+Nesse trabalho foi utilizada a interface por linha de comando, já que a repetição dos testes para cada algoritmo é muito mais fácil do que se fosse utilizada a interface gráfica. Os exemplos de execução são apresentados conforme devem ser digitados em uma interface de linha de comando, em um emulador de terminal, utilizando um \emph{shell} como \emph{sh} ou \emph{bash}.
 
 \subsection{Filtros}
 
@@ -142,11 +126,11 @@ java weka.classifiers.neural.lvq.Lvq1 -t data/weather.numeric.arff -i
 \end{lstlisting}
 \vspace{0.5cm}
 
-Como é possível ver, a linha de comando é reproduzida no atributo ``\emph{Scheme}'' na saída. Esse atributo pode ser consultado para executar exatamente o mesmo teste novamente, tornando a reprodução do experimento muito mais fácil. As diversas opções do atributo que não estão presentes na linha de comando são os parâmetros do algoritmo. Como não foram especificados na linha de comando, foram assumidos os valores padrão, que são mostrados na saída. As duas opções que não estão presentes na saída são a opção ``\emph{i}'', que mostra uma saída mais complete e a opção ``\emph{t}'', que indica o arquivo que será utilizado como entrada.
+Como é possível ver, a linha de comando é reproduzida no atributo ``\emph{Scheme}'' na saída. Esse atributo pode ser consultado para executar exatamente o mesmo teste novamente, tornando a reprodução do experimento muito mais fácil. As diversas opções do atributo que não estão presentes na linha de comando são os parâmetros do algoritmo. Como não foram especificados na linha de comando, foram assumidos os valores padrão, que são mostrados na saída. As duas opções que não estão presentes na saída são a opção ``\emph{i}'', que mostra uma saída mais completa e a opção ``\emph{t}'', que indica o arquivo que será utilizado como entrada.
 
 Para executar os algoritmos do pacote de algoritmos imunológicos, é necessário informar à maquina virtual a localização do arquivo que contém o código executável. Esse código é disponibilizado em um arquivo \emph{jar}, um tipo de arquivo específico da linguagem java que é semelhante a um arquivo compactado utilizando os programas \emph{tar} ou \emph{zip}.
 
-Para indicar que esse arquivo deve ser utilizado, é utilizada a opção \emph{classpath} da máquina virtual. Essa opção pode ser utilizada tanto para indicar um diretório quanto um arquivo \emph{jar}. Alternativamente, o arquivo \emph{jar} pode ser descompactado e o diretório gerado utilizado. Essa opção pode ser passada na linha de comando ou como uma variável de ambiente. Para executar o algoritmo AIRS, por exemplo, é utilizado qualquer um dos comandos da listagem \ref{lst:dev_weka_airs}. A sintaxe da opção \emph{classpath} é semelhante ao \emph{path} da maioria dos sistemas operacionais, ou seja, uma lista dos caminhos e arquivos separados pelo caractere ``:'' (dois-pontos).
+Para indicar que esse arquivo deve ser utilizado, é utilizada a opção \emph{classpath} da máquina virtual. Essa opção pode ser utilizada tanto para indicar um diretório contendo os arquivos compilados (arquivos \emph{.class}) quanto um arquivo \emph{jar}. Alternativamente, o arquivo \emph{jar} pode ser descompactado e o diretório gerado utilizado. Essa opção pode ser passada na linha de comando ou como uma variável de ambiente. Para executar o algoritmo AIRS, por exemplo, é utilizado qualquer um dos comandos da listagem \ref{lst:dev_weka_airs}. A sintaxe da opção \emph{classpath} é semelhante ao \emph{path} da maioria dos sistemas operacionais, ou seja, uma lista dos caminhos e arquivos separados pelo caractere ``:'' (dois-pontos) em sistemas Unix ou ``;'' (ponto-e-vírgula) em sistemas Windows.
 
 \vspace{0.5cm}
 \begin{lstlisting}[caption=Execução de um algoritmo do pacote de algoritmos imunológicos, label=lst:dev_weka_airs]
@@ -193,7 +177,7 @@ Dessa forma, é possível utilizar o mesmo comando para execução, variando ape
     \item \emph{arquivo\_resultados}: o arquivo onde a saída da execução será gravada.
 \end{enumerate}
 
-Para facilitar a execução de todos os algoritmos, foi utilizado um \emph{script} na linguagem. O propósito desse programa é ler arquivos de configuração onde são listados os conjuntos de dados utilizados e os classificadores e executar os testes usando todas as combinações de conjunto de dados e classificador. Ou seja, esse programa recebe os classificadores e conjuntos de dados, roda os testes e grava os resultados. Mais concretamente, esse programa dá valores às variáveis descritas acima, da seguinte forma:
+Para facilitar a execução de todos os algoritmos, foi utilizado um \emph{script}. O propósito desse programa é ler arquivos de configuração onde são listados os conjuntos de dados utilizados e os classificadores e executar os testes usando todas as combinações de conjunto de dados e classificador. Ou seja, esse programa recebe os classificadores e conjuntos de dados, roda os testes e grava os resultados. Mais concretamente, esse programa dá valores às variáveis descritas acima, da seguinte forma:
 
 \begin{enumerate}[a)]
     \item \emph{classpath}: o arquivo \emph{jar} do WEKA que contém a implementação dos algoritmos imunológicos (\emph{wekaclassalgos.jar}). Esse arquivo também contém os algoritmos do WEKA, então ele é a única dependência necessária para utilizar os classificadores imunológicos e os que já são incluídos no WEKA.
@@ -210,20 +194,21 @@ Para facilitar a execução de todos os algoritmos, foi utilizado um \emph{scrip
         \end{enumerate}
     \item \emph{parametros}: os parâmetros são listados junto com cada classificador no arquivo de configuração.
     \item \emph{conjunto\_de\_dados}: o caminho para o arquivo ARFF dos dois conjuntos de dados utilizados.
-    \item \emph{arquivo\_resultados}: o nome do arquivo de saída é criado dinamicamente, combinando a data de execução, o classificador e o conjunto de dados.
+    \item \emph{arquivo\_resultados}: o nome do arquivo de saída é criado dinamicamente, combinando o nome do classificador, seus parâmetros e o nome do conjunto de dados.
 \end{enumerate}
 
-O formato exato é mostrado na listagem \ref{lst:dev_output_filename}. O objetivo desse formato é que todos os resultados podem ser colocados em um mesmo diretório evitando conflitos com execuções anteriores da mesma combinação de classificador e conjunto de dados.
+O formato exato do nome do arquivo é mostrado na listagem \ref{lst:dev_output_filename}. O objetivo desse formato é organizar os arquivos de resultados em uma hierarquia simples que facilite a implementação do programa que executa os testes e não gere diretórios com muitos arquivos.
 
 \vspace{0.5cm}
 \begin{lstlisting}[caption=Formato do nome do arquivo de resultados, label=lst:dev_output_filename]
-# ex: 2013-05-23-23-26-16_Immunos99_australian.txt
-data=${ano}-${mes}-${dia}-${hora}-${minuto}-${segundo}
-${data}_${classificador}_${conjunto_de_dados}.txt
+# ex: german/AIRS1/S1_F0.2_C10.0_H2.0_M0.1_R150.0_V0.9_A-1_B1_E1_K3.txt
+${dataset}/${algoritmo}/${parametros}.txt
 \end{lstlisting}
 \vspace{0.5cm}
 
 Exemplos dos arquivos de configuração são mostrados nas listagens \ref{lst:dev_classifiers_json} e \ref{lst:dev_datasets_json}. Esses arquivos são lidos no formato JSON (\emph{JavaScript Object Notation}), um formato muito popular em aplicações recentes por ser de fácil leitura e escrita, tanto por humanos quanto por programas.
+
+O primeiro arquivo lista os classificadores e seus parâmetros, o segundo os conjuntos de dados. Eles são gravados em um formato que permite que sejam facilmente transformados nas opções correspondentes na linha de comando.
 
 \vspace{0.5cm}
 \begin{lstlisting}[caption=Exemplo de arquivos de configuração de classificadores, label=lst:dev_classifiers_json]
@@ -248,4 +233,3 @@ Exemplos dos arquivos de configuração são mostrados nas listagens \ref{lst:de
 \end{lstlisting}
 \vspace{0.5cm}
 
-O primeiro arquivo lista os calcificadores e seus parâmetros, o segundo os conjuntos de dados. Eles são gravados em um formato que permite que sejam facilmente transformados nas opções correspondentes na linha de comando.
