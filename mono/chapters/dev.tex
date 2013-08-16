@@ -126,7 +126,7 @@ java weka.filters.supervised.instance.StratifiedRemoveFolds -c last -N 4 -F 1 -V
     < dataset.arff > dataset_train.arff
 \end{lstlisting}
 
-\subsection{Execução de um teste}
+\subsection{Execução de um classificador}
 
 A execução de um algoritmo é feita através da classe que implementa o algoritmo no WEKA. Diversas opções podem ser passadas na linha de comando para mudar os parâmetros do algoritmo. Existem algumas opções adicionais para especificar dados adicionais, como os arquivos de dados para treinamento e testes. Além das opções gerais, cada algoritmo pode aceitar diferentes tipo de opções específicas. Como exemplo, para gerar a saída da listagem \ref{lst:prop_weka_out}, foi utilizado o comando da listagem \ref{lst:dev_exec_classifier}.
 
@@ -164,12 +164,12 @@ java weka.classifiers.immune.airs.AIRS1 \
 \end{lstlisting}
 \vspace{0.5cm}
 
-\subsection{Execução dos testes}
+\subsection{Execução dos classificadores}
 
 Para a execução de um teste, pode ser criado um executor genérico de classificadores, com base na listagem \ref{lst:dev_weka_template}:
 
 \vspace{0.5cm}
-\begin{lstlisting}[caption=Execução genérica de um teste, label=lst:dev_weka_template]
+\begin{lstlisting}[caption=Execução genérica de um classificador, label=lst:dev_weka_template]
 # Variável de ambiente.
 java -classpath "$classpath" \
     "$classificador" "$parametros" -t "$conjunto_de_dados" \
