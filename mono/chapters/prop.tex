@@ -4,42 +4,37 @@
 Conforme apresentado nos capítulos anteriores, a modelagem de um sistema de detecção de fraude com a utilização de técnicas inspiradas no sistema imunológico natural busca trazer diversas vantagens tanto no processo de planejamento quanto na sua arquitetura final. Esse trabalho busca identificar exatamente \emph{quanto} esses modelos podem aperfeiçoar os métodos existentes. O método utilizado é a comparação dos resultados da classificação de algoritmos tradicionais e Sistemas Imunológicos Artificiais sobre um mesmo conjunto de dados. Esta seção apresenta os elementos principais para o desenvolvimento da proposta.
 
 \iffalse
-6.1 Etapas do experimento
-
 - remove the word "desempenho" (find something better)
-- remove "comparação de algoritmos", what's being compared are the results
-- add step 0: select algorithms
-- add step 2c: data preparation
-- change "1. Calcular, [...]" to step 3
-- put these three in a bigger step, called "execution"
-- add a big step called "analysis"
-    - 1. "tabular os resultados das execuções"
-    - 2. "ordernar os resultados analisando os critérios"
-    - 3. apresentar os resultados
-- besides, go through chapter 7 and add any(/all =) step that was left out
+- go through chapter 7 and add any(/all =) step that was left out
 \fi
 
-\section{Comparação dos algoritmos}
+\section{Etapas do experimento}
 
-A comparação do desempenho de diferentes algoritmos deve ser baseada em critérios sólidos para que tenha algum valor prático. Assim, nesse trabalho, a comparação dos algoritmos foi divida em duas etapas: execução e análise. A etapa de execução consistiu em:
+A comparação dos resultados da execução de diferentes algoritmos deve ser baseada em critérios sólidos. Caso contrário, corre-se o risco de gerar uma análise que não tem nenhum valor prático ou que leve a conclusões erradas, por examinar dados irrelevantes sobre o resultado dos experimentos. Assim, nesse trabalho, a comparação dos resultados foi divida em duas etapas: execução e análise. A etapa de execução consistiu em:
 
 \begin{enumerate}
+    \item Selecionar os algoritmos imunológicos.
+    \item Selecionar os algoritmos tradicionais para comparação.
+    \item Preparar os conjuntos de dados para importação no WEKA.
     \item Para cada algoritmo:
         \begin{enumerate}
             \item Utilizar \emph{grid search} para otimizar os parâmetros para os dados.
             \item Utilizando esses parâmetros, executar os testes usando \emph{cross-validation}.
         \end{enumerate}
-\end{enumerate}
-
-Durante a etapa de execução, serão coletados dados sobre os resultados dos testes. Esses dados serão utilizados na etapa de análise, gerando, por fim, a comparação. A etapa de análise consistiu em:
-
-\begin{enumerate}
     \item Calcular, para o resultado de cada algoritmo:
         \begin{enumerate}
             \item O erro médio relativo.
             \item O índice de Youden.
             \item O índice de Youden com significância maior para os falsos negativos.
         \end{enumerate}
+\end{enumerate}
+
+Na etapa de análise:
+
+\begin{enumerate}
+    \item Tabular os resultados da execução dos algoritmos.
+    \item Ordenar e classificar os resultados de acordo com os critérios definidos no capítulo \ref{chap:eval}.
+    \item Apresentar os resultados.
 \end{enumerate}
 
 Conforme o padrão nesse tipo de experimento, os dados serão apresentados em formato de tabela e gráfico. Os critérios escolhidos já são parte integrante dos resultados exibidos na execução do WEKA. Essa escolha reflete tanto a aderência dessa plataforma aos padrões da área como a facilidade que uma ferramenta desse tipo oferece na determinação do método de avaliação.
@@ -426,7 +421,7 @@ A etapa de coleta e preparação de dados envolverá a adaptação dos dados nos
 
 Ainda, podem ser necessários ajustes específicos nos dados para que possam servir como entrada para alguns dos algoritmos, caso estes não tenham suporte aos tipos de dados. Com os dados prontos, iniciará a fase de execução dos diferentes algoritmos sobre esses conjuntos de dados. A coleta dos resultados será feita através dos dados de saída, mostrados na listagem \ref{lst:prop_weka_out}. Com os dados prontos, iniciará a fase de execução dos diferentes algoritmos sobre esses conjuntos de dados. A coleta dos resultados será feita através dos dados de saída, mostrados na listagem \ref{lst:prop_weka_out}.
 
-Uma característica positiva da ferramenta WEKA é a possibilidade de alterar parâmetros tanto do algoritmo em si (caso eles ofereçam essa funcionalidade) quanto da execução do teste em si. Assim, pode-se executar diversos testes, variando esses parâmetros, para ao final comparar também essas configurações. A princípio, será definida apenas uma configuração, que será usada para a execução de todos os testes. No entanto, conforme for possível, poderão ser executados testes variando essa configuração, gerando comparação mais diversificadas.
+Uma característica positiva da ferramenta WEKA é a possibilidade de alterar parâmetros tanto do algoritmo em si (caso eles ofereçam essa funcionalidade) quanto da execução do teste em si. Assim, pode-se executar diversos testes, variando esses parâmetros, para ao final comparar também essas configurações. A princípio, será definida apenas uma configuração, que será usada para a execução de todos os testes. No entanto, conforme for possível, poderão ser executados testes variando essa configuração, gerando comparações mais diversificadas.
 
 De posse dos resultados dos testes de todos os algoritmos, iniciará a etapa de análise. Os resultados dos algoritmos imunológicos serão comparados com os resultados dos algoritmos tradicionais. Essa comparação envolve diversos níveis: taxas de erros e acertos (conforme apresentado na seção \ref{sec:eval_fraud}), tempos de execução (que inclui tempo de treinamento do algoritmo e o tempo dos testes), utilização de recursos, etc. Para a visualização dos resultados, serão criados elementos visuais, como tabelas e gráficos.
 
