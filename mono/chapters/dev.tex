@@ -4,7 +4,7 @@ Nesse capítulo é apresentado desenvolvimento do experimento, baseado nos conce
 
 \section{Preparação dos dados}
 
-Os dois conjuntos de dados se encontravam em formato de texto, com os atributos separados por espaços e as instâncias separadas pelo caractere nova linha. As listagens \ref{lst:dev_data_ger} e \ref{lst:dev_data_aust} mostram as primeiras cinco instâncias dos conjuntos de dados no formato do arquivo original (a primeira coluna representa o número da linha, e não faz parte dos dados).
+Os dois conjuntos de dados se encontravam em formato de texto, com os atributos separados por espaços e as instâncias separadas pelo caractere nova linha. As listagens \ref{lst:dev_data_ger} e \ref{lst:dev_data_aust} mostram as instâncias dos conjuntos de dados no formato do arquivo original (a primeira coluna representa o número da linha, e não faz parte dos dados)\footnote{Aqui são mostradas apenas as primeiras cinco instâncias dos conjuntos de dados \emph{Cr.Ger} e \emph{Cr.Aust}. Eles possuem 1000 e 650 instâncias, respectivamente}.
 
 \vspace{0.5cm}
 \begin{lstlisting}[caption=Formato original dos dados (\emph{Cr.Ger}), label=lst:dev_data_ger]
@@ -107,7 +107,9 @@ Com os arquivos no formato ARFF, os conjuntos de dados podem ser importados no W
 
 \section{Utilizando o WEKA}
 
-O WEKA apresenta duas interfaces principais: linha de comando (\emph{command-line interface}, CLI\nomenclature{CLI}{Command-line Interface}) e gráfica (\emph{graphical user interface}, GUI\nomenclature{GUI}{Graphical User Interface}). A interface gráfica é mais apropriada para exploração e experimentação, e para a apresentação dos dados, algoritmos e resultados. Porém, para usos mais avançados e experimentos mais complexos, a linha de comando é mais apropriada. Além da possibilidade muito maior de automação de tarefas e exposição de opções avançadas que não estão disponíveis na interface gráfica, essa interface consome menos recursos.
+\iffalse experimenter \fi
+
+O WEKA é dividido em dois módulos principais: Explorer e Experimenter. Além disso, o WEKA apresenta duas interfaces principais: linha de comando (\emph{command-line interface}, CLI\nomenclature{CLI}{Command-line Interface}) e gráfica (\emph{graphical user interface}, GUI\nomenclature{GUI}{Graphical User Interface}). A interface gráfica é mais apropriada para exploração e experimentação, e para a apresentação dos dados, algoritmos e resultados. A interface de linha de comando é mais apropriada para automatização de tarefas e integração com outros sistemas, além de consumir menos recursos.
 
 Nesse trabalho foi utilizada a interface por linha de comando, já que a repetição dos testes para cada algoritmo é muito mais fácil do que se fosse utilizada a interface gráfica. Os exemplos de execução são apresentados conforme devem ser digitados em uma interface de linha de comando, em um emulador de terminal, utilizando um \emph{shell} como \emph{sh} ou \emph{bash}.
 
@@ -286,3 +288,32 @@ Embora esse exemplo seja simples (o número de testes do primeiro exemplo é 5 e
 Por essas razões, foi utilizado um processo diferente para a execução dos testes. Utilizando arquivos no formato da listagem \ref{lst:dev_output_filename}, os testes podem ser executados em sequência, salvando os resultados intermediários. A qualquer momento, os arquivos existentes podem ser consultados para a avaliação dos resultados.
 
 Um efeito colateral dessa implementação é que, como o processo que executa os testes não reexecuta um teste caso o arquivo de resultados exista, a execução dos testes pode ser dividido em diversos processos e até diversas máquinas, com a coordenação feita pelo sistema de arquivos.
+
+\section{Seleção de algoritmos}
+
+\iffalse complete \fi
+
+\begin{enumerate}[a)]
+    \item Redes neurais
+        \begin{enumerate}[1.]
+            \item MultilayerPerceptron
+        \end{enumerate}
+    \item Árvores de decisão
+        \begin{enumerate}[1.]
+            \item ID3
+            \item J48
+        \end{enumerate}
+    \item LVQ
+        \begin{enumerate}[1.]
+            \item ?
+        \end{enumerate}
+    \item Redes Bayesianas
+        \begin{enumerate}[1.]
+            \item Bayes Net
+            \item Naïve Bayes
+        \end{enumerate}
+    \item SVM
+        \begin{enumerate}[1.]
+            \item ?
+        \end{enumerate}
+\end{enumerate}
