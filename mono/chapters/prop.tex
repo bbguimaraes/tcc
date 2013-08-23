@@ -10,7 +10,7 @@ Conforme apresentado nos capítulos anteriores, a modelagem de um sistema de det
 
 \section{Etapas do experimento}
 
-A comparação dos resultados da execução de diferentes algoritmos deve ser baseada em critérios sólidos. Caso contrário, corre-se o risco de gerar uma análise que não tem nenhum valor prático ou que leve a conclusões erradas, por examinar dados irrelevantes sobre o resultado dos experimentos. Assim, nesse trabalho, a comparação dos resultados foi divida em duas etapas: execução e análise. A etapa de execução consistiu em:
+A comparação dos resultados da execução de diferentes algoritmos é baseada em critérios de avaliação. A definição desses critérios é uma parte vital da preparação do experimento. Deve-se garantir que esses critérios sejam apropriados para a comparação dos métodos avaliados e que eles refiltam as necessidades e desafios dos ambientes em que esses métodos serão implementados. Sem critérios bem definidos, corre-se o risco de gerar uma análise que não tem nenhum valor prático ou que leve a conclusões erradas, por examinar dados irrelevantes sobre o resultado dos experimentos. Nesse trabalho, a comparação dos resultados foi divida em duas etapas: execução e análise. A etapa de execução consistiu em:
 
 \begin{enumerate}
     \item Selecionar os algoritmos imunológicos.
@@ -29,7 +29,7 @@ A comparação dos resultados da execução de diferentes algoritmos deve ser ba
         \end{enumerate}
 \end{enumerate}
 
-Na etapa de análise:
+A etapa de análise consistiu em:
 
 \begin{enumerate}
     \item Tabular os resultados da execução dos algoritmos.
@@ -37,7 +37,7 @@ Na etapa de análise:
     \item Apresentar os resultados.
 \end{enumerate}
 
-Conforme o padrão nesse tipo de experimento, os dados serão apresentados em formato de tabela e gráfico. Os critérios escolhidos já são parte integrante dos resultados exibidos na execução do WEKA. Essa escolha reflete tanto a aderência dessa plataforma aos padrões da área como a facilidade que uma ferramenta desse tipo oferece na determinação do método de avaliação.
+Conforme o padrão nesse tipo de experimento, os dados são apresentados em formato de tabela e gráfico. Os critérios escolhidos já são parte integrante dos resultados exibidos na execução do WEKA. Essa escolha reflete tanto a aderência dessa plataforma aos padrões da área como a facilidade que uma ferramenta desse tipo oferece na determinação do método de avaliação.
 
 \section{Descrição dos dados de teste}
 
@@ -205,7 +205,7 @@ A16: +,- (atributo de classe)
 
 \section{Algoritmos}
 
-Os algoritmos utilizados no experimento são parte de um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual (1.8, maio de 2011). Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina WEKA (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementadas diversas categorias de algoritmos, como Redes Neurais e Sistemas Imunológicos Artificiais. A figura \ref{fig:prop_wekaais} mostra esses algoritmos conforme apresentados na interface do WEKA. Desses algoritmos, serão utilizados:
+Os algoritmos utilizados no experimento são parte de um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual (1.8, maio de 2011). Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina WEKA (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementadas diversas categorias de algoritmos, como Redes Neurais e Sistemas Imunológicos Artificiais. A figura \ref{fig:prop_wekaais} mostra esses algoritmos conforme apresentados na interface do WEKA.
 
 \vspace{0.5cm}
 \begin{figure}[h]
@@ -217,6 +217,8 @@ Os algoritmos utilizados no experimento são parte de um pacote de algoritmos de
 \end{figure}
 \vspace{0.5cm}
 
+Desses algoritmos, serão utilizados:
+
 \begin{enumerate}[a)]
     \item \textbf{Artificial Immune Recognition System (AIRS)}: algoritmo imunológico supervisionado descrito na seção \ref{sec:prop_airs}.
     \item \textbf{Clonal Selection Algorithm (CLONALG)}: um dos principais algoritmos imunológicos, o algoritmo da seleção clonal, descrito na seção \ref{sec:ais_clonalg}.
@@ -224,12 +226,12 @@ Os algoritmos utilizados no experimento são parte de um pacote de algoritmos de
     \iffalse adicionar os outros algoritmos do weka que serão utilizados (4.6) \fi
 \end{enumerate}
 
-\iffalse justificar \fi Implementações de todos esses algoritmos estão disponíveis na versão oficial da ferramenta WEKA. Isso facilita a comparação dos resultados com os resultados dos algoritmos imunológicos.
+\iffalse justificar \fi Implementações de todos esses algoritmos estão disponíveis na versão oficial da ferramenta WEKA. Isso facilita a comparação dos resultados dos algoritmos imunológicos com os algoritmos que já fazem parte do WEKA.
 
 \section{WEKA}
 \label{sec:prop_weka}
 
-A plataforma de testes utilizado é o \emph{software} WEKA\nomenclature{WEKA}{Waikato Environment for Knowledge Analysis} (\emph{Waikato Environment for Knowledge Analysis}, Ambiente para Aprendizagem de Máquina de Waikato), uma suite de aplicações de aprendizagem de máquina desenvolvida na Universidade de Waikato na Nova Zelândia. Essa ferramenta é largamente utilizada em projetos nessa área, devido a sua licença aberta (GNU GPL\nomenclature{GNU GPL}{GNU General Public License}), que permite que seja utilizada quase sem restrições. A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execução, mostrando a visualização de um conjunto de dados de exemplo.
+A plataforma de testes utilizada é o \emph{software} WEKA\nomenclature{WEKA}{Waikato Environment for Knowledge Analysis} (\emph{Waikato Environment for Knowledge Analysis}, Ambiente para Aprendizagem de Máquina de Waikato), uma suite de aplicações de aprendizagem de máquina desenvolvida na Universidade de Waikato na Nova Zelândia. Essa ferramenta é largamente utilizada em projetos nessa área, devido a sua licença aberta (GNU GPL\nomenclature{GNU GPL}{GNU General Public License}), que permite que seja utilizada quase sem restrições. A figura \ref{fig:prop_weka} mostra uma captura de tela do programa em execução, mostrando a visualização de um conjunto de dados de exemplo.
 
 \vspace{0.5cm}
 \begin{figure}[h]
@@ -278,7 +280,7 @@ Para que um conjunto de dados possa ser utilizado no WEKA, ele deve estar em um 
 
 Um arquivo ARFF é um arquivo de texto simples, em um formato padronizado, que combina a descrição dos dados e os dados em si \cite{Hall2009}. Ele é dividido em duas seções. A primeira, chamada de cabeçalho (\emph{header}) contém o nome do conjunto de dados (\emph{@relation}) e a lista de atributos (colunas) e seus tipos (\emph{@attribute}). Esses arquivos também podem conter comentários, que são ignorados quando o arquivo é analisado, e podem ser utilizados para adicionar informações ao arquivo como fonte, licença, etc. Um comentário é inserido através do caractere '\%', e tem efeito até o caractere de nova linha. Após o cabeçalho, vem a seção que contém os dados em si (\emph{@data}).
 
-O nome do conjunto de dados é uma \emph{string} arbitrária, e serve apenas para a identificação na interface (figura \ref{fig:prop_weka}). A lista de atributos é uma sequência de entradas \emph{@attribute}. Cada atributo no conjunto de dados tem uma entrada \emph{@attribute} correspondente, que identifica o atributo. A ordem da declaração deve ser exatamente a ordem em que os atributos são listados na seção de dados. Isso facilita a listagem de dados, onde não é necessário indicar, para cada valor, o atributo ao qual ele se refere. O formato de cada \emph{@attribute} é:
+O nome do conjunto de dados é uma \emph{string} arbitrária, e serve apenas para a identificação na interface (figura \ref{fig:prop_weka}). A lista de atributos é uma sequência de entradas \emph{@attribute}. Cada atributo no conjunto de dados tem uma entrada \emph{@attribute} correspondente, que identifica o atributo. A ordem da declaração deve ser exatamente a ordem em que os atributos são listados na seção de dados. Isso facilita a listagem de dados, onde não é necessário indicar, para cada valor, o atributo ao qual ele se refere. O formato de cada \emph{@attribute} é ilustrado na listagem \ref{lst:prop_attribute_out}.
 
 \vspace{0.5cm}
 \begin{lstlisting}[caption=Formato de uma entrada \emph{@attribute}, label=lst:prop_attribute_out]
