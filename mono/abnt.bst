@@ -84,7 +84,7 @@ MACRO {dec} {"Dec."}
 % Definicao de strings usados na elaboracao das referencias
 %==============================================================================
 FUNCTION {str:mastersthesis} {"Disserta{\c{c}}{\~a}o (Mestrado em Ci{\^e}ncia da Computa{\c{c}}{\~a}o)"}
-FUNCTION {str:phdthesis} {"Tese (Doutorado em Ci{\^e}ncia da Computa{\c{c}}{\~a}o)"}
+FUNCTION {str:phdthesis} {"Tese (Doutorado)"}
 FUNCTION {str:chapter} {"Cap."}
 
 %==============================================================================

@@ -291,29 +291,45 @@ Um efeito colateral dessa implementação é que, como o processo que executa os
 
 \section{Seleção de algoritmos}
 
-\iffalse complete \fi
+Todos os algoritmos utilizados para comparação com os algoritmos imunológicos fazem parte da distribuição padrão do WEKA (a versão utilizada é a 3.6.9 de 25 de janeiro de 2013).
+
+\iffalse screenshot of all algorithms on weka \fi
 
 \begin{enumerate}[a)]
-    \item Redes neurais
+    \item \textbf{Redes neurais artificiais}: um algoritmo que utiliza uma rede de neurônios artificiais inspirados no modelo dos neurônios biológicos do sistema nervoso. É um algoritmo que, como os algoritmos imunológicos, gera um resultado complexo através da colaboração de um grande número de agentes que têm um funcionamento relativamente simples.
         \begin{enumerate}[1.]
-            \item MultilayerPerceptron
+            \item \textbf{MultilayerPerceptron}: uma implementação do algoritmo de redes neurais artificiais presente no WEKA, que usa backpropagation, conforme o algoritmo proposto por Paul Werbos \cite{Werbos1974}. Pode ser treinado de forma manual, automática ou uma combinação dos dois.
         \end{enumerate}
-    \item Árvores de decisão
+    \item \textbf{Árvores de decisão}: um algoritmo supervisionado que monta uma árvore ligando observações sobre os dados à conclusões sobre esses dados. É um tipo de algoritmo preditivo muito usado em sistemas especialistas e aprendizagem de máquina por gerar um modelo que pode ser facilmente analisado e ajustado.
         \begin{enumerate}[1.]
-            \item ID3
-            \item J48
+            \item \textbf{ID3}: um algoritmo de árvores de decisão usado em aprendizagem de máquina, desenvolvido por Ross Quinlan \cite{Quinlan1986}. Divide conjunto de atributos dos dados em subconjuntos iterativamente, separando sempre pelo atributo com menor entropia (maior ganho de informação).
+            \item \textbf{C4.5}: uma extensão do algoritmo ID3, desenvolvido pelo mesmo autor \cite{Quinlan1993}. Entre as melhorias do algoritmo estão o tratamento mais eficiente de dados contínuos, o tratamento a dados incompletos e a poda da árvore após o treinamento. O WEKA tem uma implementação \emph{open source} desse algoritmo chamado J48.
         \end{enumerate}
-    \item LVQ
+    \item \textbf{Learning Vector Quantization (LVQ)}: um algoritmo de classificação supervisionado baseado no \emph{Vector Quantization} (\emph{VQ}), um algoritmo que distribui as instâncias no espaço de estados e iterativamente aproxima as instâncias semelhantes, até que sejam formados \emph{clusters} com as instâncias classificadas \cite{Kohonen1997}.
         \begin{enumerate}[1.]
-            \item ?
+            \item \textbf{Lvq2\_1} algoritmo presente no pacote de algoritmos de Jason Bronwlee. Uma implementação do algoritmo LVQ onde duas instâncias são analisadas a cada iteração, e só são atualizadas se uma pertence à classe desejada e a outra não e a distância se encontra dentro de uma faixa definida \cite{Brownlee2011w}.
         \end{enumerate}
-    \item Redes Bayesianas
+    \item \textbf{Redes Bayesianas}: um modelo probabilístico desenvolvido usando os modelos derivados do teorema de Bayes \cite{Bayes1763}. O modelo gerado tem a forma de um grafo direcionado acíclico, onde os nodos são variáveis e as arestas as dependências condicionais entre elas \cite{Pearl1988}.
         \begin{enumerate}[1.]
-            \item Bayes Net
-            \item Naïve Bayes
+            \item \textbf{Naive Bayes}: um classificador que cria redes bayesianas simples, onde cada atributo do conjunto de dados é analisado independentemente do outro. O resultado é um modelo onde os atributos não influenciam uns aos outros. Por causa dessa limitação, o treinamento desse algoritmo é muito eficiente.
+            \item \textbf{Bayes Net}: implementação do algoritmo padrão de redes bayesianas. Permite a escolha a medida de avaliação e o método de busca no espaço de estados utilizados pelo classificador.
         \end{enumerate}
-    \item SVM
+    \item \textbf{Support Vector Machine (SVM)}: esse classificador considera as instâncias como pontos em um espaço de estados e tenta traçar uma linha que separe esses pontos em duas regiões do espaço. Por isso, é considerado um classificador binário linear. Classifica uma nova instância posicionando-a no espaço de estados e identificando em que lado da linha separadora essa instância se encontra \cite{Cortes1995}.
         \begin{enumerate}[1.]
-            \item ?
+            \item \textbf{Sequential Minimal Optimization (SMO)}: algoritmo iterativo para o problema da otimização de uma máquina de vetor de suporte. A implementação do WEKA é baseada no algoritmo por John Platt \cite{Platt1998}.
         \end{enumerate}
 \end{enumerate}
+
+\iffalse
+
+== ID3 ==
+
+ID3 does not guarantee an optimal solution, it can get stuck in local optimums. It uses a greedy approach by selecting the best attribute to split the dataset on each iteration. One improvement that can be made on the algorithm can be to use backtracking during the search for the optimal decision tree.
+
+ID3 can overfit to the training data, to avoid overfitting, smaller decision trees should be preferred over larger ones. This algorithm usually produces small trees, but it does not always produce the smallest possible tree.
+
+ID3 is harder to use on continuous data. If the values of any given attribute is continuous, then there are many more places to split the data on this attribute, and searching for the best value to split by can be time consuming.
+
+https://en.wikipedia.org/wiki/ID3_algorithm#Properties
+
+\fi
