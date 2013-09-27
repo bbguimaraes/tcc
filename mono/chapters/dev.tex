@@ -369,3 +369,39 @@ ID3 is harder to use on continuous data. If the values of any given attribute is
 https://en.wikipedia.org/wiki/ID3_algorithm#Properties
 
 \fi
+
+\subsection{J48}
+
+\begin{enumerate}[a)]
+    \item \textbf{Parâmetros}:
+        \begin{itemize}
+            \iffalse Use unpruned tree. \fi
+            \item \textbf{U}: usa uma árvore sem poda.
+            \iffalse <pruning confidence>. Set confidence threshold for pruning. (default 0.25) \fi
+            \item \textbf{C}: limiar de confiança para poda.
+            \iffalse <minimum number of instances>. Set minimum number of instances per leaf. (default 2) \fi
+            \item \textbf{M}: número mínimo de instâncias por folha.
+            \iffalse Use reduced error pruning.<number of folds>. Set number of folds for reduced error pruning. One fold is used as pruning set. (default 3) \fi
+            \item \textbf{R}: reduz o número de instâncias usadas na poda pós-execução.
+            \iffalse <number of folds> Set number of folds for reduced error pruning. One fold is used as pruning set. (default 3) \fi
+            \item \textbf{N}: número de partições para a poda pós-execução.
+            \iffalse Use binary splits only. \fi
+            \item \textbf{B}: realiza apenas divisões binárias em atributos numéricos, ao invés de divisões de tamanho arbitrário.
+            \iffalse Don't perform subtree raising. \fi
+            \item \textbf{S}: desativa a poda baseada em elevação de ramos da árvore.
+            \iffalse Do not clean up after the tree has been built. \fi
+            \item \textbf{L}: desativa o processo de otimização de memória.
+            \iffalse Laplace smoothing for predicted probabilities. \fi
+            \item \textbf{A}: aplica o algoritmo de suavização de Laplace às probabilidades da árvore.
+            \iffalse <seed>. Seed for random data shuffling (default 1). \fi
+            \item \textbf{Q}: semente do gerador de números aleatórios.
+        \end{itemize}
+\end{enumerate}
+
+\iffalse
+
+The most basic parameter is the tree pruning option. If you decide to employ tree pruning, you will need to consider the options above. Be aware that depending on how the training and test data have been defined that the performance of an unpruned tree may superficially appear better than a pruned one. As described above, this can be a result of overfitting. It is important to experiment with models by intelligently adjusting these parameters. Often, only repeated experiments and familiarity with the data will tease out the best set of options.
+
+http://gautam.lis.illinois.edu/monkmiddleware/public/analytics/decisiontree.html
+
+\fi
