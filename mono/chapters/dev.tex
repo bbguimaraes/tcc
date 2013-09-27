@@ -489,3 +489,25 @@ http://gautam.lis.illinois.edu/monkmiddleware/public/analytics/decisiontree.html
             \item \textbf{E}: método para encontrar as tabelas de probabilidade condicional.
         \end{itemize}
 \end{enumerate}
+
+\subsection{SMO}
+
+\begin{enumerate}[a)]
+    \item \textbf{Parâmetros}:
+        \begin{itemize}
+            \iffalse The complexity constant C. (default 1) \fi
+            \item \textbf{C}: a constante de complexidade das regras de decisão.
+            \iffalse Whether to 0=normalize/1=standardize/2=neither. (default 0=normalize) \fi
+            \item \textbf{N}: opção para normalizar, uniformizar ou usar os dados oringinais.
+            \iffalse The tolerance parameter. (default 1.0e-3) \fi
+            \item \textbf{L}: o parâmetro de tolerância.
+            \iffalse The epsilon for round-off error. (default 1.0e-12) \fi
+            \item \textbf{P}: \emph{epsilon} para erro de arredondamento.
+            \iffalse Fit logistic models to SVM outputs. \fi
+            \item \textbf{M}: aplica regressão logística aos pesos.
+            \iffalse The number of folds for the internal cross-validation. (default -1, use training data) \fi
+            \item \textbf{W}: número de partições para o \emph{cross-validation} interno.
+            \iffalse The Kernel to use.  (default: weka.classifiers.functions.supportVector.PolyKernel) \fi
+            \item \textbf{K}: o \emph{kernel} que será utilizado.
+        \end{itemize}
+\end{enumerate}
