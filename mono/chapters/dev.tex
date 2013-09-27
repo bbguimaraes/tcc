@@ -405,3 +405,39 @@ The most basic parameter is the tree pruning option. If you decide to employ tre
 http://gautam.lis.illinois.edu/monkmiddleware/public/analytics/decisiontree.html
 
 \fi
+
+\subsection{MultilayerPerceptron}
+
+\begin{enumerate}[a)]
+    \item \textbf{Parâmetros}:
+        \begin{itemize}
+            \iffalse <learning rate>. Learning Rate for the backpropagation algorithm. (Value should be between 0 - 1, Default = 0.3). \fi
+            \item \textbf{L}: taxa de aprendizagem.
+            \iffalse <momentum>. Momentum Rate for the backpropagation algorithm. (Value should be between 0 - 1, Default = 0.2). \fi
+            \item \textbf{M}: taxa de \emph{momentum}.
+            \iffalse <number of epochs>. Number of epochs to train through. (Default = 500). \fi
+            \item \textbf{N}: número de \emph{epochs} (uma iteração do processo de treinamento e teste).
+            \iffalse <percentage size of validation set>. Percentage size of validation set to use to terminate training (if this is non zero it can pre-empt num of epochs. (Value should be between 0 - 100, Default = 0). \fi
+            \item \textbf{V}: tamanho do conjunto de validação do treinamento.
+            \iffalse <seed>. The value used to seed the random number generator(Value should be >= 0 and and a long, Default = 0). \fi
+            \item \textbf{S}: semente do gerador de números aleatórios.
+            \iffalse <threshold for number of consequetive errors>. The consequetive number of errors allowed for validation testing before the netwrok terminates. (Value should be > 0, Default = 20). \fi
+            \item \textbf{E}: número máximo de erros consecutivos para término da validação da rede.
+            \iffalse GUI will be opened. (Use this to bring up a GUI). \fi
+            \item \textbf{G}: abre a interface de criação da rede.
+            \iffalse Autocreation of the network connections will NOT be done. (This will be ignored if -G is NOT set) \fi
+            \item \textbf{A}: não cria as conexões da rede.
+            \iffalse A NominalToBinary filter will NOT automatically be used. (Set this to not use a NominalToBinary filter). \fi
+            \item \textbf{B}: não aplica o filtro NominalToBinary.
+            \iffalse <comma seperated numbers for nodes on each layer>. The hidden layers to be created for the network. (Value should be a list of comma separated Natural numbers or the letters 'a' = (attribs + classes) / 2, 'i' = attribs, 'o' = classes, 't' = attribs .+ classes) for wildcard values, Default = a). \fi
+            \item \textbf{H}: parâmetro para configuração das camadas escondidas da rede.
+            \iffalse Normalizing a numeric class will NOT be done. (Set this to not normalize the class if it's numeric). \fi
+            \item \textbf{C}: desabilita a aplicação de normalização no atributo de classe.
+            \iffalse Normalizing the attributes will NOT be done. (Set this to not normalize the attributes). \fi
+            \item \textbf{I}: desabilita a aplicação de normalização em todos os atributos.
+            \iffalse Reseting the network will NOT be allowed. (Set this to not allow the network to reset). \fi
+            \item \textbf{R}: desabilita a reinicialização da rede durante o treinamento.
+            \iffalse Learning rate decay will occur. (Set this to cause the learning rate to decay). \fi
+            \item \textbf{D}: habilita a diminuição gradual da taxa de aprendizagem.
+        \end{itemize}
+\end{enumerate}
