@@ -511,3 +511,26 @@ http://gautam.lis.illinois.edu/monkmiddleware/public/analytics/decisiontree.html
             \item \textbf{K}: o \emph{kernel} que será utilizado.
         \end{itemize}
 \end{enumerate}
+
+\begin{enumerate}[a)]
+    \item \textbf{Parâmetros}:
+        \begin{itemize}
+            \iffalse antibodyPoolSize -- Antibody pool size (N). The total antibodies maintained in the memory pool and remainder pool. \fi
+            \item \textbf{N}: tamanho do \emph{pool} de anticorpos.
+
+            \iffalse clonalFactor -- Clonal factor (beta). Used to scale the number of clones created by the selected best antibodies. \fi
+            \item \textbf{B}: taxa de clonagem.
+
+            \iffalse numGenerations -- Total generations. The total number of times that all antigens are exposed to the system. \fi
+            \item \textbf{G}: número de gerações.
+
+            \iffalse remainderPoolRatio -- Remainder pool percentage. The percentage of the total antibody pool size allocated for the remainder pool. \fi
+            \item \textbf{R}: número de anticorpos mantidos entre cada geração.
+
+            \iffalse selectionPoolSize -- Selection pool size (n). The total number of best antibodies selected for cloning and mutation each iteration. \fi
+            \item \textbf{n}: número de anticorpos selecionado para clonagem e mutação a cada geração.
+
+            \iffalse totalReplacement -- Total replacements (d). The total number of antibodies in the remainder pool that are replaced each iteration. Typically 5\%-8\% \fi
+            \item \textbf{d}: número de anticorpos descartado e substituído a cada geração.
+        \end{itemize}
+\end{enumerate}
