@@ -441,3 +441,25 @@ http://gautam.lis.illinois.edu/monkmiddleware/public/analytics/decisiontree.html
             \item \textbf{D}: habilita a diminuição gradual da taxa de aprendizagem.
         \end{itemize}
 \end{enumerate}
+
+\subsection{Lvq2\_1}
+
+\begin{enumerate}[a)]
+    \item \textbf{Parâmetros}:
+        \begin{itemize}
+            \iffalse initialisationMode -- Model (codebook vector) initalisation mode (1==Random Training Data Proportional, 2==Random Training Data Even, 3==Random Values In Range, 4==Simple KMeans, 5==Farthest First, 6==K-Nearest Neighbour Even) \fi
+            \item \textbf{M}: modo de inicialização dos vetores.
+            \iffalse learningFunction -- Learning rate function to use while training, linear is typically better (1==Linear Decay, 2==Inverse, 3==Static) \fi
+            \item \textbf{L}: tipo de função para a taxa de aprendizagem.
+            \iffalse learningRate -- Initial learning rate value (recommend  0.3 or 0.5) \fi
+            \item \textbf{R}: valor inicial da taxa de aprendizagem.
+            \iffalse totalCodebookVectors -- Total number of codebook vectors in the model \fi
+            \item \textbf{C}: número total de vetores no modelo.
+            \iffalse totalTrainingIterations -- Total number of training iterations (recommended 30 to 50 times the number of codebook vectors). \fi
+            \item \textbf{I}: número total de iterações.
+            \iffalse useVoting -- Use dynamic voting to select the assigned class of each codebook vector, provides automatic handling of misclassified instances. \fi
+            \item \textbf{G}: seleção dinâmica da classe de cada instância.
+            \iffalse windowSize -- Window size matching codebook vectors must be within (recommend 0.2 or 0.3) \fi
+            \item \textbf{W}: limiar de semelhança entre as instâncias comparadas.
+        \end{itemize}
+\end{enumerate}
