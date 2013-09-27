@@ -351,9 +351,14 @@ Esses algoritmos podem ser dividos em 5 categorias de algoritmos: árvores de de
 \end{table}
 \vspace{0.5cm}
 
-\iffalse
+\subsection{ID3}
 
-== ID3 ==
+\begin{enumerate}[a)]
+    \item \textbf{Parâmetros}: esse algoritmo não aceita parâmetros.
+    \item \textbf{Filtros}: como o ID3 não suporta atributos numéricos, foi necessário discretizar os valores numéricos (seção \ref{sec:prop_weka_filters}).
+\end{enumerate}
+
+\iffalse
 
 ID3 does not guarantee an optimal solution, it can get stuck in local optimums. It uses a greedy approach by selecting the best attribute to split the dataset on each iteration. One improvement that can be made on the algorithm can be to use backtracking during the search for the optimal decision tree.
 
