@@ -114,6 +114,7 @@ O WEKA é dividido em dois módulos principais: Explorer e Experimenter. Além d
 Nesse trabalho foi utilizada a interface por linha de comando, já que a repetição dos testes para cada algoritmo é muito mais fácil do que se fosse utilizada a interface gráfica. Os exemplos de execução são apresentados conforme devem ser digitados em uma interface de linha de comando, em um emulador de terminal, utilizando um \emph{shell} como \emph{sh} ou \emph{bash}.
 
 \subsection{Filtros}
+\label{sec:dev_weka_filters}
 
 No WEKA, um filtro é um objeto que recebe um conjunto de dados como entrada e produz um conjunto de dados modificado. Esse é um processo comum da Mineração de Dados, chamado de pré-processamento dos dados: adicionar, remover ou alterar atributos, etc.
 
@@ -355,7 +356,7 @@ Esses algoritmos podem ser dividos em 5 categorias de algoritmos: árvores de de
 
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}: esse algoritmo não aceita parâmetros.
-    \item \textbf{Filtros}: como o ID3 não suporta atributos numéricos, foi necessário discretizar os valores numéricos (seção \ref{sec:prop_weka_filters}).
+    \item \textbf{Filtros}: como o ID3 não suporta atributos numéricos, foi necessário discretizar os valores numéricos (seção \ref{sec:dev_weka_filters}).
 \end{enumerate}
 
 \iffalse
