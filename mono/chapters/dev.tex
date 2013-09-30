@@ -513,6 +513,30 @@ http://gautam.lis.illinois.edu/monkmiddleware/public/analytics/decisiontree.html
         \end{itemize}
 \end{enumerate}
 
+\subsection{AIRS}
+
+\begin{enumerate}[a)]
+    \item \textbf{Parâmetros}:
+        \begin{itemize}
+        \iffalse affinityThresholdScalar -- Affinity threshold scalar (ATS). Used with the system calculated affinity threshold to determine whether or not a candidate memory cell can replace the previous best matching memory cell. This occurs if the affinity between the candidate and the best match cell is < (AT * ATS). \fi
+        \item \textbf{F}: controla o limiar de afinidade para substituição de células de memória.
+        \iffalse clonalRate -- Clonal rate. Used to determine the number of mutated clones to create of an ARB during the ARB refinement stage. Calculated as (stimulation * clonal rate). \fi
+        \item \textbf{C}: taxa de clonagem.
+        \iffalse hypermutationRate -- Hypermutation rate. Used with the clonal rate to determine the number of clones a best matching memory cell can create to then seed the ARB pool with. This is calculated as (stimulation * clonal rate * hypermutation rate). \fi
+        \item \textbf{H}: taxa de hiper-mutação.
+        \iffalse knn -- k-Nearest Neighbour. Specifies the number of best match memory cells used during the classification stage to majority vote hte classification of unseen data instances. \fi
+        \item \textbf{K}: número de células de memória usadas durante a classificação de novas instâncias.
+        \iffalse memInitialPoolSize -- Initial memory cell pool size. Specifies the number of randomly selected training data instances used to seed the memory cell pool. This paramter must be in the range [0, num training instances]. \fi
+        \item \textbf{E}: número inicial de células de memória.
+        \iffalse numInstancesAffinityThreshold -- Total training instances to calculate affinity threshold (AT). Specifies the number of trainign data instances used to calculate the affinity threshold (AT) which is the mean affinity between data instances. A value of -1 indicates to use the entire training dataset. \fi
+        \item \textbf{A}: número de células usadas no cálculo do limiar de afinidade.
+        \iffalse stimulationValue -- Stimulation threshold. Used to determine when to stop refining the pool of ARBs for an antigen. This occurs when the mean normalised ARB stimulation value is >= the stimulation threshold. Must be in the range of [0,1]. \fi
+        \item \textbf{V}: limite para o refinamento das células de memória.
+        \iffalse totalResources -- Total allocatable resources. Specifies the maximum number of resources (B-cells) that can be allocated to ARBs in the ARB pool. Those ARBs with the weakest stimulation are removed from the pool until the total allocated resources is less than the maximum allowable resources. \fi
+        \item \textbf{R}: número máximo de células.
+        \end{itemize}
+\end{enumerate}
+
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
         \begin{itemize}
