@@ -183,17 +183,7 @@ java -classpath "$classpath" \
 Dessa forma, é possível utilizar o mesmo comando para execução, variando apenas os valores das variáveis. Os valores utilizados para cada variável foram:
 
 \begin{enumerate}[a)]
-    \item \emph{classpath}: conforme explicado na sessão anterior. Esse valor não muda entre as execuções dos testes, mas é mantido como uma variável para que ele possa ser facilmente alterado caso necessário.
-    \item \emph{classificador}: essa variável tem o valor do classificador utilizado no teste.
-    \item \emph{parametros}: os parâmetros para o classificador. O valor dessa variável depende do classificador utilizado.
-    \item \emph{conjunto\_de\_dados}: o conjunto de dados utilizado para o treinamento e testes.
-    \item \emph{arquivo\_resultados}: o arquivo onde a saída da execução será gravada.
-\end{enumerate}
-
-Para facilitar a execução de todos os algoritmos, foi utilizado um \emph{script}. O propósito desse programa é ler arquivos de configuração onde são listados os conjuntos de dados utilizados e os classificadores e executar os testes usando todas as combinações de conjunto de dados e classificador. Ou seja, esse programa recebe os classificadores e conjuntos de dados, executa os testes e grava os resultados. Mais concretamente, esse programa dá valores às variáveis descritas acima, da seguinte forma:
-
-\begin{enumerate}[a)]
-    \item \emph{classpath}: o arquivo \emph{jar} do WEKA que contém a implementação dos algoritmos imunológicos (\emph{wekaclassalgos.jar}). Esse arquivo também contém os algoritmos do WEKA, então ele é a única dependência necessária para utilizar os classificadores imunológicos e os que já são incluídos no WEKA.
+    \item \emph{classpath}: conforme explicado na sessão anterior. Esse valor não muda entre as execuções dos testes, mas é mantido como uma variável para que ele possa ser facilmente alterado caso necessário. Esse é o arquivo \emph{jar} do WEKA que contém a implementação dos algoritmos imunológicos (\emph{wekaclassalgos.jar}). Esse arquivo também contém os algoritmos do WEKA, então ele é a única dependência necessária para utilizar os classificadores imunológicos e os que já são incluídos no WEKA.
     \item \emph{classificador}: todos os classificadores testados no experimento:
         \begin{enumerate}[a)]
             \item weka.classifiers.immune.airs.AIRS2
@@ -205,46 +195,10 @@ Para facilitar a execução de todos os algoritmos, foi utilizado um \emph{scrip
             \item weka.classifiers.trees.J48
             \item weka.classifiers.neural.lvq.Lvq2\_1
         \end{enumerate}
-    \item \emph{parâmetros}: os parâmetros são listados junto com cada classificador no arquivo de configuração. \iffalse tabela com os parâmetros de cada classificador \fi
+    \item \emph{parâmetros}: os parâmetros são listados junto com cada classificador no arquivo de configuração.
     \item \emph{conjunto\_de\_dados}: o caminho para o arquivo ARFF dos dois conjuntos de dados utilizados.
-    \item \emph{arquivo\_resultados}: o nome do arquivo de saída é criado dinamicamente, combinando o nome do classificador, seus parâmetros e o nome do conjunto de dados.
+    \item \emph{arquivo\_resultados}: arquivo onde os resultados são gravados.
 \end{enumerate}
-
-O formato exato do nome do arquivo é mostrado na listagem \ref{lst:dev_output_filename}. O objetivo desse formato é organizar os arquivos de resultados em uma hierarquia simples que facilite a implementação do programa que executa os testes e não gere diretórios com muitos arquivos.
-
-\vspace{0.5cm}
-\begin{lstlisting}[caption=Formato do nome do arquivo de resultados, label=lst:dev_output_filename]
-# ex: german/AIRS1/S1_F0.2_C10.0_H2.0_M0.1_R150.0_V0.9_A-1_B1_E1_K3.txt
-${dataset}/${algoritmo}/${parametros}.txt
-\end{lstlisting}
-\vspace{0.5cm}
-
-Exemplos dos arquivos de configuração são mostrados nas listagens \ref{lst:dev_classifiers_json} e \ref{lst:dev_datasets_json}. Esses arquivos são lidos no formato JSON (\emph{JavaScript Object Notation}), um formato muito popular em aplicações recentes por ser de fácil leitura e escrita, tanto por humanos quanto por programas.
-
-O primeiro arquivo lista os classificadores e seus parâmetros, o segundo os conjuntos de dados. Eles são gravados em um formato que permite que sejam facilmente transformados nas opções correspondentes na linha de comando.
-
-\vspace{0.5cm}
-\begin{lstlisting}[caption=Exemplo de arquivos de configuração de classificadores, label=lst:dev_classifiers_json]
-[
-    {
-        "classifier": "weka.classifiers.trees.J48",
-        "params": {
-            "C": ["0.25"],
-            "M": ["2"]
-        }
-    }
-]
-\end{lstlisting}
-
-\begin{lstlisting}[caption=Exemplo de arquivos de configuração de conjuntos de dados, label=lst:dev_datasets_json]
-[
-    {
-        "name": "german",
-        "file": "data/statlog_german/german.arff"
-    }
-]
-\end{lstlisting}
-\vspace{0.5cm}
 
 \subsection{Seleção de parâmetros no WEKA}
 
@@ -261,34 +215,11 @@ No WEKA, existem duas implementações desse método. Ambos fazem parte de uma c
     \item Executar o teste.
 \end{enumerate}
 
-Com exceção dos itens \emph{a)} e \emph{d)}, o processo é semelhante ã execução de um classificador comum. De fato, o meta-classificador executará o classificador da mesma forma que o WEKA faria. No entanto, ao invés de um única execução com parâmetros fixos, esses dois meta-classificadores fazem diversos testes, utilizando todas as combinações possíveis dos valores listados no item \emph{d)} para os parâmetros.
+Com exceção dos itens \emph{a)} e \emph{d)}, o processo é semelhante à execução de um classificador comum. De fato, o meta-classificador executará o classificador da mesma forma que o WEKA faria. No entanto, ao invés de um única execução com parâmetros fixos, esses dois meta-classificadores fazem diversos testes, utilizando todas as combinações possíveis dos valores listados no item \emph{d)} para os parâmetros.
 
 É importante levar em consideração que, conforme discutido anteriormente, esse processo é de grande utilidade para determinar os melhores valores para os parâmetros do classificador, no entanto, uma óbvia desvantagem é o grande aumento no tempo de execução. O número de combinações possíveis cresce exponencialmente com o número de parâmetros e número de elementos na faixa de valores para esses parâmetros.
 
 Existem formas de amenizar o efeito da explosão combinatória desses métodos. A opção mais popular aproveita o grande potencial de paralelização do processo de execução do classificador com diferentes parâmetros. Como cada execução é completamente independente das outras, e podem ser executadas em paralelo. Na prática, grandes quantidades de unidades de processamento (denominados \emph{clusters}) são utilizados, e conjuntos de combinações de valores são distribuídas para cada um. Dessa forma, é possível aproveitar ao máximo a quantidade de recursos disponíveis. Os resultados dos testes podem então ser combinados em uma única unidade para a análise final.
-
-\subsection{Seleção de parâmetros no experimento}
-
-Devido ao grande número de testes executados utilizando diferentes classificadores e conjuntos de dados, não foram utilizados os métodos oferecidos pelo WEKA. O teste de um meta-classificador é feito em uma só execução e apenas o resultado final é persistido. Todos os resultados intermediários são perdidos assim que o teste é finalizado. Isso faz com que execuções subsequentes de testes que cobrem as mesmas faixas de parâmetros sejam obrigados a executar novamente testes que já foram executados.
-
-Por exemplo, supondo que sejam executados testes conforme a listagem \ref{lst:dev_dry}. Primeiramente, é executado um \emph{grid search} utilizando o algoritmo J48 e apenas o parâmetro ``C'', o limiar de confiança, é otimizado, na faixa [0.1, 0.3]. Na segunda execução, o mesmo classificador é utilizado, porém agora é otimizado também o parâmetro ``M'', o número de instâncias por folha, na faixa [2, 10]. Todos os testes da primeira execução são perdidos assim que ela é finalizada, logo eles devem ser executados novamente na segunda execução.
-
-\vspace{0.5cm}
-\begin{lstlisting}[caption=Desperdício de recursos em execuções subsequentes, label=lst:dev_dry]
-java weka.classifiers.meta.CVParameterSelection \
-    -W weka.classifiers.trees.J48 -P 'C 0.1 0.3 5' \
-    -t german.arff
-java weka.classifiers.meta.CVParameterSelection \
-    -W weka.classifiers.trees.J48 -P 'C 0.1 0.3 5' -P 'M 2 10 9' \
-    -t german.arff
-\end{lstlisting}
-\vspace{0.5cm}
-
-Embora esse exemplo seja simples (o número de testes do primeiro exemplo é 5 e do segundo, 45), o número de testes executados cresce exponencialmente conforme o número de parâmetros testados e a faixa de valores testados aumenta. Esse fator, combinado com um tempo de execução alto para algoritmos e conjunto de dados mais complexos, fazem com que a experimentação seja muito difícil, além de um desperdício extraordinário de recursos, já que os mesmos testes (que sempre têm o mesmo resultado) são executados repetidas vezes.
-
-Por essas razões, foi utilizado um processo diferente para a execução dos testes. Utilizando arquivos no formato da listagem \ref{lst:dev_output_filename}, os testes podem ser executados em sequência, salvando os resultados intermediários. A qualquer momento, os arquivos existentes podem ser consultados para a avaliação dos resultados.
-
-Um efeito colateral dessa implementação é que, como o processo que executa os testes não reexecuta um teste caso o arquivo de resultados exista, a execução dos testes pode ser dividido em diversos processos e até diversas máquinas, com a coordenação feita pelo sistema de arquivos.
 
 \section{Seleção de algoritmos}
 
