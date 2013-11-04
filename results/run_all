@@ -1,0 +1,8 @@
+#!/bin/sh
+# Runs all experiments.
+
+
+for i in `find * -maxdepth 0 -type d | sort`; do
+    echo "$i"
+    sh run_experiment "$i"
+done

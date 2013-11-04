@@ -1,0 +1,11 @@
+#!/bin/sh
+# Runs a single experiment.
+
+
+if [ "$#" != 1 ]; then
+    echo Usage: $0 folder >&2
+    exit 1;
+fi
+CLASS=weka.experiment.Experiment
+cd "$1"
+java "${CLASS}" -r -l exp.xml
