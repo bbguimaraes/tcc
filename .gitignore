@@ -21,3 +21,7 @@ tcc.ilg
 # Nomenclature output, nomenclature list..
 tcc.nlo
 tcc.nls
+# Result files.
+results/*/out.csv
+# vim swap files
+.*.swp
