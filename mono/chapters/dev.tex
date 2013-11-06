@@ -221,6 +221,44 @@ Com exceção dos itens \emph{a)} e \emph{d)}, o processo é semelhante à execu
 
 Existem formas de amenizar o efeito da explosão combinatória desses métodos. A opção mais popular aproveita o grande potencial de paralelização do processo de execução do classificador com diferentes parâmetros. Como cada execução é completamente independente das outras, e podem ser executadas em paralelo. Na prática, grandes quantidades de unidades de processamento (denominados \emph{clusters}) são utilizados, e conjuntos de combinações de valores são distribuídas para cada um. Dessa forma, é possível aproveitar ao máximo a quantidade de recursos disponíveis. Os resultados dos testes podem então ser combinados em uma única unidade para a análise final.
 
+\section{\emph{Experimenter}}
+
+Além do módulo \emph{Explorer}, para execução de testes, o WEKA apresenta um módulo para configuração e execução de experimentos, chamado \emph{Experimenter} (figura \ref{fig:dev_weka_experimenter}. Esse módulo facilita a criação de experimentos, criando um arquivo de configuração onde são descritas as etapas, que pode ser utilizado para reproduzir o experimento usando as mesmas configurações.
+
+\begin{figure}[h!]
+\vspace{0.5cm}
+    \centering
+    \caption{Experimenter}
+    \label{fig:dev_weka_experimenter}
+    \vspace{0.5cm}
+    \includegraphics[width=0.75\textwidth]{img/experimenter.png}
+    \vspace{0.5cm}
+\vspace{0.5cm}
+\end{figure}
+
+A configuração do \emph{Experimenter} pode ser dividida nas seções:
+
+\begin{enumerate}
+    \item \textbf{Entrada}: a fonte do conjunto de dados. O padrão do WEKA é utilizar arquivos ARFF, mas todos os tipos de arquivos suportados podem ser usados, como arquivos CSV. Também é possível utilizar mais de um conjunto de dados para o mesmo experimento.
+    \item \textbf{Tipo de experimento}: \emph{cross-validation} ou divisão fixa em dados de treino e teste.
+    \item \textbf{Iterações}: número de execuções do experimento.
+    \item \textbf{Algoritmos}: os algoritmos que serão testados. É possível configurar o parâmetros de cada algoritmo exatamente como é feito no \emph{Explorer}.
+    \item \textbf{Saída}: o local onde os resultados do experimento serão gravados. O padrão é um arquivo CSV, mas outros tipos podem ser usados, com arquivos ARFF ou bancos de dados.
+\end{enumerate}
+
+Essas configurações podem ser gravadas em um arquivo para que possam ser reutilizadas. O formato desse arquivo pode ser tanto uma representação em formato binário exclusiva do WEKA ou um arquivo CSV.
+
+A partir de um arquivo de configuração, é possível executar um experimento usando a interface gráfica. Também é possível utilizar a interface de linha de comando, conforme a listagem \ref{lst:dev_run_experiment}.
+
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Execução de um experimento, label=lst:dev_run_experiment]
+# Flags:
+#     -l: indica o arquivo de configuração (load).
+#     -r: executar o experimento (run).
+java weka.experiment.Experiment -l exp.xml -r
+\end{lstlisting}
+\vspace{0.5cm}
+
 \section{Seleção de algoritmos}
 
 Todos os algoritmos utilizados para comparação com os algoritmos imunológicos fazem parte da distribuição padrão do WEKA (a versão utilizada é a 3.6.9 de 25 de janeiro de 2013).
