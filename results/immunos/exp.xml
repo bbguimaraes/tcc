@@ -18,27 +18,23 @@
          <object class="boolean" name="debug" primitive="yes">false</object>
          <object array="yes" class="java.lang.String" name="options">
             <object class="java.lang.String" name="0">-P</object>
-            <object class="java.lang.String" name="1">E 0.2 0.5 3.0</object>
-            <object class="java.lang.String" name="2">-P</object>
-            <object class="java.lang.String" name="3">G 1.0 5.0 5.0</object>
-            <object class="java.lang.String" name="4">-P</object>
-            <object class="java.lang.String" name="5">S 0.2 1.0 3.0</object>
-            <object class="java.lang.String" name="6">-X</object>
-            <object class="java.lang.String" name="7">10</object>
-            <object class="java.lang.String" name="8">-S</object>
-            <object class="java.lang.String" name="9">1</object>
-            <object class="java.lang.String" name="10">-W</object>
-            <object class="java.lang.String" name="11">weka.classifiers.immune.immunos.Immunos99</object>
-            <object class="java.lang.String" name="12">--</object>
-            <object class="java.lang.String" name="13">-D</object>
-            <object class="java.lang.String" name="14">-G</object>
-            <object class="java.lang.String" name="15">1</object>
-            <object class="java.lang.String" name="16">-r</object>
-            <object class="java.lang.String" name="17">1</object>
-            <object class="java.lang.String" name="18">-E</object>
-            <object class="java.lang.String" name="19">-1.0</object>
-            <object class="java.lang.String" name="20">-S</object>
-            <object class="java.lang.String" name="21">0.2</object>
+            <object class="java.lang.String" name="1">G 1.0 4.0 4.0</object>
+            <object class="java.lang.String" name="2">-X</object>
+            <object class="java.lang.String" name="3">10</object>
+            <object class="java.lang.String" name="4">-S</object>
+            <object class="java.lang.String" name="5">1</object>
+            <object class="java.lang.String" name="6">-W</object>
+            <object class="java.lang.String" name="7">weka.classifiers.immune.immunos.Immunos99</object>
+            <object class="java.lang.String" name="8">--</object>
+            <object class="java.lang.String" name="9">-D</object>
+            <object class="java.lang.String" name="10">-G</object>
+            <object class="java.lang.String" name="11">1</object>
+            <object class="java.lang.String" name="12">-r</object>
+            <object class="java.lang.String" name="13">1</object>
+            <object class="java.lang.String" name="14">-E</object>
+            <object class="java.lang.String" name="15">-1.0</object>
+            <object class="java.lang.String" name="16">-S</object>
+            <object class="java.lang.String" name="17">0.2</object>
          </object>
       </object>
    </object>
