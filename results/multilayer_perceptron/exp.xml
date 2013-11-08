@@ -48,22 +48,22 @@
    <object class="int" name="runUpper" primitive="yes">10</object>
    <object class="weka.experiment.CrossValidationResultProducer" name="resultProducer">
       <object array="yes" class="java.lang.String" name="options">
-         <object class="java.lang.String" name="0">-X</object>
-         <object class="java.lang.String" name="1">10</object>
-         <object class="java.lang.String" name="2">-O</object>
-         <object class="java.lang.String" name="3">splitEvalutorOut.zip</object>
-         <object class="java.lang.String" name="4">-W</object>
-         <object class="java.lang.String" name="5">weka.experiment.ClassifierSplitEvaluator</object>
-         <object class="java.lang.String" name="6">--</object>
-         <object class="java.lang.String" name="7">-W</object>
-         <object class="java.lang.String" name="8">weka.classifiers.rules.ZeroR</object>
-         <object class="java.lang.String" name="9">-I</object>
-         <object class="java.lang.String" name="10">0</object>
-         <object class="java.lang.String" name="11">-C</object>
-         <object class="java.lang.String" name="12">1</object>
-         <object class="java.lang.String" name="13">--</object>
-         <object class="java.lang.String" name="14"/>
-         <object class="java.lang.String" name="15"/>
+         <object class="java.lang.String" name="0">-P</object>
+         <object class="java.lang.String" name="1">L 0.1 0.5 5.0</object>
+         <object class="java.lang.String" name="2">-X</object>
+         <object class="java.lang.String" name="3">10</object>
+         <object class="java.lang.String" name="4">-O</object>
+         <object class="java.lang.String" name="5">splitEvalutorOut.zip</object>
+         <object class="java.lang.String" name="6">-W</object>
+         <object class="java.lang.String" name="7">weka.experiment.ClassifierSplitEvaluator</object>
+         <object class="java.lang.String" name="8">--</object>
+         <object class="java.lang.String" name="9">-W</object>
+         <object class="java.lang.String" name="10">weka.classifiers.rules.ZeroR</object>
+         <object class="java.lang.String" name="11">-I</object>
+         <object class="java.lang.String" name="12">0</object>
+         <object class="java.lang.String" name="13">-C</object>
+         <object class="java.lang.String" name="14">1</object>
+         <object class="java.lang.String" name="15">--</object>
       </object>
    </object>
    <object class="boolean" name="usePropertyIterator" primitive="yes">true</object>
