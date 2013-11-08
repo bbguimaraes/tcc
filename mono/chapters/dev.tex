@@ -107,11 +107,9 @@ Com os arquivos no formato ARFF, os conjuntos de dados podem ser importados no W
 
 \section{Utilizando o WEKA}
 
-\iffalse experimenter \fi
+O WEKA é dividido em dois módulos principais: Explorer e Experimenter. Além disso, o WEKA apresenta duas interfaces principais: linha de comando (\emph{command-line interface}, CLI\nomenclature{CLI}{Command-line Interface}) e gráfica (\emph{graphical user interface}, GUI\nomenclature{GUI}{Graphical User Interface}). A interface gráfica é mais apropriada para exploração e experimentação, e para a apresentação dos dados, algoritmos e resultados. A interface de linha de comando é mais apropriada para automatização de tarefas e integração com outros sistemas, além de consumir menos recursos. Os dois módulos podem ser usados em qualquer uma das duas interfaces, com as mesmas funcionalidades.
 
-O WEKA é dividido em dois módulos principais: Explorer e Experimenter. Além disso, o WEKA apresenta duas interfaces principais: linha de comando (\emph{command-line interface}, CLI\nomenclature{CLI}{Command-line Interface}) e gráfica (\emph{graphical user interface}, GUI\nomenclature{GUI}{Graphical User Interface}). A interface gráfica é mais apropriada para exploração e experimentação, e para a apresentação dos dados, algoritmos e resultados. A interface de linha de comando é mais apropriada para automatização de tarefas e integração com outros sistemas, além de consumir menos recursos.
-
-Nesse trabalho foi utilizada a interface por linha de comando, já que a repetição dos testes para cada algoritmo é muito mais fácil do que se fosse utilizada a interface gráfica. Os exemplos de execução são apresentados conforme devem ser digitados em uma interface de linha de comando, em um emulador de terminal, utilizando um \emph{shell} como \emph{sh} ou \emph{bash}.
+Nesse trabalho foi utilizado o módulo \emph{Experimenter} na interface por linha de comando. O módulo \emph{Experimenter} tem um formato de arquivo de configuração que facilita a definição de experimentos e a repetição e automação dos testes para cada algoritmo usando a interface por linha de comando é muito mais fácil do que se fosse utilizada a interface gráfica. Os exemplos de execução são apresentados conforme devem ser digitados em uma interface de linha de comando, em um emulador de terminal, utilizando um \emph{shell} como \emph{sh} ou \emph{bash}.
 
 \subsection{Filtros}
 \label{sec:dev_weka_filters}
@@ -346,11 +344,11 @@ Todos os algoritmos utilizados para comparação com os algoritmos imunológicos
 
 \subsection{Redes neurais artificiais}
 
-Um algoritmo que utiliza uma rede de neurônios artificiais inspirados no modelo dos neurônios biológicos do sistema nervoso. É um algoritmo que, como os algoritmos imunológicos, gera um resultado complexo através da colaboração de um grande número de agentes que têm um funcionamento relativamente simples.
+Um algoritmo que utiliza uma rede de neurônios artificiais inspirados no modelo dos neurônios biológicos do sistema nervoso. Simula uma rede de neurônios usando um modelo computacional baseado nas conexões entre os neurônios.
 
 \subsubsection{MultilayerPerceptron}
 
-Uma implementação do algoritmo de redes neurais artificiais presente no WEKA, que usa backpropagation, conforme o algoritmo proposto por Paul Werbos \cite{Werbos1974}. Pode ser treinado de forma manual, automática ou uma combinação dos dois.
+Uma implementação de uma rede neural multicamadas que usa o algoritmo \emph{backpropagation}, proposto por Paul Werbos \cite{Werbos1974}. A aprendizagem acontece através de repetidas iterações e ajustes dos pesos das conexões entre neurônios. Pode ser treinada de forma automática, mas o WEKA oferece uma interface onde os pesos da rede podem ser alterados manualmente.
 
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
@@ -388,11 +386,11 @@ Uma implementação do algoritmo de redes neurais artificiais presente no WEKA, 
 
 \subsection{Árvores de decisão}
 
-Um algoritmo supervisionado que monta uma árvore ligando observações sobre os dados à conclusões sobre esses dados. É um tipo de algoritmo preditivo muito usado em sistemas especialistas e aprendizagem de máquina por gerar um modelo que pode ser facilmente analisado e ajustado.
+Algoritmo supervisionado que monta uma árvore ligando observações sobre os dados à conclusões sobre esses dados. É um tipo de algoritmo preditivo muito usado em sistemas especialistas e aprendizagem de máquina por gerar um modelo que pode ser facilmente analisado e ajustado.
 
 \subsubsection{ID3}
 
-Um algoritmo de árvores de decisão usado em aprendizagem de máquina, desenvolvido por Ross Quinlan \cite{Quinlan1986}. Divide conjunto de atributos dos dados em subconjuntos iterativamente, separando sempre pelo atributo com menor entropia (maior ganho de informação).
+Algoritmo de árvores de decisão usado em aprendizagem de máquina, desenvolvido por Ross Quinlan \cite{Quinlan1986}. Divide conjunto de atributos dos dados em subconjuntos iterativamente, separando sempre pelo atributo com menor entropia (maior ganho de informação).
 
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}: esse algoritmo não aceita parâmetros.
@@ -451,11 +449,11 @@ http://gautam.lis.illinois.edu/monkmiddleware/public/analytics/decisiontree.html
 
 \subsection{Learning Vector Quantization (LVQ)}
 
-Um algoritmo de classificação supervisionado baseado no \emph{Vector Quantization} (\emph{VQ}), um algoritmo que distribui as instâncias no espaço de estados e iterativamente aproxima as instâncias semelhantes, até que sejam formados \emph{clusters} com as instâncias classificadas \cite{Kohonen1997}.
+Algoritmo de classificação baseado no \emph{Vector Quantization} (\emph{VQ}), um algoritmo que distribui as instâncias no espaço de estados e iterativamente aproxima as instâncias semelhantes, até que sejam formados \emph{clusters} com as instâncias classificadas \cite{Kohonen1997}.
 
 \subsubsection{Lvq2\_1}
 
-Algoritmo presente no pacote de algoritmos de Jason Bronwlee. Uma implementação do algoritmo LVQ onde duas instâncias são analisadas a cada iteração, e só são atualizadas se uma pertence à classe desejada e a outra não e a distância se encontra dentro de uma faixa definida \cite{Brownlee2011w}.
+Algoritmo presente no pacote de algoritmos de Jason Bronwlee. Uma implementação do algoritmo LVQ onde duas instâncias são analisadas a cada iteração, sendo atualizadas quando uma pertence à classe desejada e a outra não e a distância se encontra dentro de uma faixa pré-definida \cite{Brownlee2011w}.
 
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
@@ -497,7 +495,7 @@ Um classificador que cria redes bayesianas simples, onde cada atributo do conjun
 
 \subsubsection{Bayes Net}
 
-Implementação do algoritmo padrão de redes bayesianas. Permite a escolha a medida de avaliação e o método de busca no espaço de estados utilizados pelo classificador.
+Implementação do algoritmo padrão de redes bayesianas. Permite a escolha da medida de avaliação e do método de busca no espaço de estados utilizados pelo classificador.
 
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
