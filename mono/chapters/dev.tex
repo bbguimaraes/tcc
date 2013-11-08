@@ -259,6 +259,76 @@ java weka.experiment.Experiment -l exp.xml -r
 \end{lstlisting}
 \vspace{0.5cm}
 
+\subsection{Resultados}
+
+Conforme mencionado acima, o formato padrão de gravação dos resultados de um experimento pelo \emph{Experimenter} é em arquivos CSV. Para cada execução, é gerada uma linha no arquivo com as informações e resultados da execução. O número de linha gerado é igual ao número de execuções na configuração do experimento, multiplicado pelo número de \emph{folds} usado no \emph{cross-validation} (caso essa opção tenha sido selecionada), multiplicado pelo número de conjuntos de dados (que pode ser apenas um). Dessa forma, caso o número de execuções seja configurado como "10", o número de \emph{folds} como "10" e sejam utilizados dois conjuntos de dados, serão geradas 200 linhas de resultados no arquivo de saída.
+
+Para cada execução, são gravados dados sobre os resultados do treinamento e da classificação das instâncias. Esses dados são os mesmos que são exibidos quando uma classificação é executada usando o módulo \emph{Explorer} (listagem \ref{lst:prop_weka_out}. Uma lista completa dos dados é mostrada na listagem \ref{lst:dev_experimenter_header}.
+
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Dados gravados pelo \emph{Experimenter}, label=lst:dev_experimenter_header]
+Key_Dataset
+Key_Run
+Key_Fold
+Key_Scheme
+Key_Scheme_options
+Key_Scheme_version_ID
+Date_time
+Number_of_training_instances
+Number_of_testing_instances
+Number_correct
+Number_incorrect
+Number_unclassified
+Percent_correct
+Percent_incorrect
+Percent_unclassified
+Kappa_statistic
+Mean_absolute_error
+Root_mean_squared_error
+Relative_absolute_error
+Root_relative_squared_error
+SF_prior_entropy
+SF_scheme_entropy
+SF_entropy_gain
+SF_mean_prior_entropy
+SF_mean_scheme_entropy
+SF_mean_entropy_gain
+KB_information
+KB_mean_information
+KB_relative_information
+True_positive_rate
+Num_true_positives
+False_positive_rate
+Num_false_positives
+True_negative_rate
+Num_true_negatives
+False_negative_rate
+Num_false_negatives
+IR_precision
+IR_recall
+F_measure
+Area_under_ROC
+Weighted_avg_true_positive_rate
+Weighted_avg_false_positive_rate
+Weighted_avg_true_negative_rate
+Weighted_avg_false_negative_rate
+Weighted_avg_IR_precision
+Weighted_avg_IR_recall
+Weighted_avg_F_measure
+Weighted_avg_area_under_ROC
+Elapsed_Time_training
+Elapsed_Time_testing
+UserCPU_Time_training
+UserCPU_Time_testing
+Serialized_Model_Size
+Serialized_Train_Set_Size
+Serialized_Test_Set_Size
+Summary
+\end{lstlisting}
+\vspace{0.5cm}
+
+Esses dados contém informações sobre o conjunto de dados (nome e número de instâncias de treinamento e testes), classificador (nome e parâmetros), sobre o processo de treinamento e classificação (data, tempo de execução e consumo de memória) e sobre os resultados (diversas medidas de eficácia).
+
 \section{Seleção de algoritmos}
 
 Todos os algoritmos utilizados para comparação com os algoritmos imunológicos fazem parte da distribuição padrão do WEKA (a versão utilizada é a 3.6.9 de 25 de janeiro de 2013).
