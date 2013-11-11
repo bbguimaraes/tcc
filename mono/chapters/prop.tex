@@ -37,7 +37,7 @@ A etapa de análise consistiu em:
     \item Apresentar os resultados.
 \end{enumerate}
 
-Conforme o padrão nesse tipo de experimento, os dados são apresentados em formato de tabela e gráfico. Os critérios escolhidos já são parte integrante dos resultados exibidos na execução do WEKA. Essa escolha reflete tanto a aderência dessa plataforma aos padrões da área como a facilidade que uma ferramenta desse tipo oferece na determinação do método de avaliação.
+Conforme o padrão nesse tipo de experimento, os dados são apresentados em formato de tabela e gráfico. Os critérios escolhidos já são parte integrante dos resultados exibidos na execução do WEKA. Por um lado, isso mostra a aderência dessa plataforma aos padrões da área, por outro, demonstra a facilidade que uma ferramenta que apresenta os resultados em um formato padrão oferece para experimentos como esse.
 
 \section{Descrição dos dados de teste}
 
@@ -203,9 +203,9 @@ A16: +,- (atributo de classe)
 \end{lstlisting}
 \vspace{0.5cm}
 
-\section{Algoritmos}
+\section{Algoritmos imunológicos}
 
-Os algoritmos utilizados no experimento são parte de um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual (1.8, maio de 2011). Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina WEKA (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementadas diversas categorias de algoritmos, como Redes Neurais e Sistemas Imunológicos Artificiais. A figura \ref{fig:prop_wekaais} mostra esses algoritmos conforme apresentados na interface do WEKA.
+Os algoritmos imunológicos utilizados no experimento são parte de um pacote de algoritmos desenvolvido por Jason Brownlee \cite{Brownlee2011}, na versão mais atual (1.8, maio de 2011). Esse pacote foi especialmente desenvolvido para a plataforma de aprendizagem de máquina WEKA (descrita na seção \ref{sec:prop_weka}) e são disponibilizados através de uma licença aberta (GNU GPL). Nele, são implementadas diversas categorias de algoritmos, como Redes Neurais e Sistemas Imunológicos Artificiais. A figura \ref{fig:prop_wekaais} mostra esses algoritmos conforme apresentados na interface do WEKA, nos módulos \emph{airs}, \emph{clonalg} e \emph{immunos} em \emph{weka.classifiers.immune} e no módulo \emph{lvq} em \emph{weka.classifiers.neural}.
 
 \vspace{0.5cm}
 \begin{figure}[h]
@@ -217,7 +217,7 @@ Os algoritmos utilizados no experimento são parte de um pacote de algoritmos de
 \end{figure}
 \vspace{0.5cm}
 
-Desses algoritmos, serão utilizados:
+Dentre os algoritmos imunológicos, serão utilizados:
 
 \begin{enumerate}[a)]
     \item \textbf{Artificial Immune Recognition System (AIRS)}: algoritmo imunológico supervisionado descrito na seção \ref{sec:prop_airs}.
@@ -225,8 +225,6 @@ Desses algoritmos, serão utilizados:
     \item \textbf{Immunos-81}: algoritmo imunológico descrito na seção \ref{sec:prop_immunos}.
     \iffalse adicionar os outros algoritmos do weka que serão utilizados (4.6) \fi
 \end{enumerate}
-
-\iffalse justificar \fi Implementações de todos esses algoritmos estão disponíveis na versão oficial da ferramenta WEKA. Isso facilita a comparação dos resultados dos algoritmos imunológicos com os algoritmos que já fazem parte do WEKA.
 
 \section{WEKA}
 \label{sec:prop_weka}
@@ -301,7 +299,7 @@ O WEKA suporta quatro tipos de atributos. O formato ARFF, no entanto, suporta se
     \item \emph{date}: uma data, com um campo opcional que especifica o formato da data, como "yyyy-MM-dd HH:mm:ss".
 \end{enumerate}
 
-A seção de dados inicia com a entrada \emph{@data}, e segue até o final do arquivo. Nela são listados os valores do conjunto de dados. Cada entrada é representada em uma linha, ou seja, as entradas são separadas pelo caractere de nova linha. Em cada entrada, seus atributos são listados em uma lista separada por vírgulas. Como dito anteriormente, os atributos são identificados pela ordem ordem de declaração, logo ela deve ser a mesma no cabeçalho e nessa seção. Valores ausentes são representados por um caractere de ponto de interrogação (\emph{?}). Os atributos do tipo nominal e \emph{string} são \emph{case sensitive}, e devem ser envolvidos em aspas se contém espaços.
+A seção de dados inicia com a entrada \emph{@data} e segue até o final do arquivo. Nela são listados os valores do conjunto de dados. Cada entrada é representada em uma linha, ou seja, as entradas são separadas pelo caractere de nova linha. Em cada entrada, seus atributos são listados em uma lista separada por vírgulas. Como dito anteriormente, os atributos são identificados pela ordem ordem de declaração, logo ela deve ser a mesma no cabeçalho e nessa seção. Valores ausentes são representados por um caractere de ponto de interrogação (\emph{?}). Os atributos do tipo nominal e \emph{string} são \emph{case sensitive}, e devem ser envolvidos em aspas se contém espaços.
 
 Por padrão, o último atributo é considerado o objetivo ou classe da instância (o atributo que é considerado uma função dos outros atributos). Isso pode ser alterado através da interface de configuração do experimento.
 
