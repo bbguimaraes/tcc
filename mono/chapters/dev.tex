@@ -1,10 +1,10 @@
 \chapter{Desenvolvimento do experimento}
 
-Nesse capítulo é apresentado desenvolvimento do experimento, baseado nos conceitos apresentados nos capítulos anteriores. Em especial, esse capítulo mostra como as ferramentas do capítulo \ref{chap:prop} (\nameref{chap:prop}) foram utilizadas para a comparação dos resultados dos algoritmos apresentados no capítulo \ref{chap:ais} (\nameref{chap:ais}).
+Nesse capítulo é apresentado o desenvolvimento do experimento, baseado nos conceitos apresentados nos capítulos anteriores. Em especial, esse capítulo mostra como as ferramentas do capítulo \ref{chap:prop} (\nameref{chap:prop}) foram utilizadas para a comparação dos resultados dos algoritmos apresentados no capítulo \ref{chap:ais} (\nameref{chap:ais}).
 
 \section{Preparação dos dados}
 
-Os dois conjuntos de dados se encontravam em formato de texto, com os atributos separados por espaços e as instâncias separadas pelo caractere nova linha. As listagens \ref{lst:dev_data_ger} e \ref{lst:dev_data_aust} mostram as instâncias dos conjuntos de dados no formato do arquivo original (a primeira coluna representa o número da linha, e não faz parte dos dados)\footnote{Aqui são mostradas apenas as primeiras cinco instâncias dos conjuntos de dados \emph{Cr.Ger} e \emph{Cr.Aust}. Eles possuem 1000 e 650 instâncias, respectivamente}.
+Os dois conjuntos de dados utilizados (\emph{cr.ger} e \emph{cr.aust}) se encontravam em formato de texto, com os atributos separados por espaços e as instâncias separadas pelo caractere nova linha. As listagens \ref{lst:dev_data_ger} e \ref{lst:dev_data_aust} mostram as instâncias dos conjuntos de dados no formato do arquivo original (a primeira coluna representa o número da linha, e não faz parte dos dados)\footnote{Aqui são mostradas apenas as primeiras cinco instâncias dos conjuntos de dados \emph{Cr.Ger} e \emph{Cr.Aust}. Eles possuem 1000 e 650 instâncias, respectivamente}.
 
 \vspace{0.5cm}
 \begin{lstlisting}[caption=Formato original dos dados (\emph{Cr.Ger}), label=lst:dev_data_ger]
@@ -26,7 +26,7 @@ A11 24 A33 A40 4870 A61 A73 3 A93 A101 4 A124 53 A143 A153 2 A173 2 A191 A201 2
 \end{lstlisting}
 \vspace{0.5cm}
 
-A preparação dos dados para a importação no WEKA consistiu na adição de uma seção de cabeçalho e da formatação dos dados para valores separados por vírgula (seção \ref{sec:prop_arff}), e o resultado é mostrado nas listagens \ref{lst:dev_arff_ger} e \ref{lst:dev_arff_aust} (essas listagens mostram apenas as primeiras cinco instâncias na seção de dados).
+A preparação dos dados para a importação no WEKA consistiu na adição de uma seção de cabeçalho e da formatação dos dados para valores separados por vírgula (seção \ref{sec:prop_arff}) e o resultado é mostrado nas listagens \ref{lst:dev_arff_ger} e \ref{lst:dev_arff_aust} (essas listagens mostram apenas as primeiras cinco instâncias na seção de dados).
 
 \vspace{0.5cm}
 \begin{lstlisting}[caption=Arquivo ARFF do \emph{Cr.Ger}, label=lst:dev_arff_ger]
@@ -116,9 +116,9 @@ Nesse trabalho foi utilizado o módulo \emph{Experimenter} na interface por linh
 
 No WEKA, um filtro é um objeto que recebe um conjunto de dados como entrada e produz um conjunto de dados modificado. Esse é um processo comum da Mineração de Dados, chamado de pré-processamento dos dados: adicionar, remover ou alterar atributos, etc.
 
-Um filtro comum, que é utilizado nesse trabalho, é o de criação de partições para o \emph{cross-validation}. Para esse filtro, são passados três argumentos. O argumento \emph{c} indica qual dos atributos é o atributo correspondente à classe, e é representado por um índice, iniciado em 1, conforme a declaração na seção de atributos do arquivo de dados (caso o padrão do WEKA seja usado, ou seja, o atributo de classe seja o último da listagem, pode ser utilizado o valor ``\emph{last}'' como argumento). O argumento \emph{N} indica o número de partições, e o argumento \emph{F} indica a partição selecionada.
+Um filtro comum, que é utilizado nesse trabalho, é o de criação de partições para o \emph{cross-validation}. Para esse filtro, são passados três argumentos. O argumento \emph{c} indica qual dos atributos é o atributo correspondente à classe, e é representado por um índice, iniciado em 1, conforme a declaração na seção de atributos do arquivo de dados (caso o padrão do WEKA seja usado, ou seja, o atributo de classe seja o último da listagem, pode ser utilizado o valor ``\emph{last}'' como argumento). O argumento \emph{N} indica o número de partições, e o argumento \emph{F} indica o índice da partição selecionada.
 
-Além desses, o argumento \emph{V} pode ser utilizado para gerar o conjunto inverso de seleções, útil para dividir o conjunto em duas partes complementares. Dessa forma, para gerar um conjunto de dados para testes e outro para treinamento, podem ser usados os seguintes comandos\footnote{Nesses exemplos, é usado o redirecionamento de entrada e saída presentes na maioria dos \emph{shells} UNIX. O caractere ``<'' seguido de um nome de arquivo indica que aquele arquivo será usado como entrada para o comando. De maneira semelhante, o caractere ``>'' seguido de um nome de arquivo indica que ele será usado como saída. O WEKA também permite que sejam utilizadas as opções \emph{i} e \emph{o}, respectivamente, para obter os mesmos resultados. No primeiro exemplo, a forma equivalente seria ``\emph{-i dataset.arff -o dataset\_test.arff}''.}:
+Além desses, o argumento \emph{V} pode ser utilizado para gerar o conjunto inverso de seleções, útil para dividir o conjunto em duas partes complementares. Dessa forma, para gerar um conjunto de dados para testes e outro para treinamento, podem ser usados comandos como os da listagem \ref{lst:dev_filter}\footnote{Nesses exemplos, é usado o redirecionamento de entrada e saída presentes na maioria dos \emph{shells} UNIX. O caractere ``<'' seguido de um nome de arquivo indica que aquele arquivo será usado como entrada para o comando. De maneira semelhante, o caractere ``>'' seguido de um nome de arquivo indica que ele será usado como saída. O WEKA também permite que sejam utilizadas as opções \emph{i} e \emph{o}, respectivamente, para obter os mesmos resultados. No primeiro exemplo, a forma equivalente seria ``\emph{-i dataset.arff -o dataset\_test.arff}''.}. Nesse exemplo, são o conjunto de dados é dividido em quatro partições, conforme indicado pelo argumento N. Na primeira linha, a primeira partição é escolhida, conforme indicado pelo argumento F. Na segunda, todas as partições com exceção da primeira são selecionadas, conforme indicado pelo parâmetro V.
 
 \begin{lstlisting}[caption=Filtro para geração de partições para \emph{cross-validation}, label=lst:dev_filter]
 java weka.filters.supervised.instance.StratifiedRemoveFolds -c last -N 4 -F 1 \
@@ -329,7 +329,9 @@ Esses dados contém informações sobre o conjunto de dados (nome e número de i
 
 \section{Seleção de algoritmos}
 
-Todos os algoritmos utilizados para comparação com os algoritmos imunológicos fazem parte da distribuição padrão do WEKA (a versão utilizada é a 3.6.9 de 25 de janeiro de 2013).
+Todos os algoritmos utilizados para comparação com os algoritmos imunológicos fazem parte da distribuição padrão do WEKA (a versão utilizada é a 3.6.9 de 25 de janeiro de 2013). Os algoritmos serão descritos brevemente nas próximas seções.
+
+\iffalse add value of default parameters \fi
 
 \vspace{0.5cm}
 \begin{figure}[h]
@@ -656,3 +658,17 @@ Esses algoritmos podem ser dividos em 5 categorias de algoritmos: árvores de de
     \end{tabular}
 \end{table}
 \vspace{0.5cm}
+
+\iffalse
+
+# Execuções
+
+# Resultados
+
+# Análises
+
+# Conclusões
+
+# Fim =)
+
+\fi
