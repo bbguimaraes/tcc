@@ -1,0 +1,25 @@
+#!/bin/sh
+# Find best result (by percent correct) in a file by dataset.
+
+
+set -e
+tmp=`getopt -o f: -- "$@"` || exit $?
+eval set -- "$tmp"
+while true; do
+    case "$1" in
+        -f) input_file="$2"; shift 2 ;;
+        --) shift; break ;;
+    esac
+done
+dataset="$1"
+if [ "$#" -lt 1 ]; then
+    echo "Usage: $0 [ -f input_file ] dataset [ sort_options... ]" >&2
+    exit 1
+fi
+shift
+ordering="${@:--k 13,13n}"
+[ "$input_file" ] && exec < "$input_file"
+cat \
+    | grep "^$dataset" \
+    | sort -t , $ordering \
+    | tail -1

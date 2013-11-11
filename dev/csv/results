@@ -1,0 +1,15 @@
+#!/bin/sh
+# Displays the results in a table, sorted by dataset and percent correct.
+
+
+[ "$1" ] && exec < "$1"
+fields=1,2,3,4,14,58
+(
+    echo -n 'Line,'
+    head -n 1 | cut -d , -f "${fields}"
+    cat -n \
+        | sed 's/^\s*\([0-9]\+\)\s*/\1,/' \
+        | cut -d , -f "${fields}" \
+        | sort -t , -k 2,2 -k 5,5n \
+        | sed "s/'Selected values: \(.*\)\\\n'/\1/"
+) | column -ts ,

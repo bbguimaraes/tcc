@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+# Displays the title for each entry on bibtex file.
+
+use warnings;
+use strict;
+
+local $/;
+local $, = "\n";
+
+my @entries = <> =~ m/\@\w+\{([^}]+)\}/mgc;
+my @titles = map { m/title\s*= "([^":]+)/; $1 } @entries;
+print @titles;

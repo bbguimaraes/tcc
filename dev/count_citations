@@ -1,0 +1,12 @@
+#!/usr/bin/perl -w
+# Looks for unique citations, showing a count besides each.
+
+local $/;
+local $, = "\n";
+local $\ = "\n";
+$re_citation = qr/\\cite{(\w+)}/;
+open(SORT, "| sort | uniq -c");
+for(<>) {
+    print SORT m/$re_citation/g;
+}
+close(SORT);
