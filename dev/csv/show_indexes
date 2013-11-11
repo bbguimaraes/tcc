@@ -1,0 +1,6 @@
+#!/bin/sh
+# Displays the indices of the items on the header of the results files.
+
+
+[ "$1" ] && exec < "$1"
+head -n 1 | tr , '\n' | cat -n

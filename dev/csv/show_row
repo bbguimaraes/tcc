@@ -1,0 +1,11 @@
+#!/bin/bash
+# Displays a specific row on a results file.
+
+
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 file row" >&2
+    exit 1
+fi
+paste \
+    <(head "$1" | head -1 | tr , '\n') \
+    <(sed -n "$2p" "$1" | tr , '\n') | column -ts "$(printf '\t')"
