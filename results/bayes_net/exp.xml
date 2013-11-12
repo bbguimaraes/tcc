@@ -27,7 +27,7 @@
             <object class="java.lang.String" name="7">-S</object>
             <object class="java.lang.String" name="8">1</object>
             <object class="java.lang.String" name="9">-W</object>
-            <object class="java.lang.String" name="10">weka.classifiers.bayes.NaiveBayes</object>
+            <object class="java.lang.String" name="10">weka.classifiers.bayes.BayesNet</object>
             <object class="java.lang.String" name="11">--</object>
          </object>
       </object>
