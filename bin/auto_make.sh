@@ -36,15 +36,19 @@ while true; do
 done
 
 
+DOESNT_NEED_MAKING=0
 while true; do
-    [ "$USE_INOTIFY" ] && ( log 2 'Waiting for event...'; wait_for_event )
-    if ! $MAKE_TEST "$@"; then
+    [ "$USE_INOTIFY" ] && ( log 1 'Waiting for event...'; wait_for_event )
+    log 2 'testing make...'
+    $MAKE_TEST "$@"
+    if [ "$?" -eq "${DOESNT_NEED_MAKING}" ]; then
+        [ ! "$USE_INOTIFY" ] && ( log 2 'Waiting a second...'; sleep 1s )
+    else
         log 1 'making...'
         $MAKE "$@"
         make_exit="$?"
         [ "$make_exit" -eq 0 ] || log 1 "Make exit code: $make_exit"
         log 1 'made'
         [ "$USE_NOTIFY" ] && notify-send -t 1000 make made
-        [ ! "$USE_INOTIFY" ] && ( log 2 'Waiting a second...'; sleep 1s )
     fi
 done
