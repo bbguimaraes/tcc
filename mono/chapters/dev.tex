@@ -344,6 +344,37 @@ Todos os algoritmos utilizados para comparação com os algoritmos imunológicos
 \end{figure}
 \vspace{0.5cm}
 
+Esses algoritmos podem ser dividos em 5 categorias de algoritmos: árvores de decisão, redes neurais artificiais, redes Bayesianas, \emph{support vector machine} e imunológicos. Na tabela \ref{tbl:dev_algs} são apresentados os mesmo algoritmos, organizados pela categoria a que pertencem.
+
+\vspace{0.5cm}
+\begin{table}[h]
+    \centering
+    \caption{Algoritmos utilizados para comparação}
+    \label{tbl:dev_algs}
+    \vspace{0.5cm}
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Categoria}                         & \textbf{Algoritmos}                    \\
+        \hline
+        \multirow{2}{*}{Árvores de decisão}        & ID3                                    \\ \cline{2-2}
+                                                   & C4.5 (J48)                             \\
+        \hline
+        \multirow{2}{*}{Redes neurais artificiais} & Multilayer Perceptron                  \\ \cline{2-2}
+                                                   & Learning Vector Quantization (Lvq2\_1) \\
+        \hline
+        \multirow{2}{*}{Redes Bayesianas}          & Naive Bayes                            \\ \cline{2-2}
+                                                   & Bayes Net                              \\
+        \hline
+        Support Vector Machine                     & Sequential Minimal Optimization        \\
+        \hline
+        \multirow{3}{*}{Imunológicos}              & AIRS                                   \\ \cline{2-2}
+                                                   & Immunos                                \\ \cline{2-2}
+                                                   & Seleção Clonal (CLONALG)               \\
+        \hline
+    \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
 \subsection{Redes neurais artificiais}
 
 Um algoritmo que utiliza uma rede de neurônios artificiais inspirados no modelo dos neurônios biológicos do sistema nervoso. Simula uma rede de neurônios usando um modelo computacional baseado nas conexões entre os neurônios.
@@ -628,37 +659,6 @@ Algoritmo iterativo para o problema da otimização de uma máquina de vetor de 
             \item \textbf{d}: número de anticorpos descartado e substituído a cada geração.
         \end{itemize}
 \end{enumerate}
-
-Esses algoritmos podem ser dividos em 5 categorias de algoritmos: árvores de decisão, redes neurais artificiais, redes Bayesianas, \emph{support vector machine} e imunológicos. Na tabela \ref{tbl:dev_algs} são apresentados os mesmo algoritmos, organizados pela categoria a que pertencem.
-
-\vspace{0.5cm}
-\begin{table}[h]
-    \centering
-    \caption{Algoritmos utilizados para comparação}
-    \label{tbl:dev_algs}
-    \vspace{0.5cm}
-    \begin{tabular}{|l|l|}
-        \hline
-        \textbf{Categoria}                         & \textbf{Algoritmos}                    \\
-        \hline
-        \multirow{2}{*}{Árvores de decisão}        & ID3                                    \\ \cline{2-2}
-                                                   & C4.5 (J48)                             \\
-        \hline
-        \multirow{2}{*}{Redes neurais artificiais} & Multilayer Perceptron                  \\ \cline{2-2}
-                                                   & Learning Vector Quantization (Lvq2\_1) \\
-        \hline
-        \multirow{2}{*}{Redes Bayesianas}          & Naive Bayes                            \\ \cline{2-2}
-                                                   & Bayes Net                              \\
-        \hline
-        Support Vector Machine                     & Sequential Minimal Optimization        \\
-        \hline
-        \multirow{3}{*}{Imunológicos}              & AIRS                                   \\ \cline{2-2}
-                                                   & Immunos                                \\ \cline{2-2}
-                                                   & Seleção Clonal (CLONALG)               \\
-        \hline
-    \end{tabular}
-\end{table}
-\vspace{0.5cm}
 
 \iffalse
 
