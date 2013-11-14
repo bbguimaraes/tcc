@@ -907,6 +907,59 @@ As tabelas \ref{tbl:dev_table_aust_times} e \ref{tbl:dev_table_ger_times} mostra
 
 \subsection{Resultados por algoritmo}
 
+Nessa seção são apresentados gráficos com os resultados dos testes agrupados pelos algoritmos (figuras \ref{fig:dev_graph_first} à \ref{fig:dev_graph_last}). Após a análise de cada conjunto de dados, essa análise permite comparar os resultados entre os algoritmos. Os valores comparados são os mesmos (porcentagem de instâncias corretamente classificadas, erro quadrático médio, taxa de falsos positivos e falsos negativos e tempos de treinamento e testes). Dessa forma, além da comparação entre os gráficos dessa seção, é possível fazer a comparação com as tabelas da seção anterior.
+
+\begin{figure}[h]
+    \centering
+    \caption{Porcentagem correta}
+    \label{fig:dev_graph_correct}
+    \label{fig:dev_graph_first}
+    \includegraphics[width=1\textwidth]{img/graph_perc_correct.jpg}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \caption{Erro quadrático médio}
+    \label{fig:dev_graph_error}
+    \includegraphics[width=1\textwidth]{img/graph_error.jpg}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \caption{Índice de Youden}
+    \label{fig:dev_graph_error}
+    \includegraphics[width=1\textwidth]{img/graph_youden.jpg}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \caption{Taxa de falsos positivos}
+    \label{fig:dev_graph_false_pos}
+    \includegraphics[width=1\textwidth]{img/graph_false_pos.jpg}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \caption{Taxa de falsos negativos}
+    \label{fig:dev_graph_false_neg}
+    \includegraphics[width=1\textwidth]{img/graph_false_neg.jpg}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \caption{Tempo de treinamento em segundos}
+    \label{fig:dev_graph_train_time}
+    \includegraphics[width=1\textwidth]{img/graph_train_time.jpg}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \caption{Tempo de teste em segundos}
+    \label{fig:dev_graph_test_time}
+    \label{fig:dev_graph_last}
+    \includegraphics[width=1\textwidth]{img/graph_test_time.jpg}
+\end{figure}
+
 A análise dos tempos de treinamento e testes do AIRS deve levar em consideração que o critério de parada desse algoritmo não é um número de iterações fixo. O processo de treinamento só é finalizado quando um limiar pré-definido de similaridade é atingido. Esse limiar é um parâmetro para a execução do algoritmo e pode ser configurado (assim como outros parâmetros) caso o tempo de execução seja considerado um fator mais importante que os outros.
 
 \iffalse
