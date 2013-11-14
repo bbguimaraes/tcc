@@ -23,5 +23,6 @@ tcc.nlo
 tcc.nls
 # Result files.
 results/*/out.csv
+results/best_*.csv
 # vim swap files
 .*.swp
