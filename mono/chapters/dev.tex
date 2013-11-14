@@ -660,6 +660,83 @@ Algoritmo iterativo para o problema da otimização de uma máquina de vetor de 
         \end{itemize}
 \end{enumerate}
 
+\section{Problemas encontrados}
+\label{sec:dev_weka_issues}
+
+Durante a preparação e execução dos testes, dois problemas principais foram encontrados, ambos no pacote de algoritmos imunológicos usado. Apesar de nenhum impedir a conclusão do trabalho, ambos são dignos de nota.
+
+O primeiro foi um problema na definição dos parâmetros do CLONALG. Como foi mostrado no capítulo \ref{chap:prop}, o WEKA permite a passagem de diversas opções na linha de comando para alterar o seu modo de funcionamento. Essas opções são na forma de \emph{flags}, como é padrão em interfaces de linha de comando. Um desses parâmetros é usado para indicar que o modelo previamente gerado deve ser lido de um arquivo, ao invés de criado novamente (a listagem \ref{lst:dev_weka_d_param} mostra a definição do parâmetro pelo próprio WEKA).
+
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Definição do parâmetro ``d'' no wEKA, label=lst:dev_weka_d_param]
+-d <name of output file>
+    Sets model output file. In case the filename ends with '.xml',
+    only the options are saved to the XML file, not the model.
+\end{lstlisting}
+\vspace{0.5cm}
+
+No entanto, um dos parâmetros do CLONALG também usa a letra ``d'' como representação (conforme apresentado na seção anterior, o parâmetro é o número de anticorpos substituído a cada geração). Isso gerava um conflito na execução do algoritmo, já que as opções do WEKA são analisadas antes das opções do algoritmo. O resultado era uma mensagem de erro apontando que o parâmetro ``d'' não tinha sido passado.
+
+Para solucionar esse problema, foi feita uma alteração diretamente no código do algoritmo. As opções do algoritmo são definidas em um vetor na linha 37 do arquivo src/weka/classifiers/immune/clonalg/CLONALG.java (listagem \ref{lst:dev_clonalg_source}). A alteração para a solução foi alterar o nome do parâmetro "d" para uma letra que não conflitasse com outros parâmetros do WEKA ou do algoritmo. Após isso, o código do WEKA foi compilado e essa versão alterada foi utilizada na execução dos testes.
+
+\vspace{0.5cm}
+\begin{lstlisting}[caption=Código fonte original do CLONALG, label=lst:dev_clonalg_source]
+private final static String [] PARAMETERS = {
+    "B", "N", "n", "d", "G", "S", "R"
+};
+\end{lstlisting}
+\vspace{0.5cm}
+
+O segundo problema encontrado foi no algoritmo AIRS. Conforme o trabalho de Jason Brownlee \cite{Brownlee2005}, a condição de parada do algoritmo é:
+
+\begin{quote}
+The stop condition for this process of ARB refinement occurs when the
+mean normalised stimulation is more than the user defined stimulation
+threshold.
+
+[...]
+
+Stimulation Threshold – As mentioned, the stopping criterion to the ARB
+refinement process is when the mean normalised stimulation value is above
+the stimulation threshold. This parameter controls the amount of refinement
+performed on ARBs for an antigen, and thus how closely the ARBs will be
+to the antigen in question. Stimulation values are commonly high, around
+0.9. This means that the mean stimulation value must be quite high, that is
+the vast majority of the ARBs in the pool must be similar to the antigen.
+The range for the stimulation threshold must obviously be in the range of
+[0,1], given the mean also will have the same range.
+\end{quote}
+
+Como pode ser visto, o algoritmo não tem um número de iterações definido. Como a maioria dos algoritmos inspirados no sistema imunológico, o algoritmo itera até que o sistema entre em equilíbrio. O parâmetro \emph{stimulation threshold} (limiar de similaridade) pode ser usado para tornar esse teste mais ou menos rigoroso, conforme a necessidade. Valores mais altos geram um modelo mais sensível, mas podem aumentar o tempo de treinamento.
+
+Utilizando o valor padrão do parâmetro (0.9), os testes demoravam um tempo proibitivo para serem executados. Foram feitos testes utilizando vários valores, para determinar um valor que fosse aceitável dado o tempo disponível para a execução dos experimentos. Os resultados desses testes são mostrados na tabela \ref{tbl:dev_airs_times}. Cada linha representa uma execução, onde o parâmetro \emph{stimulation threshold} assumiu o valor indicado e todos os outros tinham o valor padrão do algoritmo. Ao lado de cada linha, é mostrado o tempo de execução do teste.
+
+\vspace{0.5cm}
+\begin{table}[h]
+    \scriptsize
+    \centering
+    \caption{Tempo de execução dos testes do AIRS}
+    \label{tbl:dev_exec_summary}
+    \vspace{0.5cm}
+    \begin{tabular}{c c}
+        \textbf{Valor} & \textbf{Tempo de execução} \\
+        \hline
+        0.5            &  0m1.158s  \\
+        0.75           &  0m2.148s  \\
+        0.8            &  0m4.054s  \\
+        0.85           &  0m14.263s \\
+        0.875          &  0m27.451s \\
+        0.8875         &  0m49.042s \\
+        0.89375        &  2m52.582s \\
+        0.896875       &  92m5.210s \\
+    \end{tabular}
+\end{table}
+\vspace{0.5cm}
+
+O tempo de execução aumentava exponencialmente conforme o valor do parâmetro alcançava o valor padrão de 0.9. Por isso, para os testes, foi usado o valor 0.8 para esse parâmetro, que é baixo o suficiente para manter o tempo de execução em uma faixa aceitável mas alto o suficiente para não comprometer os resultados.
+
+\section{Resultados}
+
 Os testes foram executados para todos os algoritmos, usando as configurações descritas nas seções anteriores. A tabela \ref{tbl:dev_exec_summary} mostra um resumo das execuções. As colunas dessa tabela representam, da esquerda para a direita, a categoria do algoritmo, o algoritmo, o número de execuções do experimento, o número de \emph{folds} utilizado no \emph{cross-validation}, o número total de execuções do algoritmo e os parâmetros testados. Essa última coluna utiliza a sintaxe do \emph{CVParameterSelection} para descrição dos parâmetros, onde são indicados o nome do parâmetro, os valores mínimos e máximos que serão testados e o número de valores testados.
 
 \vspace{0.5cm}
@@ -709,9 +786,7 @@ Todos os testes foram executados em uma mesma máquina, serialmente, e a máquin
 
 Uma técnica comumente usada é executar os testes repetidas vezes, escolhendo para comparação aquele que tiver o melhor resultado. Isso foi feito nesse trabalho através de uma funcionalidade do próprio módulo \emph{Experimenter} do WEKA, que permite configurar o número de execuções do experimento. Os resultados de todas as execuções são gravados no arquivo de saída e o melhor foi escolhido na coleta dos resultados.
 
-\iffalse write section referenced below =) \fi
-
-Foi utilizado o código padrão presente na versão 3.6.1 do WEKA. As únicas exceções são as descritas na seção \ref{}, mas essas alterações não têm impacto sobre a performance dos algoritmos.
+Foi utilizado o código padrão presente na versão 3.6.1 do WEKA. As únicas exceções são as descritas na seção \ref{sec:dev_weka_issues}, mas essas alterações não têm impacto sobre a performance dos algoritmos.
 
 \vspace{0.5cm}
 \begin{table}[h]
