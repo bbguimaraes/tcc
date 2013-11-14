@@ -733,7 +733,7 @@ Foi utilizado o código padrão presente na versão 3.6.1 do WEKA. As únicas ex
 
 \subsection{Resultados por conjunto de dados}
 
-Nessa seção, são apresentadas as tabelas com os resultados dos testes agrupados pelos conjuntos de dados (tabelas \ref{tbl:dev_table_first} à \ref{tbl:dev_table_last}). A separação por conjunto de dados facilita a comparação dos valores, já que há uma clara separação entre os resultados de cada um. A próxima seção fará uma análise dos resultados para cada algoritmo.
+Nessa seção são apresentadas as tabelas com os resultados dos testes agrupados pelos conjuntos de dados (tabelas \ref{tbl:dev_table_first} à \ref{tbl:dev_table_last}). A separação por conjunto de dados facilita a comparação dos valores, já que há uma clara separação entre os resultados de cada um. A próxima seção fará uma análise dos resultados para cada algoritmo.
 
 As tabelas \ref{tbl:dev_table_aust_correct} e \ref{tbl:dev_table_ger_correct} mostram o percentual de instâncias corretamente classificadas e o erro médio, ordenadas pelo primeiro\footnote{Os valores para o conjunto de dados \emph{cr.ger} podem parecer estranhos, mas isso se deve à maneira como os dados foram divididos. O número total de instâncias é 1000, e foi utilizado \emph{cross-validation} de 10 \emph{folds}, com 100 instâncias cada. Dessa forma, a porcentagem de instâncias corretamente classificadas é sempre um número inteiro.}. Geralmente, um valor maior de instâncias classificadas corretamente implica um erro menor, mas esse nem sempre é o caso. Em um classificador binário, um erro implica uma instância classificada corretamente. Caso o critério de avaliação tivesse valores contínuos, seria possível identificar \emph{quão} errada foi a classificação, e não apenas se ela foi correta ou não. Nesse caso, o erro médio seria uma medida muito mais importante.
 
@@ -746,10 +746,13 @@ As tabelas \ref{tbl:dev_table_aust_correct} e \ref{tbl:dev_table_ger_correct} mo
     \vspace{0.5cm}
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \textbf{Algoritmo} & \textbf{perc correct} & \textbf{root mean square error} \\
+        \textbf{Algoritmo} & \textbf{Porcentagem correta} & \textbf{Erro quadrático médio} \\
         \hline
+        \rowcolor[gray]{.9}
         J48                  & 95,65\% & 0.2364105060 \\ \hline
+        \rowcolor[gray]{.9}
         MultilayerPerceptron & 94,20\% & 0.2497022089 \\ \hline
+        \rowcolor[gray]{.9}
         BayesNet             & 94,20\% & 0.2264276254 \\ \hline
         SMO                  & 92,75\% & 0.2691909510 \\ \hline
         AIRS                 & 92,75\% & 0.2691909510 \\ \hline
@@ -770,10 +773,13 @@ As tabelas \ref{tbl:dev_table_aust_correct} e \ref{tbl:dev_table_ger_correct} mo
     \vspace{0.5cm}
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \textbf{Algoritmo} & \textbf{perc correct} & \textbf{root mean square error} \\
+        \textbf{Algoritmo} & \textbf{Porcentagem correta} & \textbf{Erro quadrático médio} \\
         \hline
+        \rowcolor[gray]{.9}
         NaiveBayes           & 84,00\% & 0.3655059498 \\ \hline
+        \rowcolor[gray]{.9}
         BayesNet             & 84,00\% & 0.3553319820 \\ \hline
+        \rowcolor[gray]{.9}
         SMO                  & 83,00\% & 0.4123105626 \\ \hline
         MultilayerPerceptron & 81,00\% & 0.4251917863 \\ \hline
         J48                  & 80,00\% & 0.3856184540 \\ \hline
@@ -786,7 +792,7 @@ As tabelas \ref{tbl:dev_table_aust_correct} e \ref{tbl:dev_table_ger_correct} mo
 \end{table}
 \vspace{0.5cm}
 
-As tabelas \ref{tbl:dev_table_aust_youden} e \ref{tbl:dev_table_ger_youden} mostram o índice de Youden e as taxas de falsos positivos e falsos negativos, ordenadas pelo primeiro. O índice de Youden é um cálculo que combina a taxa de falsos positivos e negativos, dando maior relevância onde os dois valores são menores.
+As tabelas \ref{tbl:dev_table_aust_youden} e \ref{tbl:dev_table_ger_youden} mostram o índice de Youden e as taxas de falsos positivos e falsos negativos, ordenadas pelo primeiro. O índice de Youden é um cálculo que combina a taxa de falsos positivos e negativos, dando maior relevância onde os dois valores são menores. Nos resultados do WEKA, a sensibilidade é chamada de taxa de verdadeiros positivos. A especificadade não faz parte dos valores, mas pode ser calculada como $1 - taxa\ de\ falsos\ positivos$.
 
 \vspace{0.5cm}
 \begin{table}[h!]
@@ -794,20 +800,23 @@ As tabelas \ref{tbl:dev_table_aust_youden} e \ref{tbl:dev_table_ger_youden} most
     \caption{Falsos positivos e falsos negativos (cr.aust)}
     \label{tbl:dev_table_aust_youden}
     \vspace{0.5cm}
-    \begin{tabular}{|l|c|c|c|c|}
+    \begin{tabular}{|l|c|c|c|c|c|}
         \hline
-        \textbf{Algoritmo} & \textbf{false pos} & \textbf{false neg} \\
+        \textbf{Algoritmo} & \textbf{Youden} & \textbf{Falsos positivos} & \textbf{Falsos negativos} \\
         \hline
-        BayesNet             & 0.0666666667 & 0.0512820513 \\ \hline
-        NaiveBayes           & 0.2333333333 & 0.0256410256 \\ \hline
-        MultilayerPerceptron & 0.0666666667 & 0.0512820513 \\ \hline
-        SMO                  & 0.0000000000 & 0.1282051282 \\ \hline
-        AIRS                 & 0.0333333333 & 0.1025641026 \\ \hline
-        CLONALG              & 0.2580645161 & 0.2105263158 \\ \hline
-        Immunos              & 0.0666666667 & 0.1025641026 \\ \hline
-        Lvq2\_1              & 0.4000000000 & 0.0512820513 \\ \hline
-        ID3                  & 0.1379310345 & 0.1025641026 \\ \hline
-        J48                  & 0.0645161290 & 0.0263157895 \\ \hline
+        \rowcolor[gray]{.9}
+        J48                  & 0.9091680815 & 0.0645161290 & 0.0263157895 \\ \hline
+        \rowcolor[gray]{.9}
+        MultilayerPerceptron & 0.8820512821 & 0.0666666667 & 0.0512820513 \\ \hline
+        \rowcolor[gray]{.9}
+        BayesNet             & 0.8820512821 & 0.0666666667 & 0.0512820513 \\ \hline
+        SMO                  & 0.8717948718 & 0.0000000000 & 0.1282051282 \\ \hline
+        AIRS2                & 0.8641025641 & 0.0333333333 & 0.1025641026 \\ \hline
+        Immunos99            & 0.8307692308 & 0.0666666667 & 0.1025641026 \\ \hline
+        Id3                  & 0.7595048630 & 0.1379310345 & 0.1025641026 \\ \hline
+        NaiveBayes           & 0.7410256410 & 0.2333333333 & 0.0256410256 \\ \hline
+        Lvq2\_1              & 0.5487179487 & 0.4000000000 & 0.0512820513 \\ \hline
+        CLONALG              & 0.5314091681 & 0.2580645161 & 0.2105263158 \\ \hline
     \end{tabular}
 \end{table}
 \vspace{0.5cm}
@@ -820,23 +829,26 @@ As tabelas \ref{tbl:dev_table_aust_youden} e \ref{tbl:dev_table_ger_youden} most
     \vspace{0.5cm}
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \textbf{Algoritmo} & \textbf{false pos} & \textbf{false neg} \\
+        \textbf{Algoritmo} & \textbf{Youden} & \textbf{Falsos positivos} & \textbf{Falsos negativos} \\
         \hline
-        BayesNet             & 0.3333333333 & 0.0857142857 \\ \hline
-        NaiveBayes           & 0.3666666667 & 0.0714285714 \\ \hline
-        MultilayerPerceptron & 0.4000000000 & 0.1000000000 \\ \hline
-        SMO                  & 0.3666666667 & 0.0857142857 \\ \hline
-        AIRS                 & 0.5333333333 & 0.1428571429 \\ \hline
-        CLONALG              & 0.8333333333 & 0.0000000000 \\ \hline
-        Immunos              & 0.6000000000 & 0.1000000000 \\ \hline
-        Lvq2\_1              & 0.6333333333 & 0.0714285714 \\ \hline
-        ID3                  & 0.5666666667 & 0.1470588235 \\ \hline
-        J48                  & 0.5333333333 & 0.0571428571 \\ \hline
+        \rowcolor[gray]{.9}
+        BayesNet             & 0.5809523810 & 0.3333333333 & 0.0857142857 \\ \hline
+        \rowcolor[gray]{.9}
+        NaiveBayes           & 0.5619047619 & 0.3666666667 & 0.0714285714 \\ \hline
+        \rowcolor[gray]{.9}
+        SMO                  & 0.5476190476 & 0.3666666667 & 0.0857142857 \\ \hline
+        MultilayerPerceptron & 0.5000000000 & 0.4000000000 & 0.1000000000 \\ \hline
+        J48                  & 0.4095238095 & 0.5333333333 & 0.0571428571 \\ \hline
+        AIRS2                & 0.3238095238 & 0.5333333333 & 0.1428571429 \\ \hline
+        Immunos99            & 0.3000000000 & 0.6000000000 & 0.1000000000 \\ \hline
+        Lvq2\_1              & 0.2952380952 & 0.6333333333 & 0.0714285714 \\ \hline
+        Id3                  & 0.2862745098 & 0.5666666667 & 0.1470588235 \\ \hline
+        CLONALG              & 0.1666666667 & 0.8333333333 & 0.0000000000 \\ \hline
     \end{tabular}
 \end{table}
 \vspace{0.5cm}
 
-As tabelas \ref{tbl:dev_table_aust_times} e \ref{tbl:dev_table_aust_times} mostram os tempos de treinamento e teste, ordenados pelo primeiro. Em todos os casos, o tempo de treinamento é muito superior ao tempo de teste. Isso é comum na maioria dos algoritmos. É importante notar que o tempo de treinamento é sempre constante, enquanto outros têm um tempo alto de treinamento inicial, mas os treinamentos subsequentes têm um custo muito menor. Esse fator não foi avaliado nesse experimento.
+As tabelas \ref{tbl:dev_table_aust_times} e \ref{tbl:dev_table_ger_times} mostram os tempos de treinamento e teste, ordenados pelo primeiro. Em todos os casos, o tempo de treinamento é muito superior ao tempo de teste. Isso é comum na maioria dos algoritmos. É importante notar que o tempo de treinamento é sempre constante, enquanto outros têm um tempo alto de treinamento inicial, mas os treinamentos subsequentes têm um custo muito menor. Esse fator não foi avaliado nesse experimento.
 
 \vspace{0.5cm}
 \begin{table}[h!]
@@ -846,18 +858,21 @@ As tabelas \ref{tbl:dev_table_aust_times} e \ref{tbl:dev_table_aust_times} mostr
     \vspace{0.5cm}
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \textbf{Algoritmo} & \textbf{time training} & \textbf{time testing} \\
+        \textbf{Algoritmo} & \textbf{Tempo de treinamento} & \textbf{Tempo de teste} \\
         \hline
-        BayesNet             &   0.029 & 0.000 \\ \hline
+        \rowcolor[gray]{.9}
         NaiveBayes           &   0.002 & 0.001 \\ \hline
-        MultilayerPerceptron &  17.993 & 0.003 \\ \hline
-        SMO                  &  57.207 & 0.001 \\ \hline
-        AIRS                 &  23.238 & 0.012 \\ \hline
-        CLONALG              & 175.078 & 0.002 \\ \hline
-        Immunos              &  69.876 & 0.007 \\ \hline
-        Lvq2\_1              &   5.383 & 0.001 \\ \hline
+        \rowcolor[gray]{.9}
+        BayesNet             &   0.029 & 0.000 \\ \hline
+        \rowcolor[gray]{.9}
         ID3                  &   0.032 & 0.005 \\ \hline
         J48                  &   2.715 & 0.000 \\ \hline
+        Lvq2\_1              &   5.383 & 0.001 \\ \hline
+        MultilayerPerceptron &  17.993 & 0.003 \\ \hline
+        AIRS                 &  23.238 & 0.012 \\ \hline
+        SMO                  &  57.207 & 0.001 \\ \hline
+        Immunos              &  69.876 & 0.007 \\ \hline
+        CLONALG              & 175.078 & 0.002 \\ \hline
     \end{tabular}
 \end{table}
 \vspace{0.5cm}
@@ -871,18 +886,21 @@ As tabelas \ref{tbl:dev_table_aust_times} e \ref{tbl:dev_table_aust_times} mostr
     \vspace{0.5cm}
     \begin{tabular}{|l|c|c|c|c|}
         \hline
-        \textbf{Algoritmo} & \textbf{time training} & \textbf{time testing} \\
+        \textbf{Algoritmo} & \textbf{Tempo de treinamento} & \textbf{Tempo de teste} \\
         \hline
-        BayesNet             &   0.176 & 0.007 \\ \hline
+        \rowcolor[gray]{.9}
         NaiveBayes           &   0.004 & 0.001 \\ \hline
+        \rowcolor[gray]{.9}
+        ID3                  &   0.089 & 0.000 \\ \hline
+        \rowcolor[gray]{.9}
+        BayesNet             &   0.176 & 0.007 \\ \hline
+        Lvq2\_1              &   4.214 & 0.001 \\ \hline
+        J48                  &   5.480 & 0.000 \\ \hline
+        AIRS                 &  15.037 & 0.034 \\ \hline
         MultilayerPerceptron &  58.003 & 0.012 \\ \hline
         SMO                  & 118.713 & 0.001 \\ \hline
-        AIRS                 &  15.037 & 0.034 \\ \hline
-        CLONALG              & 331.366 & 0.003 \\ \hline
         Immunos              & 199.922 & 0.017 \\ \hline
-        Lvq2\_1              &   4.214 & 0.001 \\ \hline
-        ID3                  &   0.089 & 0.000 \\ \hline
-        J48                  &   5.480 & 0.000 \\ \hline
+        CLONALG              & 331.366 & 0.003 \\ \hline
     \end{tabular}
 \end{table}
 \vspace{0.5cm}
