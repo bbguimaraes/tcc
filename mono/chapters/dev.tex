@@ -385,33 +385,19 @@ Uma implementação de uma rede neural multicamadas que usa o algoritmo \emph{ba
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
         \begin{itemize}
-            \iffalse <learning rate>. Learning Rate for the backpropagation algorithm. (Value should be between 0 - 1, Default = 0.3). \fi
             \item \textbf{L}: taxa de aprendizagem.
-            \iffalse <momentum>. Momentum Rate for the backpropagation algorithm. (Value should be between 0 - 1, Default = 0.2). \fi
             \item \textbf{M}: taxa de \emph{momentum}.
-            \iffalse <number of epochs>. Number of epochs to train through. (Default = 500). \fi
             \item \textbf{N}: número de \emph{epochs} (uma iteração do processo de treinamento e teste).
-            \iffalse <percentage size of validation set>. Percentage size of validation set to use to terminate training (if this is non zero it can pre-empt num of epochs. (Value should be between 0 - 100, Default = 0). \fi
             \item \textbf{V}: tamanho do conjunto de validação do treinamento.
-            \iffalse <seed>. The value used to seed the random number generator(Value should be >= 0 and and a long, Default = 0). \fi
             \item \textbf{S}: semente do gerador de números aleatórios.
-            \iffalse <threshold for number of consequetive errors>. The consequetive number of errors allowed for validation testing before the netwrok terminates. (Value should be > 0, Default = 20). \fi
             \item \textbf{E}: número máximo de erros consecutivos para término da validação da rede.
-            \iffalse GUI will be opened. (Use this to bring up a GUI). \fi
             \item \textbf{G}: abre a interface de criação da rede.
-            \iffalse Autocreation of the network connections will NOT be done. (This will be ignored if -G is NOT set) \fi
             \item \textbf{A}: não cria as conexões da rede.
-            \iffalse A NominalToBinary filter will NOT automatically be used. (Set this to not use a NominalToBinary filter). \fi
             \item \textbf{B}: não aplica o filtro NominalToBinary.
-            \iffalse <comma seperated numbers for nodes on each layer>. The hidden layers to be created for the network. (Value should be a list of comma separated Natural numbers or the letters 'a' = (attribs + classes) / 2, 'i' = attribs, 'o' = classes, 't' = attribs .+ classes) for wildcard values, Default = a). \fi
             \item \textbf{H}: parâmetro para configuração das camadas escondidas da rede.
-            \iffalse Normalizing a numeric class will NOT be done. (Set this to not normalize the class if it's numeric). \fi
             \item \textbf{C}: desabilita a aplicação de normalização no atributo de classe.
-            \iffalse Normalizing the attributes will NOT be done. (Set this to not normalize the attributes). \fi
             \item \textbf{I}: desabilita a aplicação de normalização em todos os atributos.
-            \iffalse Reseting the network will NOT be allowed. (Set this to not allow the network to reset). \fi
             \item \textbf{R}: desabilita a reinicialização da rede durante o treinamento.
-            \iffalse Learning rate decay will occur. (Set this to cause the learning rate to decay). \fi
             \item \textbf{D}: habilita a diminuição gradual da taxa de aprendizagem.
         \end{itemize}
     \item \textbf{Parâmetros testados}:
@@ -433,18 +419,6 @@ Algoritmo de árvores de decisão usado em aprendizagem de máquina, desenvolvid
     \item \textbf{Filtros}: como o ID3 não suporta atributos numéricos, foi necessário discretizar os valores numéricos (seção \ref{sec:dev_weka_filters}).
 \end{enumerate}
 
-\iffalse
-
-ID3 does not guarantee an optimal solution, it can get stuck in local optimums. It uses a greedy approach by selecting the best attribute to split the dataset on each iteration. One improvement that can be made on the algorithm can be to use backtracking during the search for the optimal decision tree.
-
-ID3 can overfit to the training data, to avoid overfitting, smaller decision trees should be preferred over larger ones. This algorithm usually produces small trees, but it does not always produce the smallest possible tree.
-
-ID3 is harder to use on continuous data. If the values of any given attribute is continuous, then there are many more places to split the data on this attribute, and searching for the best value to split by can be time consuming.
-
-https://en.wikipedia.org/wiki/ID3_algorithm#Properties
-
-\fi
-
 \subsubsection{C4.5}
 
 Uma extensão do algoritmo ID3, desenvolvido pelo mesmo autor \cite{Quinlan1993}. Entre as melhorias do algoritmo estão o tratamento mais eficiente de dados contínuos, o tratamento a dados incompletos e a poda da árvore após o treinamento. O WEKA tem uma implementação \emph{open source} desse algoritmo chamado J48.
@@ -452,25 +426,15 @@ Uma extensão do algoritmo ID3, desenvolvido pelo mesmo autor \cite{Quinlan1993}
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
         \begin{itemize}
-            \iffalse Use unpruned tree. \fi
             \item \textbf{U}: usa uma árvore sem poda.
-            \iffalse <pruning confidence>. Set confidence threshold for pruning. (default 0.25) \fi
             \item \textbf{C}: limiar de confiança para poda.
-            \iffalse <minimum number of instances>. Set minimum number of instances per leaf. (default 2) \fi
             \item \textbf{M}: número mínimo de instâncias por folha.
-            \iffalse Use reduced error pruning.<number of folds>. Set number of folds for reduced error pruning. One fold is used as pruning set. (default 3) \fi
             \item \textbf{R}: reduz o número de instâncias usadas na poda pós-execução.
-            \iffalse <number of folds> Set number of folds for reduced error pruning. One fold is used as pruning set. (default 3) \fi
             \item \textbf{N}: número de partições para a poda pós-execução.
-            \iffalse Use binary splits only. \fi
             \item \textbf{B}: realiza apenas divisões binárias em atributos numéricos, ao invés de divisões de tamanho arbitrário.
-            \iffalse Don't perform subtree raising. \fi
             \item \textbf{S}: desativa a poda baseada em elevação de ramos da árvore.
-            \iffalse Do not clean up after the tree has been built. \fi
             \item \textbf{L}: desativa o processo de otimização de memória.
-            \iffalse Laplace smoothing for predicted probabilities. \fi
             \item \textbf{A}: aplica o algoritmo de suavização de Laplace às probabilidades da árvore.
-            \iffalse <seed>. Seed for random data shuffling (default 1). \fi
             \item \textbf{Q}: semente do gerador de números aleatórios.
         \end{itemize}
     \item \textbf{Parâmetros testados}:
@@ -479,14 +443,6 @@ Uma extensão do algoritmo ID3, desenvolvido pelo mesmo autor \cite{Quinlan1993}
             \item \textbf{M}: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.
         \end{itemize}
 \end{enumerate}
-
-\iffalse
-
-The most basic parameter is the tree pruning option. If you decide to employ tree pruning, you will need to consider the options above. Be aware that depending on how the training and test data have been defined that the performance of an unpruned tree may superficially appear better than a pruned one. As described above, this can be a result of overfitting. It is important to experiment with models by intelligently adjusting these parameters. Often, only repeated experiments and familiarity with the data will tease out the best set of options.
-
-http://gautam.lis.illinois.edu/monkmiddleware/public/analytics/decisiontree.html
-
-\fi
 
 \subsection{Learning Vector Quantization (LVQ)}
 
@@ -499,19 +455,12 @@ Algoritmo presente no pacote de algoritmos de Jason Bronwlee. Uma implementaçã
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
         \begin{itemize}
-            \iffalse initialisationMode -- Model (codebook vector) initalisation mode (1==Random Training Data Proportional, 2==Random Training Data Even, 3==Random Values In Range, 4==Simple KMeans, 5==Farthest First, 6==K-Nearest Neighbour Even) \fi
             \item \textbf{M}: modo de inicialização dos vetores.
-            \iffalse learningFunction -- Learning rate function to use while training, linear is typically better (1==Linear Decay, 2==Inverse, 3==Static) \fi
             \item \textbf{L}: tipo de função para a taxa de aprendizagem.
-            \iffalse learningRate -- Initial learning rate value (recommend  0.3 or 0.5) \fi
             \item \textbf{R}: valor inicial da taxa de aprendizagem.
-            \iffalse totalCodebookVectors -- Total number of codebook vectors in the model \fi
             \item \textbf{C}: número total de vetores no modelo.
-            \iffalse totalTrainingIterations -- Total number of training iterations (recommended 30 to 50 times the number of codebook vectors). \fi
             \item \textbf{I}: número total de iterações.
-            \iffalse useVoting -- Use dynamic voting to select the assigned class of each codebook vector, provides automatic handling of misclassified instances. \fi
             \item \textbf{G}: seleção dinâmica da classe de cada instância.
-            \iffalse windowSize -- Window size matching codebook vectors must be within (recommend 0.2 or 0.3) \fi
             \item \textbf{W}: limiar de semelhança entre as instâncias comparadas.
         \end{itemize}
     \item \textbf{Parâmetros testados}:
@@ -532,9 +481,7 @@ Um classificador que cria redes bayesianas simples, onde cada atributo do conjun
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
         \begin{itemize}
-            \iffalse Use kernel density estimator rather than normal distribution for numeric attributes \fi
             \item \textbf{K}: usa Kernel Density Estimator ao invés de distribuição normal para atributos numéricos.
-            \iffalse Use supervised discretization to process numeric attributes \fi
             \item \textbf{D}: usa discretização supervisionada para processar atributos numéricos.
         \end{itemize}
 \end{enumerate}
@@ -546,11 +493,8 @@ Implementação do algoritmo padrão de redes bayesianas. Permite a escolha da m
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
         \begin{itemize}
-            \iffalse Do not use ADTree data structure \fi
             \item \textbf{D}: utiliza ADTree, aumentado a velocidade de treinamento mas consumindo mais recursos.
-            \iffalse Search algorithm \fi
             \item \textbf{Q}: método para busca na rede.
-            \iffalse Estimator algorithm \fi
             \item \textbf{E}: método para encontrar as tabelas de probabilidade condicional.
         \end{itemize}
     \item \textbf{Filtros}: \emph{weka.filter.supervised.attribute.Discretize}.
@@ -567,19 +511,12 @@ Algoritmo iterativo para o problema da otimização de uma máquina de vetor de 
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
         \begin{itemize}
-            \iffalse The complexity constant C. (default 1) \fi
             \item \textbf{C}: a constante de complexidade das regras de decisão.
-            \iffalse Whether to 0=normalize/1=standardize/2=neither. (default 0=normalize) \fi
             \item \textbf{N}: opção para normalizar, uniformizar ou usar os dados oringinais.
-            \iffalse The tolerance parameter. (default 1.0e-3) \fi
             \item \textbf{L}: o parâmetro de tolerância.
-            \iffalse The epsilon for round-off error. (default 1.0e-12) \fi
             \item \textbf{P}: \emph{epsilon} para erro de arredondamento.
-            \iffalse Fit logistic models to SVM outputs. \fi
             \item \textbf{M}: aplica regressão logística aos pesos.
-            \iffalse The number of folds for the internal cross-validation. (default -1, use training data) \fi
             \item \textbf{W}: número de partições para o \emph{cross-validation} interno.
-            \iffalse The Kernel to use.  (default: weka.classifiers.functions.supportVector.PolyKernel) \fi
             \item \textbf{K}: o \emph{kernel} que será utilizado.
         \end{itemize}
     \item \textbf{Parâmetros testados}:
@@ -597,21 +534,13 @@ Algoritmo iterativo para o problema da otimização de uma máquina de vetor de 
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
         \begin{itemize}
-        \iffalse affinityThresholdScalar -- Affinity threshold scalar (ATS). Used with the system calculated affinity threshold to determine whether or not a candidate memory cell can replace the previous best matching memory cell. This occurs if the affinity between the candidate and the best match cell is < (AT * ATS). \fi
         \item \textbf{F}: controla o limiar de afinidade para substituição de células de memória.
-        \iffalse clonalRate -- Clonal rate. Used to determine the number of mutated clones to create of an ARB during the ARB refinement stage. Calculated as (stimulation * clonal rate). \fi
         \item \textbf{C}: taxa de clonagem.
-        \iffalse hypermutationRate -- Hypermutation rate. Used with the clonal rate to determine the number of clones a best matching memory cell can create to then seed the ARB pool with. This is calculated as (stimulation * clonal rate * hypermutation rate). \fi
         \item \textbf{H}: taxa de hiper-mutação.
-        \iffalse knn -- k-Nearest Neighbour. Specifies the number of best match memory cells used during the classification stage to majority vote hte classification of unseen data instances. \fi
         \item \textbf{K}: número de células de memória usadas durante a classificação de novas instâncias.
-        \iffalse memInitialPoolSize -- Initial memory cell pool size. Specifies the number of randomly selected training data instances used to seed the memory cell pool. This paramter must be in the range [0, num training instances]. \fi
         \item \textbf{E}: número inicial de células de memória.
-        \iffalse numInstancesAffinityThreshold -- Total training instances to calculate affinity threshold (AT). Specifies the number of trainign data instances used to calculate the affinity threshold (AT) which is the mean affinity between data instances. A value of -1 indicates to use the entire training dataset. \fi
         \item \textbf{A}: número de células usadas no cálculo do limiar de afinidade.
-        \iffalse stimulationValue -- Stimulation threshold. Used to determine when to stop refining the pool of ARBs for an antigen. This occurs when the mean normalised ARB stimulation value is >= the stimulation threshold. Must be in the range of [0,1]. \fi
         \item \textbf{V}: limite para o refinamento das células de memória.
-        \iffalse totalResources -- Total allocatable resources. Specifies the maximum number of resources (B-cells) that can be allocated to ARBs in the ARB pool. Those ARBs with the weakest stimulation are removed from the pool until the total allocated resources is less than the maximum allowable resources. \fi
         \item \textbf{R}: número máximo de células.
         \end{itemize}
 \end{enumerate}
@@ -621,11 +550,8 @@ Algoritmo iterativo para o problema da otimização de uma máquina de vetor de 
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
         \begin{itemize}
-            \iffalse Total generations (G): The total number of refinement iterations each prepared B-cell population is exposed to. Low values are desired such as one or two. The default value is one. \fi
             \item \textbf{G}: número de gerações.
-            \iffalse Minimum fitness threshold (E): Used to prune and control the antibody population size.  Those antibodies with a fitness allocation this threshold are deleted from the pool. The parameter has the moderate default value of 0.5. \fi
             \item \textbf{E}: limiar mínimo de afinidade.
-            \iffalse Seed population percentage (S): The percentage of each antigen-group that is taken as the seed for the B-cell population. Default values include 20\% (0.2) to improve speed and data reduction, and 100\% (1.0). \fi
             \item \textbf{S}: porcentagem de cada grupo de antígenos usada na inicialização da população de células B.
         \end{itemize}
     \item \textbf{Parâmetros testados}:
@@ -639,22 +565,11 @@ Algoritmo iterativo para o problema da otimização de uma máquina de vetor de 
 \begin{enumerate}[a)]
     \item \textbf{Parâmetros}:
         \begin{itemize}
-            \iffalse antibodyPoolSize -- Antibody pool size (N). The total antibodies maintained in the memory pool and remainder pool. \fi
             \item \textbf{N}: tamanho do \emph{pool} de anticorpos.
-
-            \iffalse clonalFactor -- Clonal factor (beta). Used to scale the number of clones created by the selected best antibodies. \fi
             \item \textbf{B}: taxa de clonagem.
-
-            \iffalse numGenerations -- Total generations. The total number of times that all antigens are exposed to the system. \fi
             \item \textbf{G}: número de gerações.
-
-            \iffalse remainderPoolRatio -- Remainder pool percentage. The percentage of the total antibody pool size allocated for the remainder pool. \fi
             \item \textbf{R}: número de anticorpos mantidos entre cada geração.
-
-            \iffalse selectionPoolSize -- Selection pool size (n). The total number of best antibodies selected for cloning and mutation each iteration. \fi
             \item \textbf{n}: número de anticorpos selecionado para clonagem e mutação a cada geração.
-
-            \iffalse totalReplacement -- Total replacements (d). The total number of antibodies in the remainder pool that are replaced each iteration. Typically 5\%-8\% \fi
             \item \textbf{d}: número de anticorpos descartado e substituído a cada geração.
         \end{itemize}
 \end{enumerate}
