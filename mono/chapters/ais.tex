@@ -107,8 +107,8 @@ Aplicações típicas da seleção clonal são:
 
 \begin{enumerate}[a)]
     \item Diversos tipos de reconhecimento de padrões.
-    \item Problema da colocaração de grafos, reconhecimento de caracteres e alguns problemas NP-completo.
-    \item Diversos tipos de esclonamento.
+    \item Problema da coloração de grafos, reconhecimento de caracteres e alguns problemas NP-completo.
+    \item Diversos tipos de escalonamento.
     \item Classificação de documentos.
     \item Otimização de funções combinatoriais, uni-modais e multi-modais e o problema da inicialização dos centros em funções de base radial.
 \end{enumerate}
@@ -322,7 +322,7 @@ Apesar de ser uma das mais importantes abstrações do sistema imunológico, an�
 
 Já foi questionada a tentativa de cobrir, aleatoriamente, um espaço não-próprio infinito utilizando detectores de tamanho finito. Como autores como Dasgupta, Forrest e Nino apontam, esse tipo de modelagem permite que múltiplos detectores identifiquem um elemento não-próprio por aproximação, além de permitir a criação de detectores sem que se tenha conhecimento do espaço de estados. De fato, caso o conjunto próprio fosse desconhecido, e existisse apenas uma função que, dado um elemento, determinasse se ele pertence ou não ao conjunto próprio, a seleção negativa seria o único método, entre os discutidos, que poderia ser aplicado.
 
-Conforme demonstrou D’haeseleer, a seleção negativa muitas vezes não é tão efetiva quanto outras técnicas, mas oferece um nível de segurança maior por ser menos suscetível à tentativas deliberadas dos agentes maliciosos de enganar o sistema\iffalse melhorar essa frase\fi. Outras vantagens apontadas incluem a habilidade de detecção de mudanças nos eventos do sistema, de verificar mudanças em partes de um objeto sem a necessidade de verificar o objeto como um todo e de aplicar diversos detectores diferentes sobre um mesmo objeto, aumentando a probabilidade de detecção conforme o número de detectores utilizado. O autor também aponta que subconjuntos dos detectores podem ser utilizados de maneira autônoma e distribuída.
+Conforme demonstrou D’haeseleer, a seleção negativa muitas vezes não é tão efetiva quanto outras técnicas, mas oferece um nível de segurança maior por ser menos suscetível à tentativas deliberadas dos agentes maliciosos de enganar o sistema. Outras vantagens apontadas incluem a habilidade de detecção de mudanças nos eventos do sistema, de verificar mudanças em partes de um objeto sem a necessidade de verificar o objeto como um todo e de aplicar diversos detectores diferentes sobre um mesmo objeto, aumentando a probabilidade de detecção conforme o número de detectores utilizado. O autor também aponta que subconjuntos dos detectores podem ser utilizados de maneira autônoma e distribuída.
 
 Alguns trabalhos incorporam processos da seleção clonal na seleção negativa \cite{Garrett2005}: os detectores são gerados aleatoriamente, como no algoritmo original, e aqueles que identificam elementos próprios passam pelo processo de seleção clonal. O objetivo é que esses detectores sejam ajustados até que não cubram mais o espaço próprio. A vantagem, nesse caso, é a de utilizar o poder de exploração do espaço de estados da seleção clonal para dispensar o controle determinístico complexo dos detectores feito na maior parte dos trabalhos da área.
 

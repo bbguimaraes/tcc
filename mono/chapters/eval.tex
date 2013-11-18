@@ -67,14 +67,14 @@ O resultado dos testes pode ser altamente dependente dessa separação dos dados
 
 Para que seja possível avaliar se um modelo pode prever novos dados após o treinamento, a base de dados deve ser dividida em duas partes: um conjunto de treinamento e um conjunto de teste. O modelo é criado utilizando apenas os dados de treinamento e avaliado utilizando os dados de teste. Essa técnica é denominada \emph{holdout}, porque uma parte dos dados é retirada do processo de treinamento para que possa ser utilizada nos testes. Os resultados podem ser melhorados executando várias iterações de \emph{holdout}, dividindo um conjunto de dados aleatoriamente a cada vez e calculando a média e o desvio padrão da precisão.
 
-Caso o resultado dos testes de um modelo quando aplicado aos mesmos dados utilizados no treinamento seja bom, mas o resultado quando aplicado aos dados de teste sejam ruims, diz-se que ocorre \emph{overfitting}: o modelo ajusta-se tanto aos dados de treinamento que não consegue criar regras genéricas o suficiente para identificar amostras semelhantes mas não exatamente iguais.
+Caso o resultado dos testes de um modelo quando aplicado aos mesmos dados utilizados no treinamento seja bom, mas o resultado quando aplicado aos dados de teste sejam ruins, diz-se que ocorre \emph{overfitting}: o modelo ajusta-se tanto aos dados de treinamento que não consegue criar regras genéricas o suficiente para identificar amostras semelhantes mas não exatamente iguais.
 
 Há ainda a possibilidade do modelo não gerar um resultado bom nem mesmo para os dados de treinamento. Nesse caso, diz-se que ocorre \emph{underfitting}: o modelo não é capaz de criar regras que se ajustem aos dados de treinamento, ou seja, o modelo não é capaz de memorizar os dados de treinamento.
 
 \subsection{\emph{Cross-validation}}
 \label{sec:eval_cross_validation}
 
-Uma alternativa mais sofisticada e eficiente do \emph{holdout} é denominada \emph{cross-validation}. Nela, os dados são divididos em \emph{n} partições, chamadas de \emph{folds}. A cada iteração, uma partição é utilizada dados de testes, enquato as outras \emph{n - 1} são utilizadas como treinamento.
+Uma alternativa mais sofisticada e eficiente do \emph{holdout} é denominada \emph{cross-validation}. Nela, os dados são divididos em \emph{n} partições, chamadas de \emph{folds}. A cada iteração, uma partição é utilizada dados de testes, enquanto as outras \emph{n - 1} são utilizadas como treinamento.
 
 \begin{enumerate}[a)]
     \item Dividir aleatoriamente os dados em dois conjuntos, treinamento e testes.
