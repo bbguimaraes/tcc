@@ -808,12 +808,9 @@ Foi utilizado o código padrão presente na versão 3.6.1 do WEKA. As únicas ex
 
 \subsection{Resultados por conjunto de dados}
 
-Nessa seção são apresentadas as tabelas com os resultados dos testes agrupados pelos conjuntos de dados (tabelas \ref{tbl:dev_table_first} à \ref{tbl:dev_table_last}). A separação por conjunto de dados facilita a comparação dos valores, já que há uma clara separação entre os resultados de cada um. A próxima seção fará uma análise dos resultados para cada algoritmo.
+Nessa seção são apresentadas as tabelas com os resultados dos testes agrupados pelos conjuntos de dados (tabelas \ref{tbl:dev_table_first} à \ref{tbl:dev_table_last}). A separação por conjunto de dados facilita a comparação dos valores, já que há uma clara separação entre os resultados de cada um. A próxima seção faz uma análise dos resultados para cada algoritmo.
 
-As tabelas \ref{tbl:dev_table_aust_correct} e \ref{tbl:dev_table_ger_correct} mostram o percentual de instâncias corretamente classificadas e o erro médio, ordenadas pelo primeiro\footnote{Os valores para o conjunto de dados \emph{cr.ger} podem parecer estranhos, mas isso se deve à maneira como os dados foram divididos. O número total de instâncias é 1000, e foi utilizado \emph{cross-validation} de 10 \emph{folds}, com 100 instâncias cada. Dessa forma, a porcentagem de instâncias corretamente classificadas é sempre um número inteiro.}. Geralmente, um valor maior de instâncias classificadas corretamente implica um erro menor, mas esse nem sempre é o caso. Em um classificador binário, um erro implica uma instância classificada corretamente. Caso o critério de avaliação tivesse valores contínuos, seria possível identificar \emph{quão} errada foi a classificação, e não apenas se ela foi correta ou não. Nesse caso, o erro médio seria uma medida muito mais importante.
-
-\vspace{0.5cm}
-\begin{table}[h!]
+\begin{table}[h]
     \centering
     \caption{Porcentagem correta e error médio (cr.aust)}
     \label{tbl:dev_table_aust_correct}
@@ -838,10 +835,8 @@ As tabelas \ref{tbl:dev_table_aust_correct} e \ref{tbl:dev_table_ger_correct} mo
         CLONALG              & 76.81\% & 0.4815434123 \\ \hline
     \end{tabular}
 \end{table}
-\vspace{0.5cm}
 
-\vspace{0.5cm}
-\begin{table}[h!]
+\begin{table}[h]
     \centering
     \caption{Porcentagem correta e erro médio (cr.ger)}
     \label{tbl:dev_table_ger_correct}
@@ -865,12 +860,10 @@ As tabelas \ref{tbl:dev_table_aust_correct} e \ref{tbl:dev_table_ger_correct} mo
         ID3                  & 71.00\% & 0.5248906592 \\ \hline
     \end{tabular}
 \end{table}
-\vspace{0.5cm}
 
-As tabelas \ref{tbl:dev_table_aust_youden} e \ref{tbl:dev_table_ger_youden} mostram o índice de Youden e as taxas de falsos positivos e falsos negativos, ordenadas pelo primeiro. O índice de Youden é um cálculo que combina a taxa de falsos positivos e negativos, dando maior relevância onde os dois valores são menores. Nos resultados do WEKA, a sensibilidade é chamada de taxa de verdadeiros positivos. A especificadade não faz parte dos valores, mas pode ser calculada como $1 - taxa\ de\ falsos\ positivos$.
+As tabelas \ref{tbl:dev_table_aust_correct} e \ref{tbl:dev_table_ger_correct} mostram o percentual de instâncias corretamente classificadas e o erro médio, ordenadas pelo primeiro\footnote{Os valores para o conjunto de dados \emph{cr.ger} podem parecer estranhos, mas isso se deve à maneira como os dados foram divididos. O número total de instâncias é 1000, e foi utilizado \emph{cross-validation} de 10 \emph{folds}, com 100 instâncias cada. Dessa forma, a porcentagem de instâncias corretamente classificadas é sempre um número inteiro.}. Geralmente, um valor maior de instâncias classificadas corretamente implica um erro menor, mas esse nem sempre é o caso. Para classificadores que associam um percentual de certeza à classificação, o erro médio indica \emph{quão} errada a classificação foi, e não apenas se ele foi errada ou não. Essa medida pode ser mais ou menos importante, dependendo do objetivo da classificação.
 
-\vspace{0.5cm}
-\begin{table}[h!]
+\begin{table}[h]
     \centering
     \caption{Falsos positivos e falsos negativos (cr.aust)}
     \label{tbl:dev_table_aust_youden}
@@ -894,10 +887,8 @@ As tabelas \ref{tbl:dev_table_aust_youden} e \ref{tbl:dev_table_ger_youden} most
         CLONALG              & 0.5314091681 & 0.2580645161 & 0.2105263158 \\ \hline
     \end{tabular}
 \end{table}
-\vspace{0.5cm}
 
-\vspace{0.5cm}
-\begin{table}[h!]
+\begin{table}[h]
     \centering
     \caption{Falsos positivos e falsos negativos (cr.ger)}
     \label{tbl:dev_table_ger_youden}
@@ -921,11 +912,9 @@ As tabelas \ref{tbl:dev_table_aust_youden} e \ref{tbl:dev_table_ger_youden} most
         CLONALG              & 0.1666666667 & 0.8333333333 & 0.0000000000 \\ \hline
     \end{tabular}
 \end{table}
-\vspace{0.5cm}
 
-As tabelas \ref{tbl:dev_table_aust_times} e \ref{tbl:dev_table_ger_times} mostram os tempos de treinamento e teste, ordenados pelo primeiro. Em todos os casos, o tempo de treinamento é muito superior ao tempo de teste. Isso é comum na maioria dos algoritmos. É importante notar que o tempo de treinamento é sempre constante, enquanto outros têm um tempo alto de treinamento inicial, mas os treinamentos subsequentes têm um custo muito menor. Esse fator não foi avaliado nesse experimento.
+As tabelas \ref{tbl:dev_table_aust_youden} e \ref{tbl:dev_table_ger_youden} mostram o índice de Youden e as taxas de falsos positivos e falsos negativos, ordenadas pelo primeiro. O índice de Youden é um cálculo que combina a taxa de falsos positivos e negativos, dando maior relevância onde os dois valores são menores. Nos resultados do WEKA, a sensibilidade é chamada de taxa de verdadeiros positivos. A especificadade não faz parte dos valores, mas pode ser calculada como $1 - taxa\ de\ falsos\ positivos$.
 
-\vspace{0.5cm}
 \begin{table}[h!]
     \centering
     \caption{Tempos de treinamento e teste em segundos (cr.aust)}
@@ -950,9 +939,7 @@ As tabelas \ref{tbl:dev_table_aust_times} e \ref{tbl:dev_table_ger_times} mostra
         CLONALG              & 175.078 & 0.002 \\ \hline
     \end{tabular}
 \end{table}
-\vspace{0.5cm}
 
-\vspace{0.5cm}
 \begin{table}[h!]
     \centering
     \caption{Tempos de treinamento e teste em segundos (cr.ger)}
@@ -978,7 +965,14 @@ As tabelas \ref{tbl:dev_table_aust_times} e \ref{tbl:dev_table_ger_times} mostra
         CLONALG              & 331.366 & 0.003 \\ \hline
     \end{tabular}
 \end{table}
-\vspace{0.5cm}
+
+As tabelas \ref{tbl:dev_table_aust_times} e \ref{tbl:dev_table_ger_times} mostram os tempos de treinamento e teste, ordenados pelo primeiro. Em todos os casos, o tempo de treinamento é muito superior ao tempo de teste. Isso é comum na maioria dos algoritmos. É importante notar que o tempo de treinamento é sempre constante, enquanto outros têm um tempo alto de treinamento inicial, mas os treinamentos subsequentes têm um custo muito menor. Esse fator não foi avaliado nesse experimento.
+
+Uma tendência que já pode ser vista nas tabelas e que é comum em todos os dados do experimento é a de que os resultados para o conjunto de dados \emph{cr.aust} são sempre melhores em relação ao \emph{cr.ger}. O desempenho é sempre cerca de 1.5 vezes ``melhor'' no primeiro do que no segundo. Apenas com os resultados desse experimento não é possível indicar com certeza o motivo desse comportamento, mas imagina-se que isso se deve ao fato do conjunto de dados \emph{cr.ger} ser maior (600 contra 1000 instâncias) e possuir mais atributos (14 contra 20).
+
+Isso também ajuda a mostrar a importância da utilização de mais de um conjunto de dados na execução de qualquer experimento. Utilizando apenas um, não é possível saber se o modelo gerado terá o mesmo desempenho em conjuntos de dados diferentes, com características diferentes, como número de instâncias e atributos, tipo de dados, distribuição dos valores, etc.
+
+Com mais de um conjunto de dados é possível comparar o desempenho do algoritmo em diferentes situações, evitando análises incompletas ou tendenciosas. Como pode ser observado nos gráficos, o desempenho de alguns algoritmos foi consideravelmente melhor em um conjunto de dados que no outro. Caso apenas um dos conjuntos de dados tivesse sido usado, isso poderia favorecer alguns algoritmos ou penalizar outros.
 
 \subsection{Resultados por algoritmo}
 
@@ -992,6 +986,8 @@ Nessa seção são apresentados gráficos com os resultados dos testes agrupados
     \includegraphics[width=1\textwidth]{img/graph_perc_correct.jpg}
 \end{figure}
 
+O gráfico \ref{fig:dev_graph_correct} mostra a porcentagem de instâncias corretamente classificadas. Esse é o primeiro valor a ser considerado nas análises de desempenho, por ser uma medida simples. Com relação a esse atributo, a maioria dos classificadores teve resultado semelhante. A diferença entre o melhor e o pior dos classificadores foi de 19\% e 14\% por cento para o \emph{cr.aust} e \emph{cr.ger}, respectivamente. Ainda, se forem desconsiderados os dois piores resultados, a diferença cai para 9\% em ambos. Em destaque na porcentagem de instâncias corretamente classificadas ficaram os algoritmos BayesNet, MultilayerPerceptron e SMO. Os algoritmos imunológicos tiveram desempenho mediano no \emph{cr.aust} e menor que a média no \emph{cr.ger}.
+
 \begin{figure}[h]
     \centering
     \caption{Erro quadrático médio}
@@ -999,10 +995,12 @@ Nessa seção são apresentados gráficos com os resultados dos testes agrupados
     \includegraphics[width=1\textwidth]{img/graph_error.jpg}
 \end{figure}
 
+O gráfico \ref{fig:dev_graph_error} mostra o erro quadrático médio. Não houveram diferenças significativas entre os resultados do gráfico anterior e desse. Um classificador que classificou mais instâncias corretamente teve um erro médio menor. Destaca-se nesse gráfico a diferença maior do erro médio entre os dois conjuntos de dados, que foi maior que a diferença entre o número de instâncias classificadas corretamente. É importante lembrar que o erro médio é uma medida útil para comparação entre os valores de uma mesma variável, mas não pode ser usado para comparação entre variáveis (como entre os resultados dos conjuntos de dados), porque a sua escala varia conforme a escala dos valores da variável.
+
 \begin{figure}[h]
     \centering
     \caption{Índice de Youden}
-    \label{fig:dev_graph_error}
+    \label{fig:dev_graph_youden}
     \includegraphics[width=1\textwidth]{img/graph_youden.jpg}
 \end{figure}
 
@@ -1020,6 +1018,144 @@ Nessa seção são apresentados gráficos com os resultados dos testes agrupados
     \includegraphics[width=1\textwidth]{img/graph_false_neg.jpg}
 \end{figure}
 
+Os gráficos do índice de Youden, falsos positivos e falsos negativos (\ref{fig:dev_graph_youden}, \ref{fig:dev_graph_false_pos} e \ref{fig:dev_graph_false_neg}) são os mais significativos para essa análise. Como foi comentado no capítulo \ref{chap:eval}, apenas a porcentagem de instâncias classificadas corretamente não é uma medida de suficiente para a avaliação do desempenho de um algoritmo.
+
+Para que a análise seja completa, é necessário analisar o que os falsos positivos e falsos negativos significam no contexto da detecção de fraude. Um falso positivo indica que a instância foi classificada como uma fraude quando na verdade ela não era. Por outro lado, um falso negativo indica que a instância foi classificada como normal quando na verdade era uma fraude\footnote{A terminologia pode ser confusa nesse contexto. Em um sistema de detecção de fraude, "positivo" significa "positivo para fraude", e não que a instância é "boa"}. No contexto da detecção de fraude, um falso negativo é muito mais crítico que um falso positivo, ou seja, quanto mais fraudes forem identificadas, melhor. O número de instâncias normais identificadas como fraude têm bem menos importância nesse contexto.
+
+Desse ponto de vista, um algoritmo como o CLONALG, que classificou corretamente apenas 75\% das instâncias no conjunto de dados \emph{cr.ger} mas que teve taxa de falsos positivos 0 (ou seja, todas as fraudes foram identificadas) pode ser mais interessante do que as redes bayesianas, que classificaram 9\% instâncias corretamente a mais, mas tiveram taxa de falsos negativos entre 5\% e 10\%. Dependendo da aplicação, mesmo uma taxa de falsos negativos de 10\% pode ser inaceitável.
+
+Uma observação interessante é que a taxa de falsos positivos é muito maior no \emph{cr.ger} e que os algoritmos imunológicos tendem a ter um taxa maior que os outros algoritmos, mas uma taxa de falsos negativos similar.
+
+\begin{table}
+    \parbox{.45\linewidth}{
+        \centering
+        \caption{BayesNet}
+        \begin{tabular}{c|c c|c c}
+            \multicolumn{1}{c}{}  & \multicolumn{2}{c}{cr.aust} & \multicolumn{2}{c}{cr.ger} \\
+            \multirow{1}{2.5mm}{} & P & N & P & N \\
+            \hline
+            P & 37 & 2 & 64 & 10 \\
+            N & 28 & 2 & 20 &  6 \\
+        \end{tabular}
+    }
+    \hfill
+    \parbox{.45\linewidth}{
+        \centering
+        \caption{NaiveBayes}
+        \begin{tabular}{c|c c|c c}
+            \multicolumn{1}{c}{}  & \multicolumn{2}{c}{cr.aust} & \multicolumn{2}{c}{cr.ger} \\
+            \multirow{1}{2.5mm}{} & P & N & P & N \\
+            \hline
+            P & 38 & 7 & 65 & 11 \\
+            N & 23 & 1 & 19 &  5 \\
+        \end{tabular}
+    }
+\end{table}
+
+\begin{table}
+    \parbox{.45\linewidth}{
+        \centering
+        \caption{MultilayerPerceptron}
+        \begin{tabular}{c|c c|c c}
+            \multicolumn{1}{c}{}  & \multicolumn{2}{c}{cr.aust} & \multicolumn{2}{c}{cr.ger} \\
+            \multirow{1}{2.5mm}{} & P & N & P & N \\
+            \hline
+            P & 37 & 2 & 63 & 12 \\
+            N & 28 & 2 & 18 &  7 \\
+        \end{tabular}
+    }
+    \hfill
+    \parbox{.45\linewidth}{
+        \centering
+        \caption{SMO}
+        \begin{tabular}{c|c c|c c}
+            \multicolumn{1}{c}{}  & \multicolumn{2}{c}{cr.aust} & \multicolumn{2}{c}{cr.ger} \\
+            \multirow{1}{2.5mm}{} & P & N & P & N \\
+            \hline
+            P & 34 & 0 & 64 & 11 \\
+            N & 30 & 5 & 19 &  6 \\
+        \end{tabular}
+    }
+\end{table}
+
+\begin{table}
+    \parbox{.45\linewidth}{
+        \centering
+        \caption{AIRS}
+        \begin{tabular}{c|c c|c c}
+            \multicolumn{1}{c}{}  & \multicolumn{2}{c}{cr.aust} & \multicolumn{2}{c}{cr.ger} \\
+            \multirow{1}{2.5mm}{} & P & N & P & N \\
+            \hline
+            P & 35 & 1 & 60 & 16 \\
+            N & 29 & 4 & 14 & 10 \\
+        \end{tabular}
+    }
+    \hfill
+    \parbox{.45\linewidth}{
+        \centering
+        \caption{CLONALG}
+        \begin{tabular}{c|c c|c c}
+            \multicolumn{1}{c}{}  & \multicolumn{2}{c}{cr.aust} & \multicolumn{2}{c}{cr.ger} \\
+            \multirow{1}{2.5mm}{} & P & N & P & N \\
+            \hline
+            P & 30 & 8 & 70 & 25 \\
+            N & 23 & 8 &  5 &  0 \\
+        \end{tabular}
+    }
+\end{table}
+
+\begin{table}
+    \parbox{.45\linewidth}{
+        \centering
+        \caption{Immunos}
+        \begin{tabular}{c|c c|c c}
+            \multicolumn{1}{c}{}  & \multicolumn{2}{c}{cr.aust} & \multicolumn{2}{c}{cr.ger} \\
+            \multirow{1}{2.5mm}{} & P & N & P & N \\
+            \hline
+            P & 35 & 2& 63 & 18 \\
+            N & 28 & 412 &  7 \\
+        \end{tabular}
+    }
+    \hfill
+    \parbox{.45\linewidth}{
+        \centering
+        \caption{Lvq2\_1}
+        \begin{tabular}{c|c c|c c}
+            \multicolumn{1}{c}{}  & \multicolumn{2}{c}{cr.aust} & \multicolumn{2}{c}{cr.ger} \\
+            \multirow{1}{2.5mm}{} & P & N & P & N \\
+            \hline
+            P & 37 & 12 & 65 & 19 \\
+            N & 18 &  2 & 11 &  5 \\
+        \end{tabular}
+    }
+\end{table}
+
+\begin{table}
+    \parbox{.45\linewidth}{
+        \centering
+        \caption{ID3}
+        \begin{tabular}{c|c c|c c}
+            \multicolumn{1}{c}{}  & \multicolumn{2}{c}{cr.aust} & \multicolumn{2}{c}{cr.ger} \\
+            \multirow{1}{2.5mm}{} & P & N & P & N \\
+            \hline
+            P & 35 & 4 & 58 & 17 \\
+            N & 25 & 4 & 13 & 10 \\
+        \end{tabular}
+    }
+    \hfill
+    \parbox{.45\linewidth}{
+        \centering
+        \caption{J48}
+        \begin{tabular}{c|c c|c c}
+            \multicolumn{1}{c}{}  & \multicolumn{2}{c}{cr.aust} & \multicolumn{2}{c}{cr.ger} \\
+            \multirow{1}{2.5mm}{} & P & N & P & N \\
+            \hline
+            P & 37 & 2 & 66 & 16 \\
+            N & 29 & 1 & 14 &  4 \\
+        \end{tabular}
+    }
+\end{table}
+
 \begin{figure}[h]
     \centering
     \caption{Tempo de treinamento em segundos}
@@ -1035,17 +1171,8 @@ Nessa seção são apresentados gráficos com os resultados dos testes agrupados
     \includegraphics[width=1\textwidth]{img/graph_test_time.jpg}
 \end{figure}
 
-A análise dos tempos de treinamento e testes do AIRS deve levar em consideração que o critério de parada desse algoritmo não é um número de iterações fixo. O processo de treinamento só é finalizado quando um limiar pré-definido de similaridade é atingido. Esse limiar é um parâmetro para a execução do algoritmo e pode ser configurado (assim como outros parâmetros) caso o tempo de execução seja considerado um fator mais importante que os outros.
+No gráfico de tempo de treinamento (\ref{fig:dev_graph_train_time}), pode-se ver que existe uma diferença muito grande entre os algoritmos (note a escala logarítmica). Em um extremo, as redes bayesianas e o algoritmo ID3 têm tempo de treinamento ínfimo, inferior a um segundo. Em outro, os algoritmos imunológicos levaram de 15 a 330 segundos. Embora esses números não sejam considerados altos em relação a esse tipo de atividade computacional, são várias ordens de magnitude maiores que os algoritmos mais rápidos. Apesar disso, o tempo de execução geralmente não é considerado um fator decisivo na comparação dos algoritmos se mantiver-se em uma faixa aceitável para a execução.
 
-\iffalse
+É interessante notar que o tempo de treinamento dos algoritmos para o \emph{cr.aust} é aproximadamente a metade em relação ao \emph{cr.ger}. Levando em consideração que o número de instâncias também é aproximadamente a metade, pode-se ver que o número de instâncias não é uma fator significativo no tempo de treinamento. O mesmo pode ser observado para o tempo de teste (\ref{fig:dev_graph_test_time}), mas esses valores são tão baixos, tanto isolados quanto em relação ao tempo de treinamento, que são praticamente irrelevantes.
 
-# Análises
-
-# Conclusões
-    síntese
-    contribuições
-    trabalhos futuros
-
-# Fim =)
-
-\fi
+Novamente, a análise dos tempos de treinamento e testes dos algoritmos imunológicos deve levar em consideração que o critério de parada desses algoritmos não é um número de iterações fixo. O processo de treinamento só é finalizado quando um limiar pré-definido de similaridade é atingido. Esse limiar é um parâmetro para a execução do algoritmo e pode ser configurado (assim como outros parâmetros) caso o tempo de execução seja considerado um fator mais importante que os outros.
