@@ -94,16 +94,16 @@ A11,24,A33,A40,4870,A61,A73,3,A93,A101,4,A124,53,A143,A153,2,A173,2,A191,A201,2
 
 Com os arquivos no formato ARFF, os conjuntos de dados podem ser importados no WEKA. A figura \ref{fig:dev_weka_arff} mostra o conjunto de dados \emph{Cr.Ger} quando importado. Um conjunto de dados importado pode ser utilizado para qualquer algoritmo que suporte os tipos de atributos contidos nele.
 
-\vspace{0.5cm}
 \begin{figure}[h!]
+    \vspace{0.5cm}
     \centering
     \caption{Conjunto de dados \emph{Cr.Ger importado no WEKA}}
     \label{fig:dev_weka_arff}
     \vspace{0.5cm}
     \includegraphics[width=0.75\textwidth]{img/cr_ger.png}
     \vspace{0.5cm}
+    \vspace{0.5cm}
 \end{figure}
-\vspace{0.5cm}
 
 \section{Utilizando o WEKA}
 
@@ -224,14 +224,14 @@ Existem formas de amenizar o efeito da explosão combinatória desses métodos. 
 Além do módulo \emph{Explorer}, para execução de testes, o WEKA apresenta um módulo para configuração e execução de experimentos, chamado \emph{Experimenter} (figura \ref{fig:dev_weka_experimenter}). Esse módulo facilita a criação de experimentos, criando um arquivo de configuração onde são descritas as etapas, que pode ser utilizado para reproduzir o experimento usando as mesmas configurações.
 
 \begin{figure}[h!]
-\vspace{0.5cm}
+    \vspace{0.5cm}
     \centering
     \caption{Experimenter}
     \label{fig:dev_weka_experimenter}
     \vspace{0.5cm}
     \includegraphics[width=0.75\textwidth]{img/experimenter.png}
     \vspace{0.5cm}
-\vspace{0.5cm}
+    \vspace{0.5cm}
 \end{figure}
 
 A configuração do \emph{Experimenter} pode ser dividida nas seções:
@@ -333,8 +333,8 @@ Todos os algoritmos utilizados para comparação com os algoritmos imunológicos
 
 \iffalse add value of default parameters \fi
 
-\vspace{0.5cm}
 \begin{figure}[h]
+    \vspace{0.5cm}
     \centering
     \caption{Algoritmos no WEKA}
     \label{fig:dev_weka_algos}
@@ -342,12 +342,11 @@ Todos os algoritmos utilizados para comparação com os algoritmos imunológicos
     \includegraphics[height=0.5\textheight]{img/weka_algos_cropped.png}
     \vspace{0.5cm}
 \end{figure}
-\vspace{0.5cm}
 
 Esses algoritmos podem ser dividos em 5 categorias de algoritmos: árvores de decisão, redes neurais artificiais, redes Bayesianas, \emph{support vector machine} e imunológicos. Na tabela \ref{tbl:dev_algs} são apresentados os mesmo algoritmos, organizados pela categoria a que pertencem.
 
-\vspace{0.5cm}
 \begin{table}[h]
+    \vspace{0.5cm}
     \centering
     \caption{Algoritmos utilizados para comparação}
     \label{tbl:dev_algs}
@@ -372,8 +371,8 @@ Esses algoritmos podem ser dividos em 5 categorias de algoritmos: árvores de de
                                                    & Seleção Clonal (CLONALG)               \\
         \hline
     \end{tabular}
+    \vspace{0.5cm}
 \end{table}
-\vspace{0.5cm}
 
 \subsection{Redes neurais artificiais}
 
@@ -711,8 +710,8 @@ Como pode ser visto, o algoritmo não tem um número de iterações definido. Co
 
 Utilizando o valor padrão do parâmetro (0.9), os testes demoravam um tempo proibitivo para serem executados. Foram feitos testes utilizando vários valores, para determinar um valor que fosse aceitável dado o tempo disponível para a execução dos experimentos. Os resultados desses testes são mostrados na tabela \ref{tbl:dev_airs_times}. Cada linha representa uma execução, onde o parâmetro \emph{stimulation threshold} assumiu o valor indicado e todos os outros tinham o valor padrão do algoritmo. Ao lado de cada linha, é mostrado o tempo de execução do teste.
 
-\vspace{0.5cm}
 \begin{table}[h]
+    \vspace{0.5cm}
     \scriptsize
     \centering
     \caption{Tempo de execução dos testes do AIRS}
@@ -730,8 +729,8 @@ Utilizando o valor padrão do parâmetro (0.9), os testes demoravam um tempo pro
         0.89375        &  2m52.582s \\
         0.896875       &  92m5.210s \\
     \end{tabular}
+    \vspace{0.5cm}
 \end{table}
-\vspace{0.5cm}
 
 O tempo de execução aumentava exponencialmente conforme o valor do parâmetro alcançava o valor padrão de 0.9. Por isso, para os testes, foi usado o valor 0.8 para esse parâmetro, que é baixo o suficiente para manter o tempo de execução em uma faixa aceitável mas alto o suficiente para não comprometer os resultados.
 
@@ -739,8 +738,8 @@ O tempo de execução aumentava exponencialmente conforme o valor do parâmetro 
 
 Os testes foram executados para todos os algoritmos, usando as configurações descritas nas seções anteriores. A tabela \ref{tbl:dev_exec_summary} mostra um resumo das execuções. As colunas dessa tabela representam, da esquerda para a direita, a categoria do algoritmo, o algoritmo, o número de execuções do experimento, o número de \emph{folds} utilizado no \emph{cross-validation}, o número total de execuções do algoritmo e os parâmetros testados. Essa última coluna utiliza a sintaxe do \emph{CVParameterSelection} para descrição dos parâmetros, onde são indicados o nome do parâmetro, os valores mínimos e máximos que serão testados e o número de valores testados.
 
-\vspace{0.5cm}
 \begin{table}[h]
+    \vspace{0.5cm}
     \scriptsize
     \centering
     \caption{Resumo das execuções}
@@ -779,8 +778,8 @@ Os testes foram executados para todos os algoritmos, usando as configurações d
         & & & & & B & 0.1 & 0.5 & 5 \\
         \hline
     \end{tabular}
+    \vspace{0.5cm}
 \end{table}
-\vspace{0.5cm}
 
 Todos os testes foram executados em uma mesma máquina, serialmente, e a máquina não foi utilizada para nenhum outro processamento durante os testes. Isso foi feito para que não houvesse interferência externa ou interna nos resultados. As configurações da máquina relevantes para o experimento são mostradas na tabela \ref{tbl:dev_machine_specs}. É importante notar nesse tipo de experimento que é impossível isolar um sistema computacional completamente.
 
@@ -788,8 +787,8 @@ Uma técnica comumente usada é executar os testes repetidas vezes, escolhendo p
 
 Foi utilizado o código padrão presente na versão 3.6.1 do WEKA. As únicas exceções são as descritas na seção \ref{sec:dev_weka_issues}, mas essas alterações não têm impacto sobre a performance dos algoritmos.
 
-\vspace{0.5cm}
 \begin{table}[h]
+    \vspace{0.5cm}
     \scriptsize
     \centering
     \caption{Configurações da máquina onde os testes foram executados}
@@ -803,8 +802,8 @@ Foi utilizado o código padrão presente na versão 3.6.1 do WEKA. As únicas ex
         Processador         & Intel Pentium E2200 @2.20GHz \\
         Memória             & DDR2 800MHz 1024Mb           \\
     \end{tabular}
+    \vspace{0.5cm}
 \end{table}
-\vspace{0.5cm}
 
 \subsection{Resultados por conjunto de dados}
 
