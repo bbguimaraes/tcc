@@ -6,7 +6,7 @@ MAKE_TEST="$MAKE -q"
 
 
 wait_for_event() {
-    inotifywait -qqr -e modify -e attrib .
+    inotifywait -qqr -e modify --exclude '\.swp$' .
 }
 
 
