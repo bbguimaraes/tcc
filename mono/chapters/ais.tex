@@ -9,8 +9,8 @@ Os primeiros trabalhos basearam-se em paradigmas como o das Redes Imunológicas 
 
 Os algoritmos modernos são inspirados em três campos principais: seleção clonal, seleção negativa e redes imunológicas. Esse tipo de sistema é comummente aplicado a problemas de detecção de padrões, classificação, otimização, \emph{clustering} e outros domínios de aprendizagem de máquina.
 
-\vspace{0.5cm}
 \begin{table}[h]
+    \vspace{0.5cm}
     \centering
     \caption{Trabalhos recentes na área de Sistema Imunológico Natural}
     \label{ais:recent}
@@ -30,8 +30,8 @@ Os algoritmos modernos são inspirados em três campos principais: seleção clo
     \end{tabular}
     \vspace{0.5cm}
     \\ Fonte: \citet{Dasgupta2010}.
+    \vspace{0.5cm}
 \end{table}
-\vspace{0.5cm}
 
 A última década mostrou um grande aumento no interesse pelos algoritmos baseados em sistemas imunológicos por serem uma boa fonte de inspiração para novas abordagens para solução de problemas complexos. O sistema imunológico natural oferece metáforas ricas pelo fato de ser um sistema altamente distribuído, adaptativo e auto-organizável, além de suas capacidades de aprendizado, memorização, extração de características e reconhecimento de padrões. A tabela \ref{ais:recent} (inspirada em \citet{Dasgupta2010}) mostra uma lista dos algoritmos utilizados nos trabalhos recentes na área.
 
@@ -193,8 +193,8 @@ A modelagem de um problema como um Sistema Imunológico Artificial requer a defi
 
 A codificação é uma etapa essencial na definição de um Sistema Imunológico Artificial. Ela afeta toda modelagem do sistema, em especial a medida de similaridade, e pode ser responsável pelo seu sucesso ou falha. Os dois principais agentes do sistema imunológico, antígenos e anticorpos, são também os principais elementos que devem ser modelados. Eles são comumente representados da mesma forma.
 
-\vspace{0.5cm}
 \begin{table}[h]
+    \vspace{0.5cm}
     \centering
     \caption{Mapeamento das estruturas do sistema imunológico}
     \label{tab:ais_map}
@@ -213,8 +213,8 @@ A codificação é uma etapa essencial na definição de um Sistema Imunológico
     \end{tabular}
     \vspace{0.5cm}
     \\ Fonte: \cite{Andrew2003}.
+    \vspace{0.5cm}
 \end{table}
-\vspace{0.5cm}
 
 Um antígeno é uma parte do objetivo ou solução da aplicação, que pode ser único ou um parte de um conjunto-solução. Os anticorpos são o resto dos dados, normalmente a base de dados já existente, e geralmente existem em grande quantidade. Em uma aplicação de detecção de intrusão, por exemplo, o antígeno poderia ser o conjunto de dados que define um tráfego de dados, e os anticorpos, os conjuntos de dados que já foram identificados como transações legais. Na maioria dos problemas, a representação desses dois elementos é feita através de um vetor de números ou de características. Cada posição desse vetor representa uma característica da instância. Os tipos mais comuns de dados são números (inteiros ou reais), \emph{strings} e valores binários.
 
@@ -291,8 +291,8 @@ Os formalismos do espaço de formas e topologia de afinidade são dois paradigma
 
 Dados um anticorpo \emph{ab} e um antígeno \emph{ag} é criado um vetor onde as características relacionadas à ligação entre esses dois são discretizadas e transformadas em valores reais. Os parâmetros no trabalho original representavam características físicas, como a estrutura geométrica, carga eletrostática, entre outras. Assim, a interação \emph{ab-ag} pode ser definida como um ponto em um espaço vetorial Euclidiano \emph{S} de \emph{n} dimensões, onde \emph{n} é o número de características que compõem o vetor. Uma representação do espaço de estados, adaptada de \citet{Brownlee2007} é apresentada na Figura \ref{img:space}.
 
-\vspace{0.5cm}
 \begin{figure}[h!]
+    \vspace{0.5cm}
     \centering
     \caption{Diagrama do formalismo do espaço de estados}
     \label{img:space}
@@ -300,8 +300,8 @@ Dados um anticorpo \emph{ab} e um antígeno \emph{ag} é criado um vetor onde as
     \includegraphics[width=0.75\textwidth]{img/space.png}
     \vspace{0.5cm}
     \\ Fonte: \cite{Brownlee2007}.
+    \vspace{0.5cm}
 \end{figure}
-\vspace{0.5cm}
 
 O espaço de formas é um hipercubo de volume V. Cada anticorpo é definido como uma área de reconhecimento nesse espaço ($\epsilon$). Na definição original, essas áreas de reconhecimento eram funções Gaussianas. A distância euclidiana entre \emph{ab} e \emph{ag} é considerada como a `afinidade' ou `medida de complementaridade'. Para isso, a natureza complementar dos anticorpos e antígenos é ignorada: uma ligação perfeita é considerada quando \emph{ab == ag}, ao contrário de \emph{ab != ag}. Anticorpos possuem uma hiper-região de reconhecimento, onde antígenos podem gerar uma resposta imune.
 
@@ -360,8 +360,8 @@ Os resultados dos algoritmos apresentados nas seções anteriores foram comparad
 Para os algoritmos tradicionais, foram escolhidos aqueles que são comumente usados na área de mineração de dados. Em especial, os algoritmos genéticos, que têm características semelhantes aos imunológicos, já que ambos têm inspiração na biologia.
 
 \iffalse atualizar tabela \fi
-\vspace{0.5cm}
 \begin{table}[h]
+    \vspace{0.5cm}
     \centering
     \caption{Algoritmos utilizados para comparação}
     \label{tbl:ais_algs}
@@ -378,8 +378,8 @@ Para os algoritmos tradicionais, foram escolhidos aqueles que são comumente usa
         Learning Vector Quantization &         \\
         \hline
     \end{tabular}
+    \vspace{0.5cm}
 \end{table}
-\vspace{0.5cm}
 
 Nas próximas seções, será mostrada a aplicação de três algoritmos baseados no sistema imunológico natural a conjuntos de dados de fraudes. Os resultados são então comparados com algoritmos tradicionais da inteligência artificial.
 

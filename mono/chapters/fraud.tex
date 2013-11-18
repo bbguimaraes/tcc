@@ -17,9 +17,9 @@ O primeiro trabalho a considerar necessária a auditoria automática de sistemas
 
 A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{controle de fraude}. Nesse contexto, a detecção automática ajuda a reduzir o trabalho manual de verificação das instâncias \cite{Phua2010}. O objetivo principal desses sistemas é identificar padrões de transações suspeitas em meio às transações comuns de uma organização. O fraudador pode, por exemplo, contratar um seguro usando informações de outra pessoa ou informações falsas. O sistema procura detectar e impedir a fraude o mais cedo possível.
 
-\vspace{0.5cm}
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h!]
+    \vspace{0.5cm}
     \centering
     \caption{Matriz de ameaças}
     \label{fraud:and}
@@ -35,8 +35,8 @@ A detecção de fraude é apenas uma das etapas de um sistema chamado de \emph{c
     \end{tabular}
     \vspace{0.5cm}
     \\ Fonte: \cite{Anderson1972}.
+    \vspace{0.5cm}
 \end{table}
-\vspace{0.5cm}
 
 Geralmente não é possível ter absoluta certeza sobre a legitimidade das transações de um negócio a partir dos dados disponíveis. Não seria possível verificar todas as entidades com as quais uma empresa mantém relações, que em algumas empresas podem ser milhares. Assim, não existe uma técnica infalível para a detecção de fraudes. Isso não significa que elas não possam ser detectadas. A melhor alternativa, na prática, é uma busca por possíveis evidências de fraude nos dados disponíveis. Métodos matemáticos e estatísticos são utilizados para comparar um banco de dados de transações existentes com as novas, com o objetivo de encontrar evidências de possíveis fraudes. Mesmo assim, geralmente há um processo de análise e revisão caso a caso por um especialista.
 
@@ -67,8 +67,8 @@ Uma alternativa é a criação de um banco de dados artificial, inspirado em dad
 
 A maioria dos sistemas de detecção de fraude opera usando listas negras (\emph{black-lists}) de dados (transações, contas, etc.), que são comparadas com as nova instâncias. Algumas utilizam regras fixas para a classificação. A figura \ref{fig:fraud_data} mostra a organização dos dados nesses sistemas. Uma parte do banco de dados é usada para o treinamento. Esses são os dados onde o sistema aprenderá os padrões e regras utilizados para a detecção. O restante das instâncias é usada para a avaliação do treinamento. Também é comum que haja bancos de dados distintos para o treinamento e avaliação.
 
-\vspace{0.5cm}
 \begin{figure}[h!]
+    \vspace{0.5cm}
     \centering
     \caption{Dados para a análise}
     \label{fig:fraud_data}
@@ -76,8 +76,8 @@ A maioria dos sistemas de detecção de fraude opera usando listas negras (\emph
     \includegraphics[width=0.75\textwidth]{img/fraud-data.png}
     \vspace{0.5cm}
     \\ Fonte: \cite{Phua2010}.
+    \vspace{0.5cm}
 \end{figure}
-\vspace{0.5cm}
 
 A maioria dos estudos relacionados à detecção de fraude considera a detecção de \emph{outliers} como uma ferramenta principal de detecção \cite{Aral2011}. Existem muitos métodos aplicados à detecção de fraude: auditoria, sistemas especialistas, lógica nebulosa (\emph{fuzzy}), redes neurais, reconhecimento de padrões, árvores de decisão, regressão, etc \cite{Huang2010}. Considerando os dados divididos conforme a figura \ref{fig:fraud_data}, as duas técnicas mais usadas são:
 

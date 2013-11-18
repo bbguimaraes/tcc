@@ -120,9 +120,9 @@ Como exemplo, inspirado em \citet{Bewick2004}, é apresentado nessa seção um s
 
 Esse sistema de testes utiliza como único critério de avaliação o número de ocorrências. Um \emph{limiar de classificação} é definido: um parâmetro que o sistema de detecção utilizará para guiar a previsão da detecção. Se o limiar de classificação fosse 1, todas as instâncias que tivessem mais de uma ocorrência (nos valores de exemplo, as instâncias 0 e 2) seriam consideradas fraudulentas.
 
-\vspace{0.5cm}
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h]
+    \vspace{0.5cm}
     \centering
     \caption{Exemplo de resultado}
     \label{fraud:ex}
@@ -136,8 +136,8 @@ Esse sistema de testes utiliza como único critério de avaliação o número de
         \cline{2-5}
         & \multicolumn{1}{c|}{Total}    & 400 & 1200  & \multicolumn{1}{|c}{1600} \\
     \end{tabular}
+    \vspace{0.5cm}
 \end{table}
-\vspace{0.5cm}
 
 Um exemplo do resultado de um teste nesse sistema é mostrado na tabela \ref{fraud:ex}. As colunas sob ``Dados reais'' mostram o número de instâncias fraudulentas e legítimas; as linhas sob ``Saída'' mostram a classificação gerada pelo sistema. A partir desses dados, a avaliação dos resultados é feita usando dois conceitos: sensibilidade e especificidade.
 
@@ -145,9 +145,9 @@ Um exemplo do resultado de um teste nesse sistema é mostrado na tabela \ref{fra
 
 A avaliação dos classificadores binários é feita com base em uma \emph{matriz de confusão}, conforme mostrado na tabela \ref{fraud:confusion}. Nessa tabela são listados o número de valores (ou porcentagem) para cada combinação de saída do sistema e a classificação real. Instâncias corretamente classificadas ocupam as colunas Positivo e Negativo, enquanto instâncias cujo classificação difere da realidade ocupam as colunas ``Falsos positivos'' e ``Falsos negativos''.
 
-\vspace{0.5cm}
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[h]
+    \vspace{0.5cm}
     \centering
     \caption{Matriz de confusão}
     \label{fraud:confusion}
@@ -159,8 +159,8 @@ A avaliação dos classificadores binários é feita com base em uma \emph{matri
         & \multicolumn{1}{c|}{Positivo} & Positivo & Falso positivo\\
         & \multicolumn{1}{c|}{Negativo} & Falso negativo & Negativo\\
     \end{tabular}
+    \vspace{0.5cm}
 \end{table}
-\vspace{0.5cm}
 
 Como o conjunto de dados possui apenas duas classes, a matriz de confusão é $2 x 2$, mas o número de linhas e colunas pode ser maior, sendo igual ao número de classes. Todos os principais indicadores podem ser extraídos através da matriz de confusão, fazendo dela uma forma sucinta de apresentação dos resultados.
 
@@ -213,8 +213,8 @@ Desses valores, pode-se atestar a utilidade do método para classificação. Uma
 
 Os dados de teste do exemplo mostrados nas tabelas até agora consideraram apenas um valor como limiar de classificação. Mudanças nesse limiar afetam a precisão dos testes: caso o limiar seja seja igual a -1, todas as instâncias são classificadas como fraudulentas, já que todas possuem como número de ocorrências um número maior ou igual a zero. Por outro lado, caso o limiar seja um número maior do que qualquer uma das instâncias, todas serão classificadas como legítimas. Em sistemas reais, é comum que sejam testados diversos valores para esse limiar sobre uma mesma base de dados, para que o melhor seja identificado e usado no sistema final. A tabela \ref{fraud:youden} é um exemplo de resultados para esse tipo de teste.
 
-\vspace{0.5cm}
 \begin{table}[h!]
+    \vspace{0.5cm}
     \centering
     \caption{Exemplo de resultados para testes comparativos de limiares}
     \label{fraud:youden}
@@ -235,8 +235,8 @@ Os dados de teste do exemplo mostrados nas tabelas até agora consideraram apena
     \end{tabular}
     \vspace{0.5cm}
     \\ Fonte: inspirado em \citet{Bewick2004}.
+    \vspace{0.5cm}
 \end{table}
-\vspace{0.5cm}
 
 Uma medida para a avaliação dos diferentes limiares pode ser a sensibilidade e especificidade. O índice de Youden (J), que é uma derivação desses valores, é uma medida apropriada nesses casos (eq. \ref{fraud:yindex}). Esse índice é um valor normalizado na faixa [0, 1], onde 1 significa um teste perfeito, classificando todas as instâncias corretamente; e 0 significa um teste sem valor nenhum. A tabela \ref{fraud:yindex} mostra os valores para os resultados com diversos limiares. É importante notar como valores extremos maximizam a sensibilidade e a especificidade, mas apenas aqueles limiares que maximizam os dois valores recebem índices significativos.
 
@@ -257,8 +257,8 @@ Uma característica importante do índice de Youden é que ele estabelece uma eq
 
 Como pode-se observar na tabela \ref{fraud:yindex}, alterações no valor usado na classificação alteram o número de instâncias classificadas como positivas e negativas. Geralmente os resultados são distribuídos começando com um grande valor de sensibilidade e um valor baixo de especificidade; esses valores convergem até um máximo global; e então terminam em com um valor baixo de sensibilidade e um grande valor de especificidade. A variação desses três valores, e a interação entre eles, é mostrada no gráfico da figura \ref{fraud:threshold}.
 
-\vspace{0.5cm}
 \begin{figure}[h!]
+    \vspace{0.5cm}
     \centering
     \caption{Variação dos valores de avaliação conforme o limiar de detecção}
     \label{fraud:threshold}
@@ -266,19 +266,18 @@ Como pode-se observar na tabela \ref{fraud:yindex}, alterações no valor usado 
     \includegraphics[scale=0.5]{img/threshold.png}
     \vspace{0.5cm}
 \end{figure}
-\vspace{0.5cm}
 
 No lado esquerdo, onde o limiar é muito baixo, a sensibilidade é 1 e a especificidade, zero; enquanto no lado direito, onde o limiar é muito alto, ocorre o oposto: a sensibilidade é zero e a sensibilidade, 1. Conforme o limiar aumenta (começando do lado esquerdo e caminhando para a direita), ocorreu uma diminuição na especificidade (algumas instâncias fraudulentas começam a ser classificadas como legítimas). No entanto, há um aumento muito maior na especificidade (instâncias legítimas começam a ser classificadas corretamente). É possível ver como o índice de Youden mostra a real proporção entre esses dois valores. Uma forma mais sucinta para apresentar esse tipo de informação é através de um gráfico dos valores de sensibilidade e 1 - especificidade, que é denominado ROC (característica operativa do receptor, \emph{receiver operating characteristic}), conforme mostrado na figura \ref{fraud:roc}.
 
-\vspace{0.5cm}
 \begin{figure}[h!]
+    \vspace{0.5cm}
     \centering
     \caption{Gráfico da curva ROC dos valores de exemplo}
     \label{fraud:roc}
     \vspace{0.5cm}
     \includegraphics[scale=0.5]{img/roc.png}
+    \vspace{0.5cm}
 \end{figure}
-\vspace{0.5cm}
 
 No gráfico é visualmente aparente que o valor 3 como limiar de classificação oferece o melhor balanceamento entre sensibilidade e especificidade. Também é possível perceber como as alterações no limiar influenciam a distribuição desses dois valores. Um teste perfeito, que classificasse todas as instâncias corretamente, teria ambos os valores iguais a 1, tendo portanto um ponto no canto superior esquerdo do gráfico. Os pontos mais próximos dessa localização são aqueles que melhor classificam as instâncias.
 
