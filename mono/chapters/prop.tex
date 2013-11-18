@@ -223,7 +223,6 @@ Dentre os algoritmos imunológicos, serão utilizados:
     \item \textbf{Artificial Immune Recognition System (AIRS)}: algoritmo imunológico supervisionado descrito na seção \ref{sec:prop_airs}.
     \item \textbf{Clonal Selection Algorithm (CLONALG)}: um dos principais algoritmos imunológicos, o algoritmo da seleção clonal, descrito na seção \ref{sec:ais_clonalg}.
     \item \textbf{Immunos-81}: algoritmo imunológico descrito na seção \ref{sec:prop_immunos}.
-    \iffalse adicionar os outros algoritmos do weka que serão utilizados (4.6) \fi
 \end{enumerate}
 
 \section{WEKA}
@@ -380,70 +379,3 @@ Weighted Avg.    0.357     0.802      0.321     0.357     0.338      0.278
 \vspace{0.25cm}
 \centerline{Fonte: \cite{Hall2009}}
 \vspace{0.5cm}
-
-\iffalse
-
-\section{Método de pesquisa}
-
-As atividades da segunda etapa do Trabalho de Conclusão de Curso serão desenvolvidas conforme apresentadas na tabela \ref{tab:prop_cron} e serão descritas à seguir.
-
-A etapa de coleta e preparação de dados envolverá a adaptação dos dados nos conjuntos ao formato de entrada esperado pelo WEKA, já que eles se encontram em estado bruto. O formato mais comum para utilização nesse programa são arquivos \emph{Attribute Relationship File Format} (ARFF, Formato de Arquivo de Atributo-Relação). Um arquivo nesse formato é apresentado na listagem \ref{lst:prop_arff}. Esse mesmo arquivo foi apresentado na figura \ref{fig:prop_weka}, mostrando a visualização pela interface do WEKA.
-
-\vspace{0.5cm}
-\begin{lstlisting}[caption=Exemplo de arquivo no formato ARFF, label=lst:prop_arff]
-    @relation weather
-
-    @attribute outlook {sunny, overcast, rainy}
-    @attribute temperature real
-    @attribute humidity real
-    @attribute windy {TRUE, FALSE}
-    @attribute play {yes, no}
-
-    @data
-    sunny,85,85,FALSE,no
-    sunny,80,90,TRUE,no
-    overcast,83,86,FALSE,yes
-    rainy,70,96,FALSE,yes
-    rainy,68,80,FALSE,yes
-    rainy,65,70,TRUE,no
-    overcast,64,65,TRUE,yes
-    sunny,72,95,FALSE,no
-    sunny,69,70,FALSE,yes
-    rainy,75,80,FALSE,yes
-    sunny,75,70,TRUE,yes
-    overcast,72,90,TRUE,yes
-    overcast,81,75,FALSE,yes
-    rainy,71,91,TRUE,no
-\end{lstlisting}
-\vspace{0.25cm}
-\centerline{Fonte: \cite{Hall2009}}
-\vspace{0.5cm}
-
-Ainda, podem ser necessários ajustes específicos nos dados para que possam servir como entrada para alguns dos algoritmos, caso estes não tenham suporte aos tipos de dados. Com os dados prontos, iniciará a fase de execução dos diferentes algoritmos sobre esses conjuntos de dados. A coleta dos resultados será feita através dos dados de saída, mostrados na listagem \ref{lst:prop_weka_out}. Com os dados prontos, iniciará a fase de execução dos diferentes algoritmos sobre esses conjuntos de dados. A coleta dos resultados será feita através dos dados de saída, mostrados na listagem \ref{lst:prop_weka_out}.
-
-Uma característica positiva da ferramenta WEKA é a possibilidade de alterar parâmetros tanto do algoritmo em si (caso eles ofereçam essa funcionalidade) quanto da execução do teste em si. Assim, pode-se executar diversos testes, variando esses parâmetros, para ao final comparar também essas configurações. A princípio, será definida apenas uma configuração, que será usada para a execução de todos os testes. No entanto, conforme for possível, poderão ser executados testes variando essa configuração, gerando comparações mais diversificadas.
-
-De posse dos resultados dos testes de todos os algoritmos, iniciará a etapa de análise. Os resultados dos algoritmos imunológicos serão comparados com os resultados dos algoritmos tradicionais. Essa comparação envolve diversos níveis: taxas de erros e acertos (conforme apresentado na seção \ref{sec:eval_fraud}), tempos de execução (que inclui tempo de treinamento do algoritmo e o tempo dos testes), utilização de recursos, etc. Para a visualização dos resultados, serão criados elementos visuais, como tabelas e gráficos.
-
-Esse período também inclui a documentação do processo através da redação da monografia e a apresentação ao fim do semestre.
-
-\vspace{0.5cm}
-\begin{table}[h]
-    \centering
-    \caption{Cronograma}
-    \label{tab:prop_cron}
-    \vspace{0.5cm}
-    \begin{tabular}{l >{\arraybackslash}m{5cm} >{\centering\arraybackslash}m{6cm} c}
-        \multicolumn{2}{c}{Etapa} & Resultado & Data \\
-        \hline
-        1 & Coleta e preparação                 & Arquivos no formato esperado pelo WEKA & março/2013 \\
-        2 & Aplicação dos algoritmos            & Resultados da execução (taxas de acerto, métricas, tempo de execução, listagem \ref{lst:prop_weka_out} & abril/2013 \\
-        3 & Comparação e análise                & Ranking de resultados & maio/2013 \\
-        4 & Conclusão e contribuições           & Análise & junho/2013 \\
-        5 & Redação e revisão                   & & março-julho/2013 \\
-        6 & Apresentação                        & & julho/2013 \\
-    \end{tabular}
-\end{table}
-\vspace{0.5cm}
-
-\fi
