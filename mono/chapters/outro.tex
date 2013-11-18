@@ -1,13 +1,87 @@
-\iffalse
-
 \chapter{Conclusão}
 
-O estudo dos algoritmos baseados no sistema imunológico continua sendo uma área de pesquisa extensa, mesmo existindo algoritmos determinísticos mais rápidos e com resultados melhores, ou seja, não há uma área onde esses algoritmos possam ser considerados como os métodos mais efetivos. Isso parece confirmar a afirmação inicial de que o sistema imunológico e os Sistemas Imunológicos Artificiais são um bons para a modelagem de sistemas computacionais. O estudo desses sistemas é interessante e pode ser mais simples do que o de métodos determinísticos tradicionais.
+Esse trabalho buscou comparar a aplicação de algoritmos tradicionais com algoritmos imunológicos para o problema da detecção de fraude. Para atingir esse objetivo seguiu-se o método ilustrado na figura \ref{fig:outro_method}.
 
-O fato de um método não ser considerado útil não é motivo para que cesse a pesquisa e o desenvolvimento nessa área. Garrett cita como exemplo o algoritmo de redes neurais, que em 1969 não eram efetivas, mas que, hoje, após pesquisas extensas, são um dos algoritmos imunológicos mais efetivos \cite{Garrett2005}.
+\setlength{\unitlength}{0.01\textwidth}
+\begin{figure}[h]
+    \vspace{0.5cm}
+    \caption{Etapas do trabalho}
+    \label{fig:outro_method}
+    \begin{picture}(100, 55)
+        \centering
+        \newsavebox{\textbox}
+        \savebox{\textbox}(10,10)[bl]{
+            \multiput(0,0)(0,10){2}
+                {\line(10,0){20}}
+            \multiput(0,0)(20,0){2}
+                {\line(0,10){10}}
+        }
+        \put(  0,  0){\line( 1, 0){100}}
+        \put(100,  0){\line( 0, 1){ 55}}
+        \put(100, 55){\line(-1, 0){100}}
+        \put(  0, 55){\line( 0,-1){ 55}}
 
-As semelhanças entre os diversos modelos de Sistemas Imunológicos Artificiais sugerem que haverá, no futuro, duas grandes áreas de pesquisa: seleção negativa/teoria do perigo, buscando identificar situações de perigo; e redes imunológicas, buscando destruir essas ameaças.
+        \multiput( 2.5,  2.5)( 0, 20){3}{\usebox{\textbox}}
+        \multiput(27.5, 22.5)(25,  0){3}{\usebox{\textbox}}
 
-Além disso, muitas características do sistema imunológico natural são ainda pouco exploradas pela computação, como o sistema imunológico inato (citado no início desse texto) e a utilização de ataques paralelos a invasões. Esses fatores combinados sugerem um futuro de possibilidades interessantes para a área.
+        \put( 6.75, 48.5){conjuntos}
+        \put( 7.25, 44.5){de dados}
+        \put( 6.25, 26.5){algoritmos}
+        \put( 7.75,  6.5){critérios}
 
-\fi
+        \put(   30, 26.5){configuração}
+        \put(57.25, 26.5){execução}
+        \put(83.25, 26.5){análise}
+
+        \put(  25,  7.5){\line(0,1){40}}
+        \put(22.5,  7.5){\line(1,0){2.5}}
+        \put(22.5, 27.5){\line(1,0){2.5}}
+        \put(22.5, 47.5){\line(1,0){2.5}}
+        \put(  25, 27.5){\vector(1,0){2.5}}
+
+        \put(47.5, 27.5){\vector(1,0){5}}
+        \put(72.5, 27.5){\vector(1,0){5}}
+    \end{picture}
+    \vspace{0.5cm}
+\end{figure}
+
+No início do trabalho, após a definição da detecção de fraude como escopo de pesquisa, foram selecionados os conjuntos de dados e algoritmos que foram testados. Para os conjuntos de dados, foram consultadas fontes tradicionais na área de mineração de dados e inteligência artificial. Para os algoritmos, foram consultados trabalhos recentes na área da detecção de fraude e foram escolhidos os principais representantes dos tipos mais usados de algoritmos.
+
+Após as definições iniciais, foi escolhida a arquitetura para os testes do experimento, utilizando a plataforma WEKA, padrão para grande parte dos experimentos em mineração de dados. Essa escolha facilitou a implementação do experimento em diversos aspectos. Nenhum dos algoritmos teve que ser implementado, já que todos os algoritmos tradicionais são implementados pela plataforma. Os algoritmos imunológicos não são implementados na versão padrão do WEKA, mas o pacote de algoritmos de Jason Brownlee foi utilizado, o que permitiu utilizar esses algoritmos como qualquer outro algoritmo implementado no WEKA.
+
+Finalizando a fase de planejamento, foram definidos os critérios utilizados para a comparação dos resultados. Essa definição teve base nos padrões da mineração de dados e, mais especificamente, na detecção de fraude. Essa escolha não alterou a definição da plataforma, já que os critérios selecionados são gravados pelo WEKA por padrão em cada teste.
+
+Na segunda fase do trabalho, foram criados os arquivos de configuração que descrevem o experimento para cada algoritmo no WEKA. A criação dos arquivos foi simples, mas grande parte do trabalho nessa etapa consistiu em identificar os parâmetros a serem testados para cada algoritmo. Isso foi feito para que os resultados representassem a melhor configuração de cada algoritmo, sem que fossem prejudicados por uma escolha ruim de parâmetros.
+
+A etapa de execução foi separada no diagrama, mas na prática ocorreu junto com a configuração dos experimentos, já que foi necessária uma familiarização com a ferramenta WEKA e com a configuração dos algoritmos e experimentos. Nessa etapa, todos os testes foram executados na máquina de testes e os arquivos com os resultados foram criados e combinados nos arquivos de resultado finais.
+
+A última etapa do trabalho foi a análise dos resultados compilados. Nessa etapa, os resultados foram analisados, seguindo os critérios definidos nas etapas anteriores. A partir dos arquivos de resultados, foram geradas tabelas e gráficos para a análise dos critérios de avaliação. A partir desses, foram identificados os melhores algoritmos para cada critério, além de observações relevantes sobre os resultados.
+
+\section{Contribuições}
+
+Esse trabalho envolveu diversas áreas da ciência da computação e mineração de dados. As contribuições foram, também, variadas:
+
+\begin{enumerate}[a)]
+    \item \textbf{Detecção de fraude}: o último trabalho a fazer uma comparação de vários métodos no contexto da detecção de fraude foi \citet{Phua2010}. Esse trabalho busca servir como base para trabalhos futuros que busquem expandir a pesquisa nessa área.
+    \item \textbf{Mineração de dados}: com o constante avanço dos algoritmos e técnicas para a mineração de dados, é necessária constante avaliação da eficiência desses métodos, principalmente para comparação com os métodos já existentes.
+    \item \textbf{Sistemas Imunológicos Artificiais}: uma das principais contribuições desse trabalho foi possibilitar a comparação dos algoritmos imunológicos com algoritmos tradicionais da inteligência artificial. Os Sistemas Imunológicos Artificiais são uma área relativamente recente de desenvolvimento e não ainda não existem muitos trabalhos comparando esses algoritmos às técnicas tradicionais.
+    \item \textbf{WEKA}: apesar de ser uma ferramenta bastante usada nas áreas de mineração de dados e inteligência artificial, esse trabalho utilizou uma versão do WEKA que inclui algoritmos que não estão presentes na versão padrão. Com o estabelecimento dos algoritmos imunológicos como uma área da inteligência artificial, é possível que esses algoritmos sejam incorporados como mais uma categoria de algoritmos na versão padrão.
+    \item \textbf{Computação}: a mineração de dados é uma área extensa e existem muitas aplicações na computação em geral. Os sistemas imunológicos foram e ainda podem ser usados em vários problemas da computação, como análise de tráfego de rede e otimização de código. Qualquer trabalho que pretenda avaliar a aplicação de novos algoritmos deve utilizar um processo semelhante ao utilizado nesse trabalho para a validação dos resultados.
+\end{enumerate}
+
+\section{Continuidade}
+
+Apesar da extensão desse trabalho, diversos aspectos podem ser melhorados no método utilizado. Os principais são:
+
+\begin{enumerate}[a)]
+    \item O número de conjuntos de dados testados foi satisfatório, mas um número maior poderia ser utilizado para garantir a veracidade dos resultados. Apesar disso, não existem muitos conjuntos de dados de detecção de fraude disponíveis livremente.
+    \item O número e a faixa de parâmetros utilizada para os algoritmos foi definido levando em consideração o tempo de execução do trabalho. Mais e faixas maiores de parâmetros poderiam ser testados em um período maior de tempo.
+    \item O estudo dos algoritmos testados teve escopo limitado pelo tempo, já que um número relativamente grande de algoritmos foi testado. Uma análise mais refinada de cada algoritmo geraria resultados mais próxima da aplicação real desses algoritmos.
+\end{enumerate}
+
+Além das melhorias para esse trabalho, foram encontrados diversos problemas durante a execução das etapas desse trabalho nas ferramentas utilizadas que poderiam ser melhorados:
+
+\begin{enumerate}[a)]
+    \item Os algoritmos do WEKA fazem parte da versão padrão há anos e foram testados em diversos trabalhos. Por outro lado, os algoritmos no pacote de algoritmos imunológicos foram desenvolvidos por apenas uma pessoa e foram usados em poucos trabalhos. Provavelmente podem ser feitas melhorias e otimizações no código desses algoritmos.
+    \item O WEKA tem várias funcionalidades que facilitam a execução de experimentos, mas não existem muitas facilidades para a análise e comparação dos resultados. As ferramentas que existem não cobriam as necessidades desse trabalho, e a sua adição facilitaria trabalhos semelhantes. O fato do WEKA ser uma plataforma de código aberto facilita a adição de novas funcionalidades.
+\end{enumerate}
