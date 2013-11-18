@@ -343,7 +343,7 @@ Todos os algoritmos utilizados para comparação com os algoritmos imunológicos
     \vspace{0.5cm}
 \end{figure}
 
-Esses algoritmos podem ser dividos em 5 categorias de algoritmos: árvores de decisão, redes neurais artificiais, redes Bayesianas, \emph{support vector machine} e imunológicos. Na tabela \ref{tbl:dev_algs} são apresentados os mesmo algoritmos, organizados pela categoria a que pertencem.
+Esses algoritmos podem ser divididos em 5 categorias de algoritmos: árvores de decisão, redes neurais artificiais, redes Bayesianas, \emph{support vector machine} e imunológicos. Na tabela \ref{tbl:dev_algs} são apresentados os mesmo algoritmos, organizados pela categoria a que pertencem.
 
 \begin{table}[h]
     \vspace{0.5cm}
@@ -512,7 +512,7 @@ Algoritmo iterativo para o problema da otimização de uma máquina de vetor de 
     \item \textbf{Parâmetros}:
         \begin{itemize}
             \item \textbf{C}: a constante de complexidade das regras de decisão.
-            \item \textbf{N}: opção para normalizar, uniformizar ou usar os dados oringinais.
+            \item \textbf{N}: opção para normalizar, uniformizar ou usar os dados originais.
             \item \textbf{L}: o parâmetro de tolerância.
             \item \textbf{P}: \emph{epsilon} para erro de arredondamento.
             \item \textbf{M}: aplica regressão logística aos pesos.
@@ -591,7 +591,7 @@ O primeiro foi um problema na definição dos parâmetros do CLONALG. Como foi m
 
 No entanto, um dos parâmetros do CLONALG também usa a letra ``d'' como representação (conforme apresentado na seção anterior, o parâmetro é o número de anticorpos substituído a cada geração). Isso gerava um conflito na execução do algoritmo, já que as opções do WEKA são analisadas antes das opções do algoritmo. O resultado era uma mensagem de erro apontando que o parâmetro ``d'' não tinha sido passado.
 
-Para solucionar esse problema, foi feita uma alteração diretamente no código do algoritmo. As opções do algoritmo são definidas em um vetor na linha 37 do arquivo src/weka/classifiers/immune/clonalg/CLONALG.java (listagem \ref{lst:dev_clonalg_source}). A alteração para a solução foi alterar o nome do parâmetro "d" para uma letra que não conflitasse com outros parâmetros do WEKA ou do algoritmo. Após isso, o código do WEKA foi compilado e essa versão alterada foi utilizada na execução dos testes.
+Para solucionar esse problema, foi feita uma alteração diretamente no código do algoritmo. As opções do algoritmo são definidas em um vetor na linha 37 do arquivo $src/weka/classifiers/immune/clonalg/CLONALG.java$ (listagem \ref{lst:dev_clonalg_source}). A alteração para a solução foi alterar o nome do parâmetro "d" para uma letra que não conflitasse com outros parâmetros do WEKA ou do algoritmo. Após isso, o código do WEKA foi compilado e essa versão alterada foi utilizada na execução dos testes.
 
 \vspace{0.5cm}
 \begin{lstlisting}[caption=Código fonte original do CLONALG, label=lst:dev_clonalg_source]
